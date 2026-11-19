@@ -5,9 +5,8 @@ import { useEffect, useRef, useState } from "react";
 import { extractProductSlug } from "./catalog";
 import { parseDollar, useCart } from "./CartContext";
 import { useLanguage } from "./LanguageContext";
+import { useStoreData } from "./StoreDataContext";
 import {
-  formatPrice,
-  formatPriceString,
   translateBadge,
   translateColor,
   translateDiscount,
@@ -31,6 +30,7 @@ function sizesForProduct(title: string): string[] {
 
 export function QuickViewAndCart() {
   const { locale } = useLanguage();
+  const { catalog, settings, formatMoney, formatMoneyString } = useStoreData();
   const qvCopy = UI_COPY[locale].quickViewModal;
   const cartCopy = UI_COPY[locale].cartDrawer;
 
@@ -92,8 +92,11 @@ export function QuickViewAndCart() {
   const activeSwatch = quickViewProduct?.swatches[selectedSwatch];
   const displayImage = activeSwatch?.mainImage || quickViewProduct?.mainImage || "";
   const activeColorRaw = activeSwatch?.label || "Default";
+  const liveMatch = quickViewProduct
+    ? catalog.find((p) => p.slug === extractProductSlug(quickViewProduct.href))
+    : undefined;
   const displayTitle = quickViewProduct
-    ? translateProductTitle(quickViewProduct.title, locale)
+    ? translateProductTitle(quickViewProduct.title, locale, liveMatch?.titleVi)
     : "";
 
   const handleAddToBag = () => {
@@ -116,9 +119,14 @@ export function QuickViewAndCart() {
     openCart();
   };
 
-  const freeShippingRemaining = Math.max(0, 100 - subtotal);
-  const freeToteRemaining = Math.max(0, 250 - subtotal);
-  const toteProgress = Math.min(100, Math.round((subtotal / 250) * 100));
+  const freeShippingThreshold = settings.freeShippingThresholdUsd || 100;
+  const freeGiftThreshold = settings.freeGiftThresholdUsd || 250;
+  const freeShippingRemaining = Math.max(0, freeShippingThreshold - subtotal);
+  const freeToteRemaining = Math.max(0, freeGiftThreshold - subtotal);
+  const toteProgress =
+    freeGiftThreshold > 0
+      ? Math.min(100, Math.round((subtotal / freeGiftThreshold) * 100))
+      : 100;
 
   return (
     <>
@@ -176,11 +184,11 @@ export function QuickViewAndCart() {
                 <div className="mt-2 flex items-center gap-2 text-[16px]">
                   {quickViewProduct.originalPrice && (
                     <span className="text-[#6E6E6E] line-through">
-                      {formatPriceString(quickViewProduct.originalPrice, locale)}
+                      {formatMoneyString(quickViewProduct.originalPrice, locale)}
                     </span>
                   )}
                   <span className="font-bold text-[#283455]">
-                    {formatPriceString(quickViewProduct.salePrice, locale)}
+                    {formatMoneyString(quickViewProduct.salePrice, locale)}
                   </span>
                   {quickViewProduct.discountBadge && (
                     <span className="rounded bg-[#EAF3E4] px-2 py-0.5 text-[12px] font-bold text-[#417823]">
@@ -274,7 +282,7 @@ export function QuickViewAndCart() {
                   className="h-[52px] w-full cursor-pointer rounded-[20px] bg-[#283455] text-[14px] font-bold text-white transition-colors hover:bg-[#1D2742]"
                 >
                   {qvCopy.addToBag} &mdash;{" "}
-                  {formatPriceString(quickViewProduct.salePrice, locale)}
+                  {formatMoneyString(quickViewProduct.salePrice, locale)}
                 </button>
                 <Link
                   href={`/products/${extractProductSlug(quickViewProduct.href)}`}
@@ -314,11 +322,11 @@ export function QuickViewAndCart() {
             <p>
               {cartCopy.addMorePrefix}{" "}
               <span className="font-bold">
-                {formatPrice(freeShippingRemaining, locale)}
+                {formatMoney(freeShippingRemaining, locale)}
               </span>{" "}
               {cartCopy.forFreeShipping} ({cartCopy.andMore}{" "}
               <span className="font-bold">
-                {formatPrice(freeToteRemaining, locale)}
+                {formatMoney(freeToteRemaining, locale)}
               </span>{" "}
               {cartCopy.forFreeTote})
             </p>
@@ -327,7 +335,7 @@ export function QuickViewAndCart() {
               <span className="font-bold text-[#417823]">{cartCopy.freeShippingUnlocked}</span>{" "}
               {cartCopy.addMorePrefix}{" "}
               <span className="font-bold">
-                {formatPrice(freeToteRemaining, locale)}
+                {formatMoney(freeToteRemaining, locale)}
               </span>{" "}
               {cartCopy.freeToteSuffix}
             </p>
@@ -359,7 +367,8 @@ export function QuickViewAndCart() {
           ) : (
             <ul className="space-y-4">
               {items.map((item) => {
-                const title = translateProductTitle(item.title, locale);
+                const matched = catalog.find((p) => p.slug === item.slug);
+                const title = translateProductTitle(item.title, locale, matched?.titleVi);
                 return (
                   <li
                     key={item.key}
@@ -418,7 +427,7 @@ export function QuickViewAndCart() {
                           </button>
                         </div>
                         <p className="text-[14px] font-bold text-[#283455]">
-                          {formatPrice(item.price * item.qty, locale)}
+                          {formatMoney(item.price * item.qty, locale)}
                         </p>
                       </div>
                     </div>
@@ -434,7 +443,7 @@ export function QuickViewAndCart() {
           <div className="border-t border-[#E5E0DB] bg-white px-5 py-4">
             <div className="flex items-center justify-between text-[16px] font-bold text-[#283455]">
               <span>{cartCopy.subtotal}</span>
-              <span>{formatPrice(subtotal, locale)}</span>
+              <span>{formatMoney(subtotal, locale)}</span>
             </div>
             <p className="mt-1 text-[12px] text-[#6E6E6E]">{cartCopy.taxNote}</p>
             <Link

@@ -430,7 +430,16 @@ html[lang="vi"] .font-toledo {
   }
 }
 
-/* Native modal dialog backdrop */
+/* Native modal dialog scroll containment & backdrop (modern-web-guidance: dialog) */
+dialog:modal {
+  overscroll-behavior: contain;
+}
+
+dialog::backdrop {
+  overflow: hidden;
+  overscroll-behavior: contain;
+}
+
 .bkl-modal {
   margin: auto;
   padding: 0;
@@ -444,4 +453,189 @@ html[lang="vi"] .font-toledo {
 .bkl-modal::backdrop {
   background: rgba(20, 26, 44, 0.55);
   backdrop-filter: blur(2px);
+}
+
+/* Visually hidden utility keeping nodes in the accessibility tree */
+.visually-hidden:where(:not(:focus-within, :active)) {
+  position: absolute !important;
+  clip-path: inset(50%) !important;
+  overflow: hidden !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  white-space: nowrap !important;
+}
+
+/* Admin native <dialog> modal (never set display unconditionally; scope to [open]) */
+.admin-dialog {
+  margin: auto;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  width: min(94vw, 820px);
+  max-width: min(94vw, 820px);
+  max-height: 90svh;
+  overflow: visible;
+  font-family: "Be Vietnam Pro", ui-sans-serif, system-ui, -apple-system, sans-serif;
+}
+
+.admin-dialog--sm {
+  width: min(92vw, 460px);
+  max-width: min(92vw, 460px);
+}
+
+.admin-dialog::backdrop {
+  background: rgba(20, 26, 44, 0.52);
+  backdrop-filter: blur(2px);
+}
+
+/* Admin accessible form controls (modern-web-guidance: forms, validate-input-after-interaction) */
+.admin-input {
+  font: inherit;
+  font-size: max(1rem, 1em);
+  min-height: 48px;
+  color: #283455;
+  background-color: #ffffff;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.admin-input:focus-visible {
+  outline: 2px solid #283455;
+  outline-offset: 2px;
+}
+
+.admin-input:is(:user-invalid, .user-invalid-fallback) {
+  border-color: #d93025;
+  background-color: #fce8e6;
+}
+
+.admin-error-msg {
+  display: none;
+  margin-top: 0.3rem;
+  font-size: 0.85rem;
+  color: #c5221f;
+}
+
+.admin-input:is(:user-invalid, .user-invalid-fallback) + .admin-error-msg {
+  display: block;
+}
+
+/* Responsive Admin Data Table (modern-web-guidance: responsive-table) */
+.admin-table-wrapper {
+  overflow: auto;
+  max-inline-size: 100%;
+  max-block-size: min(640px, 72vh);
+  container-type: inline-size;
+  border-radius: 1rem;
+  border: 1px solid #e5e0db;
+  background: #ffffff;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  text-align: left;
+}
+
+.admin-table thead {
+  position: sticky;
+  inset-block-start: 0;
+  z-index: 2;
+  background: #f9f3ed;
+}
+
+.admin-table thead th {
+  padding: 0.875rem 1rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #5b647a;
+  border-bottom: 1px solid #e5e0db;
+  white-space: nowrap;
+}
+
+.admin-table tbody th,
+.admin-table tbody td {
+  padding: 0.875rem 1rem;
+  vertical-align: middle;
+  border-bottom: 1px solid #f0ebe5;
+  font-size: 0.9rem;
+}
+
+.admin-table tbody tr:last-child th,
+.admin-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.admin-table tbody th {
+  position: sticky;
+  inset-inline-start: 0;
+  z-index: 1;
+  background: #ffffff;
+  font-weight: 700;
+  color: #283455;
+}
+
+.admin-table tbody tr:hover th,
+.admin-table tbody tr:hover td {
+  background: #fdfaf8;
+}
+
+@container (width < 680px) {
+  .admin-table-wrapper {
+    max-block-size: none;
+    border: 0;
+    background: transparent;
+  }
+
+  .admin-table,
+  .admin-table thead,
+  .admin-table tbody,
+  .admin-table tr,
+  .admin-table th,
+  .admin-table td {
+    display: block;
+  }
+
+  .admin-table thead {
+    display: none;
+  }
+
+  .admin-table tbody tr {
+    margin-block-end: 1rem;
+    border: 1px solid #e5e0db;
+    border-radius: 1rem;
+    background: #ffffff;
+    overflow: hidden;
+  }
+
+  .admin-table tbody th {
+    position: sticky;
+    inset-block-start: 0;
+    z-index: 2;
+    background: #f9f3ed;
+    border-bottom: 1px solid #e5e0db;
+  }
+
+  .admin-table tbody td {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 0.7rem 1rem;
+  }
+
+  .admin-table tbody td::before {
+    content: attr(data-label);
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #5b647a;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    flex-shrink: 0;
+  }
 }

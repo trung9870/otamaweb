@@ -56,3 +56,8 @@ docs/design-references/local-routes/
 docs/research/brooklinen/inspection-*.json
 docs/research/brooklinen/site-data-deep.json
 docs/research/brooklinen/menus-and-swatches.json
+
+# Local runtime demo DB & uploaded images
+data/store-db.json
+data/store-db.json.tmp
+data/uploads/

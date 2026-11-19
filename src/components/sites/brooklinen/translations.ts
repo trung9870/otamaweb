@@ -88,24 +88,37 @@ const SIZE_VI: Record<string, string> = {
 
 export const USD_TO_VND_RATE = 25000;
 
-export function formatPrice(usdAmount: number, locale: Locale): string {
+export function formatPrice(
+  usdAmount: number,
+  locale: Locale,
+  vndRate: number = USD_TO_VND_RATE
+): string {
   if (locale === "en") {
     return `$${Math.round(usdAmount).toLocaleString("en-US")}`;
   }
-  const vnd = Math.round(usdAmount * USD_TO_VND_RATE);
+  const vnd = Math.round(usdAmount * vndRate);
   return `${vnd.toLocaleString("vi-VN")}₫`;
 }
 
-export function formatPriceString(rawUsd: string, locale: Locale): string {
+export function formatPriceString(
+  rawUsd: string,
+  locale: Locale,
+  vndRate: number = USD_TO_VND_RATE
+): string {
   if (!rawUsd) return "";
   if (locale === "en") return rawUsd;
   const num = Number(rawUsd.replace(/[^0-9.]/g, ""));
   if (!Number.isFinite(num) || num <= 0) return rawUsd;
-  return formatPrice(num, "vi");
+  return formatPrice(num, "vi", vndRate);
 }
 
-export function translateProductTitle(title: string, locale: Locale): string {
+export function translateProductTitle(
+  title: string,
+  locale: Locale,
+  customTitleVi?: string
+): string {
   if (locale === "en") return title;
+  if (customTitleVi && customTitleVi.trim()) return customTitleVi;
   return PRODUCT_TITLE_VI[title] || title;
 }
 

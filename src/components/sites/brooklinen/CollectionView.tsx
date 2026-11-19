@@ -2,16 +2,11 @@
 
 import Link from "next/link";
 import { useMemo, useState } from "react";
-import {
-  getCollectionMeta,
-  getProductsForCollection,
-  type CatalogProduct,
-  type CategoryTag,
-} from "./catalog";
+import type { CategoryTag } from "./catalog";
 import { parseDollar, useCart } from "./CartContext";
 import { useLanguage } from "./LanguageContext";
+import { useStoreData, type LiveCatalogProduct } from "./StoreDataContext";
 import {
-  formatPriceString,
   translateBadge,
   translateColor,
   translateDiscount,
@@ -37,8 +32,9 @@ function parseReviews(str?: string): number {
   return Number(str.replace(/[^0-9]/g, "")) || 0;
 }
 
-function GridProductCard({ product }: { product: CatalogProduct }) {
+function GridProductCard({ product }: { product: LiveCatalogProduct }) {
   const { locale } = useLanguage();
+  const { formatMoneyString } = useStoreData();
   const copy = UI_COPY[locale];
   const { openQuickView } = useCart();
   const [selectedSwatch, setSelectedSwatch] = useState(
@@ -50,7 +46,7 @@ function GridProductCard({ product }: { product: CatalogProduct }) {
   const activeSwatch = product.swatches[selectedSwatch];
   const displayMain = activeSwatch?.mainImage || product.mainImage;
   const displayHover = activeSwatch?.hoverImage || product.hoverImage;
-  const displayTitle = translateProductTitle(product.title, locale);
+  const displayTitle = translateProductTitle(product.title, locale, product.titleVi);
 
   return (
     <article className="flex flex-col">
@@ -133,11 +129,11 @@ function GridProductCard({ product }: { product: CatalogProduct }) {
         <span>{copy.fromPrice}</span>
         {product.originalPrice && (
           <span className="text-[#6E6E6E] line-through">
-            {formatPriceString(product.originalPrice, locale)}
+            {formatMoneyString(product.originalPrice, locale)}
           </span>
         )}
         <span className="font-bold">
-          {formatPriceString(product.salePrice, locale)}
+          {formatMoneyString(product.salePrice, locale)}
         </span>
         {product.discountBadge && (
           <span className="rounded bg-[#EAF3E4] px-2 py-0.5 text-[12px] font-bold text-[#417823]">
@@ -206,8 +202,12 @@ function GridProductCard({ product }: { product: CatalogProduct }) {
 
 export function CollectionView({ slug }: { slug: string }) {
   const { locale } = useLanguage();
+  const { getCollectionMeta, getProductsForCollection } = useStoreData();
   const meta = getCollectionMeta(slug);
-  const baseProducts = useMemo(() => getProductsForCollection(slug), [slug]);
+  const baseProducts = useMemo(
+    () => getProductsForCollection(slug),
+    [getProductsForCollection, slug]
+  );
   const [activeTag, setActiveTag] = useState<"all" | CategoryTag>("all");
   const [sortBy, setSortBy] = useState<SortKey>("featured");
 

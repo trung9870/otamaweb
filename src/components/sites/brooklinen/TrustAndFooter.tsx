@@ -418,6 +418,12 @@ export function BrooklinenFooter() {
           </div>
 
           <div className="flex items-center justify-between gap-4 lg:justify-end">
+            <Link
+              href="/admin"
+              className="text-[12.5px] font-bold text-[#283455]/75 underline-offset-2 hover:text-[#283455] hover:underline"
+            >
+              {locale === "vi" ? "Quản trị (Admin)" : "Store Admin"}
+            </Link>
             <LanguageSwitcher variant="light" />
 
             <div className="flex items-center gap-3 lg:hidden">

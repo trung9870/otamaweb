@@ -4,15 +4,12 @@ import Link from "next/link";
 import { useState } from "react";
 import {
   getLocalizedCategoryName,
-  getProductBySlug,
-  getRelatedProducts,
   type CatalogProduct,
 } from "./catalog";
 import { parseDollar, useCart } from "./CartContext";
 import { useLanguage } from "./LanguageContext";
+import { useStoreData } from "./StoreDataContext";
 import {
-  formatPrice,
-  formatPriceString,
   translateBadge,
   translateColor,
   translateDiscount,
@@ -56,6 +53,13 @@ function sizeOptionsFor(product: CatalogProduct) {
 
 export function ProductDetailView({ slug }: { slug: string }) {
   const { locale } = useLanguage();
+  const {
+    getProductBySlug,
+    getRelatedProducts,
+    formatMoney,
+    formatMoneyString,
+    settings,
+  } = useStoreData();
   const qvCopy = UI_COPY[locale].quickViewModal;
   const { addItem, openCart } = useCart();
 
@@ -108,7 +112,7 @@ export function ProductDetailView({ slug }: { slug: string }) {
   const baseOrig = parseDollar(product.originalPrice);
   const finalSale = Math.max(10, baseSale + activeSize.delta);
   const finalOrig = baseOrig > 0 ? Math.max(finalSale, baseOrig + activeSize.delta) : 0;
-  const displayTitle = translateProductTitle(product.title, locale);
+  const displayTitle = translateProductTitle(product.title, locale, product.titleVi);
   const activeColorRaw = activeSwatch?.label || "Default";
   const categoryName = getLocalizedCategoryName(product, locale);
   const related = getRelatedProducts(product.slug, 4);
@@ -242,11 +246,11 @@ export function ProductDetailView({ slug }: { slug: string }) {
             <div className="mt-4 flex items-center gap-2.5 text-[22px]">
               {finalOrig > finalSale && (
                 <span className="text-[#7E8596] line-through">
-                  {formatPrice(finalOrig, locale)}
+                  {formatMoney(finalOrig, locale)}
                 </span>
               )}
               <span className="font-bold text-[#283455]">
-                {formatPrice(finalSale, locale)}
+                {formatMoney(finalSale, locale)}
               </span>
               {product.discountBadge && (
                 <span className="rounded-md bg-[#EAF3E4] px-2.5 py-1 text-[13px] font-bold text-[#417823]">
@@ -358,14 +362,16 @@ export function ProductDetailView({ slug }: { slug: string }) {
                 onClick={handleAddToBag}
                 className="h-[54px] flex-1 cursor-pointer rounded-[20px] bg-[#283455] px-6 text-[15px] font-bold text-white shadow-xs transition-colors hover:bg-[#1D2742]"
               >
-                {qvCopy.addToBag} &mdash; {formatPrice(finalSale * qty, locale)}
+                {qvCopy.addToBag} &mdash; {formatMoney(finalSale * qty, locale)}
               </button>
             </div>
 
             {/* Trust Callout Strip */}
             <div className="mt-5 grid grid-cols-3 gap-3 rounded-xl bg-[#F9F3ED] p-4 text-center text-[12px] font-bold text-[#283455]">
               <div>
-                {locale === "vi" ? "Miễn phí ship từ 2.500.000₫" : "Free Shipping $100+"}
+                {locale === "vi"
+                  ? `Miễn phí ship từ ${formatMoney(settings.freeShippingThresholdUsd, "vi")}`
+                  : `Free Shipping ${formatMoney(settings.freeShippingThresholdUsd, "en")}+`}
               </div>
               <div>
                 {locale === "vi" ? "Bảo hành 365 ngày" : "365-Day Guarantee"}
@@ -457,7 +463,7 @@ export function ProductDetailView({ slug }: { slug: string }) {
           </h2>
           <div className="mt-6 grid grid-cols-2 gap-6 lg:grid-cols-4">
             {related.map((rel) => {
-              const title = translateProductTitle(rel.title, locale);
+              const title = translateProductTitle(rel.title, locale, rel.titleVi);
               return (
                 <Link
                   key={rel.slug}
@@ -481,11 +487,11 @@ export function ProductDetailView({ slug }: { slug: string }) {
                   <p className="mt-1 text-[14px] text-[#283455]">
                     {rel.originalPrice && (
                       <span className="mr-1.5 text-[#7E8596] line-through">
-                        {formatPriceString(rel.originalPrice, locale)}
+                        {formatMoneyString(rel.originalPrice, locale)}
                       </span>
                     )}
                     <span className="font-bold">
-                      {formatPriceString(rel.salePrice, locale)}
+                      {formatMoneyString(rel.salePrice, locale)}
                     </span>
                   </p>
                 </Link>

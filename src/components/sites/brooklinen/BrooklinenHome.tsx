@@ -1,11 +1,12 @@
 "use client";
 
-import { BROOKLINEN_DATA, type ProductCardData } from "./data";
+import { BROOKLINEN_DATA } from "./data";
 import { CategoryCarousel } from "./CategoryCarousel";
 import { useLanguage } from "./LanguageContext";
 import { MiniHeroTote } from "./MiniHeroTote";
 import { ProductCarousel } from "./ProductCarousel";
 import { PromoStrip } from "./PromoStrip";
+import { useStoreData } from "./StoreDataContext";
 import { UI_COPY } from "./translations";
 import { TrendingSection } from "./TrendingSection";
 import {
@@ -17,9 +18,24 @@ import { VideoHero } from "./VideoHero";
 
 export function BrooklinenHome() {
   const { locale } = useLanguage();
+  const { bestOfSale, giftGuide, collection, settings } = useStoreData();
   const copy = UI_COPY[locale];
   const heroPrimary = BROOKLINEN_DATA.heroPrimary;
   const heroSheets = BROOKLINEN_DATA.heroSheets;
+
+  const headingLines =
+    locale === "vi" && settings.heroHeadingVi.length > 0
+      ? settings.heroHeadingVi
+      : locale === "en" && settings.heroHeadingEn.length > 0
+      ? settings.heroHeadingEn
+      : copy.heroPrimary.headingLines;
+
+  const subtitleLines =
+    locale === "vi" && settings.heroSubtitleVi.length > 0
+      ? settings.heroSubtitleVi
+      : locale === "en" && settings.heroSubtitleEn.length > 0
+      ? settings.heroSubtitleEn
+      : copy.heroPrimary.subtitleLines;
 
   return (
     <>
@@ -30,8 +46,8 @@ export function BrooklinenHome() {
         desktopPoster={heroPrimary.desktopPoster}
         mobileVideo={heroPrimary.mobileVideo}
         mobilePoster={heroPrimary.mobilePoster}
-        headingLines={copy.heroPrimary.headingLines}
-        subtitleLines={copy.heroPrimary.subtitleLines}
+        headingLines={headingLines}
+        subtitleLines={subtitleLines}
         ctas={[{ label: copy.heroPrimary.ctaLabel, href: heroPrimary.ctaHref }]}
       />
 
@@ -47,7 +63,7 @@ export function BrooklinenHome() {
       {/* #2 Product Carousel — Best of Sale */}
       <ProductCarousel
         heading={copy.bestOfSaleHeading}
-        products={BROOKLINEN_DATA.bestOfSale as unknown as ProductCardData[]}
+        products={bestOfSale}
       />
 
       {/* #3 Mini Hero — Free Super Fluff Tote */}
@@ -68,7 +84,7 @@ export function BrooklinenHome() {
       {/* #6 Product Carousel — Shop the Gift Guide */}
       <ProductCarousel
         heading={copy.giftGuideHeading}
-        products={BROOKLINEN_DATA.giftGuide as unknown as ProductCardData[]}
+        products={giftGuide}
       />
 
       {/* #7 Secondary Video Hero — BEST. SHEETS. EVER. */}
@@ -94,7 +110,7 @@ export function BrooklinenHome() {
       {/* #8 Product Carousel — Shop the Collection */}
       <ProductCarousel
         heading={copy.collectionHeading}
-        products={BROOKLINEN_DATA.collection as unknown as ProductCardData[]}
+        products={collection}
       />
 
       {/* #9 New & Trending */}

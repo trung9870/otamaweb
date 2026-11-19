@@ -6,8 +6,8 @@ import type { ProductCardData } from "./data";
 import { extractProductSlug } from "./catalog";
 import { useCart } from "./CartContext";
 import { useLanguage } from "./LanguageContext";
+import { useStoreData } from "./StoreDataContext";
 import {
-  formatPriceString,
   translateBadge,
   translateColor,
   translateDiscount,
@@ -21,16 +21,19 @@ import {
   StarRating,
 } from "./icons";
 
+type CarouselProduct = ProductCardData & { titleVi?: string };
+
 function ProductCard({
   product,
   slideIndex,
   totalSlides,
 }: {
-  product: ProductCardData;
+  product: CarouselProduct;
   slideIndex: number;
   totalSlides: number;
 }) {
   const { locale } = useLanguage();
+  const { formatMoneyString } = useStoreData();
   const copy = UI_COPY[locale];
   const { openQuickView } = useCart();
   const [selectedSwatch, setSelectedSwatch] = useState(
@@ -43,7 +46,7 @@ function ProductCard({
   const activeSwatch = product.swatches[selectedSwatch];
   const displayMain = activeSwatch?.mainImage || product.mainImage;
   const displayHover = activeSwatch?.hoverImage || product.hoverImage;
-  const displayTitle = translateProductTitle(product.title, locale);
+  const displayTitle = translateProductTitle(product.title, locale, product.titleVi);
   const localProductHref = `/products/${extractProductSlug(product.href)}`;
 
   const scrollSwatches = (dir: -1 | 1) => {
@@ -150,11 +153,11 @@ function ProductCard({
         <span>{copy.fromPrice}</span>
         {product.originalPrice && (
           <span className="text-[#6E6E6E] line-through">
-            {formatPriceString(product.originalPrice, locale)}
+            {formatMoneyString(product.originalPrice, locale)}
           </span>
         )}
         <span className="font-bold text-[#283455]">
-          {formatPriceString(product.salePrice, locale)}
+          {formatMoneyString(product.salePrice, locale)}
         </span>
         {product.discountBadge && (
           <span className="ml-0.5 rounded bg-[#EAF3E4] px-2 py-0.5 text-[12.5px] font-bold text-[#417823] lg:text-[13px]">
@@ -268,7 +271,7 @@ export function ProductCarousel({
   products,
 }: {
   heading: string;
-  products: readonly ProductCardData[];
+  products: readonly CarouselProduct[];
 }) {
   const { locale } = useLanguage();
   const trackRef = useRef<HTMLDivElement>(null);

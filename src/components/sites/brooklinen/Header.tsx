@@ -2,12 +2,12 @@
 
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { BROOKLINEN_DATA, type ProductCardData } from "./data";
+import { BROOKLINEN_DATA } from "./data";
 import { extractProductSlug, toLocalHref } from "./catalog";
 import { useCart } from "./CartContext";
 import { LanguageSwitcher, useLanguage } from "./LanguageContext";
+import { useStoreData } from "./StoreDataContext";
 import {
-  formatPriceString,
   translateBadge,
   translateProductTitle,
   UI_COPY,
@@ -24,6 +24,7 @@ import { SwipeDrawer } from "./SwipeDrawer";
 
 export function Header() {
   const { locale } = useLanguage();
+  const { catalog, settings, formatMoneyString } = useStoreData();
   const copy = UI_COPY[locale];
   const { totalCount, openCart } = useCart();
 
@@ -40,22 +41,18 @@ export function Header() {
   const accountRef = useRef<HTMLDivElement>(null);
 
   const slides = BROOKLINEN_DATA.announcementSlides;
-  const currentSlide = slides[slideIdx];
-  const currentAnnouncementText = copy.announcements[slideIdx] || currentSlide.text;
+  const currentSlide = slides[slideIdx % slides.length];
+  const liveAnnouncements =
+    locale === "vi" && settings.announcementVi.length > 0
+      ? settings.announcementVi
+      : locale === "en" && settings.announcementEn.length > 0
+      ? settings.announcementEn
+      : copy.announcements;
+  const currentAnnouncementText =
+    liveAnnouncements[slideIdx % liveAnnouncements.length] || currentSlide.text;
 
-  // Deduped searchable catalog from all homepage products (searchable in both EN and VI)
-  const allProducts = useMemo(() => {
-    const map = new Map<string, ProductCardData>();
-    const combined = [
-      ...BROOKLINEN_DATA.bestOfSale,
-      ...BROOKLINEN_DATA.giftGuide,
-      ...BROOKLINEN_DATA.collection,
-    ] as unknown as ProductCardData[];
-    for (const p of combined) {
-      if (!map.has(p.title)) map.set(p.title, p);
-    }
-    return Array.from(map.values());
-  }, []);
+  // Live searchable catalog from StoreDataContext (searchable in both EN and VI)
+  const allProducts = catalog;
 
   const searchResults = useMemo(() => {
     const q = searchQuery.trim().toLowerCase();
@@ -63,7 +60,7 @@ export function Header() {
     return allProducts
       .filter((p) => {
         const enTitle = p.title.toLowerCase();
-        const viTitle = translateProductTitle(p.title, "vi").toLowerCase();
+        const viTitle = translateProductTitle(p.title, "vi", p.titleVi).toLowerCase();
         return enTitle.includes(q) || viTitle.includes(q);
       })
       .slice(0, 8);
@@ -256,6 +253,15 @@ export function Header() {
                       {lnk.label}
                     </Link>
                   ))}
+                  <div className="my-1 border-t border-[#E5E0DB]" />
+                  <Link
+                    href="/admin"
+                    role="menuitem"
+                    onClick={() => setAccountOpen(false)}
+                    className="block rounded-lg px-3 py-2 text-[14px] font-bold text-[#283455] hover:bg-[#F3EDE7]"
+                  >
+                    {locale === "vi" ? "Quản trị cửa hàng (Admin)" : "Store Admin"}
+                  </Link>
                 </div>
               )}
             </div>
@@ -508,7 +514,7 @@ export function Header() {
 
             <div className="mt-5 grid max-h-[54vh] grid-cols-2 gap-4 overflow-y-auto sm:grid-cols-3">
               {searchResults.map((p) => {
-                const displayTitle = translateProductTitle(p.title, locale);
+                const displayTitle = translateProductTitle(p.title, locale, p.titleVi);
                 const slug = extractProductSlug(p.href);
                 return (
                   <Link
@@ -531,10 +537,12 @@ export function Header() {
                       {displayTitle}
                     </p>
                     <p className="mt-0.5 text-[12px] text-[#417823]">
-                      {formatPriceString(p.salePrice, locale)}{" "}
-                      <span className="text-[#7E8596] line-through">
-                        {formatPriceString(p.originalPrice, locale)}
-                      </span>
+                      {formatMoneyString(p.salePrice, locale)}{" "}
+                      {p.originalPrice && (
+                        <span className="text-[#7E8596] line-through">
+                          {formatMoneyString(p.originalPrice, locale)}
+                        </span>
+                      )}
                     </p>
                   </Link>
                 );
