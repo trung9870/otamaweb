@@ -1,0 +1,447 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+/* Exact Brooklinen self-hosted web fonts downloaded from source */
+@font-face {
+  font-family: "BrandonTextWeb";
+  src: url("/sites/brooklinen/fonts/BrandonTextRegular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "BrandonTextWeb";
+  src: url("/sites/brooklinen/fonts/BrandonTextItalic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "BrandonTextWeb";
+  src: url("/sites/brooklinen/fonts/BrandonTextMedium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "BrandonTextWeb";
+  src: url("/sites/brooklinen/fonts/BrandonTextBold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "ToledoTS-Bold";
+  src: url("/sites/brooklinen/fonts/ToledoSerialBold.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Vietnamese-capable self-hosted web fonts (Be Vietnam Pro + Playfair Display) */
+@font-face {
+  font-family: "Be Vietnam Pro";
+  src: url("/sites/brooklinen/fonts/BeVietnamPro-400-italic-vietnamese-0.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+
+@font-face {
+  font-family: "Be Vietnam Pro";
+  src: url("/sites/brooklinen/fonts/BeVietnamPro-400-italic-latin-ext-1.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: "Be Vietnam Pro";
+  src: url("/sites/brooklinen/fonts/BeVietnamPro-400-italic-latin-2.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Be Vietnam Pro";
+  src: url("/sites/brooklinen/fonts/BeVietnamPro-400-normal-vietnamese-3.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+
+@font-face {
+  font-family: "Be Vietnam Pro";
+  src: url("/sites/brooklinen/fonts/BeVietnamPro-400-normal-latin-ext-4.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: "Be Vietnam Pro";
+  src: url("/sites/brooklinen/fonts/BeVietnamPro-400-normal-latin-5.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Be Vietnam Pro";
+  src: url("/sites/brooklinen/fonts/BeVietnamPro-500-normal-vietnamese-6.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+
+@font-face {
+  font-family: "Be Vietnam Pro";
+  src: url("/sites/brooklinen/fonts/BeVietnamPro-500-normal-latin-ext-7.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: "Be Vietnam Pro";
+  src: url("/sites/brooklinen/fonts/BeVietnamPro-500-normal-latin-8.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Be Vietnam Pro";
+  src: url("/sites/brooklinen/fonts/BeVietnamPro-700-normal-vietnamese-9.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+
+@font-face {
+  font-family: "Be Vietnam Pro";
+  src: url("/sites/brooklinen/fonts/BeVietnamPro-700-normal-latin-ext-10.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: "Be Vietnam Pro";
+  src: url("/sites/brooklinen/fonts/BeVietnamPro-700-normal-latin-11.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Playfair Display";
+  src: url("/sites/brooklinen/fonts/PlayfairDisplay-700-normal-vietnamese-12.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+
+@font-face {
+  font-family: "Playfair Display";
+  src: url("/sites/brooklinen/fonts/PlayfairDisplay-700-normal-latin-ext-13.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: "Playfair Display";
+  src: url("/sites/brooklinen/fonts/PlayfairDisplay-700-normal-latin-14.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: "BrandonTextWeb", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-serif: "ToledoTS-Bold", Georgia, "Times New Roman", serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-heading: var(--font-serif);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+}
+
+:root {
+  --bkl-navy: #283455;
+  --bkl-navy-hover: #1e2842;
+  --bkl-blue-cta: #283c6e;
+  --bkl-burgundy: #740103;
+  --bkl-cream: #fdfaf8;
+  --bkl-sand: #f9f3ed;
+  --bkl-slate: #dde3ec;
+  --bkl-card-gray: #f3f4f6;
+  --bkl-green: #417823;
+  --bkl-green-bg: #eaf3e4;
+  --bkl-urgent: #aa3f00;
+  --bkl-star: #e2a46c;
+  --bkl-amber: #b65b18;
+
+  --background: #fdfaf8;
+  --foreground: #283455;
+  --card: #ffffff;
+  --card-foreground: #283455;
+  --popover: #ffffff;
+  --popover-foreground: #283455;
+  --primary: #283455;
+  --primary-foreground: #ffffff;
+  --secondary: #f9f3ed;
+  --secondary-foreground: #283455;
+  --muted: #f3f4f6;
+  --muted-foreground: #6e6e6e;
+  --accent: #dde3ec;
+  --accent-foreground: #283455;
+  --destructive: #740103;
+  --border: #e5e0db;
+  --input: #283455;
+  --ring: #283455;
+  --radius: 0.75rem;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    font-family: var(--font-sans);
+    background-color: var(--bkl-cream);
+    color: var(--bkl-navy);
+    overflow-x: clip;
+  }
+  body {
+    background-color: var(--bkl-cream);
+    color: var(--bkl-navy);
+    overflow-x: clip;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+.font-toledo {
+  font-family: "ToledoTS-Bold", "Playfair Display", Georgia, serif;
+  font-weight: 400;
+}
+
+.font-brandon {
+  font-family: "BrandonTextWeb", "Be Vietnam Pro", ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Seamless full-Vietnamese typography when Vietnamese locale is active */
+html[lang="vi"],
+html[lang="vi"] body,
+html[lang="vi"] .font-brandon {
+  font-family: "Be Vietnam Pro", ui-sans-serif, system-ui, -apple-system, sans-serif;
+}
+
+html[lang="vi"] .font-toledo {
+  font-family: "Playfair Display", Georgia, serif;
+  font-weight: 700;
+}
+
+/* Native scroll-snap carousel track following modern-web-guidance (carousel).
+   Layered inside @layer components so Tailwind utilities like lg:grid can override display. */
+@layer components {
+  .bkl-carousel-track {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    overscroll-behavior-x: contain;
+    touch-action: manipulation;
+    scrollbar-width: none;
+  }
+
+  .bkl-carousel-track::-webkit-scrollbar {
+    display: none;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .bkl-carousel-track {
+      scroll-behavior: smooth;
+    }
+  }
+}
+
+/* Native top-layer <dialog> swipe-to-dismiss drawer (modern-web-guidance: navigation-drawer) */
+.bkl-drawer {
+  --drawer-width: min(24rem, 84dvw, calc(100dvw - 24px));
+  --drawer-backdrop: 0;
+  inset: 0;
+  width: auto;
+  height: auto;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  overflow: visible;
+}
+
+.bkl-drawer::backdrop {
+  background: #000000;
+  opacity: calc(var(--drawer-backdrop) * 0.45);
+}
+
+.bkl-drawer-scroller {
+  position: relative;
+  display: grid;
+  overflow-x: scroll;
+  overscroll-behavior: none;
+  scrollbar-width: none;
+  scroll-snap-type: x mandatory;
+}
+
+.bkl-drawer-scroller::-webkit-scrollbar {
+  display: none;
+}
+
+.bkl-drawer--left .bkl-drawer-scroller {
+  grid-template-columns: var(--drawer-width) 100%;
+}
+
+.bkl-drawer--left .bkl-drawer-scroller::after {
+  content: "";
+  scroll-snap-align: end;
+  scroll-initial-target: nearest;
+}
+
+.bkl-drawer--left .bkl-drawer-sheet {
+  scroll-snap-align: start;
+}
+
+.bkl-drawer--right .bkl-drawer-scroller {
+  grid-template-columns: 100% var(--drawer-width);
+}
+
+.bkl-drawer--right .bkl-drawer-scroller::before {
+  content: "";
+  scroll-snap-align: start;
+  scroll-initial-target: nearest;
+}
+
+.bkl-drawer--right .bkl-drawer-sheet {
+  scroll-snap-align: end;
+}
+
+.bkl-drawer-sheet {
+  height: 100svh;
+  background: #fdfaf8;
+  color: #283455;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .bkl-drawer-scroller {
+    scroll-behavior: smooth;
+  }
+}
+
+@supports (animation-timeline: scroll()) {
+  @property --drawer-backdrop {
+    syntax: "<number>";
+    inherits: true;
+    initial-value: 0;
+  }
+
+  .bkl-drawer--left {
+    timeline-scope: --bkl-drawer-left-fade;
+    animation: bkl-fade-left linear both;
+    animation-timeline: --bkl-drawer-left-fade;
+  }
+
+  .bkl-drawer--left .bkl-drawer-scroller {
+    scroll-timeline: --bkl-drawer-left-fade x;
+  }
+
+  @keyframes bkl-fade-left {
+    0% {
+      --drawer-backdrop: 1;
+    }
+    100% {
+      --drawer-backdrop: 0;
+    }
+  }
+
+  .bkl-drawer--right {
+    timeline-scope: --bkl-drawer-right-fade;
+    animation: bkl-fade-right linear both;
+    animation-timeline: --bkl-drawer-right-fade;
+  }
+
+  .bkl-drawer--right .bkl-drawer-scroller {
+    scroll-timeline: --bkl-drawer-right-fade x;
+  }
+
+  @keyframes bkl-fade-right {
+    0% {
+      --drawer-backdrop: 0;
+    }
+    100% {
+      --drawer-backdrop: 1;
+    }
+  }
+}
+
+/* Native modal dialog backdrop */
+.bkl-modal {
+  margin: auto;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  max-width: min(92vw, 760px);
+  max-height: 90svh;
+  overflow: visible;
+}
+
+.bkl-modal::backdrop {
+  background: rgba(20, 26, 44, 0.55);
+  backdrop-filter: blur(2px);
+}

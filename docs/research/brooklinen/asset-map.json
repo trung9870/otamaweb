@@ -1,0 +1,2375 @@
+{
+  "total": 296,
+  "downloaded": 296,
+  "failed": [],
+  "assets": {
+    "https://www.brooklinen.com/cdn/shop/files/40_off_Badge.png?v=1750176995&width=184": {
+      "originalUrl": "https://www.brooklinen.com/cdn/shop/files/40_off_Badge.png?v=1750176995&width=184",
+      "fetchUrl": "https://www.brooklinen.com/cdn/shop/files/40_off_Badge.png?v=1750176995&width=184",
+      "localPath": "/sites/brooklinen/brand/badge-40-off.png",
+      "contentType": "image/png",
+      "ext": ".png",
+      "bytes": 20665
+    },
+    "https://www.brooklinen.com/cdn/shop/files/f__BrandonTextRegular.woff2?v=2923255800735255676": {
+      "originalUrl": "https://www.brooklinen.com/cdn/shop/files/f__BrandonTextRegular.woff2?v=2923255800735255676",
+      "fetchUrl": "https://www.brooklinen.com/cdn/shop/files/f__BrandonTextRegular.woff2?v=2923255800735255676",
+      "localPath": "/sites/brooklinen/fonts/BrandonTextRegular.woff2",
+      "contentType": "font/woff2",
+      "ext": ".woff2",
+      "bytes": 34520
+    },
+    "https://www.brooklinen.com/cdn/shop/files/ToledoSerial-Bold.otf?v=1751402923": {
+      "originalUrl": "https://www.brooklinen.com/cdn/shop/files/ToledoSerial-Bold.otf?v=1751402923",
+      "fetchUrl": "https://www.brooklinen.com/cdn/shop/files/ToledoSerial-Bold.otf?v=1751402923",
+      "localPath": "/sites/brooklinen/fonts/ToledoSerialBold.otf",
+      "contentType": "font/otf",
+      "ext": ".otf",
+      "bytes": 42608
+    },
+    "https://www.brooklinen.com/cdn/shop/files/preview_images/1af43db2aaf04b8b851a6562017cbfb3.thumbnail.0000000000_small.jpg?v=1793915886": {
+      "originalUrl": "https://www.brooklinen.com/cdn/shop/files/preview_images/1af43db2aaf04b8b851a6562017cbfb3.thumbnail.0000000000_small.jpg?v=1793915886",
+      "fetchUrl": "https://www.brooklinen.com/cdn/shop/files/preview_images/1af43db2aaf04b8b851a6562017cbfb3.thumbnail.0000000000_small.jpg?v=1793915886",
+      "localPath": "/sites/brooklinen/videos/1af43db2aaf04b8b851a6562017cbfb3-thumbnail-00000-36df7976.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 3482
+    },
+    "https://www.brooklinen.com/cdn/shop/files/preview_images/48c06bf1f50d4ff3bbfd849190395607.thumbnail.0000000000_small.jpg?v=1793915893": {
+      "originalUrl": "https://www.brooklinen.com/cdn/shop/files/preview_images/48c06bf1f50d4ff3bbfd849190395607.thumbnail.0000000000_small.jpg?v=1793915893",
+      "fetchUrl": "https://www.brooklinen.com/cdn/shop/files/preview_images/48c06bf1f50d4ff3bbfd849190395607.thumbnail.0000000000_small.jpg?v=1793915893",
+      "localPath": "/sites/brooklinen/videos/48c06bf1f50d4ff3bbfd849190395607-thumbnail-00000-ac95267b.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 4394
+    },
+    "https://www.brooklinen.com/cdn/shop/files/Best-In-Bed_Lockup_web-only_Blue.svg?v=1770997710&width=100": {
+      "originalUrl": "https://www.brooklinen.com/cdn/shop/files/Best-In-Bed_Lockup_web-only_Blue.svg?v=1770997710&width=100",
+      "fetchUrl": "https://www.brooklinen.com/cdn/shop/files/Best-In-Bed_Lockup_web-only_Blue.svg?v=1770997710&width=100",
+      "localPath": "/sites/brooklinen/brand/brooklinen-logo.svg",
+      "contentType": "image/svg+xml",
+      "ext": ".svg",
+      "bytes": 6001
+    },
+    "https://www.brooklinen.com/cdn/shop/videos/c/vp/48c06bf1f50d4ff3bbfd849190395607/48c06bf1f50d4ff3bbfd849190395607.HD-720p-3.0Mbps-100197944.mp4?v=0": {
+      "originalUrl": "https://www.brooklinen.com/cdn/shop/videos/c/vp/48c06bf1f50d4ff3bbfd849190395607/48c06bf1f50d4ff3bbfd849190395607.HD-720p-3.0Mbps-100197944.mp4?v=0",
+      "fetchUrl": "https://www.brooklinen.com/cdn/shop/videos/c/vp/48c06bf1f50d4ff3bbfd849190395607/48c06bf1f50d4ff3bbfd849190395607.HD-720p-3.0Mbps-100197944.mp4?v=0",
+      "localPath": "/sites/brooklinen/videos/48c06bf1f50d4ff3bbfd849190395607-HD-720p-3-0Mbps-fb19886d.mp4",
+      "contentType": "video/mp4",
+      "ext": ".mp4",
+      "bytes": 2682850
+    },
+    "https://www.brooklinen.com/cdn/shop/files/preview_images/54dab6bfb60842fcbb2cb7dd83a150df.thumbnail.0000000000_small.jpg?v=1787767529": {
+      "originalUrl": "https://www.brooklinen.com/cdn/shop/files/preview_images/54dab6bfb60842fcbb2cb7dd83a150df.thumbnail.0000000000_small.jpg?v=1787767529",
+      "fetchUrl": "https://www.brooklinen.com/cdn/shop/files/preview_images/54dab6bfb60842fcbb2cb7dd83a150df.thumbnail.0000000000_small.jpg?v=1787767529",
+      "localPath": "/sites/brooklinen/videos/54dab6bfb60842fcbb2cb7dd83a150df-thumbnail-00000-4f4b42da.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 3531
+    },
+    "https://www.brooklinen.com/cdn/shop/videos/c/vp/c0196c2c562144fc9f9242d10f7aadcc/c0196c2c562144fc9f9242d10f7aadcc.HD-1080p-4.8Mbps-92691648.mp4?v=0": {
+      "originalUrl": "https://www.brooklinen.com/cdn/shop/videos/c/vp/c0196c2c562144fc9f9242d10f7aadcc/c0196c2c562144fc9f9242d10f7aadcc.HD-1080p-4.8Mbps-92691648.mp4?v=0",
+      "fetchUrl": "https://www.brooklinen.com/cdn/shop/videos/c/vp/c0196c2c562144fc9f9242d10f7aadcc/c0196c2c562144fc9f9242d10f7aadcc.HD-1080p-4.8Mbps-92691648.mp4?v=0",
+      "localPath": "/sites/brooklinen/videos/c0196c2c562144fc9f9242d10f7aadcc-HD-1080p-4-8Mbp-91e68040.mp4",
+      "contentType": "video/mp4",
+      "ext": ".mp4",
+      "bytes": 5289614
+    },
+    "https://www.brooklinen.com/cdn/shop/files/preview_images/c0196c2c562144fc9f9242d10f7aadcc.thumbnail.0000000000_small.jpg?v=1787767535": {
+      "originalUrl": "https://www.brooklinen.com/cdn/shop/files/preview_images/c0196c2c562144fc9f9242d10f7aadcc.thumbnail.0000000000_small.jpg?v=1787767535",
+      "fetchUrl": "https://www.brooklinen.com/cdn/shop/files/preview_images/c0196c2c562144fc9f9242d10f7aadcc.thumbnail.0000000000_small.jpg?v=1787767535",
+      "localPath": "/sites/brooklinen/videos/c0196c2c562144fc9f9242d10f7aadcc-thumbnail-00000-00400761.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 2757
+    },
+    "https://www.brooklinen.com/cdn/shop/videos/c/vp/1af43db2aaf04b8b851a6562017cbfb3/1af43db2aaf04b8b851a6562017cbfb3.SD-480p-1.5Mbps-100197943.mp4?v=0": {
+      "originalUrl": "https://www.brooklinen.com/cdn/shop/videos/c/vp/1af43db2aaf04b8b851a6562017cbfb3/1af43db2aaf04b8b851a6562017cbfb3.SD-480p-1.5Mbps-100197943.mp4?v=0",
+      "fetchUrl": "https://www.brooklinen.com/cdn/shop/videos/c/vp/1af43db2aaf04b8b851a6562017cbfb3/1af43db2aaf04b8b851a6562017cbfb3.SD-480p-1.5Mbps-100197943.mp4?v=0",
+      "localPath": "/sites/brooklinen/videos/1af43db2aaf04b8b851a6562017cbfb3-SD-480p-1-5Mbps-04ba8ff2.mp4",
+      "contentType": "video/mp4",
+      "ext": ".mp4",
+      "bytes": 1323426
+    },
+    "https://www.brooklinen.com/cdn/shop/videos/c/vp/54dab6bfb60842fcbb2cb7dd83a150df/54dab6bfb60842fcbb2cb7dd83a150df.HD-720p-3.0Mbps-92691649.mp4?v=0": {
+      "originalUrl": "https://www.brooklinen.com/cdn/shop/videos/c/vp/54dab6bfb60842fcbb2cb7dd83a150df/54dab6bfb60842fcbb2cb7dd83a150df.HD-720p-3.0Mbps-92691649.mp4?v=0",
+      "fetchUrl": "https://www.brooklinen.com/cdn/shop/videos/c/vp/54dab6bfb60842fcbb2cb7dd83a150df/54dab6bfb60842fcbb2cb7dd83a150df.HD-720p-3.0Mbps-92691649.mp4?v=0",
+      "localPath": "/sites/brooklinen/videos/54dab6bfb60842fcbb2cb7dd83a150df-HD-720p-3-0Mbps-6364e4f0.mp4",
+      "contentType": "video/mp4",
+      "ext": ".mp4",
+      "bytes": 3639456
+    },
+    "https://www.brooklinen.com/cdn/shop/files/MiniHero_Desktop_WO.jpg?v=1793917996&width=2000": {
+      "originalUrl": "https://www.brooklinen.com/cdn/shop/files/MiniHero_Desktop_WO.jpg?v=1793917996&width=2000",
+      "fetchUrl": "https://www.brooklinen.com/cdn/shop/files/MiniHero_Desktop_WO.jpg?v=1793917996&width=2000",
+      "localPath": "/sites/brooklinen/banners/mini-hero-desktop.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 103235
+    },
+    "https://www.brooklinen.com/cdn/shop/files/BEST._SHEETS._EVER._Lockup.svg?v=1785445569&width=600": {
+      "originalUrl": "https://www.brooklinen.com/cdn/shop/files/BEST._SHEETS._EVER._Lockup.svg?v=1785445569&width=600",
+      "fetchUrl": "https://www.brooklinen.com/cdn/shop/files/BEST._SHEETS._EVER._Lockup.svg?v=1785445569&width=600",
+      "localPath": "/sites/brooklinen/brand/best-sheets-ever-lockup.svg",
+      "contentType": "image/svg+xml",
+      "ext": ".svg",
+      "bytes": 8817
+    },
+    "https://www.brooklinen.com/cdn/shop/files/2-1-Visual-Category-Module.jpg?v=1793638457&width=300": {
+      "originalUrl": "https://www.brooklinen.com/cdn/shop/files/2-1-Visual-Category-Module.jpg?v=1793638457&width=300",
+      "fetchUrl": "https://www.brooklinen.com/cdn/shop/files/2-1-Visual-Category-Module.jpg?v=1793638457&width=600",
+      "localPath": "/sites/brooklinen/categories/2-1-Visual-Category-Module-a0778b82.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 101030
+    },
+    "https://www.brooklinen.com/cdn/shop/files/BKL_26-04_WaffleWorld_Look3_0268x_WO_8x9_ec20b38d-4de1-418b-9b7c-e7ebe162acac.jpg?v=1793371203&width=300": {
+      "originalUrl": "https://www.brooklinen.com/cdn/shop/files/BKL_26-04_WaffleWorld_Look3_0268x_WO_8x9_ec20b38d-4de1-418b-9b7c-e7ebe162acac.jpg?v=1793371203&width=300",
+      "fetchUrl": "https://www.brooklinen.com/cdn/shop/files/BKL_26-04_WaffleWorld_Look3_0268x_WO_8x9_ec20b38d-4de1-418b-9b7c-e7ebe162acac.jpg?v=1793371203&width=600",
+      "localPath": "/sites/brooklinen/categories/BKL_26-04_WaffleWorld_Look3_0268x_WO_8x9_ec20b38-cb861ff0.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 137295
+    },
+    "https://www.brooklinen.com/cdn/shop/files/MiniHero_Mobile_WO.jpg?v=1793917996&width=800": {
+      "originalUrl": "https://www.brooklinen.com/cdn/shop/files/MiniHero_Mobile_WO.jpg?v=1793917996&width=800",
+      "fetchUrl": "https://www.brooklinen.com/cdn/shop/files/MiniHero_Mobile_WO.jpg?v=1793917996&width=800",
+      "localPath": "/sites/brooklinen/banners/mini-hero-mobile.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 16972
+    },
+    "https://www.brooklinen.com/cdn/shop/files/BKL_25111_UtilityEducation_Scene2Shot2_071x_8x9_WO.jpg?v=1767798200&width=300": {
+      "originalUrl": "https://www.brooklinen.com/cdn/shop/files/BKL_25111_UtilityEducation_Scene2Shot2_071x_8x9_WO.jpg?v=1767798200&width=300",
+      "fetchUrl": "https://www.brooklinen.com/cdn/shop/files/BKL_25111_UtilityEducation_Scene2Shot2_071x_8x9_WO.jpg?v=1767798200&width=600",
+      "localPath": "/sites/brooklinen/categories/BKL_25111_UtilityEducation_Scene2Shot2_071x_8x9_-83ce0562.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 73016
+    },
+    "https://www.brooklinen.com/cdn/shop/files/f__BrandonTextWeb-Italic--360967_8_0.woff2?v=13318003604299643776": {
+      "originalUrl": "https://www.brooklinen.com/cdn/shop/files/f__BrandonTextWeb-Italic--360967_8_0.woff2?v=13318003604299643776",
+      "fetchUrl": "https://www.brooklinen.com/cdn/shop/files/f__BrandonTextWeb-Italic--360967_8_0.woff2?v=13318003604299643776",
+      "localPath": "/sites/brooklinen/fonts/BrandonTextItalic.woff2",
+      "contentType": "font/woff2",
+      "ext": ".woff2",
+      "bytes": 33025
+    },
+    "https://www.brooklinen.com/cdn/shop/files/BKL_26-08_HolidayCapsule_Look2__510x_WO_8x9_3bd92f96-9b1f-45fc-817e-c0579cde6aac.jpg?v=1793376694&width=300": {
+      "originalUrl": "https://www.brooklinen.com/cdn/shop/files/BKL_26-08_HolidayCapsule_Look2__510x_WO_8x9_3bd92f96-9b1f-45fc-817e-c0579cde6aac.jpg?v=1793376694&width=300",
+      "fetchUrl": "https://www.brooklinen.com/cdn/shop/files/BKL_26-08_HolidayCapsule_Look2__510x_WO_8x9_3bd92f96-9b1f-45fc-817e-c0579cde6aac.jpg?v=1793376694&width=600",
+      "localPath": "/sites/brooklinen/categories/BKL_26-08_HolidayCapsule_Look2__510x_WO_8x9_3bd9-e3ecb8fe.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 122801
+    },
+    "https://www.brooklinen.com/cdn/shop/files/BKL_26-09_HolidayOverheads_Look4_165x_WO_8x9_f38829cd-e654-4864-931e-224fe37d617a.jpg?v=1793646296&width=450": {
+      "originalUrl": "https://www.brooklinen.com/cdn/shop/files/BKL_26-09_HolidayOverheads_Look4_165x_WO_8x9_f38829cd-e654-4864-931e-224fe37d617a.jpg?v=1793646296&width=450",
+      "fetchUrl": "https://www.brooklinen.com/cdn/shop/files/BKL_26-09_HolidayOverheads_Look4_165x_WO_8x9_f38829cd-e654-4864-931e-224fe37d617a.jpg?v=1793646296&width=800",
+      "localPath": "/sites/brooklinen/trending/BKL_26-09_HolidayOverheads_Look4_165x_WO_8x9_f38-24440483.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 206393
+    },
+    "https://www.brooklinen.com/cdn/shop/files/BKL_26-04_WaffleWorld_Look18_2860x_800x900_WO_46b3840b-b7f0-47b9-9c29-940eedc3b689.jpg?v=1791926783&width=450": {
+      "originalUrl": "https://www.brooklinen.com/cdn/shop/files/BKL_26-04_WaffleWorld_Look18_2860x_800x900_WO_46b3840b-b7f0-47b9-9c29-940eedc3b689.jpg?v=1791926783&width=450",
+      "fetchUrl": "https://www.brooklinen.com/cdn/shop/files/BKL_26-04_WaffleWorld_Look18_2860x_800x900_WO_46b3840b-b7f0-47b9-9c29-940eedc3b689.jpg?v=1791926783&width=800",
+      "localPath": "/sites/brooklinen/trending/BKL_26-04_WaffleWorld_Look18_2860x_800x900_WO_46-767127bb.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 202259
+    },
+    "https://www.brooklinen.com/cdn/shop/files/BKL_26-08_HolidayCapsule_Look1_1x_8x9_WO.jpg?v=1791909050&width=300": {
+      "originalUrl": "https://www.brooklinen.com/cdn/shop/files/BKL_26-08_HolidayCapsule_Look1_1x_8x9_WO.jpg?v=1791909050&width=300",
+      "fetchUrl": "https://www.brooklinen.com/cdn/shop/files/BKL_26-08_HolidayCapsule_Look1_1x_8x9_WO.jpg?v=1791909050&width=600",
+      "localPath": "/sites/brooklinen/categories/BKL_26-08_HolidayCapsule_Look1_1x_8x9_WO-97bc62f7.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 108678
+    },
+    "https://www.brooklinen.com/cdn/shop/files/BKL_26-09_HolidayOverheads_Look2_V1x_488x549_WO_d4640528-c2d6-48c7-bfce-53c011bd8ed2.jpg?v=1793109413&width=450": {
+      "originalUrl": "https://www.brooklinen.com/cdn/shop/files/BKL_26-09_HolidayOverheads_Look2_V1x_488x549_WO_d4640528-c2d6-48c7-bfce-53c011bd8ed2.jpg?v=1793109413&width=450",
+      "fetchUrl": "https://www.brooklinen.com/cdn/shop/files/BKL_26-09_HolidayOverheads_Look2_V1x_488x549_WO_d4640528-c2d6-48c7-bfce-53c011bd8ed2.jpg?v=1793109413&width=800",
+      "localPath": "/sites/brooklinen/trending/BKL_26-09_HolidayOverheads_Look2_V1x_488x549_WO_-00056bac.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 48244
+    },
+    "https://www.brooklinen.com/cdn/shop/files/BKL_25-11_FebNewnessSP2_Shot8_1280x_8x9_DarkenedforCopy_WO_1_22500902-95fc-4ec4-bbbb-f1bb67289a3d.jpg?v=1791394313&width=300": {
+      "originalUrl": "https://www.brooklinen.com/cdn/shop/files/BKL_25-11_FebNewnessSP2_Shot8_1280x_8x9_DarkenedforCopy_WO_1_22500902-95fc-4ec4-bbbb-f1bb67289a3d.jpg?v=1791394313&width=300",
+      "fetchUrl": "https://www.brooklinen.com/cdn/shop/files/BKL_25-11_FebNewnessSP2_Shot8_1280x_8x9_DarkenedforCopy_WO_1_22500902-95fc-4ec4-bbbb-f1bb67289a3d.jpg?v=1791394313&width=600",
+      "localPath": "/sites/brooklinen/categories/BKL_25-11_FebNewnessSP2_Shot8_1280x_8x9_Darkened-4f11108b.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 126627
+    },
+    "https://www.brooklinen.com/cdn/shop/files/Bedding_Bundles_8x9_22c62d8b-63e5-45ff-a9cd-9099b3c8da68.webp?v=1786654382&width=450": {
+      "originalUrl": "https://www.brooklinen.com/cdn/shop/files/Bedding_Bundles_8x9_22c62d8b-63e5-45ff-a9cd-9099b3c8da68.webp?v=1786654382&width=450",
+      "fetchUrl": "https://www.brooklinen.com/cdn/shop/files/Bedding_Bundles_8x9_22c62d8b-63e5-45ff-a9cd-9099b3c8da68.webp?v=1786654382&width=800",
+      "localPath": "/sites/brooklinen/trending/Bedding_Bundles_8x9_22c62d8b-63e5-45ff-a9cd-9099-6967cbda.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 69246
+    },
+    "https://www.brooklinen.com/cdn/shop/files/f__BrandonTextBold.woff2?v=9945025441678652657": {
+      "originalUrl": "https://www.brooklinen.com/cdn/shop/files/f__BrandonTextBold.woff2?v=9945025441678652657",
+      "fetchUrl": "https://www.brooklinen.com/cdn/shop/files/f__BrandonTextBold.woff2?v=9945025441678652657",
+      "localPath": "/sites/brooklinen/fonts/BrandonTextBold.woff2",
+      "contentType": "font/woff2",
+      "ext": ".woff2",
+      "bytes": 35560
+    },
+    "https://www.brooklinen.com/cdn/shop/files/logo--architectural-digest.png?v=1649874685&width=250": {
+      "originalUrl": "https://www.brooklinen.com/cdn/shop/files/logo--architectural-digest.png?v=1649874685&width=250",
+      "fetchUrl": "https://www.brooklinen.com/cdn/shop/files/logo--architectural-digest.png?v=1649874685&width=400",
+      "localPath": "/sites/brooklinen/press/logo-architectural-digest-6a86f5f6.png",
+      "contentType": "image/png",
+      "ext": ".png",
+      "bytes": 2762
+    },
+    "https://www.brooklinen.com/cdn/shop/files/logo--good-housekeeping.png?v=1649869031&width=250": {
+      "originalUrl": "https://www.brooklinen.com/cdn/shop/files/logo--good-housekeeping.png?v=1649869031&width=250",
+      "fetchUrl": "https://www.brooklinen.com/cdn/shop/files/logo--good-housekeeping.png?v=1649869031&width=400",
+      "localPath": "/sites/brooklinen/press/logo-good-housekeeping-2c04d231.png",
+      "contentType": "image/png",
+      "ext": ".png",
+      "bytes": 13697
+    },
+    "https://www.brooklinen.com/cdn/shop/files/6155f04bb97efe856be28f0d_Good_Morning_America.png?v=1728421024&width=250": {
+      "originalUrl": "https://www.brooklinen.com/cdn/shop/files/6155f04bb97efe856be28f0d_Good_Morning_America.png?v=1728421024&width=250",
+      "fetchUrl": "https://www.brooklinen.com/cdn/shop/files/6155f04bb97efe856be28f0d_Good_Morning_America.png?v=1728421024&width=400",
+      "localPath": "/sites/brooklinen/press/6155f04bb97efe856be28f0d_Good_Morning_America-8e43dd56.png",
+      "contentType": "image/png",
+      "ext": ".png",
+      "bytes": 11150
+    },
+    "https://cdn.accentuate.io/514433941594/1794929700425/NYT-Wirecutter.png?v=1794929700425&transform=resize=250x250": {
+      "originalUrl": "https://cdn.accentuate.io/514433941594/1794929700425/NYT-Wirecutter.png?v=1794929700425&transform=resize=250x250",
+      "fetchUrl": "https://cdn.accentuate.io/514433941594/1794929700425/NYT-Wirecutter.png?v=1794929700425&transform=resize=250x250",
+      "localPath": "/sites/brooklinen/awards/NYT-Wirecutter-6c6d9016.png",
+      "contentType": "image/png",
+      "ext": ".png",
+      "bytes": 17372
+    },
+    "https://www.brooklinen.com/cdn/shop/files/module--reviews-press-today.png?v=1613608816&width=250": {
+      "originalUrl": "https://www.brooklinen.com/cdn/shop/files/module--reviews-press-today.png?v=1613608816&width=250",
+      "fetchUrl": "https://www.brooklinen.com/cdn/shop/files/module--reviews-press-today.png?v=1613608816&width=400",
+      "localPath": "/sites/brooklinen/press/module-reviews-press-today-c8dacfaf.png",
+      "contentType": "image/png",
+      "ext": ".png",
+      "bytes": 9845
+    },
+    "https://www.brooklinen.com/cdn/shop/files/Apartment-Therapy.webp?v=1728421352&width=250": {
+      "originalUrl": "https://www.brooklinen.com/cdn/shop/files/Apartment-Therapy.webp?v=1728421352&width=250",
+      "fetchUrl": "https://www.brooklinen.com/cdn/shop/files/Apartment-Therapy.webp?v=1728421352&width=400",
+      "localPath": "/sites/brooklinen/press/Apartment-Therapy-c8e3c107.png",
+      "contentType": "image/png",
+      "ext": ".png",
+      "bytes": 16769
+    },
+    "https://www.brooklinen.com/cdn/shop/files/logo--vogue.png?v=1649869031&width=250": {
+      "originalUrl": "https://www.brooklinen.com/cdn/shop/files/logo--vogue.png?v=1649869031&width=250",
+      "fetchUrl": "https://www.brooklinen.com/cdn/shop/files/logo--vogue.png?v=1649869031&width=400",
+      "localPath": "/sites/brooklinen/press/logo-vogue-53d292f5.png",
+      "contentType": "image/png",
+      "ext": ".png",
+      "bytes": 5855
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-07_Bedding_Luxe_Storm_COR_1x_WOgrey_dd0e2063-30af-4148-837e-df01e49618e8_600x.jpg?v=1779223624": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-07_Bedding_Luxe_Storm_COR_1x_WOgrey_dd0e2063-30af-4148-837e-df01e49618e8_600x.jpg?v=1779223624",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-07_Bedding_Luxe_Storm_COR_1x_WOgrey_dd0e2063-30af-4148-837e-df01e49618e8_600x.jpg?v=1779223624",
+      "localPath": "/sites/brooklinen/products/BKL_25-07_Bedding_Luxe_Storm_COR_1x_WOgrey_dd0e2-81d25de4.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 22115
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-04_Luxe_Shot2_163x_PDP_WO_a7ac9a6f-f588-48a1-ad09-63a3d3e69829_600x.jpg?v=1779312560": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-04_Luxe_Shot2_163x_PDP_WO_a7ac9a6f-f588-48a1-ad09-63a3d3e69829_600x.jpg?v=1779312560",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-04_Luxe_Shot2_163x_PDP_WO_a7ac9a6f-f588-48a1-ad09-63a3d3e69829_600x.jpg?v=1779312560",
+      "localPath": "/sites/brooklinen/products/BKL_26-04_Luxe_Shot2_163x_PDP_WO_a7ac9a6f-f588-4-b216db4d.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 56426
+    },
+    "https://cdn.accentuate.io/514433941594/1794929727265/Oprahs-Favorite-Things_2025-(1).png?v=1794929727265&transform=resize=250x250": {
+      "originalUrl": "https://cdn.accentuate.io/514433941594/1794929727265/Oprahs-Favorite-Things_2025-(1).png?v=1794929727265&transform=resize=250x250",
+      "fetchUrl": "https://cdn.accentuate.io/514433941594/1794929727265/Oprahs-Favorite-Things_2025-(1).png?v=1794929727265&transform=resize=250x250",
+      "localPath": "/sites/brooklinen/awards/Oprahs-Favorite-Things_2025-1-dc8bf34c.png",
+      "contentType": "image/png",
+      "ext": ".png",
+      "bytes": 26198
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-11_Bedding_Classic_TandemStripeInStorm_CSS_1_x_PDP_WO_600x.jpg?v=1772487751": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-11_Bedding_Classic_TandemStripeInStorm_CSS_1_x_PDP_WO_600x.jpg?v=1772487751",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-11_Bedding_Classic_TandemStripeInStorm_CSS_1_x_PDP_WO_600x.jpg?v=1772487751",
+      "localPath": "/sites/brooklinen/products/BKL_25-11_Bedding_Classic_TandemStripeInStorm_CS-fa940239.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 39492
+    },
+    "https://cdn.accentuate.io/514433941594/1794929714839/2026_CONDE-NAST_ARCHITECTURAL-DIGEST_PENDING_LOGO_BrooklinenBlueOnWhite_RGB_badge.png?v=1794929714839&transform=resize=250x250": {
+      "originalUrl": "https://cdn.accentuate.io/514433941594/1794929714839/2026_CONDE-NAST_ARCHITECTURAL-DIGEST_PENDING_LOGO_BrooklinenBlueOnWhite_RGB_badge.png?v=1794929714839&transform=resize=250x250",
+      "fetchUrl": "https://cdn.accentuate.io/514433941594/1794929714839/2026_CONDE-NAST_ARCHITECTURAL-DIGEST_PENDING_LOGO_BrooklinenBlueOnWhite_RGB_badge.png?v=1794929714839&transform=resize=250x250",
+      "localPath": "/sites/brooklinen/awards/2026_CONDE-NAST_ARCHITECTURAL-DIGEST_PENDING_LOG-85469419.png",
+      "contentType": "image/png",
+      "ext": ".png",
+      "bytes": 34423
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-01_Bedding_Classic_TandemStripeinStorm_Overhead_1x_PDP_WO_600x.jpg?v=1772487751": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-01_Bedding_Classic_TandemStripeinStorm_Overhead_1x_PDP_WO_600x.jpg?v=1772487751",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-01_Bedding_Classic_TandemStripeinStorm_Overhead_1x_PDP_WO_600x.jpg?v=1772487751",
+      "localPath": "/sites/brooklinen/products/BKL_25-01_Bedding_Classic_TandemStripeinStorm_Ov-41d2a95e.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 145841
+    },
+    "https://cdn.accentuate.io/514433941594/1794929813392/NYT-Wirecutter.png?v=1794929813392&transform=resize=250x250": {
+      "originalUrl": "https://cdn.accentuate.io/514433941594/1794929813392/NYT-Wirecutter.png?v=1794929813392&transform=resize=250x250",
+      "fetchUrl": "https://cdn.accentuate.io/514433941594/1794929813392/NYT-Wirecutter.png?v=1794929813392&transform=resize=250x250",
+      "localPath": "/sites/brooklinen/awards/NYT-Wirecutter-d7f03e7a.png",
+      "contentType": "image/png",
+      "ext": ".png",
+      "bytes": 17372
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/1_BKL_25111_UtilityEducation_Scene2Shot5_102x_PDP_WO_df6817ae-9185-4ae8-bddd-85d8cf8b8975_600x.jpg?v=1767642677": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/1_BKL_25111_UtilityEducation_Scene2Shot5_102x_PDP_WO_df6817ae-9185-4ae8-bddd-85d8cf8b8975_600x.jpg?v=1767642677",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/1_BKL_25111_UtilityEducation_Scene2Shot5_102x_PDP_WO_df6817ae-9185-4ae8-bddd-85d8cf8b8975_600x.jpg?v=1767642677",
+      "localPath": "/sites/brooklinen/products/1_BKL_25111_UtilityEducation_Scene2Shot5_102x_PD-85415088.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 44287
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-05_Bedding_Utility_Comforter_AllSeason_1x_PDP_WOgrey_600x.jpg?v=1781543130": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-05_Bedding_Utility_Comforter_AllSeason_1x_PDP_WOgrey_600x.jpg?v=1781543130",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-05_Bedding_Utility_Comforter_AllSeason_1x_PDP_WOgrey_600x.jpg?v=1781543130",
+      "localPath": "/sites/brooklinen/products/BKL_26-05_Bedding_Utility_Comforter_AllSeason_1x-0194cfb1.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 12115
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-01_AprNewArrivals_Look4_MEDx_PDP_WO_eee46591-ae2b-4093-9878-d624919afb06_600x.jpg?v=1774557297": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-01_AprNewArrivals_Look4_MEDx_PDP_WO_eee46591-ae2b-4093-9878-d624919afb06_600x.jpg?v=1774557297",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-01_AprNewArrivals_Look4_MEDx_PDP_WO_eee46591-ae2b-4093-9878-d624919afb06_600x.jpg?v=1774557297",
+      "localPath": "/sites/brooklinen/products/BKL_26-01_AprNewArrivals_Look4_MEDx_PDP_WO_eee46-1767282b.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 27532
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-12_Bedding_Classic_TandemStripeInFrost_DUV_1_x_PDP_WO_600x.jpg?v=1767131316": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-12_Bedding_Classic_TandemStripeInFrost_DUV_1_x_PDP_WO_600x.jpg?v=1767131316",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-12_Bedding_Classic_TandemStripeInFrost_DUV_1_x_PDP_WO_600x.jpg?v=1767131316",
+      "localPath": "/sites/brooklinen/products/BKL_25-12_Bedding_Classic_TandemStripeInFrost_DU-ba447365.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 51455
+    },
+    "https://cdn.accentuate.io/514433941594/1794929833626/NYT-Wirecutter.png?v=1794929833626&transform=resize=250x250": {
+      "originalUrl": "https://cdn.accentuate.io/514433941594/1794929833626/NYT-Wirecutter.png?v=1794929833626&transform=resize=250x250",
+      "fetchUrl": "https://cdn.accentuate.io/514433941594/1794929833626/NYT-Wirecutter.png?v=1794929833626&transform=resize=250x250",
+      "localPath": "/sites/brooklinen/awards/NYT-Wirecutter-3a46ef81.png",
+      "contentType": "image/png",
+      "ext": ".png",
+      "bytes": 17372
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-11_FebNewnessSP2_Shot4_028x_WO_PDP_22ac26ec-7c41-43ef-8070-c15a0a7194af_600x.jpg?v=1772487507": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-11_FebNewnessSP2_Shot4_028x_WO_PDP_22ac26ec-7c41-43ef-8070-c15a0a7194af_600x.jpg?v=1772487507",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-11_FebNewnessSP2_Shot4_028x_WO_PDP_22ac26ec-7c41-43ef-8070-c15a0a7194af_600x.jpg?v=1772487507",
+      "localPath": "/sites/brooklinen/products/BKL_25-11_FebNewnessSP2_Shot4_028x_WO_PDP_22ac26-24ae12d5.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 118983
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-05_Bedding_Utility_Pillow_Medium_1x_PDP_WOgrey_600x.jpg?v=1781543587": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-05_Bedding_Utility_Pillow_Medium_1x_PDP_WOgrey_600x.jpg?v=1781543587",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-05_Bedding_Utility_Pillow_Medium_1x_PDP_WOgrey_600x.jpg?v=1781543587",
+      "localPath": "/sites/brooklinen/products/BKL_26-05_Bedding_Utility_Pillow_Medium_1x_PDP_W-58728c76.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 6809
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-12_Bedding_Classic_TandemStripeInFrost_DUV_Detail_1_x_PDP_WO_1da59233-e8f5-408d-9c56-d618cb423474_600x.jpg?v=1767131315": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-12_Bedding_Classic_TandemStripeInFrost_DUV_Detail_1_x_PDP_WO_1da59233-e8f5-408d-9c56-d618cb423474_600x.jpg?v=1767131315",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-12_Bedding_Classic_TandemStripeInFrost_DUV_Detail_1_x_PDP_WO_1da59233-e8f5-408d-9c56-d618cb423474_600x.jpg?v=1767131315",
+      "localPath": "/sites/brooklinen/products/BKL_25-12_Bedding_Classic_TandemStripeInFrost_DU-42815528.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 71979
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-06_Bath_Waffle_Robe_Plum_Flat_1x_WOgrey_600x.jpg?v=1775677099": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-06_Bath_Waffle_Robe_Plum_Flat_1x_WOgrey_600x.jpg?v=1775677099",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-06_Bath_Waffle_Robe_Plum_Flat_1x_WOgrey_600x.jpg?v=1775677099",
+      "localPath": "/sites/brooklinen/products/BKL_25-06_Bath_Waffle_Robe_Plum_Flat_1x_WOgrey_6-0e51a9ab.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 60857
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_23-10_Bath_SP_Robe_StripedBotanicalGreen_Flat_1x_WOgrey_1f57800a-9493-483a-8dba-436e2b0f8015_600x.jpg?v=1772487507": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_23-10_Bath_SP_Robe_StripedBotanicalGreen_Flat_1x_WOgrey_1f57800a-9493-483a-8dba-436e2b0f8015_600x.jpg?v=1772487507",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_23-10_Bath_SP_Robe_StripedBotanicalGreen_Flat_1x_WOgrey_1f57800a-9493-483a-8dba-436e2b0f8015_600x.jpg?v=1772487507",
+      "localPath": "/sites/brooklinen/products/BKL_23-10_Bath_SP_Robe_StripedBotanicalGreen_Fla-f2c678a0.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 40084
+    },
+    "https://www.brooklinen.com/cdn/shop/files/logo--wirecutter.png?v=1649869031&width=250": {
+      "originalUrl": "https://www.brooklinen.com/cdn/shop/files/logo--wirecutter.png?v=1649869031&width=250",
+      "fetchUrl": "https://www.brooklinen.com/cdn/shop/files/logo--wirecutter.png?v=1649869031&width=400",
+      "localPath": "/sites/brooklinen/press/logo-wirecutter-c373bc98.png",
+      "contentType": "image/png",
+      "ext": ".png",
+      "bytes": 21680
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-08_TOB_ThrowBlanket_SuperFluff_Cream_1x_PDP_WO_600x.jpg?v=1789745627": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-08_TOB_ThrowBlanket_SuperFluff_Cream_1x_PDP_WO_600x.jpg?v=1789745627",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-08_TOB_ThrowBlanket_SuperFluff_Cream_1x_PDP_WO_600x.jpg?v=1789745627",
+      "localPath": "/sites/brooklinen/products/BKL_26-08_TOB_ThrowBlanket_SuperFluff_Cream_1x_P-f0573ce8.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 90936
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-02_Bedding_Linen_OxfordStripeinAbyssChambray_COR_1_x_PDP_WO_600x.jpg?v=1773953109": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-02_Bedding_Linen_OxfordStripeinAbyssChambray_COR_1_x_PDP_WO_600x.jpg?v=1773953109",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-02_Bedding_Linen_OxfordStripeinAbyssChambray_COR_1_x_PDP_WO_600x.jpg?v=1773953109",
+      "localPath": "/sites/brooklinen/products/BKL_26-02_Bedding_Linen_OxfordStripeinAbyssChamb-b3c31ee9.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 36188
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-01_AprNewArrivals_Look1_115x_POP_WO_60aa02bd-99d5-438b-926a-9d673e7a0a7a_600x.jpg?v=1774460862": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-01_AprNewArrivals_Look1_115x_POP_WO_60aa02bd-99d5-438b-926a-9d673e7a0a7a_600x.jpg?v=1774460862",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-01_AprNewArrivals_Look1_115x_POP_WO_60aa02bd-99d5-438b-926a-9d673e7a0a7a_600x.jpg?v=1774460862",
+      "localPath": "/sites/brooklinen/products/BKL_26-01_AprNewArrivals_Look1_115x_POP_WO_60aa0-9bce7aa3.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 87298
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-06_AugustLifestyle_Day2_Look6__1806_x_cc_PDP_WO_600x.jpg?v=1775677099": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-06_AugustLifestyle_Day2_Look6__1806_x_cc_PDP_WO_600x.jpg?v=1775677099",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-06_AugustLifestyle_Day2_Look6__1806_x_cc_PDP_WO_600x.jpg?v=1775677099",
+      "localPath": "/sites/brooklinen/products/BKL_25-06_AugustLifestyle_Day2_Look6__1806_x_cc_-07301456.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 86535
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-01_Bedding_Classic_TandemStripeinFreshMoss_PC_1x_WOgrey_600x.jpg?v=1758817540": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-01_Bedding_Classic_TandemStripeinFreshMoss_PC_1x_WOgrey_600x.jpg?v=1758817540",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-01_Bedding_Classic_TandemStripeinFreshMoss_PC_1x_WOgrey_600x.jpg?v=1758817540",
+      "localPath": "/sites/brooklinen/products/BKL_25-01_Bedding_Classic_TandemStripeinFreshMos-feca8715.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 34367
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-08_Bedding_Throws_Super-Fluff_Cream_1x_PDP_WOgrey_600x.jpg?v=1789583055": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-08_Bedding_Throws_Super-Fluff_Cream_1x_PDP_WOgrey_600x.jpg?v=1789583055",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-08_Bedding_Throws_Super-Fluff_Cream_1x_PDP_WOgrey_600x.jpg?v=1789583055",
+      "localPath": "/sites/brooklinen/products/BKL_26-08_Bedding_Throws_Super-Fluff_Cream_1x_PD-9702a301.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 23351
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-01_Bedding_Classic_TandemStripeinFreshMoss_Overhead_1x_PDP_WO_a72bf5f2-9549-4b70-9600-b69b2ae076ff_600x.jpg?v=1758817540": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-01_Bedding_Classic_TandemStripeinFreshMoss_Overhead_1x_PDP_WO_a72bf5f2-9549-4b70-9600-b69b2ae076ff_600x.jpg?v=1758817540",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-01_Bedding_Classic_TandemStripeinFreshMoss_Overhead_1x_PDP_WO_a72bf5f2-9549-4b70-9600-b69b2ae076ff_600x.jpg?v=1758817540",
+      "localPath": "/sites/brooklinen/products/BKL_25-01_Bedding_Classic_TandemStripeinFreshMos-ee3fb3a1.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 125408
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-07_Bedding_Luxe_Abyss_DUV_1x_WOgrey_d93fa1bb-74a2-4413-a8f2-d530fa84c067_600x.jpg?v=1779223833": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-07_Bedding_Luxe_Abyss_DUV_1x_WOgrey_d93fa1bb-74a2-4413-a8f2-d530fa84c067_600x.jpg?v=1779223833",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-07_Bedding_Luxe_Abyss_DUV_1x_WOgrey_d93fa1bb-74a2-4413-a8f2-d530fa84c067_600x.jpg?v=1779223833",
+      "localPath": "/sites/brooklinen/products/BKL_25-07_Bedding_Luxe_Abyss_DUV_1x_WOgrey_d93fa-20d9dc4f.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 26538
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-03_Bedding_Luxe_2.0_Abyss_1x_PDP_WO_16b9a31c-3ee4-4c23-82c5-0c02e8371c5a_600x.jpg?v=1779303810": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-03_Bedding_Luxe_2.0_Abyss_1x_PDP_WO_16b9a31c-3ee4-4c23-82c5-0c02e8371c5a_600x.jpg?v=1779303810",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-03_Bedding_Luxe_2.0_Abyss_1x_PDP_WO_16b9a31c-3ee4-4c23-82c5-0c02e8371c5a_600x.jpg?v=1779303810",
+      "localPath": "/sites/brooklinen/products/BKL_26-03_Bedding_Luxe_2-0_Abyss_1x_PDP_WO_16b9a-b05d4237.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 36907
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_23-07_Bath_Robe_StripedMidnightNavy_Flat_1x_WOgrey_2cc0e48b-f194-4283-b0e6-919b0dbe6b12_600x.jpg?v=1772487507": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_23-07_Bath_Robe_StripedMidnightNavy_Flat_1x_WOgrey_2cc0e48b-f194-4283-b0e6-919b0dbe6b12_600x.jpg?v=1772487507",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_23-07_Bath_Robe_StripedMidnightNavy_Flat_1x_WOgrey_2cc0e48b-f194-4283-b0e6-919b0dbe6b12_600x.jpg?v=1772487507",
+      "localPath": "/sites/brooklinen/products/BKL_23-07_Bath_Robe_StripedMidnightNavy_Flat_1x_-6c74513b.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 53147
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-04_WaffleWorld_Look10_2018x_PDP_WO_600x.jpg?v=1790882246": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-04_WaffleWorld_Look10_2018x_PDP_WO_600x.jpg?v=1790882246",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-04_WaffleWorld_Look10_2018x_PDP_WO_600x.jpg?v=1790882246",
+      "localPath": "/sites/brooklinen/products/BKL_26-04_WaffleWorld_Look10_2018x_PDP_WO_600x-6207a6bd.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 80094
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-08_Bedding_Blanket_Waffle_NightSkyPlaid_1x_PDP_WOgrey_600x.jpg?v=1789061610": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-08_Bedding_Blanket_Waffle_NightSkyPlaid_1x_PDP_WOgrey_600x.jpg?v=1789061610",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-08_Bedding_Blanket_Waffle_NightSkyPlaid_1x_PDP_WOgrey_600x.jpg?v=1789061610",
+      "localPath": "/sites/brooklinen/products/BKL_26-08_Bedding_Blanket_Waffle_NightSkyPlaid_1-420a2f47.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 42097
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-08_Bedding_Throws_Waffle_RaspberryCheck_1x_WOgrey_600x.jpg?v=1759336845": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-08_Bedding_Throws_Waffle_RaspberryCheck_1x_WOgrey_600x.jpg?v=1759336845",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-08_Bedding_Throws_Waffle_RaspberryCheck_1x_WOgrey_600x.jpg?v=1759336845",
+      "localPath": "/sites/brooklinen/products/BKL_25-08_Bedding_Throws_Waffle_RaspberryCheck_1-db354ccf.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 49972
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-11_FebNewnessSP2_Shot8_1402x_8x9_DarkenedForCopy_WO_1_56910a79-1cfd-4bb7-93f4-58bcca29ec0c_600x.jpg?v=1772487507": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-11_FebNewnessSP2_Shot8_1402x_8x9_DarkenedForCopy_WO_1_56910a79-1cfd-4bb7-93f4-58bcca29ec0c_600x.jpg?v=1772487507",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-11_FebNewnessSP2_Shot8_1402x_8x9_DarkenedForCopy_WO_1_56910a79-1cfd-4bb7-93f4-58bcca29ec0c_600x.jpg?v=1772487507",
+      "localPath": "/sites/brooklinen/products/BKL_25-11_FebNewnessSP2_Shot8_1402x_8x9_Darkened-c156c57a.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 93385
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-04_WaffleWorld_Look18_2860x_PDP_WO_14dfbdcf-773c-4ffd-95ea-0f922c0a9e3a_600x.jpg?v=1791479156": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-04_WaffleWorld_Look18_2860x_PDP_WO_14dfbdcf-773c-4ffd-95ea-0f922c0a9e3a_600x.jpg?v=1791479156",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-04_WaffleWorld_Look18_2860x_PDP_WO_14dfbdcf-773c-4ffd-95ea-0f922c0a9e3a_600x.jpg?v=1791479156",
+      "localPath": "/sites/brooklinen/products/BKL_26-04_WaffleWorld_Look18_2860x_PDP_WO_14dfbd-0ba6b713.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 97187
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-04_WaffleWorld_Look8_1636x_PDP_WO_6b6c2ce9-3500-4728-823c-579c88e4ed70_600x.jpg?v=1790357004": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-04_WaffleWorld_Look8_1636x_PDP_WO_6b6c2ce9-3500-4728-823c-579c88e4ed70_600x.jpg?v=1790357004",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-04_WaffleWorld_Look8_1636x_PDP_WO_6b6c2ce9-3500-4728-823c-579c88e4ed70_600x.jpg?v=1790357004",
+      "localPath": "/sites/brooklinen/products/BKL_26-04_WaffleWorld_Look8_1636x_PDP_WO_6b6c2ce-6b9144bc.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 103099
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_24-07_Silk_Abyss_Detail_1x_WOgrey_600x.jpg?v=1760998059": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_24-07_Silk_Abyss_Detail_1x_WOgrey_600x.jpg?v=1760998059",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_24-07_Silk_Abyss_Detail_1x_WOgrey_600x.jpg?v=1760998059",
+      "localPath": "/sites/brooklinen/products/BKL_24-07_Silk_Abyss_Detail_1x_WOgrey_600x-c8f47e45.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 106908
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-08_Bath_Robe_RaspberryCheck_Flat_1x_PDP_WOgrey_600x.jpg?v=1789070132": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-08_Bath_Robe_RaspberryCheck_Flat_1x_PDP_WOgrey_600x.jpg?v=1789070132",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-08_Bath_Robe_RaspberryCheck_Flat_1x_PDP_WOgrey_600x.jpg?v=1789070132",
+      "localPath": "/sites/brooklinen/products/BKL_26-08_Bath_Robe_RaspberryCheck_Flat_1x_PDP_W-27a78b84.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 82037
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-08_Super-Plush-Complete-Get-Ready-Bundle_PDP_WOgrey_98467112-fe41-4cd3-8cca-5865ec43fe2b_600x.jpg?v=1790626450": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-08_Super-Plush-Complete-Get-Ready-Bundle_PDP_WOgrey_98467112-fe41-4cd3-8cca-5865ec43fe2b_600x.jpg?v=1790626450",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-08_Super-Plush-Complete-Get-Ready-Bundle_PDP_WOgrey_98467112-fe41-4cd3-8cca-5865ec43fe2b_600x.jpg?v=1790626450",
+      "localPath": "/sites/brooklinen/products/BKL_26-08_Super-Plush-Complete-Get-Ready-Bundle_-ed851b24.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 75120
+    },
+    "https://www.brooklinen.com/cdn/shop/files/wf_BrandonTextWeb-Medium--360967_B_0.woff2?v=18048165408412969505": {
+      "originalUrl": "https://www.brooklinen.com/cdn/shop/files/wf_BrandonTextWeb-Medium--360967_B_0.woff2?v=18048165408412969505",
+      "fetchUrl": "https://www.brooklinen.com/cdn/shop/files/wf_BrandonTextWeb-Medium--360967_B_0.woff2?v=18048165408412969505",
+      "localPath": "/sites/brooklinen/fonts/BrandonTextMedium.woff2",
+      "contentType": "font/woff2",
+      "ext": ".woff2",
+      "bytes": 33189
+    },
+    "https://cdn.accentuate.io/514433941594/1794929869463/NYT-Wirecutter.png?v=1794929869463&transform=resize=250x250": {
+      "originalUrl": "https://cdn.accentuate.io/514433941594/1794929869463/NYT-Wirecutter.png?v=1794929869463&transform=resize=250x250",
+      "fetchUrl": "https://cdn.accentuate.io/514433941594/1794929869463/NYT-Wirecutter.png?v=1794929869463&transform=resize=250x250",
+      "localPath": "/sites/brooklinen/awards/NYT-Wirecutter-ce571ee9.png",
+      "contentType": "image/png",
+      "ext": ".png",
+      "bytes": 17372
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-09_HolidayIcons_Shot6_0859x_PDP_WO_834e57a2-b128-4a04-b2dc-7c6630dc8739_600x.jpg?v=1791568906": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-09_HolidayIcons_Shot6_0859x_PDP_WO_834e57a2-b128-4a04-b2dc-7c6630dc8739_600x.jpg?v=1791568906",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-09_HolidayIcons_Shot6_0859x_PDP_WO_834e57a2-b128-4a04-b2dc-7c6630dc8739_600x.jpg?v=1791568906",
+      "localPath": "/sites/brooklinen/products/BKL_26-09_HolidayIcons_Shot6_0859x_PDP_WO_834e57-23373a44.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 79418
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_24-07_Silk_PCEyemaskBundle_2x_WOgrey_600x.jpg?v=1760998059": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_24-07_Silk_PCEyemaskBundle_2x_WOgrey_600x.jpg?v=1760998059",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_24-07_Silk_PCEyemaskBundle_2x_WOgrey_600x.jpg?v=1760998059",
+      "localPath": "/sites/brooklinen/products/BKL_24-07_Silk_PCEyemaskBundle_2x_WOgrey_600x-2a822d34.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 22924
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-08_Bath_Waffle_Slippers_StripedBotanicalGreen_Flat_1x_PDP_WOgrey_600x.jpg?v=1789593032": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-08_Bath_Waffle_Slippers_StripedBotanicalGreen_Flat_1x_PDP_WOgrey_600x.jpg?v=1789593032",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-08_Bath_Waffle_Slippers_StripedBotanicalGreen_Flat_1x_PDP_WOgrey_600x.jpg?v=1789593032",
+      "localPath": "/sites/brooklinen/products/BKL_26-08_Bath_Waffle_Slippers_StripedBotanicalG-016c34ee.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 33149
+    },
+    "https://cdn.accentuate.io/514433941594/1794929855560/2026_CONDE-NAST_ARCHITECTURAL-DIGEST_PENDING_LOGO_BrooklinenBlueOnWhite_RGB_badge.png?v=1794929855560&transform=resize=250x250": {
+      "originalUrl": "https://cdn.accentuate.io/514433941594/1794929855560/2026_CONDE-NAST_ARCHITECTURAL-DIGEST_PENDING_LOGO_BrooklinenBlueOnWhite_RGB_badge.png?v=1794929855560&transform=resize=250x250",
+      "fetchUrl": "https://cdn.accentuate.io/514433941594/1794929855560/2026_CONDE-NAST_ARCHITECTURAL-DIGEST_PENDING_LOGO_BrooklinenBlueOnWhite_RGB_badge.png?v=1794929855560&transform=resize=250x250",
+      "localPath": "/sites/brooklinen/awards/2026_CONDE-NAST_ARCHITECTURAL-DIGEST_PENDING_LOG-648502e1.png",
+      "contentType": "image/png",
+      "ext": ".png",
+      "bytes": 34423
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-08_Bath_SP_Pouch_StripedPoppy_StraightOn_1x_PDP_WOgrey_600x.jpg?v=1789594705": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-08_Bath_SP_Pouch_StripedPoppy_StraightOn_1x_PDP_WOgrey_600x.jpg?v=1789594705",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-08_Bath_SP_Pouch_StripedPoppy_StraightOn_1x_PDP_WOgrey_600x.jpg?v=1789594705",
+      "localPath": "/sites/brooklinen/products/BKL_26-08_Bath_SP_Pouch_StripedPoppy_StraightOn_-bf275d87.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 43022
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/products/BKL_21-02_Q1Evergreen_Lifestyle_Look1_Shot1_1_0027x_03cb9db2-d84a-4f3f-a6a5-9c94c2b11e40_600x.jpg?v=1758736846": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/products/BKL_21-02_Q1Evergreen_Lifestyle_Look1_Shot1_1_0027x_03cb9db2-d84a-4f3f-a6a5-9c94c2b11e40_600x.jpg?v=1758736846",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/products/BKL_21-02_Q1Evergreen_Lifestyle_Look1_Shot1_1_0027x_03cb9db2-d84a-4f3f-a6a5-9c94c2b11e40_600x.jpg?v=1758736846",
+      "localPath": "/sites/brooklinen/products/BKL_21-02_Q1Evergreen_Lifestyle_Look1_Shot1_1_00-596b4e0d.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 56246
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-08_Bath_SP_Pouch_StripedPoppy_Overhead_1x_PDP_WOgrey_600x.jpg?v=1789594705": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-08_Bath_SP_Pouch_StripedPoppy_Overhead_1x_PDP_WOgrey_600x.jpg?v=1789594705",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-08_Bath_SP_Pouch_StripedPoppy_Overhead_1x_PDP_WOgrey_600x.jpg?v=1789594705",
+      "localPath": "/sites/brooklinen/products/BKL_26-08_Bath_SP_Pouch_StripedPoppy_Overhead_1x-c9d21a61.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 44632
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-08_Bath_Waffle_Slippers_StripedBotanicalGreen_Flat_2x_PDP_WOgrey_600x.jpg?v=1789593032": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-08_Bath_Waffle_Slippers_StripedBotanicalGreen_Flat_2x_PDP_WOgrey_600x.jpg?v=1789593032",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-08_Bath_Waffle_Slippers_StripedBotanicalGreen_Flat_2x_PDP_WOgrey_600x.jpg?v=1789593032",
+      "localPath": "/sites/brooklinen/products/BKL_26-08_Bath_Waffle_Slippers_StripedBotanicalG-8eb1d11a.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 39858
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-08_Silk_SkylineStripeInFlax_Eyemask_1x_PDP_WOgrey_600x.jpg?v=1789496556": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-08_Silk_SkylineStripeInFlax_Eyemask_1x_PDP_WOgrey_600x.jpg?v=1789496556",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-08_Silk_SkylineStripeInFlax_Eyemask_1x_PDP_WOgrey_600x.jpg?v=1789496556",
+      "localPath": "/sites/brooklinen/products/BKL_26-08_Silk_SkylineStripeInFlax_Eyemask_1x_PD-e4e579f7.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 33345
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-09_HolidayOverheads_Look1_V1x_PDP_WO_6fabc5b6-16e1-4018-9143-fcaddf16c312_600x.jpg?v=1791570623": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-09_HolidayOverheads_Look1_V1x_PDP_WO_6fabc5b6-16e1-4018-9143-fcaddf16c312_600x.jpg?v=1791570623",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-09_HolidayOverheads_Look1_V1x_PDP_WO_6fabc5b6-16e1-4018-9143-fcaddf16c312_600x.jpg?v=1791570623",
+      "localPath": "/sites/brooklinen/products/BKL_26-09_HolidayOverheads_Look1_V1x_PDP_WO_6fab-8195721f.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 125715
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-06_Bedding_Luxe_WarmTerracotta_COR_1x_PDP_WOgrey_600x.jpg?v=1785247559": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-06_Bedding_Luxe_WarmTerracotta_COR_1x_PDP_WOgrey_600x.jpg?v=1785247559",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-06_Bedding_Luxe_WarmTerracotta_COR_1x_PDP_WOgrey_600x.jpg?v=1785247559",
+      "localPath": "/sites/brooklinen/products/BKL_25-06_Bedding_Luxe_WarmTerracotta_COR_1x_PDP-fbd098fb.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 24424
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-05_Bedding_Classic_White_HCB_1x_WOgrey_600x.jpg?v=1758736846": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-05_Bedding_Classic_White_HCB_1x_WOgrey_600x.jpg?v=1758736846",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-05_Bedding_Classic_White_HCB_1x_WOgrey_600x.jpg?v=1758736846",
+      "localPath": "/sites/brooklinen/products/BKL_25-05_Bedding_Classic_White_HCB_1x_WOgrey_60-9ad61441.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 19050
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-08_Bedding_Blanket_HeritageWool_NightSky_1x_PDP_WOgrey_600x.jpg?v=1789063512": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-08_Bedding_Blanket_HeritageWool_NightSky_1x_PDP_WOgrey_600x.jpg?v=1789063512",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-08_Bedding_Blanket_HeritageWool_NightSky_1x_PDP_WOgrey_600x.jpg?v=1789063512",
+      "localPath": "/sites/brooklinen/products/BKL_26-08_Bedding_Blanket_HeritageWool_NightSky_-0a28baec.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 34902
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-05_Bedding_Classic_TandemStripeInMaple_HCB_1x_PDP_WOgrey_600x.jpg?v=1781036498": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-05_Bedding_Classic_TandemStripeInMaple_HCB_1x_PDP_WOgrey_600x.jpg?v=1781036498",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-05_Bedding_Classic_TandemStripeInMaple_HCB_1x_PDP_WOgrey_600x.jpg?v=1781036498",
+      "localPath": "/sites/brooklinen/products/BKL_26-05_Bedding_Classic_TandemStripeInMaple_HC-b40a4c31.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 75239
+    },
+    "https://cdn.accentuate.io/513230930010/1794928652165/Oprahs-Favorite-Things_2025-(1).png?v=1794928652165&transform=resize=250x250": {
+      "originalUrl": "https://cdn.accentuate.io/513230930010/1794928652165/Oprahs-Favorite-Things_2025-(1).png?v=1794928652165&transform=resize=250x250",
+      "fetchUrl": "https://cdn.accentuate.io/513230930010/1794928652165/Oprahs-Favorite-Things_2025-(1).png?v=1794928652165&transform=resize=250x250",
+      "localPath": "/sites/brooklinen/awards/Oprahs-Favorite-Things_2025-1-84501373.png",
+      "contentType": "image/png",
+      "ext": ".png",
+      "bytes": 26198
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-03_Bedding_Luxe_2.0_Aegean_1x_PDP_WO_73fc9e4e-9729-4d6a-85ad-d242137221ef_600x.jpg?v=1779226767": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-03_Bedding_Luxe_2.0_Aegean_1x_PDP_WO_73fc9e4e-9729-4d6a-85ad-d242137221ef_600x.jpg?v=1779226767",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-03_Bedding_Luxe_2.0_Aegean_1x_PDP_WO_73fc9e4e-9729-4d6a-85ad-d242137221ef_600x.jpg?v=1779226767",
+      "localPath": "/sites/brooklinen/products/BKL_26-03_Bedding_Luxe_2-0_Aegean_1x_PDP_WO_73fc-6b6a68a6.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 34466
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/products/BKL_21-11_Bedding_ClassicLuxe_SoftGrey_DUV_1x_WOgrey_ff2ec77e-48aa-4995-a1c1-d0c7ec5ee7b5_600x.jpg?v=1758815948": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/products/BKL_21-11_Bedding_ClassicLuxe_SoftGrey_DUV_1x_WOgrey_ff2ec77e-48aa-4995-a1c1-d0c7ec5ee7b5_600x.jpg?v=1758815948",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/products/BKL_21-11_Bedding_ClassicLuxe_SoftGrey_DUV_1x_WOgrey_ff2ec77e-48aa-4995-a1c1-d0c7ec5ee7b5_600x.jpg?v=1758815948",
+      "localPath": "/sites/brooklinen/products/BKL_21-11_Bedding_ClassicLuxe_SoftGrey_DUV_1x_WO-ea1f0cf8.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 22285
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-05_Bedding_Luxe_Aegean_HCB_1x_PDP_WOgrey_600x.jpg?v=1781541478": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-05_Bedding_Luxe_Aegean_HCB_1x_PDP_WOgrey_600x.jpg?v=1781541478",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-05_Bedding_Luxe_Aegean_HCB_1x_PDP_WOgrey_600x.jpg?v=1781541478",
+      "localPath": "/sites/brooklinen/products/BKL_26-05_Bedding_Luxe_Aegean_HCB_1x_PDP_WOgrey_-9b99ed35.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 24533
+    },
+    "https://cdn.accentuate.io/514433941594/1794929882402/2026_CONDE-NAST_ARCHITECTURAL-DIGEST_PENDING_LOGO_BrooklinenBlueOnWhite_RGB_badge.png?v=1794929882402&transform=resize=250x250": {
+      "originalUrl": "https://cdn.accentuate.io/514433941594/1794929882402/2026_CONDE-NAST_ARCHITECTURAL-DIGEST_PENDING_LOGO_BrooklinenBlueOnWhite_RGB_badge.png?v=1794929882402&transform=resize=250x250",
+      "fetchUrl": "https://cdn.accentuate.io/514433941594/1794929882402/2026_CONDE-NAST_ARCHITECTURAL-DIGEST_PENDING_LOGO_BrooklinenBlueOnWhite_RGB_badge.png?v=1794929882402&transform=resize=250x250",
+      "localPath": "/sites/brooklinen/awards/2026_CONDE-NAST_ARCHITECTURAL-DIGEST_PENDING_LOG-59016ac9.png",
+      "contentType": "image/png",
+      "ext": ".png",
+      "bytes": 34423
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-03_Bedding_Luxe_WarmTerracotta_1x_PDP_WO_ca960014-7736-429d-8810-17b68c19bb62_600x.jpg?v=1786470229": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-03_Bedding_Luxe_WarmTerracotta_1x_PDP_WO_ca960014-7736-429d-8810-17b68c19bb62_600x.jpg?v=1786470229",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-03_Bedding_Luxe_WarmTerracotta_1x_PDP_WO_ca960014-7736-429d-8810-17b68c19bb62_600x.jpg?v=1786470229",
+      "localPath": "/sites/brooklinen/products/BKL_26-03_Bedding_Luxe_WarmTerracotta_1x_PDP_WO_-ac494762.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 44805
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-09_HolidayIcons_Shot14_2161x_PDP_WO_600x.jpg?v=1791569677": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-09_HolidayIcons_Shot14_2161x_PDP_WO_600x.jpg?v=1791569677",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-09_HolidayIcons_Shot14_2161x_PDP_WO_600x.jpg?v=1791569677",
+      "localPath": "/sites/brooklinen/products/BKL_26-09_HolidayIcons_Shot14_2161x_PDP_WO_600x-f23f2276.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 160118
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-08_Bedding_Luxe_CalmWatersinFrost_PCDUVSet_1x_WOgrey_3c975f90-ea27-4153-9c6b-e5655b70b951_600x.jpg?v=1779126624": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-08_Bedding_Luxe_CalmWatersinFrost_PCDUVSet_1x_WOgrey_3c975f90-ea27-4153-9c6b-e5655b70b951_600x.jpg?v=1779126624",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-08_Bedding_Luxe_CalmWatersinFrost_PCDUVSet_1x_WOgrey_3c975f90-ea27-4153-9c6b-e5655b70b951_600x.jpg?v=1779126624",
+      "localPath": "/sites/brooklinen/products/BKL_25-08_Bedding_Luxe_CalmWatersinFrost_PCDUVSe-a8d49b7b.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 42288
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_23-11_Bedding_Classic_WarmGrey_Overhead_2x_PDP_WO_ff1f392c-8821-4096-9ae0-c151c04c554a_600x.jpg?v=1758815948": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_23-11_Bedding_Classic_WarmGrey_Overhead_2x_PDP_WO_ff1f392c-8821-4096-9ae0-c151c04c554a_600x.jpg?v=1758815948",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_23-11_Bedding_Classic_WarmGrey_Overhead_2x_PDP_WO_ff1f392c-8821-4096-9ae0-c151c04c554a_600x.jpg?v=1758815948",
+      "localPath": "/sites/brooklinen/products/BKL_23-11_Bedding_Classic_WarmGrey_Overhead_2x_P-dba5ebf5.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 43768
+    },
+    "https://cdn.accentuate.io/513230930010/1794928701892/NYT-Wirecutter.png?v=1794928701892&transform=resize=250x250": {
+      "originalUrl": "https://cdn.accentuate.io/513230930010/1794928701892/NYT-Wirecutter.png?v=1794928701892&transform=resize=250x250",
+      "fetchUrl": "https://cdn.accentuate.io/513230930010/1794928701892/NYT-Wirecutter.png?v=1794928701892&transform=resize=250x250",
+      "localPath": "/sites/brooklinen/awards/NYT-Wirecutter-ad235a05.png",
+      "contentType": "image/png",
+      "ext": ".png",
+      "bytes": 17372
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-08_Bedding_Luxe_CalmWateresFrost_1669x_PDP_WO_c95de4d2-037d-4f18-b8bb-c712568b0362_600x.jpg?v=1779126624": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-08_Bedding_Luxe_CalmWateresFrost_1669x_PDP_WO_c95de4d2-037d-4f18-b8bb-c712568b0362_600x.jpg?v=1779126624",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-08_Bedding_Luxe_CalmWateresFrost_1669x_PDP_WO_c95de4d2-037d-4f18-b8bb-c712568b0362_600x.jpg?v=1779126624",
+      "localPath": "/sites/brooklinen/products/BKL_25-08_Bedding_Luxe_CalmWateresFrost_1669x_PD-90a5c9b4.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 72634
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/260623_BKL_Q3_08_-_August_Newness7012x_PDP_WO_600x.jpg?v=1787253063": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/260623_BKL_Q3_08_-_August_Newness7012x_PDP_WO_600x.jpg?v=1787253063",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/260623_BKL_Q3_08_-_August_Newness7012x_PDP_WO_600x.jpg?v=1787253063",
+      "localPath": "/sites/brooklinen/products/260623_BKL_Q3_08_-_August_Newness7012x_PDP_WO_60-9d17c54e.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 132418
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-04_Bedding_CuratedBundle_ClassicDreamweave_Starter_1x_WOgrey_3ee85138-785f-4ed1-a212-31b08a1459ed_600x.jpg?v=1781038390": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-04_Bedding_CuratedBundle_ClassicDreamweave_Starter_1x_WOgrey_3ee85138-785f-4ed1-a212-31b08a1459ed_600x.jpg?v=1781038390",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-04_Bedding_CuratedBundle_ClassicDreamweave_Starter_1x_WOgrey_3ee85138-785f-4ed1-a212-31b08a1459ed_600x.jpg?v=1781038390",
+      "localPath": "/sites/brooklinen/products/BKL_25-04_Bedding_CuratedBundle_ClassicDreamweav-c4416365.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 55176
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-07_Bedding_Luxe_Storm_NFSS_2_x_PDP_WO_f4a5950a-1d53-492d-8902-477939a430fe_600x.jpg?v=1779128464": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-07_Bedding_Luxe_Storm_NFSS_2_x_PDP_WO_f4a5950a-1d53-492d-8902-477939a430fe_600x.jpg?v=1779128464",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-07_Bedding_Luxe_Storm_NFSS_2_x_PDP_WO_f4a5950a-1d53-492d-8902-477939a430fe_600x.jpg?v=1779128464",
+      "localPath": "/sites/brooklinen/products/BKL_25-07_Bedding_Luxe_Storm_NFSS_2_x_PDP_WO_f4a-40964548.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 19832
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-03_Bedding_Luxe_2.0_Abyss_1x_PDP_WO_a7ce70f8-fb23-4afa-aa9b-0e5dee153895_600x.jpg?v=1779226787": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-03_Bedding_Luxe_2.0_Abyss_1x_PDP_WO_a7ce70f8-fb23-4afa-aa9b-0e5dee153895_600x.jpg?v=1779226787",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-03_Bedding_Luxe_2.0_Abyss_1x_PDP_WO_a7ce70f8-fb23-4afa-aa9b-0e5dee153895_600x.jpg?v=1779226787",
+      "localPath": "/sites/brooklinen/products/BKL_26-03_Bedding_Luxe_2-0_Abyss_1x_PDP_WO_a7ce7-dbb41a42.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 36969
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-04_Bedding_CuratedBundle_LuxeDreamweave_Starter_1x_WOgrey_223324a0-c9e4-4553-960e-7bb8c4ba0123_600x.jpg?v=1779290824": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-04_Bedding_CuratedBundle_LuxeDreamweave_Starter_1x_WOgrey_223324a0-c9e4-4553-960e-7bb8c4ba0123_600x.jpg?v=1779290824",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-04_Bedding_CuratedBundle_LuxeDreamweave_Starter_1x_WOgrey_223324a0-c9e4-4553-960e-7bb8c4ba0123_600x.jpg?v=1779290824",
+      "localPath": "/sites/brooklinen/products/BKL_25-04_Bedding_CuratedBundle_LuxeDreamweave_S-1ec6027e.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 25753
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-04_Luxe_Shot2_163x_PDP_WO_4e24068f-2278-42a8-bdfa-4ed1e219c54f_600x.jpg?v=1779312523": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-04_Luxe_Shot2_163x_PDP_WO_4e24068f-2278-42a8-bdfa-4ed1e219c54f_600x.jpg?v=1779312523",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-04_Luxe_Shot2_163x_PDP_WO_4e24068f-2278-42a8-bdfa-4ed1e219c54f_600x.jpg?v=1779312523",
+      "localPath": "/sites/brooklinen/products/BKL_26-04_Luxe_Shot2_163x_PDP_WO_4e24068f-2278-4-acd6886e.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 56426
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-11_Bedding_Classic_FreshMoss_NFSS_2_x_PDP_WO_600x.jpg?v=1769096489": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-11_Bedding_Classic_FreshMoss_NFSS_2_x_PDP_WO_600x.jpg?v=1769096489",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-11_Bedding_Classic_FreshMoss_NFSS_2_x_PDP_WO_600x.jpg?v=1769096489",
+      "localPath": "/sites/brooklinen/products/BKL_25-11_Bedding_Classic_FreshMoss_NFSS_2_x_PDP-cda9b7ff.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 15759
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-04_Luxe_Shot9_1519x_PDP_WO_e1e0a872-c498-40be-a3a8-38c6c5933666_600x.jpg?v=1779312533": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-04_Luxe_Shot9_1519x_PDP_WO_e1e0a872-c498-40be-a3a8-38c6c5933666_600x.jpg?v=1779312533",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-04_Luxe_Shot9_1519x_PDP_WO_e1e0a872-c498-40be-a3a8-38c6c5933666_600x.jpg?v=1779312533",
+      "localPath": "/sites/brooklinen/products/BKL_26-04_Luxe_Shot9_1519x_PDP_WO_e1e0a872-c498--44dda763.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 50940
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_24-06_Bedding_Classic_Storm_Overhead_1x_PDP_WO_28dc0aa7-9949-413c-abb8-ee6d96e246a0_600x.jpg?v=1772487751": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_24-06_Bedding_Classic_Storm_Overhead_1x_PDP_WO_28dc0aa7-9949-413c-abb8-ee6d96e246a0_600x.jpg?v=1772487751",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_24-06_Bedding_Classic_Storm_Overhead_1x_PDP_WO_28dc0aa7-9949-413c-abb8-ee6d96e246a0_600x.jpg?v=1772487751",
+      "localPath": "/sites/brooklinen/products/BKL_24-06_Bedding_Classic_Storm_Overhead_1x_PDP_-f3979594.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 38689
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_23-10_Bedding_Luxe_Abyss_MIB_1x_WOgrey_9dfd7407-dbb8-4077-9998-56dbe4c5776f_600x.jpg?v=1779126578": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_23-10_Bedding_Luxe_Abyss_MIB_1x_WOgrey_9dfd7407-dbb8-4077-9998-56dbe4c5776f_600x.jpg?v=1779126578",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_23-10_Bedding_Luxe_Abyss_MIB_1x_WOgrey_9dfd7407-dbb8-4077-9998-56dbe4c5776f_600x.jpg?v=1779126578",
+      "localPath": "/sites/brooklinen/products/BKL_23-10_Bedding_Luxe_Abyss_MIB_1x_WOgrey_9dfd7-87aa39dc.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 20137
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-11_Bedding_Classic_White_CSS_1_x_PDP_WO_600x.jpg?v=1772487751": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-11_Bedding_Classic_White_CSS_1_x_PDP_WO_600x.jpg?v=1772487751",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-11_Bedding_Classic_White_CSS_1_x_PDP_WO_600x.jpg?v=1772487751",
+      "localPath": "/sites/brooklinen/products/BKL_25-11_Bedding_Classic_White_CSS_1_x_PDP_WO_6-1f4b2f4c.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 9715
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/feed-test_600x.jpg?v=1772487751": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/feed-test_600x.jpg?v=1772487751",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/feed-test_600x.jpg?v=1772487751",
+      "localPath": "/sites/brooklinen/products/feed-test_600x-df9613c4.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 38821
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_24-06_Bedding_Classic_Storm_MIB_1x_WOgrey_bb27770a-fa1c-4426-9a71-6c48be08ca4c_600x.jpg?v=1722532639": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_24-06_Bedding_Classic_Storm_MIB_1x_WOgrey_bb27770a-fa1c-4426-9a71-6c48be08ca4c_600x.jpg?v=1722532639",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_24-06_Bedding_Classic_Storm_MIB_1x_WOgrey_bb27770a-fa1c-4426-9a71-6c48be08ca4c_600x.jpg?v=1722532639",
+      "localPath": "/sites/brooklinen/products/BKL_24-06_Bedding_Classic_Storm_MIB_1x_WOgrey_bb-6bb6df97.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 19569
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_23-11_Bedding_Classic_FreshMoss_Overhead_2x_PDP_WO_b5f0d51b-76a1-486a-a7f2-b597b333fd9f_600x.jpg?v=1769099152": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_23-11_Bedding_Classic_FreshMoss_Overhead_2x_PDP_WO_b5f0d51b-76a1-486a-a7f2-b597b333fd9f_600x.jpg?v=1769099152",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_23-11_Bedding_Classic_FreshMoss_Overhead_2x_PDP_WO_b5f0d51b-76a1-486a-a7f2-b597b333fd9f_600x.jpg?v=1769099152",
+      "localPath": "/sites/brooklinen/products/BKL_23-11_Bedding_Classic_FreshMoss_Overhead_2x_-bb5e61d4.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 40504
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_24-12_Bedding_Classic_White_Overhead_1_0515x_PDP_WO_1_600x.jpg?v=1760458128": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_24-12_Bedding_Classic_White_Overhead_1_0515x_PDP_WO_1_600x.jpg?v=1760458128",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_24-12_Bedding_Classic_White_Overhead_1_0515x_PDP_WO_1_600x.jpg?v=1760458128",
+      "localPath": "/sites/brooklinen/products/BKL_24-12_Bedding_Classic_White_Overhead_1_0515x-097e2943.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 18867
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-11_Bedding_Classic_Pebble_CSS_1_x_PDP_WO_600x.jpg?v=1772487751": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-11_Bedding_Classic_Pebble_CSS_1_x_PDP_WO_600x.jpg?v=1772487751",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-11_Bedding_Classic_Pebble_CSS_1_x_PDP_WO_600x.jpg?v=1772487751",
+      "localPath": "/sites/brooklinen/products/BKL_25-11_Bedding_Classic_Pebble_CSS_1_x_PDP_WO_-ae7170a6.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 16715
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_23-11_Bedding_Classic_WarmGrey_Overhead_2x_PDP_WO_e9bdb84c-4d45-4ea7-aeed-af6770549356_600x.jpg?v=1772487751": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_23-11_Bedding_Classic_WarmGrey_Overhead_2x_PDP_WO_e9bdb84c-4d45-4ea7-aeed-af6770549356_600x.jpg?v=1772487751",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_23-11_Bedding_Classic_WarmGrey_Overhead_2x_PDP_WO_e9bdb84c-4d45-4ea7-aeed-af6770549356_600x.jpg?v=1772487751",
+      "localPath": "/sites/brooklinen/products/BKL_23-11_Bedding_Classic_WarmGrey_Overhead_2x_P-cedab600.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 43768
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-11_Bedding_Classic_TandemStripeInPebble_CSS_1_x_PDP_WO_600x.jpg?v=1772487751": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-11_Bedding_Classic_TandemStripeInPebble_CSS_1_x_PDP_WO_600x.jpg?v=1772487751",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-11_Bedding_Classic_TandemStripeInPebble_CSS_1_x_PDP_WO_600x.jpg?v=1772487751",
+      "localPath": "/sites/brooklinen/products/BKL_25-11_Bedding_Classic_TandemStripeInPebble_C-630d5ae5.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 33718
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-11_Bedding_Luxe_White_CSS_1_x_PDP_WO_9a378fea-9426-49f3-86ef-f15ec88bdae4_600x.jpg?v=1779223625": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-11_Bedding_Luxe_White_CSS_1_x_PDP_WO_9a378fea-9426-49f3-86ef-f15ec88bdae4_600x.jpg?v=1779223625",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-11_Bedding_Luxe_White_CSS_1_x_PDP_WO_9a378fea-9426-49f3-86ef-f15ec88bdae4_600x.jpg?v=1779223625",
+      "localPath": "/sites/brooklinen/products/BKL_25-11_Bedding_Luxe_White_CSS_1_x_PDP_WO_9a37-b511e62e.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 10200
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-11_Bedding_Classic_Cream_CSS_1_x_PDP_WO_600x.jpg?v=1772487751": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-11_Bedding_Classic_Cream_CSS_1_x_PDP_WO_600x.jpg?v=1772487751",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-11_Bedding_Classic_Cream_CSS_1_x_PDP_WO_600x.jpg?v=1772487751",
+      "localPath": "/sites/brooklinen/products/BKL_25-11_Bedding_Classic_Cream_CSS_1_x_PDP_WO_6-c3b1e52b.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 14738
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_23-11_Bedding_Classic_FreshMoss_Overhead_2x_PDP_WO_174bdf81-5a10-4be0-a79f-69c78c01cd54_600x.jpg?v=1772487751": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_23-11_Bedding_Classic_FreshMoss_Overhead_2x_PDP_WO_174bdf81-5a10-4be0-a79f-69c78c01cd54_600x.jpg?v=1772487751",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_23-11_Bedding_Classic_FreshMoss_Overhead_2x_PDP_WO_174bdf81-5a10-4be0-a79f-69c78c01cd54_600x.jpg?v=1772487751",
+      "localPath": "/sites/brooklinen/products/BKL_23-11_Bedding_Classic_FreshMoss_Overhead_2x_-298b7193.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 40504
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-04_Luxe_Shot9_1519x_PDP_WO_73041cde-56e4-4ac6-8a73-c8fdcf88f58b_600x.jpg?v=1779312560": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-04_Luxe_Shot9_1519x_PDP_WO_73041cde-56e4-4ac6-8a73-c8fdcf88f58b_600x.jpg?v=1779312560",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-04_Luxe_Shot9_1519x_PDP_WO_73041cde-56e4-4ac6-8a73-c8fdcf88f58b_600x.jpg?v=1779312560",
+      "localPath": "/sites/brooklinen/products/BKL_26-04_Luxe_Shot9_1519x_PDP_WO_73041cde-56e4--5436cc65.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 50940
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_23-11_Bedding_Luxe_Cream_Straight_2x_PDP_WO_9f47b426-4a37-48a0-ba27-bdb42e41903b_600x.jpg?v=1772487751": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_23-11_Bedding_Luxe_Cream_Straight_2x_PDP_WO_9f47b426-4a37-48a0-ba27-bdb42e41903b_600x.jpg?v=1772487751",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_23-11_Bedding_Luxe_Cream_Straight_2x_PDP_WO_9f47b426-4a37-48a0-ba27-bdb42e41903b_600x.jpg?v=1772487751",
+      "localPath": "/sites/brooklinen/products/BKL_23-11_Bedding_Luxe_Cream_Straight_2x_PDP_WO_-93a35cc9.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 22559
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-11_Bedding_Classic_TandemStripeInFreshMoss_CSS_1_x_PDP_WO_600x.jpg?v=1772487751": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-11_Bedding_Classic_TandemStripeInFreshMoss_CSS_1_x_PDP_WO_600x.jpg?v=1772487751",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-11_Bedding_Classic_TandemStripeInFreshMoss_CSS_1_x_PDP_WO_600x.jpg?v=1772487751",
+      "localPath": "/sites/brooklinen/products/BKL_25-11_Bedding_Classic_TandemStripeInFreshMos-179da78e.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 35013
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-01_Bedding_Classic_TandemStripeinPebble_Overhead_1x_PDP_WO_600x.jpg?v=1772487751": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-01_Bedding_Classic_TandemStripeinPebble_Overhead_1x_PDP_WO_600x.jpg?v=1772487751",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-01_Bedding_Classic_TandemStripeinPebble_Overhead_1x_PDP_WO_600x.jpg?v=1772487751",
+      "localPath": "/sites/brooklinen/products/BKL_25-01_Bedding_Classic_TandemStripeinPebble_O-c0e3586a.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 99108
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-01_Bedding_Classic_TandemStripeinFreshMoss_Overhead_1x_PDP_WO_600x.jpg?v=1772487751": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-01_Bedding_Classic_TandemStripeinFreshMoss_Overhead_1x_PDP_WO_600x.jpg?v=1772487751",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-01_Bedding_Classic_TandemStripeinFreshMoss_Overhead_1x_PDP_WO_600x.jpg?v=1772487751",
+      "localPath": "/sites/brooklinen/products/BKL_25-01_Bedding_Classic_TandemStripeinFreshMos-d22626aa.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 125408
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-11_Bedding_Classic_FreshMoss_CSS_1_x_PDP_WO_600x.jpg?v=1772487751": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-11_Bedding_Classic_FreshMoss_CSS_1_x_PDP_WO_600x.jpg?v=1772487751",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-11_Bedding_Classic_FreshMoss_CSS_1_x_PDP_WO_600x.jpg?v=1772487751",
+      "localPath": "/sites/brooklinen/products/BKL_25-11_Bedding_Classic_FreshMoss_CSS_1_x_PDP_-bd5f0e21.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 17168
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-07_Bedding_Luxe_Cloud_COR_1x_WOgrey_76b053f9-b4ba-4024-88d4-00d50ff1d2c7_600x.jpg?v=1779223624": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-07_Bedding_Luxe_Cloud_COR_1x_WOgrey_76b053f9-b4ba-4024-88d4-00d50ff1d2c7_600x.jpg?v=1779223624",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-07_Bedding_Luxe_Cloud_COR_1x_WOgrey_76b053f9-b4ba-4024-88d4-00d50ff1d2c7_600x.jpg?v=1779223624",
+      "localPath": "/sites/brooklinen/products/BKL_25-07_Bedding_Luxe_Cloud_COR_1x_WOgrey_76b05-2b0be5ea.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 13652
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-11_Bedding_Luxe_Cream_CSS_1_x_PDP_WO_46c775d2-f9ee-4190-89ef-64734092a337_600x.jpg?v=1779223625": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-11_Bedding_Luxe_Cream_CSS_1_x_PDP_WO_46c775d2-f9ee-4190-89ef-64734092a337_600x.jpg?v=1779223625",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-11_Bedding_Luxe_Cream_CSS_1_x_PDP_WO_46c775d2-f9ee-4190-89ef-64734092a337_600x.jpg?v=1779223625",
+      "localPath": "/sites/brooklinen/products/BKL_25-11_Bedding_Luxe_Cream_CSS_1_x_PDP_WO_46c7-1e2a743f.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 13109
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_23-09_Bath_Robe_White_Flat_1x_c16809ff-2055-4153-bbef-c918024fc2b2_600x.jpg?v=1772487507": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_23-09_Bath_Robe_White_Flat_1x_c16809ff-2055-4153-bbef-c918024fc2b2_600x.jpg?v=1772487507",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_23-09_Bath_Robe_White_Flat_1x_c16809ff-2055-4153-bbef-c918024fc2b2_600x.jpg?v=1772487507",
+      "localPath": "/sites/brooklinen/products/BKL_23-09_Bath_Robe_White_Flat_1x_c16809ff-2055--e6471b05.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 13297
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-03_Bedding_Luxe_2.0_Pebble_1x_PDP_WO_84636671-eec4-4854-842b-e9af680cca92_600x.jpg?v=1779226734": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-03_Bedding_Luxe_2.0_Pebble_1x_PDP_WO_84636671-eec4-4854-842b-e9af680cca92_600x.jpg?v=1779226734",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-03_Bedding_Luxe_2.0_Pebble_1x_PDP_WO_84636671-eec4-4854-842b-e9af680cca92_600x.jpg?v=1779226734",
+      "localPath": "/sites/brooklinen/products/BKL_26-03_Bedding_Luxe_2-0_Pebble_1x_PDP_WO_8463-ffc119b5.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 32753
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-11_FebNewnessSP2_Shot2_167x_WO_PDP_a14fc8e2-181d-4041-92ae-2329677ba9b5_600x.jpg?v=1772487507": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-11_FebNewnessSP2_Shot2_167x_WO_PDP_a14fc8e2-181d-4041-92ae-2329677ba9b5_600x.jpg?v=1772487507",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-11_FebNewnessSP2_Shot2_167x_WO_PDP_a14fc8e2-181d-4041-92ae-2329677ba9b5_600x.jpg?v=1772487507",
+      "localPath": "/sites/brooklinen/products/BKL_25-11_FebNewnessSP2_Shot2_167x_WO_PDP_a14fc8-0492118a.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 106820
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-04_BKL_LuxeOverheads_Look3_0413x_PDP_WO_32301401-6890-4ba3-be96-8379d005c89b_600x.jpg?v=1779312679": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-04_BKL_LuxeOverheads_Look3_0413x_PDP_WO_32301401-6890-4ba3-be96-8379d005c89b_600x.jpg?v=1779312679",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-04_BKL_LuxeOverheads_Look3_0413x_PDP_WO_32301401-6890-4ba3-be96-8379d005c89b_600x.jpg?v=1779312679",
+      "localPath": "/sites/brooklinen/products/BKL_26-04_BKL_LuxeOverheads_Look3_0413x_PDP_WO_3-8d04656b.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 84565
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-03_Bedding_Luxe_2.0_Cloud_1x_PDP_WO_b6d1c732-55ea-4de2-b4e7-001c591abe39_600x.jpg?v=1779226734": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-03_Bedding_Luxe_2.0_Cloud_1x_PDP_WO_b6d1c732-55ea-4de2-b4e7-001c591abe39_600x.jpg?v=1779226734",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-03_Bedding_Luxe_2.0_Cloud_1x_PDP_WO_b6d1c732-55ea-4de2-b4e7-001c591abe39_600x.jpg?v=1779226734",
+      "localPath": "/sites/brooklinen/products/BKL_26-03_Bedding_Luxe_2-0_Cloud_1x_PDP_WO_b6d1c-d0f8879f.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 29697
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-11_Bedding_Luxe_Pebble_CSS_1_x_PDP_WO_379f8e1b-407a-4baf-b7fc-37e125c7c27a_600x.jpg?v=1779223624": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-11_Bedding_Luxe_Pebble_CSS_1_x_PDP_WO_379f8e1b-407a-4baf-b7fc-37e125c7c27a_600x.jpg?v=1779223624",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-11_Bedding_Luxe_Pebble_CSS_1_x_PDP_WO_379f8e1b-407a-4baf-b7fc-37e125c7c27a_600x.jpg?v=1779223624",
+      "localPath": "/sites/brooklinen/products/BKL_25-11_Bedding_Luxe_Pebble_CSS_1_x_PDP_WO_379-03994e10.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 16454
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-11_Bedding_Luxe_TandemStripeInPebble_CSS_1_x_PDP_WO_296795cc-0fab-470b-8758-91485c8c5cbb_600x.jpg?v=1779223625": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-11_Bedding_Luxe_TandemStripeInPebble_CSS_1_x_PDP_WO_296795cc-0fab-470b-8758-91485c8c5cbb_600x.jpg?v=1779223625",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-11_Bedding_Luxe_TandemStripeInPebble_CSS_1_x_PDP_WO_296795cc-0fab-470b-8758-91485c8c5cbb_600x.jpg?v=1779223625",
+      "localPath": "/sites/brooklinen/products/BKL_25-11_Bedding_Luxe_TandemStripeInPebble_CSS_-f51721b3.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 30323
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-04_Luxe_Shot6_1161xAlt_PDP_WO_bf9ae09d-5790-4c83-8ab5-cd67a9b72f17_600x.jpg?v=1779312561": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-04_Luxe_Shot6_1161xAlt_PDP_WO_bf9ae09d-5790-4c83-8ab5-cd67a9b72f17_600x.jpg?v=1779312561",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-04_Luxe_Shot6_1161xAlt_PDP_WO_bf9ae09d-5790-4c83-8ab5-cd67a9b72f17_600x.jpg?v=1779312561",
+      "localPath": "/sites/brooklinen/products/BKL_26-04_Luxe_Shot6_1161xAlt_PDP_WO_bf9ae09d-57-7bd07803.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 53871
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/products/BKL_21-02_Q1Evergreen_Lifestyle_Look1_Shot1_1_0027x_8f0d2cfc-ce12-47b8-95b9-035748873920_600x.jpg?v=1758815948": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/products/BKL_21-02_Q1Evergreen_Lifestyle_Look1_Shot1_1_0027x_8f0d2cfc-ce12-47b8-95b9-035748873920_600x.jpg?v=1758815948",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/products/BKL_21-02_Q1Evergreen_Lifestyle_Look1_Shot1_1_0027x_8f0d2cfc-ce12-47b8-95b9-035748873920_600x.jpg?v=1758815948",
+      "localPath": "/sites/brooklinen/products/BKL_21-02_Q1Evergreen_Lifestyle_Look1_Shot1_1_00-7ee04686.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 56246
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_23-09_Bath_Robe_Smoke_Flat_1x_ec9384cd-1640-456e-9e12-ed2bb85b5d36_600x.jpg?v=1772487507": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_23-09_Bath_Robe_Smoke_Flat_1x_ec9384cd-1640-456e-9e12-ed2bb85b5d36_600x.jpg?v=1772487507",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_23-09_Bath_Robe_Smoke_Flat_1x_ec9384cd-1640-456e-9e12-ed2bb85b5d36_600x.jpg?v=1772487507",
+      "localPath": "/sites/brooklinen/products/BKL_23-09_Bath_Robe_Smoke_Flat_1x_ec9384cd-1640--77214455.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 21020
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_23-09_Bath_Robe_Graphite_Flat_1x_727f31e1-92d5-43dd-8ba4-22be4601db54_600x.jpg?v=1772487507": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_23-09_Bath_Robe_Graphite_Flat_1x_727f31e1-92d5-43dd-8ba4-22be4601db54_600x.jpg?v=1772487507",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_23-09_Bath_Robe_Graphite_Flat_1x_727f31e1-92d5-43dd-8ba4-22be4601db54_600x.jpg?v=1772487507",
+      "localPath": "/sites/brooklinen/products/BKL_23-09_Bath_Robe_Graphite_Flat_1x_727f31e1-92-03219921.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 18943
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-12_Bath_SP_Robe_StripedFrost_Flat_1_x_PDP_WO_600x.jpg?v=1772487507": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-12_Bath_SP_Robe_StripedFrost_Flat_1_x_PDP_WO_600x.jpg?v=1772487507",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-12_Bath_SP_Robe_StripedFrost_Flat_1_x_PDP_WO_600x.jpg?v=1772487507",
+      "localPath": "/sites/brooklinen/products/BKL_25-12_Bath_SP_Robe_StripedFrost_Flat_1_x_PDP-72aa1a3b.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 39642
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_23-05_Bedding_ClassicLuxe_White_DUV_1x_WOgrey_600x.jpg?v=1766420851": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_23-05_Bedding_ClassicLuxe_White_DUV_1x_WOgrey_600x.jpg?v=1766420851",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_23-05_Bedding_ClassicLuxe_White_DUV_1x_WOgrey_600x.jpg?v=1766420851",
+      "localPath": "/sites/brooklinen/products/BKL_23-05_Bedding_ClassicLuxe_White_DUV_1x_WOgre-66663b17.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 13569
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-07_RobeOnFigureFitGuide_SuperPlush_Solo_1000x_1x1_PDP_WO_bef88ae1-8801-47a2-9c99-215a31fb7fdf_600x.jpg?v=1772487507": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-07_RobeOnFigureFitGuide_SuperPlush_Solo_1000x_1x1_PDP_WO_bef88ae1-8801-47a2-9c99-215a31fb7fdf_600x.jpg?v=1772487507",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-07_RobeOnFigureFitGuide_SuperPlush_Solo_1000x_1x1_PDP_WO_bef88ae1-8801-47a2-9c99-215a31fb7fdf_600x.jpg?v=1772487507",
+      "localPath": "/sites/brooklinen/products/BKL_25-07_RobeOnFigureFitGuide_SuperPlush_Solo_1-c4f7dbee.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 27011
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-01_Bedding_Classic_TandemStripeinPebble_DUV_1x_WOgrey_600x.jpg?v=1758815948": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-01_Bedding_Classic_TandemStripeinPebble_DUV_1x_WOgrey_600x.jpg?v=1758815948",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-01_Bedding_Classic_TandemStripeinPebble_DUV_1x_WOgrey_600x.jpg?v=1758815948",
+      "localPath": "/sites/brooklinen/products/BKL_25-01_Bedding_Classic_TandemStripeinPebble_D-7296ca15.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 46031
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/products/BKL_21-02_Q1Evergreen_Lifestyle_Look4_Shot1_1_0198x_62c8861f-9bd2-4a64-a500-da72d04542f1_600x.jpg?v=1758815948": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/products/BKL_21-02_Q1Evergreen_Lifestyle_Look4_Shot1_1_0198x_62c8861f-9bd2-4a64-a500-da72d04542f1_600x.jpg?v=1758815948",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/products/BKL_21-02_Q1Evergreen_Lifestyle_Look4_Shot1_1_0198x_62c8861f-9bd2-4a64-a500-da72d04542f1_600x.jpg?v=1758815948",
+      "localPath": "/sites/brooklinen/products/BKL_21-02_Q1Evergreen_Lifestyle_Look4_Shot1_1_01-a548a24d.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 72916
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/products/classic_cream_duvet-cover_silo_600x.jpg?v=1758815948": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/products/classic_cream_duvet-cover_silo_600x.jpg?v=1758815948",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/products/classic_cream_duvet-cover_silo_600x.jpg?v=1758815948",
+      "localPath": "/sites/brooklinen/products/classic_cream_duvet-cover_silo_600x-4d8d72e1.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 15753
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_23-11_Bedding_Classic_FreshMoss_Overhead_2x_PDP_WO_ccf3d7ea-2609-4646-9e4b-c68c9d9b7f1a_600x.jpg?v=1758815948": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_23-11_Bedding_Classic_FreshMoss_Overhead_2x_PDP_WO_ccf3d7ea-2609-4646-9e4b-c68c9d9b7f1a_600x.jpg?v=1758815948",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_23-11_Bedding_Classic_FreshMoss_Overhead_2x_PDP_WO_ccf3d7ea-2609-4646-9e4b-c68c9d9b7f1a_600x.jpg?v=1758815948",
+      "localPath": "/sites/brooklinen/products/BKL_23-11_Bedding_Classic_FreshMoss_Overhead_2x_-6de4f8d8.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 40504
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_23-05_Bedding_Classic_FreshMoss_DUV_1x_WOgrey_600x.jpg?v=1758815948": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_23-05_Bedding_Classic_FreshMoss_DUV_1x_WOgrey_600x.jpg?v=1758815948",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_23-05_Bedding_Classic_FreshMoss_DUV_1x_WOgrey_600x.jpg?v=1758815948",
+      "localPath": "/sites/brooklinen/products/BKL_23-05_Bedding_Classic_FreshMoss_DUV_1x_WOgre-23c8c685.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 18192
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-01_Bedding_Classic_TandemStripeinFreshMoss_DUV_1x_WOgrey_600x.jpg?v=1758815948": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-01_Bedding_Classic_TandemStripeinFreshMoss_DUV_1x_WOgrey_600x.jpg?v=1758815948",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-01_Bedding_Classic_TandemStripeinFreshMoss_DUV_1x_WOgrey_600x.jpg?v=1758815948",
+      "localPath": "/sites/brooklinen/products/BKL_25-01_Bedding_Classic_TandemStripeinFreshMos-63977b52.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 45848
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-01_Bedding_Classic_TandemStripeinPebble_Overhead_1x_PDP_WO_dd07fbd4-0928-4f1a-896b-f1165306bb45_600x.jpg?v=1758815948": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-01_Bedding_Classic_TandemStripeinPebble_Overhead_1x_PDP_WO_dd07fbd4-0928-4f1a-896b-f1165306bb45_600x.jpg?v=1758815948",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-01_Bedding_Classic_TandemStripeinPebble_Overhead_1x_PDP_WO_dd07fbd4-0928-4f1a-896b-f1165306bb45_600x.jpg?v=1758815948",
+      "localPath": "/sites/brooklinen/products/BKL_25-01_Bedding_Classic_TandemStripeinPebble_O-7f6ac10a.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 99108
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-01_Bedding_Classic_TandemStripeinFreshMoss_Overhead_1x_PDP_WO_14fbc638-c6e1-4d7c-94bf-89ba4ffc7983_600x.jpg?v=1758815948": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-01_Bedding_Classic_TandemStripeinFreshMoss_Overhead_1x_PDP_WO_14fbc638-c6e1-4d7c-94bf-89ba4ffc7983_600x.jpg?v=1758815948",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-01_Bedding_Classic_TandemStripeinFreshMoss_Overhead_1x_PDP_WO_14fbc638-c6e1-4d7c-94bf-89ba4ffc7983_600x.jpg?v=1758815948",
+      "localPath": "/sites/brooklinen/products/BKL_25-01_Bedding_Classic_TandemStripeinFreshMos-8f5aa62f.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 125408
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_18-05_Bath_Robe_SP_Graohite_Folded_1x_WOgrey_600x.jpg?v=1772487507": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_18-05_Bath_Robe_SP_Graohite_Folded_1x_WOgrey_600x.jpg?v=1772487507",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_18-05_Bath_Robe_SP_Graohite_Folded_1x_WOgrey_600x.jpg?v=1772487507",
+      "localPath": "/sites/brooklinen/products/BKL_18-05_Bath_Robe_SP_Graohite_Folded_1x_WOgrey-0214341b.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 53880
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-06_Bath_Robe_Storm_Flat_1x_WOgrey_355e5703-0081-4ba0-b6bd-722109f83053_600x.jpg?v=1772487507": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-06_Bath_Robe_Storm_Flat_1x_WOgrey_355e5703-0081-4ba0-b6bd-722109f83053_600x.jpg?v=1772487507",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-06_Bath_Robe_Storm_Flat_1x_WOgrey_355e5703-0081-4ba0-b6bd-722109f83053_600x.jpg?v=1772487507",
+      "localPath": "/sites/brooklinen/products/BKL_25-06_Bath_Robe_Storm_Flat_1x_WOgrey_355e570-8bd5e0ef.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 24774
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-08_TOB_ThrowBlanket_SuperFluff_Cappuccino_1x_PDP_WO_600x.jpg?v=1789745627": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-08_TOB_ThrowBlanket_SuperFluff_Cappuccino_1x_PDP_WO_600x.jpg?v=1789745627",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-08_TOB_ThrowBlanket_SuperFluff_Cappuccino_1x_PDP_WO_600x.jpg?v=1789745627",
+      "localPath": "/sites/brooklinen/products/BKL_26-08_TOB_ThrowBlanket_SuperFluff_Cappuccino-2d6a8a5c.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 114229
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-08_Bedding_Throws_Super-Fluff_Night-Sky_1x_PDP_WOgrey_600x.jpg?v=1789583055": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-08_Bedding_Throws_Super-Fluff_Night-Sky_1x_PDP_WOgrey_600x.jpg?v=1789583055",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-08_Bedding_Throws_Super-Fluff_Night-Sky_1x_PDP_WOgrey_600x.jpg?v=1789583055",
+      "localPath": "/sites/brooklinen/products/BKL_26-08_Bedding_Throws_Super-Fluff_Night-Sky_1-625f056d.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 35338
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-07_RobeOnFigureFitGuide_SuperPlush_Solo_1139x_1x1_PDP_WO_64cea188-b4b5-446c-9f89-8759e6da12a3_600x.jpg?v=1772487507": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-07_RobeOnFigureFitGuide_SuperPlush_Solo_1139x_1x1_PDP_WO_64cea188-b4b5-446c-9f89-8759e6da12a3_600x.jpg?v=1772487507",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-07_RobeOnFigureFitGuide_SuperPlush_Solo_1139x_1x1_PDP_WO_64cea188-b4b5-446c-9f89-8759e6da12a3_600x.jpg?v=1772487507",
+      "localPath": "/sites/brooklinen/products/BKL_25-07_RobeOnFigureFitGuide_SuperPlush_Solo_1-58f995e8.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 32169
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_24-04_Bedding_Waffle_White_Throws_1x_WOgrey_600x.jpg?v=1766765501": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_24-04_Bedding_Waffle_White_Throws_1x_WOgrey_600x.jpg?v=1766765501",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_24-04_Bedding_Waffle_White_Throws_1x_WOgrey_600x.jpg?v=1766765501",
+      "localPath": "/sites/brooklinen/products/BKL_24-04_Bedding_Waffle_White_Throws_1x_WOgrey_-99ec2a24.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 15061
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-08_Bedding_Throws_Super-Fluff_Cappuccino_1x_PDP_WOgrey_600x.jpg?v=1789583055": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-08_Bedding_Throws_Super-Fluff_Cappuccino_1x_PDP_WOgrey_600x.jpg?v=1789583055",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-08_Bedding_Throws_Super-Fluff_Cappuccino_1x_PDP_WOgrey_600x.jpg?v=1789583055",
+      "localPath": "/sites/brooklinen/products/BKL_26-08_Bedding_Throws_Super-Fluff_Cappuccino_-01348b35.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 44183
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_24-06_JulyMidAugCampaign_July_Look7_Shot1_945x_PDP_WO_600x.jpg?v=1766765501": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_24-06_JulyMidAugCampaign_July_Look7_Shot1_945x_PDP_WO_600x.jpg?v=1766765501",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_24-06_JulyMidAugCampaign_July_Look7_Shot1_945x_PDP_WO_600x.jpg?v=1766765501",
+      "localPath": "/sites/brooklinen/products/BKL_24-06_JulyMidAugCampaign_July_Look7_Shot1_94-77328d9b.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 69201
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-08_TOB_ThrowBlanket_SuperFluff_NightSky_1x_PDP_WO_600x.jpg?v=1789745627": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-08_TOB_ThrowBlanket_SuperFluff_NightSky_1x_PDP_WO_600x.jpg?v=1789745627",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-08_TOB_ThrowBlanket_SuperFluff_NightSky_1x_PDP_WO_600x.jpg?v=1789745627",
+      "localPath": "/sites/brooklinen/products/BKL_26-08_TOB_ThrowBlanket_SuperFluff_NightSky_1-7bf77c9d.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 97364
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-08_Bedding_Throws_Super-Fluff_Flax_1x_PDP_WOgrey_600x.jpg?v=1789583055": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-08_Bedding_Throws_Super-Fluff_Flax_1x_PDP_WOgrey_600x.jpg?v=1789583055",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-08_Bedding_Throws_Super-Fluff_Flax_1x_PDP_WOgrey_600x.jpg?v=1789583055",
+      "localPath": "/sites/brooklinen/products/BKL_26-08_Bedding_Throws_Super-Fluff_Flax_1x_PDP-38f869b7.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 50497
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-08_Bedding_Throws_Super-Fluff_WildMoss_1x_PDP_WOgrey_600x.jpg?v=1789583055": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-08_Bedding_Throws_Super-Fluff_WildMoss_1x_PDP_WOgrey_600x.jpg?v=1789583055",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-08_Bedding_Throws_Super-Fluff_WildMoss_1x_PDP_WOgrey_600x.jpg?v=1789583055",
+      "localPath": "/sites/brooklinen/products/BKL_26-08_Bedding_Throws_Super-Fluff_WildMoss_1x-ff801647.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 40741
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-08_TOB_ThrowBlanket_SuperFluff_Flax_1x_PDP_WO_600x.jpg?v=1789745627": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-08_TOB_ThrowBlanket_SuperFluff_Flax_1x_PDP_WO_600x.jpg?v=1789745627",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-08_TOB_ThrowBlanket_SuperFluff_Flax_1x_PDP_WO_600x.jpg?v=1789745627",
+      "localPath": "/sites/brooklinen/products/BKL_26-08_TOB_ThrowBlanket_SuperFluff_Flax_1x_PD-87035fb5.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 116655
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_24-07_Bedding_Throws_Waffle_Abyss_1x_WOgrey_600x.jpg?v=1766765501": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_24-07_Bedding_Throws_Waffle_Abyss_1x_WOgrey_600x.jpg?v=1766765501",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_24-07_Bedding_Throws_Waffle_Abyss_1x_WOgrey_600x.jpg?v=1766765501",
+      "localPath": "/sites/brooklinen/products/BKL_24-07_Bedding_Throws_Waffle_Abyss_1x_WOgrey_-c14405e6.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 32473
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_24-06_JulyMidAugCampaign_July_Look3_Shot1_1780x_PDP_WO_ec85709e-6dea-4b8c-a646-f304cf93bb89_600x.jpg?v=1766765501": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_24-06_JulyMidAugCampaign_July_Look3_Shot1_1780x_PDP_WO_ec85709e-6dea-4b8c-a646-f304cf93bb89_600x.jpg?v=1766765501",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_24-06_JulyMidAugCampaign_July_Look3_Shot1_1780x_PDP_WO_ec85709e-6dea-4b8c-a646-f304cf93bb89_600x.jpg?v=1766765501",
+      "localPath": "/sites/brooklinen/products/BKL_24-06_JulyMidAugCampaign_July_Look3_Shot1_17-d8af1eab.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 104277
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_24-04_Bedding_Waffle_FreshMoss_Throws_1x_WOgrey_600x.jpg?v=1766765501": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_24-04_Bedding_Waffle_FreshMoss_Throws_1x_WOgrey_600x.jpg?v=1766765501",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_24-04_Bedding_Waffle_FreshMoss_Throws_1x_WOgrey_600x.jpg?v=1766765501",
+      "localPath": "/sites/brooklinen/products/BKL_24-04_Bedding_Waffle_FreshMoss_Throws_1x_WOg-b8d2f01f.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 26571
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-08_TOB_ThrowBlanket_SuperFluff_WildMoss_1x_PDP_WO_600x.jpg?v=1789745627": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-08_TOB_ThrowBlanket_SuperFluff_WildMoss_1x_PDP_WO_600x.jpg?v=1789745627",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-08_TOB_ThrowBlanket_SuperFluff_WildMoss_1x_PDP_WO_600x.jpg?v=1789745627",
+      "localPath": "/sites/brooklinen/products/BKL_26-08_TOB_ThrowBlanket_SuperFluff_WildMoss_1-c8f96311.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 109768
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-07_Bedding_Throws_Waffle_ForestwoodCheck_1x_PDP_WOgrey_600x.jpg?v=1784835000": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-07_Bedding_Throws_Waffle_ForestwoodCheck_1x_PDP_WOgrey_600x.jpg?v=1784835000",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-07_Bedding_Throws_Waffle_ForestwoodCheck_1x_PDP_WOgrey_600x.jpg?v=1784835000",
+      "localPath": "/sites/brooklinen/products/BKL_26-07_Bedding_Throws_Waffle_ForestwoodCheck_-ab991690.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 52995
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-03_Bedding_Throws_Waffle_FrenchBlueMulti_Flatlay_2x_8fe9e015-b2e1-430b-99c3-0975b6ec7a14_600x.jpg?v=1775766753": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-03_Bedding_Throws_Waffle_FrenchBlueMulti_Flatlay_2x_8fe9e015-b2e1-430b-99c3-0975b6ec7a14_600x.jpg?v=1775766753",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-03_Bedding_Throws_Waffle_FrenchBlueMulti_Flatlay_2x_8fe9e015-b2e1-430b-99c3-0975b6ec7a14_600x.jpg?v=1775766753",
+      "localPath": "/sites/brooklinen/products/BKL_26-03_Bedding_Throws_Waffle_FrenchBlueMulti_-9caea608.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 88630
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_24-08_Bedding_Blanket_Waffle_Abyss_1_0598x_PDP_WO_600x.jpg?v=1772215052": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_24-08_Bedding_Blanket_Waffle_Abyss_1_0598x_PDP_WO_600x.jpg?v=1772215052",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_24-08_Bedding_Blanket_Waffle_Abyss_1_0598x_PDP_WO_600x.jpg?v=1772215052",
+      "localPath": "/sites/brooklinen/products/BKL_24-08_Bedding_Blanket_Waffle_Abyss_1_0598x_P-86b1dea3.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 71234
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_24-07_Bedding_Throws_Waffle_FrenchBlueMulti_1_x_PDP_WO_600x.jpg?v=1775766753": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_24-07_Bedding_Throws_Waffle_FrenchBlueMulti_1_x_PDP_WO_600x.jpg?v=1775766753",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_24-07_Bedding_Throws_Waffle_FrenchBlueMulti_1_x_PDP_WO_600x.jpg?v=1775766753",
+      "localPath": "/sites/brooklinen/products/BKL_24-07_Bedding_Throws_Waffle_FrenchBlueMulti_-13c1b1e4.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 48977
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_24-01_Bath_Waffle_Robe_White_Flat_1x_WOgrey_600x.jpg?v=1775677099": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_24-01_Bath_Waffle_Robe_White_Flat_1x_WOgrey_600x.jpg?v=1775677099",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_24-01_Bath_Waffle_Robe_White_Flat_1x_WOgrey_600x.jpg?v=1775677099",
+      "localPath": "/sites/brooklinen/products/BKL_24-01_Bath_Waffle_Robe_White_Flat_1x_WOgrey_-5986a3d4.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 27553
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_24-02_Spring2NewArrivals_Bed_Shot31_2155x_PDP_WO_b0209dff-c64e-4f99-a288-d2ced1e2a3a1_600x.jpg?v=1775677099": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_24-02_Spring2NewArrivals_Bed_Shot31_2155x_PDP_WO_b0209dff-c64e-4f99-a288-d2ced1e2a3a1_600x.jpg?v=1775677099",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_24-02_Spring2NewArrivals_Bed_Shot31_2155x_PDP_WO_b0209dff-c64e-4f99-a288-d2ced1e2a3a1_600x.jpg?v=1775677099",
+      "localPath": "/sites/brooklinen/products/BKL_24-02_Spring2NewArrivals_Bed_Shot31_2155x_PD-f032daa5.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 59772
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_24-04_Bath_Waffle_Pebble_Flatlay_1x_WOgrey_600x.jpg?v=1775677099": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_24-04_Bath_Waffle_Pebble_Flatlay_1x_WOgrey_600x.jpg?v=1775677099",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_24-04_Bath_Waffle_Pebble_Flatlay_1x_WOgrey_600x.jpg?v=1775677099",
+      "localPath": "/sites/brooklinen/products/BKL_24-04_Bath_Waffle_Pebble_Flatlay_1x_WOgrey_6-f92a4bca.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 48891
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_24-06_JulyMidAugCampaign_July_LookCSS_Shot4_587x_PDP_WO_600x.jpg?v=1775677099": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_24-06_JulyMidAugCampaign_July_LookCSS_Shot4_587x_PDP_WO_600x.jpg?v=1775677099",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_24-06_JulyMidAugCampaign_July_LookCSS_Shot4_587x_PDP_WO_600x.jpg?v=1775677099",
+      "localPath": "/sites/brooklinen/products/BKL_24-06_JulyMidAugCampaign_July_LookCSS_Shot4_-ebfb2dc4.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 81390
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-05_TOB_ThrowBlanket_DreamweaveWaffle_SunflowerCheck_1x_PDP_WO_600x.jpg?v=1787244796": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-05_TOB_ThrowBlanket_DreamweaveWaffle_SunflowerCheck_1x_PDP_WO_600x.jpg?v=1787244796",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-05_TOB_ThrowBlanket_DreamweaveWaffle_SunflowerCheck_1x_PDP_WO_600x.jpg?v=1787244796",
+      "localPath": "/sites/brooklinen/products/BKL_26-05_TOB_ThrowBlanket_DreamweaveWaffle_Sunf-ad7b167c.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 108087
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-07_Bedding_Throws_Waffle_SunflowerCheck_1x_PDP_WOgrey_600x.jpg?v=1784835000": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-07_Bedding_Throws_Waffle_SunflowerCheck_1x_PDP_WOgrey_600x.jpg?v=1784835000",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-07_Bedding_Throws_Waffle_SunflowerCheck_1x_PDP_WOgrey_600x.jpg?v=1784835000",
+      "localPath": "/sites/brooklinen/products/BKL_26-07_Bedding_Throws_Waffle_SunflowerCheck_1-363d818d.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 48527
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/26-11_BFCM_Mulberry-Silk-Bundle_Ivory_PDP_WO_600x.jpg?v=1794861794": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/26-11_BFCM_Mulberry-Silk-Bundle_Ivory_PDP_WO_600x.jpg?v=1794861794",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/26-11_BFCM_Mulberry-Silk-Bundle_Ivory_PDP_WO_600x.jpg?v=1794861794",
+      "localPath": "/sites/brooklinen/products/26-11_BFCM_Mulberry-Silk-Bundle_Ivory_PDP_WO_600-e8395875.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 8193
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-05_TOB_ThrowBlanket_DreamweaveWaffle_ForestwoodCheck_1x_PDP_WO_600x.jpg?v=1787244796": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-05_TOB_ThrowBlanket_DreamweaveWaffle_ForestwoodCheck_1x_PDP_WO_600x.jpg?v=1787244796",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-05_TOB_ThrowBlanket_DreamweaveWaffle_ForestwoodCheck_1x_PDP_WO_600x.jpg?v=1787244796",
+      "localPath": "/sites/brooklinen/products/BKL_26-05_TOB_ThrowBlanket_DreamweaveWaffle_Fore-6cb47bfd.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 102873
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/products/BKL_20-11_Accessories_Silk_IvoryLifestyle_Shot3_1x-copy_79a51ae7-83b5-4865-8156-8933c833c618_600x.jpg?v=1760998059": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/products/BKL_20-11_Accessories_Silk_IvoryLifestyle_Shot3_1x-copy_79a51ae7-83b5-4865-8156-8933c833c618_600x.jpg?v=1760998059",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/products/BKL_20-11_Accessories_Silk_IvoryLifestyle_Shot3_1x-copy_79a51ae7-83b5-4865-8156-8933c833c618_600x.jpg?v=1760998059",
+      "localPath": "/sites/brooklinen/products/BKL_20-11_Accessories_Silk_IvoryLifestyle_Shot3_-a198e11b.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 43635
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_24-02_Spring2NewArrivals_Bed_Shot31_2155x_PDP_WO_600x.jpg?v=1775677099": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_24-02_Spring2NewArrivals_Bed_Shot31_2155x_PDP_WO_600x.jpg?v=1775677099",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_24-02_Spring2NewArrivals_Bed_Shot31_2155x_PDP_WO_600x.jpg?v=1775677099",
+      "localPath": "/sites/brooklinen/products/BKL_24-02_Spring2NewArrivals_Bed_Shot31_2155x_PD-f0aacd22.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 59772
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_24-01_Bath_Waffle_Robe_Onyx_Flat_1x_WOgrey_600x.jpg?v=1775677099": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_24-01_Bath_Waffle_Robe_Onyx_Flat_1x_WOgrey_600x.jpg?v=1775677099",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_24-01_Bath_Waffle_Robe_Onyx_Flat_1x_WOgrey_600x.jpg?v=1775677099",
+      "localPath": "/sites/brooklinen/products/BKL_24-01_Bath_Waffle_Robe_Onyx_Flat_1x_WOgrey_6-fe4a54ef.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 39475
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/250724_BKL_ModelFitGuide_0335x_1x1_PDP_WO_600x.jpg?v=1775677099": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/250724_BKL_ModelFitGuide_0335x_1x1_PDP_WO_600x.jpg?v=1775677099",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/250724_BKL_ModelFitGuide_0335x_1x1_PDP_WO_600x.jpg?v=1775677099",
+      "localPath": "/sites/brooklinen/products/250724_BKL_ModelFitGuide_0335x_1x1_PDP_WO_600x-34442e5d.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 35498
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-03_Bath_Waffle_Robe_Abyss_Flat_1x_WOgrey_52fcc329-29d3-4997-be59-1af95e4a31ff_600x.jpg?v=1775677099": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-03_Bath_Waffle_Robe_Abyss_Flat_1x_WOgrey_52fcc329-29d3-4997-be59-1af95e4a31ff_600x.jpg?v=1775677099",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-03_Bath_Waffle_Robe_Abyss_Flat_1x_WOgrey_52fcc329-29d3-4997-be59-1af95e4a31ff_600x.jpg?v=1775677099",
+      "localPath": "/sites/brooklinen/products/BKL_25-03_Bath_Waffle_Robe_Abyss_Flat_1x_WOgrey_-85352963.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 47225
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/26-11_BFCM_Mulberry-Silk-Bundle_Carbon_PDP_WO_600x.jpg?v=1794861795": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/26-11_BFCM_Mulberry-Silk-Bundle_Carbon_PDP_WO_600x.jpg?v=1794861795",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/26-11_BFCM_Mulberry-Silk-Bundle_Carbon_PDP_WO_600x.jpg?v=1794861795",
+      "localPath": "/sites/brooklinen/products/26-11_BFCM_Mulberry-Silk-Bundle_Carbon_PDP_WO_60-6d956d16.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 12140
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_24-07_Silk_PCEyemaskBundle_2Ax_WOgrey_600x.jpg?v=1760998059": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_24-07_Silk_PCEyemaskBundle_2Ax_WOgrey_600x.jpg?v=1760998059",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_24-07_Silk_PCEyemaskBundle_2Ax_WOgrey_600x.jpg?v=1760998059",
+      "localPath": "/sites/brooklinen/products/BKL_24-07_Silk_PCEyemaskBundle_2Ax_WOgrey_600x-8780a11a.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 18351
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/26-11_BFCM_Super-Plush-Complete-Get-Ready-With-Me-Bundle_White_PDP_WO_600x.jpg?v=1794849151": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/26-11_BFCM_Super-Plush-Complete-Get-Ready-With-Me-Bundle_White_PDP_WO_600x.jpg?v=1794849151",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/26-11_BFCM_Super-Plush-Complete-Get-Ready-With-Me-Bundle_White_PDP_WO_600x.jpg?v=1794849151",
+      "localPath": "/sites/brooklinen/products/26-11_BFCM_Super-Plush-Complete-Get-Ready-With-M-de90fe3a.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 25308
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/products/carbon-silk-pillowcase_lifestyle1_80e726a3-1ae2-4af1-a04b-4d26a3ac542c_600x.jpg?v=1753206493": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/products/carbon-silk-pillowcase_lifestyle1_80e726a3-1ae2-4af1-a04b-4d26a3ac542c_600x.jpg?v=1753206493",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/products/carbon-silk-pillowcase_lifestyle1_80e726a3-1ae2-4af1-a04b-4d26a3ac542c_600x.jpg?v=1753206493",
+      "localPath": "/sites/brooklinen/products/carbon-silk-pillowcase_lifestyle1_80e726a3-1ae2--be54ad0c.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 44528
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_24-07_Silk_Driftwood_Detail_1x_WOgrey_600x.jpg?v=1760998059": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_24-07_Silk_Driftwood_Detail_1x_WOgrey_600x.jpg?v=1760998059",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_24-07_Silk_Driftwood_Detail_1x_WOgrey_600x.jpg?v=1760998059",
+      "localPath": "/sites/brooklinen/products/BKL_24-07_Silk_Driftwood_Detail_1x_WOgrey_600x-f88c9c43.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 83849
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-08_Silk_TandemStripeinStorm_Abyss_PCEyemaskBundle_1x_WOgrey_600x.jpg?v=1760998059": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-08_Silk_TandemStripeinStorm_Abyss_PCEyemaskBundle_1x_WOgrey_600x.jpg?v=1760998059",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-08_Silk_TandemStripeinStorm_Abyss_PCEyemaskBundle_1x_WOgrey_600x.jpg?v=1760998059",
+      "localPath": "/sites/brooklinen/products/BKL_25-08_Silk_TandemStripeinStorm_Abyss_PCEyema-87a14f9a.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 46092
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-08_Silk_TandemStripeinStorm_Detail_1x_WOgrey_b6b7f400-b0af-4eb6-8410-836ea19b4d97_600x.jpg?v=1760997829": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-08_Silk_TandemStripeinStorm_Detail_1x_WOgrey_b6b7f400-b0af-4eb6-8410-836ea19b4d97_600x.jpg?v=1760997829",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-08_Silk_TandemStripeinStorm_Detail_1x_WOgrey_b6b7f400-b0af-4eb6-8410-836ea19b4d97_600x.jpg?v=1760997829",
+      "localPath": "/sites/brooklinen/products/BKL_25-08_Silk_TandemStripeinStorm_Detail_1x_WOg-506bbf30.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 94632
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/26-11_BFCM_Mulberry-Silk-Bundle_Celestial_PDP_WO_600x.jpg?v=1794861795": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/26-11_BFCM_Mulberry-Silk-Bundle_Celestial_PDP_WO_600x.jpg?v=1794861795",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/26-11_BFCM_Mulberry-Silk-Bundle_Celestial_PDP_WO_600x.jpg?v=1794861795",
+      "localPath": "/sites/brooklinen/products/26-11_BFCM_Mulberry-Silk-Bundle_Celestial_PDP_WO-8ad7cffa.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 32170
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/products/5_BKL_20_Silk_Detail_187fc0c9-2c0c-4035-a511-3e4406c0c2b9_600x.jpg?v=1760998059": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/products/5_BKL_20_Silk_Detail_187fc0c9-2c0c-4035-a511-3e4406c0c2b9_600x.jpg?v=1760998059",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/products/5_BKL_20_Silk_Detail_187fc0c9-2c0c-4035-a511-3e4406c0c2b9_600x.jpg?v=1760998059",
+      "localPath": "/sites/brooklinen/products/5_BKL_20_Silk_Detail_187fc0c9-2c0c-4035-a511-3e4-17b27e58.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 97063
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_23-05_Bath_Robe_SP_Folded_White_1x_WOgrey_b955835b-99b8-40ef-8843-376f194b4503_600x.jpg?v=1791411117": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_23-05_Bath_Robe_SP_Folded_White_1x_WOgrey_b955835b-99b8-40ef-8843-376f194b4503_600x.jpg?v=1791411117",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_23-05_Bath_Robe_SP_Folded_White_1x_WOgrey_b955835b-99b8-40ef-8843-376f194b4503_600x.jpg?v=1791411117",
+      "localPath": "/sites/brooklinen/products/BKL_23-05_Bath_Robe_SP_Folded_White_1x_WOgrey_b9-18bac8a3.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 13354
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_23-09_Bath_Robe_Smoke_Flat_1x_e02bd02e-d66c-419e-baca-13c926ccb5a3_600x.jpg?v=1791411117": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_23-09_Bath_Robe_Smoke_Flat_1x_e02bd02e-d66c-419e-baca-13c926ccb5a3_600x.jpg?v=1791411117",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_23-09_Bath_Robe_Smoke_Flat_1x_e02bd02e-d66c-419e-baca-13c926ccb5a3_600x.jpg?v=1791411117",
+      "localPath": "/sites/brooklinen/products/BKL_23-09_Bath_Robe_Smoke_Flat_1x_e02bd02e-d66c--6afa345f.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 21020
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/26-11_BFCM_Super-Plush-Complete-Get-Ready-With-Me-Bundle_Pewter_PDP_WO_600x.jpg?v=1794849151": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/26-11_BFCM_Super-Plush-Complete-Get-Ready-With-Me-Bundle_Pewter_PDP_WO_600x.jpg?v=1794849151",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/26-11_BFCM_Super-Plush-Complete-Get-Ready-With-Me-Bundle_Pewter_PDP_WO_600x.jpg?v=1794849151",
+      "localPath": "/sites/brooklinen/products/26-11_BFCM_Super-Plush-Complete-Get-Ready-With-M-ea51f5a9.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 29952
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_23-09_Bath_Robe_Graphite_Flat_1x_200e95e9-094c-4c03-9866-732d34a62c3a_600x.jpg?v=1791411117": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_23-09_Bath_Robe_Graphite_Flat_1x_200e95e9-094c-4c03-9866-732d34a62c3a_600x.jpg?v=1791411117",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_23-09_Bath_Robe_Graphite_Flat_1x_200e95e9-094c-4c03-9866-732d34a62c3a_600x.jpg?v=1791411117",
+      "localPath": "/sites/brooklinen/products/BKL_23-09_Bath_Robe_Graphite_Flat_1x_200e95e9-09-7da16bf4.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 18975
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-06_Bath_Robe_Storm_Flat_1x_WOgrey_a7bc3c9c-8063-455a-8b4a-e967e2aaea70_600x.jpg?v=1791411117": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-06_Bath_Robe_Storm_Flat_1x_WOgrey_a7bc3c9c-8063-455a-8b4a-e967e2aaea70_600x.jpg?v=1791411117",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-06_Bath_Robe_Storm_Flat_1x_WOgrey_a7bc3c9c-8063-455a-8b4a-e967e2aaea70_600x.jpg?v=1791411117",
+      "localPath": "/sites/brooklinen/products/BKL_25-06_Bath_Robe_Storm_Flat_1x_WOgrey_a7bc3c9-9853526f.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 24774
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-05_Bedding_Luxe_White_HCB_1x_WOgrey_cd4e3810-a36d-4912-a4ed-fbe35fb01ae4_600x.jpg?v=1779127361": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-05_Bedding_Luxe_White_HCB_1x_WOgrey_cd4e3810-a36d-4912-a4ed-fbe35fb01ae4_600x.jpg?v=1779127361",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-05_Bedding_Luxe_White_HCB_1x_WOgrey_cd4e3810-a36d-4912-a4ed-fbe35fb01ae4_600x.jpg?v=1779127361",
+      "localPath": "/sites/brooklinen/products/BKL_25-05_Bedding_Luxe_White_HCB_1x_WOgrey_cd4e3-2b4879fa.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 19861
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/26-11_BFCM_Super-Plush-Complete-Get-Ready-With-Me-Bundle_Slate_PDP_WO_600x.jpg?v=1794849150": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/26-11_BFCM_Super-Plush-Complete-Get-Ready-With-Me-Bundle_Slate_PDP_WO_600x.jpg?v=1794849150",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/26-11_BFCM_Super-Plush-Complete-Get-Ready-With-Me-Bundle_Slate_PDP_WO_600x.jpg?v=1794849150",
+      "localPath": "/sites/brooklinen/products/26-11_BFCM_Super-Plush-Complete-Get-Ready-With-M-96b9e9cc.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 28128
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-04_Luxe_Shot9_1519x_PDP_WO_5a44f3b8-ff93-41e5-b811-3ca7143ddd89_600x.jpg?v=1779311496": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-04_Luxe_Shot9_1519x_PDP_WO_5a44f3b8-ff93-41e5-b811-3ca7143ddd89_600x.jpg?v=1779311496",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-04_Luxe_Shot9_1519x_PDP_WO_5a44f3b8-ff93-41e5-b811-3ca7143ddd89_600x.jpg?v=1779311496",
+      "localPath": "/sites/brooklinen/products/BKL_26-04_Luxe_Shot9_1519x_PDP_WO_5a44f3b8-ff93--632efb04.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 50552
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/26-11_BFCM_Super-Plush-Complete-Get-Ready-With-Me-Bundle_Storm_PDP_WO_600x.jpg?v=1794849151": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/26-11_BFCM_Super-Plush-Complete-Get-Ready-With-Me-Bundle_Storm_PDP_WO_600x.jpg?v=1794849151",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/26-11_BFCM_Super-Plush-Complete-Get-Ready-With-Me-Bundle_Storm_PDP_WO_600x.jpg?v=1794849151",
+      "localPath": "/sites/brooklinen/products/26-11_BFCM_Super-Plush-Complete-Get-Ready-With-M-215a4288.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 31886
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/26-11_BFCM_Super-Plush-Complete-Get-Ready-With-Me-Bundle_Striped-Abyss_PDP_WO_600x.jpg?v=1794849150": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/26-11_BFCM_Super-Plush-Complete-Get-Ready-With-Me-Bundle_Striped-Abyss_PDP_WO_600x.jpg?v=1794849150",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/26-11_BFCM_Super-Plush-Complete-Get-Ready-With-Me-Bundle_Striped-Abyss_PDP_WO_600x.jpg?v=1794849150",
+      "localPath": "/sites/brooklinen/products/26-11_BFCM_Super-Plush-Complete-Get-Ready-With-M-770afba4.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 51817
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-09_HolidayIcons_Shot15_2205x_PDP_WO_4a555b0e-88a6-4b7d-b3ab-bea39b78da31_600x.jpg?v=1791568905": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-09_HolidayIcons_Shot15_2205x_PDP_WO_4a555b0e-88a6-4b7d-b3ab-bea39b78da31_600x.jpg?v=1791568905",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-09_HolidayIcons_Shot15_2205x_PDP_WO_4a555b0e-88a6-4b7d-b3ab-bea39b78da31_600x.jpg?v=1791568905",
+      "localPath": "/sites/brooklinen/products/BKL_26-09_HolidayIcons_Shot15_2205x_PDP_WO_4a555-3c958000.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 122377
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-07_Bedding_Luxe_Oak_COR_1x_WOgrey_0443c5f2-46ff-4812-838b-ef52bca6565e_600x.jpg?v=1779223625": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-07_Bedding_Luxe_Oak_COR_1x_WOgrey_0443c5f2-46ff-4812-838b-ef52bca6565e_600x.jpg?v=1779223625",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-07_Bedding_Luxe_Oak_COR_1x_WOgrey_0443c5f2-46ff-4812-838b-ef52bca6565e_600x.jpg?v=1779223625",
+      "localPath": "/sites/brooklinen/products/BKL_25-07_Bedding_Luxe_Oak_COR_1x_WOgrey_0443c5f-01198db8.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 14096
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-03_Bedding_Luxe_2.0_Oak_1x_PDP_WO_344acb1f-92cb-4e08-bc3e-5d7716072443_600x.jpg?v=1779226734": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-03_Bedding_Luxe_2.0_Oak_1x_PDP_WO_344acb1f-92cb-4e08-bc3e-5d7716072443_600x.jpg?v=1779226734",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-03_Bedding_Luxe_2.0_Oak_1x_PDP_WO_344acb1f-92cb-4e08-bc3e-5d7716072443_600x.jpg?v=1779226734",
+      "localPath": "/sites/brooklinen/products/BKL_26-03_Bedding_Luxe_2-0_Oak_1x_PDP_WO_344acb1-e3cbf424.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 37533
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_21-11_Bedding_ClassicLuxe_SoftGrey_HCB_1x_Luxe_WOgrey_0a122fdb-ab46-4662-8ef1-b276a1e0356a_600x.jpg?v=1779127363": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_21-11_Bedding_ClassicLuxe_SoftGrey_HCB_1x_Luxe_WOgrey_0a122fdb-ab46-4662-8ef1-b276a1e0356a_600x.jpg?v=1779127363",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_21-11_Bedding_ClassicLuxe_SoftGrey_HCB_1x_Luxe_WOgrey_0a122fdb-ab46-4662-8ef1-b276a1e0356a_600x.jpg?v=1779127363",
+      "localPath": "/sites/brooklinen/products/BKL_21-11_Bedding_ClassicLuxe_SoftGrey_HCB_1x_Lu-bc6ad822.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 13589
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/classic_cream_hardcore-bundle_silo_3be12729-7c61-4a42-8131-3dda32cfe047_600x.jpg?v=1779127363": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/classic_cream_hardcore-bundle_silo_3be12729-7c61-4a42-8131-3dda32cfe047_600x.jpg?v=1779127363",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/classic_cream_hardcore-bundle_silo_3be12729-7c61-4a42-8131-3dda32cfe047_600x.jpg?v=1779127363",
+      "localPath": "/sites/brooklinen/products/classic_cream_hardcore-bundle_silo_3be12729-7c61-2b8268bb.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 10971
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-04_Luxe_Shot6_1161xAlt_PDP_WO_600x.jpg?v=1779311496": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-04_Luxe_Shot6_1161xAlt_PDP_WO_600x.jpg?v=1779311496",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-04_Luxe_Shot6_1161xAlt_PDP_WO_600x.jpg?v=1779311496",
+      "localPath": "/sites/brooklinen/products/BKL_26-04_Luxe_Shot6_1161xAlt_PDP_WO_600x-35a7a169.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 53760
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-03_Bedding_Luxe_2.0_Pebble_1x_PDP_WO_d573e06b-68ee-4aaf-bcc4-64a1720281ce_600x.jpg?v=1779226767": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-03_Bedding_Luxe_2.0_Pebble_1x_PDP_WO_d573e06b-68ee-4aaf-bcc4-64a1720281ce_600x.jpg?v=1779226767",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-03_Bedding_Luxe_2.0_Pebble_1x_PDP_WO_d573e06b-68ee-4aaf-bcc4-64a1720281ce_600x.jpg?v=1779226767",
+      "localPath": "/sites/brooklinen/products/BKL_26-03_Bedding_Luxe_2-0_Pebble_1x_PDP_WO_d573-3e2d47f8.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 32753
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-01_Bedding_Luxe_TandemStripeInPebble_HCB_1x_WOgrey_d382a9e8-58df-4746-9cb4-92d867deca86_600x.jpg?v=1779127363": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-01_Bedding_Luxe_TandemStripeInPebble_HCB_1x_WOgrey_d382a9e8-58df-4746-9cb4-92d867deca86_600x.jpg?v=1779127363",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-01_Bedding_Luxe_TandemStripeInPebble_HCB_1x_WOgrey_d382a9e8-58df-4746-9cb4-92d867deca86_600x.jpg?v=1779127363",
+      "localPath": "/sites/brooklinen/products/BKL_25-01_Bedding_Luxe_TandemStripeInPebble_HCB_-0c0acbaa.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 35225
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-07_Bedding_Luxe_Cloud_HCB_1x_WOgrey_9f50cda2-4537-4b7d-88be-fd0e0ab6e7c1_600x.jpg?v=1779127363": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-07_Bedding_Luxe_Cloud_HCB_1x_WOgrey_9f50cda2-4537-4b7d-88be-fd0e0ab6e7c1_600x.jpg?v=1779127363",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-07_Bedding_Luxe_Cloud_HCB_1x_WOgrey_9f50cda2-4537-4b7d-88be-fd0e0ab6e7c1_600x.jpg?v=1779127363",
+      "localPath": "/sites/brooklinen/products/BKL_25-07_Bedding_Luxe_Cloud_HCB_1x_WOgrey_9f50c-bb9bbe24.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 21364
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-07_Bedding_Luxe_Oak_HCB_1x_WOgrey_a9feaa6a-54a0-4285-9cd5-545b3be5a320_600x.jpg?v=1779127363": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-07_Bedding_Luxe_Oak_HCB_1x_WOgrey_a9feaa6a-54a0-4285-9cd5-545b3be5a320_600x.jpg?v=1779127363",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-07_Bedding_Luxe_Oak_HCB_1x_WOgrey_a9feaa6a-54a0-4285-9cd5-545b3be5a320_600x.jpg?v=1779127363",
+      "localPath": "/sites/brooklinen/products/BKL_25-07_Bedding_Luxe_Oak_HCB_1x_WOgrey_a9feaa6-b385a152.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 19319
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-03_Bedding_Luxe_2.0_TandemStripeInPebble_1x_PDP_WO_9709da25-14a1-40e2-a2cd-54a20da63ca1_600x.jpg?v=1779226768": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-03_Bedding_Luxe_2.0_TandemStripeInPebble_1x_PDP_WO_9709da25-14a1-40e2-a2cd-54a20da63ca1_600x.jpg?v=1779226768",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-03_Bedding_Luxe_2.0_TandemStripeInPebble_1x_PDP_WO_9709da25-14a1-40e2-a2cd-54a20da63ca1_600x.jpg?v=1779226768",
+      "localPath": "/sites/brooklinen/products/BKL_26-03_Bedding_Luxe_2-0_TandemStripeInPebble_-4f78d55d.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 93331
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-03_Bedding_Luxe_2.0_Oak_1x_PDP_WO_b356cd4c-90b0-4ecc-979d-0035f0e8bc32_600x.jpg?v=1779226767": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-03_Bedding_Luxe_2.0_Oak_1x_PDP_WO_b356cd4c-90b0-4ecc-979d-0035f0e8bc32_600x.jpg?v=1779226767",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-03_Bedding_Luxe_2.0_Oak_1x_PDP_WO_b356cd4c-90b0-4ecc-979d-0035f0e8bc32_600x.jpg?v=1779226767",
+      "localPath": "/sites/brooklinen/products/BKL_26-03_Bedding_Luxe_2-0_Oak_1x_PDP_WO_b356cd4-3b5b222f.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 37533
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/products/BKL_21-02_Q1Evergreen_Lifestyle_Look4_Shot1_1_0198x_0bcb1ecf-548b-4dae-85f9-25f13f324019_600x.jpg?v=1758736846": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/products/BKL_21-02_Q1Evergreen_Lifestyle_Look4_Shot1_1_0198x_0bcb1ecf-548b-4dae-85f9-25f13f324019_600x.jpg?v=1758736846",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/products/BKL_21-02_Q1Evergreen_Lifestyle_Look4_Shot1_1_0198x_0bcb1ecf-548b-4dae-85f9-25f13f324019_600x.jpg?v=1758736846",
+      "localPath": "/sites/brooklinen/products/BKL_21-02_Q1Evergreen_Lifestyle_Look4_Shot1_1_01-63b1a336.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 72916
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-03_Bedding_Luxe_2.0_Cloud_1x_PDP_WO_d99ba4ba-b50b-400d-841d-e11617dfff7c_600x.jpg?v=1779226767": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-03_Bedding_Luxe_2.0_Cloud_1x_PDP_WO_d99ba4ba-b50b-400d-841d-e11617dfff7c_600x.jpg?v=1779226767",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-03_Bedding_Luxe_2.0_Cloud_1x_PDP_WO_d99ba4ba-b50b-400d-841d-e11617dfff7c_600x.jpg?v=1779226767",
+      "localPath": "/sites/brooklinen/products/BKL_26-03_Bedding_Luxe_2-0_Cloud_1x_PDP_WO_d99ba-f8f35691.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 29697
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/products/classic_cream_hardcore-bundle_silo_600x.jpg?v=1758736846": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/products/classic_cream_hardcore-bundle_silo_600x.jpg?v=1758736846",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/products/classic_cream_hardcore-bundle_silo_600x.jpg?v=1758736846",
+      "localPath": "/sites/brooklinen/products/classic_cream_hardcore-bundle_silo_600x-4866cc12.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 10805
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-08_Bedding_Classic_Frost_DUV_Detail_1x_WOgrey_d11ea2a8-5da3-495d-865c-f96323e80a4e_600x.jpg?v=1773330027": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-08_Bedding_Classic_Frost_DUV_Detail_1x_WOgrey_d11ea2a8-5da3-495d-865c-f96323e80a4e_600x.jpg?v=1773330027",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-08_Bedding_Classic_Frost_DUV_Detail_1x_WOgrey_d11ea2a8-5da3-495d-865c-f96323e80a4e_600x.jpg?v=1773330027",
+      "localPath": "/sites/brooklinen/products/BKL_25-08_Bedding_Classic_Frost_DUV_Detail_1x_WO-5b05a406.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 30926
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-08_Bedding_Classic_Frost_HCB_1x_WOgrey_3559d480-f705-4dda-9540-da5224d3505f_600x.jpg?v=1773330026": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-08_Bedding_Classic_Frost_HCB_1x_WOgrey_3559d480-f705-4dda-9540-da5224d3505f_600x.jpg?v=1773330026",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-08_Bedding_Classic_Frost_HCB_1x_WOgrey_3559d480-f705-4dda-9540-da5224d3505f_600x.jpg?v=1773330026",
+      "localPath": "/sites/brooklinen/products/BKL_25-08_Bedding_Classic_Frost_HCB_1x_WOgrey_35-a04926d3.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 23969
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_23-06_Bedding_ClassicLuxe_White_PCDUVSet_1x_WOgrey_a5d1544e-03d4-46ba-9dac-b556bdf41d41_600x.jpg?v=1779126623": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_23-06_Bedding_ClassicLuxe_White_PCDUVSet_1x_WOgrey_a5d1544e-03d4-46ba-9dac-b556bdf41d41_600x.jpg?v=1779126623",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_23-06_Bedding_ClassicLuxe_White_PCDUVSet_1x_WOgrey_a5d1544e-03d4-46ba-9dac-b556bdf41d41_600x.jpg?v=1779126623",
+      "localPath": "/sites/brooklinen/products/BKL_23-06_Bedding_ClassicLuxe_White_PCDUVSet_1x_-88b06a34.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 14611
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-04_Luxe_Shot9_1519x_PDP_WO_634e21d2-8e86-4c44-a7cc-a824113f978d_600x.jpg?v=1779312509": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-04_Luxe_Shot9_1519x_PDP_WO_634e21d2-8e86-4c44-a7cc-a824113f978d_600x.jpg?v=1779312509",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-04_Luxe_Shot9_1519x_PDP_WO_634e21d2-8e86-4c44-a7cc-a824113f978d_600x.jpg?v=1779312509",
+      "localPath": "/sites/brooklinen/products/BKL_26-04_Luxe_Shot9_1519x_PDP_WO_634e21d2-8e86--a4a8e179.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 50940
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_24-07_Bedding_Classic_Cloud_HCB_1x_WOgrey_600x.jpg?v=1758819739": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_24-07_Bedding_Classic_Cloud_HCB_1x_WOgrey_600x.jpg?v=1758819739",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_24-07_Bedding_Classic_Cloud_HCB_1x_WOgrey_600x.jpg?v=1758819739",
+      "localPath": "/sites/brooklinen/products/BKL_24-07_Bedding_Classic_Cloud_HCB_1x_WOgrey_60-8ba6355b.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 9167
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_24-08_Bedding_Classic_Cloud_Overhead_1_0692x_PDP_WO_55111f1f-6dc3-45dc-bbe3-d2f0bcd595d4_600x.jpg?v=1768936070": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_24-08_Bedding_Classic_Cloud_Overhead_1_0692x_PDP_WO_55111f1f-6dc3-45dc-bbe3-d2f0bcd595d4_600x.jpg?v=1768936070",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_24-08_Bedding_Classic_Cloud_Overhead_1_0692x_PDP_WO_55111f1f-6dc3-45dc-bbe3-d2f0bcd595d4_600x.jpg?v=1768936070",
+      "localPath": "/sites/brooklinen/products/BKL_24-08_Bedding_Classic_Cloud_Overhead_1_0692x-55dbdde8.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 19952
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-10_JanBBHCFlannel_Shot5_1194x_PDP_WO_2832e884-ec13-4412-96bd-6c4216c64369_600x.jpg?v=1782763114": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-10_JanBBHCFlannel_Shot5_1194x_PDP_WO_2832e884-ec13-4412-96bd-6c4216c64369_600x.jpg?v=1782763114",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-10_JanBBHCFlannel_Shot5_1194x_PDP_WO_2832e884-ec13-4412-96bd-6c4216c64369_600x.jpg?v=1782763114",
+      "localPath": "/sites/brooklinen/products/BKL_25-10_JanBBHCFlannel_Shot5_1194x_PDP_WO_2832-441f95fc.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 66101
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-12_Bedding_Classic_TandemStripeInFrost_HCB_1_x_PDP_WO_600x.jpg?v=1767129790": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-12_Bedding_Classic_TandemStripeInFrost_HCB_1_x_PDP_WO_600x.jpg?v=1767129790",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-12_Bedding_Classic_TandemStripeInFrost_HCB_1_x_PDP_WO_600x.jpg?v=1767129790",
+      "localPath": "/sites/brooklinen/products/BKL_25-12_Bedding_Classic_TandemStripeInFrost_HC-0ec01ca6.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 55937
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_23-11_Bedding_Classic_WarmGrey_Straight_2x_PDP_WO_dc4555de-ce2e-4fa3-ae4d-7136b28a649f_600x.jpg?v=1758736846": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_23-11_Bedding_Classic_WarmGrey_Straight_2x_PDP_WO_dc4555de-ce2e-4fa3-ae4d-7136b28a649f_600x.jpg?v=1758736846",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_23-11_Bedding_Classic_WarmGrey_Straight_2x_PDP_WO_dc4555de-ce2e-4fa3-ae4d-7136b28a649f_600x.jpg?v=1758736846",
+      "localPath": "/sites/brooklinen/products/BKL_23-11_Bedding_Classic_WarmGrey_Straight_2x_P-2b668203.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 21805
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/products/BKL_21-11_Bedding_ClassicLuxe_SoftGrey_HCB_1x_WOgrey_612b2212-55cf-4569-bdcd-542b3c39c288_600x.jpg?v=1758736846": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/products/BKL_21-11_Bedding_ClassicLuxe_SoftGrey_HCB_1x_WOgrey_612b2212-55cf-4569-bdcd-542b3c39c288_600x.jpg?v=1758736846",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/products/BKL_21-11_Bedding_ClassicLuxe_SoftGrey_HCB_1x_WOgrey_612b2212-55cf-4569-bdcd-542b3c39c288_600x.jpg?v=1758736846",
+      "localPath": "/sites/brooklinen/products/BKL_21-11_Bedding_ClassicLuxe_SoftGrey_HCB_1x_WO-fe20642c.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 14051
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-03_Bedding_Luxe_2.0_Pebble_1x_PDP_WO_1910bf6d-daf0-4c93-80d0-0d2524c9cd15_600x.jpg?v=1779815285": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-03_Bedding_Luxe_2.0_Pebble_1x_PDP_WO_1910bf6d-daf0-4c93-80d0-0d2524c9cd15_600x.jpg?v=1779815285",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-03_Bedding_Luxe_2.0_Pebble_1x_PDP_WO_1910bf6d-daf0-4c93-80d0-0d2524c9cd15_600x.jpg?v=1779815285",
+      "localPath": "/sites/brooklinen/products/BKL_26-03_Bedding_Luxe_2-0_Pebble_1x_PDP_WO_1910-828dbaa3.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 32742
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_24-05_Bedding_Luxe_Pebble_PCDUVSet_1x_WOgrey_d9070c0f-d5ff-4d15-aa64-97e635645623_600x.jpg?v=1779126623": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_24-05_Bedding_Luxe_Pebble_PCDUVSet_1x_WOgrey_d9070c0f-d5ff-4d15-aa64-97e635645623_600x.jpg?v=1779126623",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_24-05_Bedding_Luxe_Pebble_PCDUVSet_1x_WOgrey_d9070c0f-d5ff-4d15-aa64-97e635645623_600x.jpg?v=1779126623",
+      "localPath": "/sites/brooklinen/products/BKL_24-05_Bedding_Luxe_Pebble_PCDUVSet_1x_WOgrey-c569786a.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 20532
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_23-06_Bedding_ClassicLuxe_Cream_PCDUVSet_1x_WOgrey_27764c94-b146-4b21-9972-a0af596fd57c_600x.jpg?v=1779126623": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_23-06_Bedding_ClassicLuxe_Cream_PCDUVSet_1x_WOgrey_27764c94-b146-4b21-9972-a0af596fd57c_600x.jpg?v=1779126623",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_23-06_Bedding_ClassicLuxe_Cream_PCDUVSet_1x_WOgrey_27764c94-b146-4b21-9972-a0af596fd57c_600x.jpg?v=1779126623",
+      "localPath": "/sites/brooklinen/products/BKL_23-06_Bedding_ClassicLuxe_Cream_PCDUVSet_1x_-fbb2e976.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 18238
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/Calm_Waters_in_Tonal_Fresh_Moss.jpg?v=1759959549": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Calm_Waters_in_Tonal_Fresh_Moss.jpg?v=1759959549",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Calm_Waters_in_Tonal_Fresh_Moss.jpg?v=1759959549",
+      "localPath": "/sites/brooklinen/swatches/Calm_Waters_in_Tonal_Fresh_Moss-20413359.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 1378
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/Tandem_Stripe_in_Pebble.jpg?v=1780074771": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Tandem_Stripe_in_Pebble.jpg?v=1780074771",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Tandem_Stripe_in_Pebble.jpg?v=1780074771",
+      "localPath": "/sites/brooklinen/swatches/Tandem_Stripe_in_Pebble-a8280b35.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 1536
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-04_Luxe_Shot6_1161xAlt_PDP_WO_062425be-177c-4769-8d65-c1bb14dd3db9_600x.jpg?v=1779312509": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-04_Luxe_Shot6_1161xAlt_PDP_WO_062425be-177c-4769-8d65-c1bb14dd3db9_600x.jpg?v=1779312509",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-04_Luxe_Shot6_1161xAlt_PDP_WO_062425be-177c-4769-8d65-c1bb14dd3db9_600x.jpg?v=1779312509",
+      "localPath": "/sites/brooklinen/products/BKL_26-04_Luxe_Shot6_1161xAlt_PDP_WO_062425be-17-3197a4a9.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 53871
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-01_Bedding_Luxe_TandemStripeInPebble_PCDUVSet_1x_WOgrey_039bbadf-6697-4120-9847-f98ebef73691_600x.jpg?v=1779126624": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-01_Bedding_Luxe_TandemStripeInPebble_PCDUVSet_1x_WOgrey_039bbadf-6697-4120-9847-f98ebef73691_600x.jpg?v=1779126624",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-01_Bedding_Luxe_TandemStripeInPebble_PCDUVSet_1x_WOgrey_039bbadf-6697-4120-9847-f98ebef73691_600x.jpg?v=1779126624",
+      "localPath": "/sites/brooklinen/products/BKL_25-01_Bedding_Luxe_TandemStripeInPebble_PCDU-d8116e64.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 40233
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/Tandem_Stripe_in_Frost_2d740528-357d-49b6-9b86-807f8fcf8411.jpg?v=1780074450": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Tandem_Stripe_in_Frost_2d740528-357d-49b6-9b86-807f8fcf8411.jpg?v=1780074450",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Tandem_Stripe_in_Frost_2d740528-357d-49b6-9b86-807f8fcf8411.jpg?v=1780074450",
+      "localPath": "/sites/brooklinen/swatches/Tandem_Stripe_in_Frost_2d740528-357d-49b6-9b86-8-834c07ff.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 1304
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/Calm_Waters_in_Frost.jpg?v=1759959527": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Calm_Waters_in_Frost.jpg?v=1759959527",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Calm_Waters_in_Frost.jpg?v=1759959527",
+      "localPath": "/sites/brooklinen/swatches/Calm_Waters_in_Frost-1ead851f.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 1286
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-07_Bedding_Luxe_Cloud_PCDUVSet_1x_WOgrey_6cc25392-85fc-4659-81b8-59644def168a_600x.jpg?v=1779126624": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-07_Bedding_Luxe_Cloud_PCDUVSet_1x_WOgrey_6cc25392-85fc-4659-81b8-59644def168a_600x.jpg?v=1779126624",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-07_Bedding_Luxe_Cloud_PCDUVSet_1x_WOgrey_6cc25392-85fc-4659-81b8-59644def168a_600x.jpg?v=1779126624",
+      "localPath": "/sites/brooklinen/products/BKL_25-07_Bedding_Luxe_Cloud_PCDUVSet_1x_WOgrey_-95d51c3b.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 19402
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/Etched_Dot_in_Bitter_Chocolate.jpg?v=1782318428": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Etched_Dot_in_Bitter_Chocolate.jpg?v=1782318428",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Etched_Dot_in_Bitter_Chocolate.jpg?v=1782318428",
+      "localPath": "/sites/brooklinen/swatches/Etched_Dot_in_Bitter_Chocolate-02bc529c.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 2088
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/Tandem_Stripe_in_Fresh_Moss.jpg?v=1780075022": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Tandem_Stripe_in_Fresh_Moss.jpg?v=1780075022",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Tandem_Stripe_in_Fresh_Moss.jpg?v=1780075022",
+      "localPath": "/sites/brooklinen/swatches/Tandem_Stripe_in_Fresh_Moss-1109bc2a.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 1527
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-05_Bedding_CuratedBundle_ClassicDreamweave_HCB_070x_PDP_WO_146eb262-b4f2-40a1-8c1e-21ddb59a8a7b_600x.jpg?v=1779815286": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-05_Bedding_CuratedBundle_ClassicDreamweave_HCB_070x_PDP_WO_146eb262-b4f2-40a1-8c1e-21ddb59a8a7b_600x.jpg?v=1779815286",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_25-05_Bedding_CuratedBundle_ClassicDreamweave_HCB_070x_PDP_WO_146eb262-b4f2-40a1-8c1e-21ddb59a8a7b_600x.jpg?v=1779815286",
+      "localPath": "/sites/brooklinen/products/BKL_25-05_Bedding_CuratedBundle_ClassicDreamweav-1d93fcae.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 88406
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-03_Bedding_Luxe_2.0_Cloud_1x_PDP_WO_8870b784-970d-47a2-bd40-f91f4793db26_600x.jpg?v=1779815286": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-03_Bedding_Luxe_2.0_Cloud_1x_PDP_WO_8870b784-970d-47a2-bd40-f91f4793db26_600x.jpg?v=1779815286",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/BKL_26-03_Bedding_Luxe_2.0_Cloud_1x_PDP_WO_8870b784-970d-47a2-bd40-f91f4793db26_600x.jpg?v=1779815286",
+      "localPath": "/sites/brooklinen/products/BKL_26-03_Bedding_Luxe_2-0_Cloud_1x_PDP_WO_8870b-d335cb52.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 29697
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/Tandem_Stripe_in_Storm.jpg?v=1780074535": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Tandem_Stripe_in_Storm.jpg?v=1780074535",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Tandem_Stripe_in_Storm.jpg?v=1780074535",
+      "localPath": "/sites/brooklinen/swatches/Tandem_Stripe_in_Storm-2c1fc1f6.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 1587
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/Blooming_Fields_in_Aegean.jpg?v=1786725086": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Blooming_Fields_in_Aegean.jpg?v=1786725086",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Blooming_Fields_in_Aegean.jpg?v=1786725086",
+      "localPath": "/sites/brooklinen/swatches/Blooming_Fields_in_Aegean-2abb72a3.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 1812
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/Tandem_Stripe_in_Coral.jpg?v=1780074484": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Tandem_Stripe_in_Coral.jpg?v=1780074484",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Tandem_Stripe_in_Coral.jpg?v=1780074484",
+      "localPath": "/sites/brooklinen/swatches/Tandem_Stripe_in_Coral-62463c2a.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 1555
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/Skyline_Stripe_in_Flax.jpg?v=1791212455": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Skyline_Stripe_in_Flax.jpg?v=1791212455",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Skyline_Stripe_in_Flax.jpg?v=1791212455",
+      "localPath": "/sites/brooklinen/swatches/Skyline_Stripe_in_Flax-3dd1ec94.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 1639
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/Blooming_Fields_in_Mahogany.jpg?v=1786725179": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Blooming_Fields_in_Mahogany.jpg?v=1786725179",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Blooming_Fields_in_Mahogany.jpg?v=1786725179",
+      "localPath": "/sites/brooklinen/swatches/Blooming_Fields_in_Mahogany-8782ca52.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 2061
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/Skyline_Stripe_in_Frost.jpg?v=1791212505": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Skyline_Stripe_in_Frost.jpg?v=1791212505",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Skyline_Stripe_in_Frost.jpg?v=1791212505",
+      "localPath": "/sites/brooklinen/swatches/Skyline_Stripe_in_Frost-f6138230.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 1534
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/Tandem_Stripe_in_Tree_Top.jpg?v=1791212391": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Tandem_Stripe_in_Tree_Top.jpg?v=1791212391",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Tandem_Stripe_in_Tree_Top.jpg?v=1791212391",
+      "localPath": "/sites/brooklinen/swatches/Tandem_Stripe_in_Tree_Top-fc34d8b4.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 1594
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/Skyline_Stripe_in_Mahogany.jpg?v=1791212531": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Skyline_Stripe_in_Mahogany.jpg?v=1791212531",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Skyline_Stripe_in_Mahogany.jpg?v=1791212531",
+      "localPath": "/sites/brooklinen/swatches/Skyline_Stripe_in_Mahogany-1011d2e3.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 1644
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/Tandem_Stripe_in_Spice.jpg?v=1791212315": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Tandem_Stripe_in_Spice.jpg?v=1791212315",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Tandem_Stripe_in_Spice.jpg?v=1791212315",
+      "localPath": "/sites/brooklinen/swatches/Tandem_Stripe_in_Spice-5b75f02c.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 1670
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/Tandem_Stripe_in_Maple.jpg?v=1782318338": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Tandem_Stripe_in_Maple.jpg?v=1782318338",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Tandem_Stripe_in_Maple.jpg?v=1782318338",
+      "localPath": "/sites/brooklinen/swatches/Tandem_Stripe_in_Maple-b3360dcd.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 1647
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/Striped_Botanical_Green.jpg?v=1757011136": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Striped_Botanical_Green.jpg?v=1757011136",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Striped_Botanical_Green.jpg?v=1757011136",
+      "localPath": "/sites/brooklinen/swatches/Striped_Botanical_Green-c3d532c9.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 1374
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/Striped_Menthe.jpg?v=1790966521": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Striped_Menthe.jpg?v=1790966521",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Striped_Menthe.jpg?v=1790966521",
+      "localPath": "/sites/brooklinen/swatches/Striped_Menthe-9c92690e.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 1510
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/Dandelions_in_Bitter_Chocolate.jpg?v=1782318459": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Dandelions_in_Bitter_Chocolate.jpg?v=1782318459",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Dandelions_in_Bitter_Chocolate.jpg?v=1782318459",
+      "localPath": "/sites/brooklinen/swatches/Dandelions_in_Bitter_Chocolate-13951a6b.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 1846
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/Bronze_Check.jpg?v=1791210846": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Bronze_Check.jpg?v=1791210846",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Bronze_Check.jpg?v=1791210846",
+      "localPath": "/sites/brooklinen/swatches/Bronze_Check-c36a1b6e.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 1537
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/Tandem_Stripe_in_Night_Sky.jpg?v=1791212593": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Tandem_Stripe_in_Night_Sky.jpg?v=1791212593",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Tandem_Stripe_in_Night_Sky.jpg?v=1791212593",
+      "localPath": "/sites/brooklinen/swatches/Tandem_Stripe_in_Night_Sky-784b13a1.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 1612
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/Striped_Abyss_c372e6b7-08b6-419e-8e44-b5254e54dd5e.jpg?v=1761078163": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Striped_Abyss_c372e6b7-08b6-419e-8e44-b5254e54dd5e.jpg?v=1761078163",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Striped_Abyss_c372e6b7-08b6-419e-8e44-b5254e54dd5e.jpg?v=1761078163",
+      "localPath": "/sites/brooklinen/swatches/Striped_Abyss_c372e6b7-08b6-419e-8e44-b5254e54dd-570549b1.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 1381
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/Avocado_Plaid.jpg?v=1786724588": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Avocado_Plaid.jpg?v=1786724588",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Avocado_Plaid.jpg?v=1786724588",
+      "localPath": "/sites/brooklinen/swatches/Avocado_Plaid-629f30e6.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 1210
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/Striped_Frost.jpg?v=1770138830": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Striped_Frost.jpg?v=1770138830",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Striped_Frost.jpg?v=1770138830",
+      "localPath": "/sites/brooklinen/swatches/Striped_Frost-96eb75c8.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 1265
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/Striped_Maple.jpg?v=1785251470": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Striped_Maple.jpg?v=1785251470",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Striped_Maple.jpg?v=1785251470",
+      "localPath": "/sites/brooklinen/swatches/Striped_Maple-7cdbb256.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 1658
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/Poppy.jpg?v=1754075937": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Poppy.jpg?v=1754075937",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Poppy.jpg?v=1754075937",
+      "localPath": "/sites/brooklinen/swatches/Poppy-00800e97.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 1625
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/Spice_Two_Tone.jpg?v=1791211511": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Spice_Two_Tone.jpg?v=1791211511",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Spice_Two_Tone.jpg?v=1791211511",
+      "localPath": "/sites/brooklinen/swatches/Spice_Two_Tone-c5e03603.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 962
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/Night_Sky_Plaid.jpg?v=1791211339": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Night_Sky_Plaid.jpg?v=1791211339",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Night_Sky_Plaid.jpg?v=1791211339",
+      "localPath": "/sites/brooklinen/swatches/Night_Sky_Plaid-cd4cd716.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 1172
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/Striped_Oak.jpg?v=1774894173": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Striped_Oak.jpg?v=1774894173",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Striped_Oak.jpg?v=1774894173",
+      "localPath": "/sites/brooklinen/swatches/Striped_Oak-a147f902.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 1362
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/Rasberyy_Check.jpg?v=1759959850": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Rasberyy_Check.jpg?v=1759959850",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Rasberyy_Check.jpg?v=1759959850",
+      "localPath": "/sites/brooklinen/swatches/Rasberyy_Check-7c54a7a1.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 1583
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/Azul_Check.jpg?v=1759858836": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Azul_Check.jpg?v=1759858836",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Azul_Check.jpg?v=1759858836",
+      "localPath": "/sites/brooklinen/swatches/Azul_Check-48805f65.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 1566
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/Flax_Horizon_Stripe.jpg?v=1791211113": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Flax_Horizon_Stripe.jpg?v=1791211113",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Flax_Horizon_Stripe.jpg?v=1791211113",
+      "localPath": "/sites/brooklinen/swatches/Flax_Horizon_Stripe-8ffeca50.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 1392
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/Algae_Two_Tone.jpg?v=1786724134": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Algae_Two_Tone.jpg?v=1786724134",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Algae_Two_Tone.jpg?v=1786724134",
+      "localPath": "/sites/brooklinen/swatches/Algae_Two_Tone-ef2d0544.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 983
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/Maple_Two_Tone.jpg?v=1786724442": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Maple_Two_Tone.jpg?v=1786724442",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Maple_Two_Tone.jpg?v=1786724442",
+      "localPath": "/sites/brooklinen/swatches/Maple_Two_Tone-6c5795fc.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 1018
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/Saffron_Plaid.jpg?v=1791211140": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Saffron_Plaid.jpg?v=1791211140",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Saffron_Plaid.jpg?v=1791211140",
+      "localPath": "/sites/brooklinen/swatches/Saffron_Plaid-ae223cc5.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 1152
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/Aegean_Horizon_Stripe.jpg?v=1791211550": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Aegean_Horizon_Stripe.jpg?v=1791211550",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Aegean_Horizon_Stripe.jpg?v=1791211550",
+      "localPath": "/sites/brooklinen/swatches/Aegean_Horizon_Stripe-efbe41c6.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 1320
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/Carmine_Stripe_in_Dragonfly.jpg?v=1782318858": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Carmine_Stripe_in_Dragonfly.jpg?v=1782318858",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Carmine_Stripe_in_Dragonfly.jpg?v=1782318858",
+      "localPath": "/sites/brooklinen/swatches/Carmine_Stripe_in_Dragonfly-8c985f66.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 1709
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/Mahogany_Horizon_Stripe.jpg?v=1791211470": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Mahogany_Horizon_Stripe.jpg?v=1791211470",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Mahogany_Horizon_Stripe.jpg?v=1791211470",
+      "localPath": "/sites/brooklinen/swatches/Mahogany_Horizon_Stripe-a25c846a.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 1382
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/OatChambrayStripe-1.jpg?v=1742926939": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/OatChambrayStripe-1.jpg?v=1742926939",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/OatChambrayStripe-1.jpg?v=1742926939",
+      "localPath": "/sites/brooklinen/swatches/OatChambrayStripe-1-5b78b2ef.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 1526
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/Oxford_Stripe_in_Fresh_Moss_Chambray.jpg?v=1775576309": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Oxford_Stripe_in_Fresh_Moss_Chambray.jpg?v=1775576309",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Oxford_Stripe_in_Fresh_Moss_Chambray.jpg?v=1775576309",
+      "localPath": "/sites/brooklinen/swatches/Oxford_Stripe_in_Fresh_Moss_Chambray-e7c5c9ac.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 1678
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/StormChambrayStripe.jpg?v=1742926939": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/StormChambrayStripe.jpg?v=1742926939",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/StormChambrayStripe.jpg?v=1742926939",
+      "localPath": "/sites/brooklinen/swatches/StormChambrayStripe-a2356057.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 1670
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/Sunflower_Check.jpg?v=1786723986": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Sunflower_Check.jpg?v=1786723986",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Sunflower_Check.jpg?v=1786723986",
+      "localPath": "/sites/brooklinen/swatches/Sunflower_Check-db471bc3.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 1531
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/Oxford_Stripe_in_Abyss_Chambray-1_281f8c88-598d-42ce-9fc9-d39c910b3844.jpg?v=1775576321": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Oxford_Stripe_in_Abyss_Chambray-1_281f8c88-598d-42ce-9fc9-d39c910b3844.jpg?v=1775576321",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Oxford_Stripe_in_Abyss_Chambray-1_281f8c88-598d-42ce-9fc9-d39c910b3844.jpg?v=1775576321",
+      "localPath": "/sites/brooklinen/swatches/Oxford_Stripe_in_Abyss_Chambray-1_281f8c88-598d--36b62c1b.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 1724
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/Carmine_Stripe_in_Mahogany.jpg?v=1782318886": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Carmine_Stripe_in_Mahogany.jpg?v=1782318886",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Carmine_Stripe_in_Mahogany.jpg?v=1782318886",
+      "localPath": "/sites/brooklinen/swatches/Carmine_Stripe_in_Mahogany-73fa65a0.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 1801
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/Tandem_Stripe_in_Mahogany.jpg?v=1791210588": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Tandem_Stripe_in_Mahogany.jpg?v=1791210588",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Tandem_Stripe_in_Mahogany.jpg?v=1791210588",
+      "localPath": "/sites/brooklinen/swatches/Tandem_Stripe_in_Mahogany-8bb8b835.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 1527
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/French_Blue_Multi.jpg?v=1777411082": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/French_Blue_Multi.jpg?v=1777411082",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/French_Blue_Multi.jpg?v=1777411082",
+      "localPath": "/sites/brooklinen/swatches/French_Blue_Multi-a3409c86.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 1742
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/Sunset_Check_in_Vista.jpg?v=1782318779": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Sunset_Check_in_Vista.jpg?v=1782318779",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Sunset_Check_in_Vista.jpg?v=1782318779",
+      "localPath": "/sites/brooklinen/swatches/Sunset_Check_in_Vista-276a1e09.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 1587
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/Forestwood_Check.jpg?v=1786998081": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Forestwood_Check.jpg?v=1786998081",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Forestwood_Check.jpg?v=1786998081",
+      "localPath": "/sites/brooklinen/swatches/Forestwood_Check-ea120264.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 1646
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/Tandem_Stripe_in_Reversible_Maple.jpg?v=1786725309": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Tandem_Stripe_in_Reversible_Maple.jpg?v=1786725309",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Tandem_Stripe_in_Reversible_Maple.jpg?v=1786725309",
+      "localPath": "/sites/brooklinen/swatches/Tandem_Stripe_in_Reversible_Maple-053e210b.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 1574
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/Pressed_Poppies_in_Saffron.jpg?v=1791407650": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Pressed_Poppies_in_Saffron.jpg?v=1791407650",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Pressed_Poppies_in_Saffron.jpg?v=1791407650",
+      "localPath": "/sites/brooklinen/swatches/Pressed_Poppies_in_Saffron-ff86f9bc.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 1823
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/Tandem_Stripe_Bundle_in_Storm.jpg?v=1759959487": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Tandem_Stripe_Bundle_in_Storm.jpg?v=1759959487",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Tandem_Stripe_Bundle_in_Storm.jpg?v=1759959487",
+      "localPath": "/sites/brooklinen/swatches/Tandem_Stripe_Bundle_in_Storm-dc41d5f8.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 1449
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/Classic_-_Dandelions_Bundle_in_Bitter_Chocolate.jpg?v=1782489910": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Classic_-_Dandelions_Bundle_in_Bitter_Chocolate.jpg?v=1782489910",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Classic_-_Dandelions_Bundle_in_Bitter_Chocolate.jpg?v=1782489910",
+      "localPath": "/sites/brooklinen/swatches/Classic_-_Dandelions_Bundle_in_Bitter_Chocolate-881044ab.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 1951
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/swatch-v3-celestial_dcedc0bd-3936-4570-83ff-fb47f086c0c5.png?v=1713207140": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/swatch-v3-celestial_dcedc0bd-3936-4570-83ff-fb47f086c0c5.png?v=1713207140",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/swatch-v3-celestial_dcedc0bd-3936-4570-83ff-fb47f086c0c5.png?v=1713207140",
+      "localPath": "/sites/brooklinen/swatches/swatch-v3-celestial_dcedc0bd-3936-4570-83ff-fb47-970cecbd.png",
+      "contentType": "image/png",
+      "ext": ".png",
+      "bytes": 52989
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/Night_Sky_Check.jpg?v=1791210827": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Night_Sky_Check.jpg?v=1791210827",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Night_Sky_Check.jpg?v=1791210827",
+      "localPath": "/sites/brooklinen/swatches/Night_Sky_Check-ea154ba8.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 1494
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/Classic_-_Horizon_Stripe_Bundle_in_Flax.jpg?v=1790967593": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Classic_-_Horizon_Stripe_Bundle_in_Flax.jpg?v=1790967593",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Classic_-_Horizon_Stripe_Bundle_in_Flax.jpg?v=1790967593",
+      "localPath": "/sites/brooklinen/swatches/Classic_-_Horizon_Stripe_Bundle_in_Flax-c86b7a7b.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 1715
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/Tandem_Stripe_Bundle_in_Pebble_Tandem_Stripe_in_Pebble_Solid_White.jpg?v=1745598438": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Tandem_Stripe_Bundle_in_Pebble_Tandem_Stripe_in_Pebble_Solid_White.jpg?v=1745598438",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Tandem_Stripe_Bundle_in_Pebble_Tandem_Stripe_in_Pebble_Solid_White.jpg?v=1745598438",
+      "localPath": "/sites/brooklinen/swatches/Tandem_Stripe_Bundle_in_Pebble_Tandem_Stripe_in_-76aa4b77.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 1466
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/Striped_Lotus.jpg?v=1785251470": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Striped_Lotus.jpg?v=1785251470",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Striped_Lotus.jpg?v=1785251470",
+      "localPath": "/sites/brooklinen/swatches/Striped_Lotus-fa7db741.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 1480
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/Tandem_Stripe_Bundle_in_Fresh_Moss_Tandem_Stripe_in_Pebble_Fresh_Moss.jpg?v=1745598438": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Tandem_Stripe_Bundle_in_Fresh_Moss_Tandem_Stripe_in_Pebble_Fresh_Moss.jpg?v=1745598438",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Tandem_Stripe_Bundle_in_Fresh_Moss_Tandem_Stripe_in_Pebble_Fresh_Moss.jpg?v=1745598438",
+      "localPath": "/sites/brooklinen/swatches/Tandem_Stripe_Bundle_in_Fresh_Moss_Tandem_Stripe-c4328c77.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 1487
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/swatch-v3-window-pane_711478ec-90eb-4d78-bb73-4817304e720a.png?v=1713195376": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/swatch-v3-window-pane_711478ec-90eb-4d78-bb73-4817304e720a.png?v=1713195376",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/swatch-v3-window-pane_711478ec-90eb-4d78-bb73-4817304e720a.png?v=1713195376",
+      "localPath": "/sites/brooklinen/swatches/swatch-v3-window-pane_711478ec-90eb-4d78-bb73-48-bfcddbaa.png",
+      "contentType": "image/png",
+      "ext": ".png",
+      "bytes": 338
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/Classic_-_Skyline_Stripe_Bundle_in_Mahogany.jpg?v=1790968419": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Classic_-_Skyline_Stripe_Bundle_in_Mahogany.jpg?v=1790968419",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Classic_-_Skyline_Stripe_Bundle_in_Mahogany.jpg?v=1790968419",
+      "localPath": "/sites/brooklinen/swatches/Classic_-_Skyline_Stripe_Bundle_in_Mahogany-0828c002.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 1511
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/Luxe_-_Tandem_Stripe_Bundle_in_Maple.jpg?v=1786725398": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Luxe_-_Tandem_Stripe_Bundle_in_Maple.jpg?v=1786725398",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/Luxe_-_Tandem_Stripe_Bundle_in_Maple.jpg?v=1786725398",
+      "localPath": "/sites/brooklinen/swatches/Luxe_-_Tandem_Stripe_Bundle_in_Maple-a382fa99.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 1473
+    },
+    "https://cdn.shopify.com/s/files/1/0951/7126/files/OysterInPebble_8e2b36ae-5efa-4a39-ae2c-2d8e777dd920.jpg?v=1743107286": {
+      "originalUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/OysterInPebble_8e2b36ae-5efa-4a39-ae2c-2d8e777dd920.jpg?v=1743107286",
+      "fetchUrl": "https://cdn.shopify.com/s/files/1/0951/7126/files/OysterInPebble_8e2b36ae-5efa-4a39-ae2c-2d8e777dd920.jpg?v=1743107286",
+      "localPath": "/sites/brooklinen/swatches/OysterInPebble_8e2b36ae-5efa-4a39-ae2c-2d8e777dd-0e83a4e3.jpg",
+      "contentType": "image/jpeg",
+      "ext": ".jpg",
+      "bytes": 1455
+    }
+  }
+}
