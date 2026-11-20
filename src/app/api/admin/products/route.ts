@@ -1,11 +1,19 @@
 import { NextResponse } from "next/server";
 import { getAdminSession } from "@/lib/admin-auth";
-import { readStoreDatabase, upsertProduct } from "@/lib/store-db";
+import { readStoreDatabase, saveSettings, upsertProduct } from "@/lib/store-db";
 import {
   computeDiscountBadge,
   slugifyText,
+  type HomepageBlockId,
+  type HomepageSectionKey,
   type StoreProduct,
 } from "@/lib/store-types";
+
+const SECTION_KEY_TO_BLOCK_ID: Record<HomepageSectionKey, HomepageBlockId> = {
+  bestOfSale: "carousel_best_of_sale",
+  giftGuide: "carousel_gift_guide",
+  collection: "carousel_collection",
+};
 
 export const dynamic = "force-dynamic";
 
@@ -83,6 +91,25 @@ export async function POST(request: Request) {
     };
 
     const saved = await upsertProduct(product);
+
+    // Sync newly created product into selected homepage carousel section lists automatically
+    if (saved.sections.length > 0 && db.settings.homepageSections?.length) {
+      const targetBlockIds = new Set(
+        saved.sections.map((sec) => SECTION_KEY_TO_BLOCK_ID[sec])
+      );
+      let changed = false;
+      const updatedSections = db.settings.homepageSections.map((block) => {
+        if (!targetBlockIds.has(block.id)) return block;
+        const list = block.productSlugs || [];
+        if (list.includes(saved.slug)) return block;
+        changed = true;
+        return { ...block, productSlugs: [saved.slug, ...list] };
+      });
+      if (changed) {
+        await saveSettings({ ...db.settings, homepageSections: updatedSections });
+      }
+    }
+
     return NextResponse.json({ product: saved }, { status: 201 });
   } catch (err) {
     const message = err instanceof Error ? err.message : "Không thể tạo sản phẩm.";

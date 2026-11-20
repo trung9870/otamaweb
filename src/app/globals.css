@@ -639,3 +639,16 @@ dialog::backdrop {
     flex-shrink: 0;
   }
 }
+
+/* Smooth reorder transitions respecting prefers-reduced-motion (modern-web-guidance: dynamic-sort) */
+.admin-sortable-item {
+  view-transition-name: match-element;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none;
+  }
+}

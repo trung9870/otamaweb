@@ -9,6 +9,70 @@ export type StorageMode = "local" | "supabase";
 
 export type HomepageSectionKey = "bestOfSale" | "giftGuide" | "collection";
 
+export type HomepageBlockId =
+  | "hero_primary"
+  | "strip_mystery"
+  | "carousel_best_of_sale"
+  | "mini_hero_tote"
+  | "category_carousel"
+  | "strip_gifts"
+  | "carousel_gift_guide"
+  | "hero_sheets"
+  | "carousel_collection"
+  | "trending"
+  | "strip_fsa"
+  | "why_brooklinen"
+  | "reviews"
+  | "press"
+  | "strip_stores";
+
+export type HomepageBlockKind =
+  | "hero"
+  | "strip"
+  | "carousel"
+  | "banner"
+  | "categories"
+  | "static";
+
+export type PromoStripTheme =
+  | "burgundy-blue-cta"
+  | "burgundy-outline-cta"
+  | "navy-adaptive-cta"
+  | "slate-navy-cta";
+
+export interface HomepageSectionConfig {
+  id: HomepageBlockId;
+  visible: boolean;
+  labelVi: string;
+  kind: HomepageBlockKind;
+  titleVi?: string;
+  titleEn?: string;
+  subtitleVi?: string;
+  subtitleEn?: string;
+  ctaLabelVi?: string;
+  ctaLabelEn?: string;
+  ctaHref?: string;
+  secondaryCtaLabelVi?: string;
+  secondaryCtaLabelEn?: string;
+  secondaryCtaHref?: string;
+  mediaType?: "video" | "image";
+  desktopMedia?: string;
+  mobileMedia?: string;
+  desktopPoster?: string;
+  mobilePoster?: string;
+  theme?: PromoStripTheme;
+  productSlugs?: string[];
+}
+
+export interface HeaderNavConfigItem {
+  id: string;
+  sourceIndex: number | null;
+  labelVi: string;
+  labelEn: string;
+  href: string;
+  visible: boolean;
+}
+
 export type StoreOrderStatus =
   | "pending"
   | "confirmed"
@@ -59,6 +123,7 @@ export interface StoreCategory {
   bannerTone: "cream" | "navy" | "burgundy";
   filterTag?: CategoryTag;
   image?: string;
+  badgeImage?: string;
   showOnHome: boolean;
   sortOrder: number;
   active: boolean;
@@ -77,6 +142,8 @@ export interface StoreSettings {
   heroHeadingVi: string[];
   heroSubtitleEn: string[];
   heroSubtitleVi: string[];
+  homepageSections: HomepageSectionConfig[];
+  headerNav: HeaderNavConfigItem[];
   bankName: string;
   bankAccountNo: string;
   bankAccountName: string;

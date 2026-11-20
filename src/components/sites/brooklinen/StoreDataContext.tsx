@@ -47,6 +47,7 @@ interface StoreDataContextValue {
   getCollectionMeta: (slug: string) => CollectionMeta;
   getProductsForCollection: (slug: string) => LiveCatalogProduct[];
   getRelatedProducts: (slug: string, count?: number) => LiveCatalogProduct[];
+  resolveProductsBySlugs: (slugs: string[]) => LiveCatalogProduct[];
   formatMoney: (usdAmount: number, locale: Locale) => string;
   formatMoneyString: (rawUsd: string, locale: Locale) => string;
   refreshStore: () => Promise<void>;
@@ -171,6 +172,19 @@ export function StoreDataProvider({ children }: { children: ReactNode }) {
     [catalog]
   );
 
+  const resolveProductsBySlugs = useCallback(
+    (slugs: string[]): LiveCatalogProduct[] => {
+      const bySlug = new Map(catalog.map((p) => [p.slug, p]));
+      const out: LiveCatalogProduct[] = [];
+      for (const slug of slugs) {
+        const match = bySlug.get(slug);
+        if (match) out.push(match);
+      }
+      return out;
+    },
+    [catalog]
+  );
+
   const formatMoney = useCallback(
     (usdAmount: number, locale: Locale) =>
       formatPrice(usdAmount, locale, settings.vndRate),
@@ -198,6 +212,7 @@ export function StoreDataProvider({ children }: { children: ReactNode }) {
       getCollectionMeta,
       getProductsForCollection,
       getRelatedProducts,
+      resolveProductsBySlugs,
       formatMoney,
       formatMoneyString,
       refreshStore,
@@ -216,6 +231,7 @@ export function StoreDataProvider({ children }: { children: ReactNode }) {
       getCollectionMeta,
       getProductsForCollection,
       getRelatedProducts,
+      resolveProductsBySlugs,
       formatMoney,
       formatMoneyString,
       refreshStore,

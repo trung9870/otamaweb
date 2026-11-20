@@ -10,6 +10,7 @@ import {
   type FormEvent,
 } from "react";
 import { CategoryModal } from "./CategoryModal";
+import { HomepageBuilderTab } from "./HomepageBuilderTab";
 import { ORDER_STATUS_META, OrderDetailModal } from "./OrderDetailModal";
 import { ProductModal } from "./ProductModal";
 import type {
@@ -21,7 +22,7 @@ import type {
   StoreSettings,
 } from "@/lib/store-types";
 
-type AdminTab = "overview" | "products" | "categories" | "orders" | "settings";
+type AdminTab = "overview" | "layout" | "products" | "categories" | "orders" | "settings";
 
 interface ConfirmState {
   title: string;
@@ -219,6 +220,94 @@ export function AdminDashboard() {
         showToast(`Đã xóa danh mục "${cat.titleVi}".`);
       },
     });
+  };
+
+  const handleSaveSettingsPatch = useCallback(
+    async (patch: Partial<StoreSettings>, successMsg: string) => {
+      const res = await fetch("/api/admin/settings", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(patch),
+      });
+      const body = (await res.json()) as { settings?: StoreSettings; error?: string };
+      if (!res.ok || !body.settings) {
+        const errText = body.error || "Lưu thay đổi thất bại.";
+        showToast(errText, "err");
+        throw new Error(errText);
+      }
+      await fetchDashboard();
+      showToast(successMsg);
+    },
+    [fetchDashboard, showToast]
+  );
+
+  const handleMoveProduct = async (idx: number, dir: -1 | 1) => {
+    if (!data) return;
+    const nextIdx = idx + dir;
+    if (nextIdx < 0 || nextIdx >= data.products.length) return;
+    const next = [...data.products];
+    const [moved] = next.splice(idx, 1);
+    next.splice(nextIdx, 0, moved);
+    setData({ ...data, products: next });
+    try {
+      const res = await fetch("/api/admin/reorder", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          entity: "products",
+          orderedIds: next.map((p) => p.id),
+        }),
+      });
+      if (!res.ok) throw new Error("Không lưu được thứ tự sản phẩm.");
+      showToast(`Đã chuyển "${moved.titleVi}" tới vị trí #${nextIdx + 1}.`);
+    } catch (err) {
+      await fetchDashboard();
+      showToast(err instanceof Error ? err.message : "Lỗi đổi thứ tự.", "err");
+    }
+  };
+
+  const handleMoveCategory = async (idx: number, dir: -1 | 1) => {
+    if (!data) return;
+    const nextIdx = idx + dir;
+    if (nextIdx < 0 || nextIdx >= data.categories.length) return;
+    const next = [...data.categories];
+    const [moved] = next.splice(idx, 1);
+    next.splice(nextIdx, 0, moved);
+    setData({ ...data, categories: next });
+    try {
+      const res = await fetch("/api/admin/reorder", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          entity: "categories",
+          orderedIds: next.map((c) => c.slug),
+        }),
+      });
+      if (!res.ok) throw new Error("Không lưu được thứ tự danh mục.");
+      showToast(`Đã chuyển danh mục "${moved.titleVi}" tới vị trí #${nextIdx + 1}.`);
+    } catch (err) {
+      await fetchDashboard();
+      showToast(err instanceof Error ? err.message : "Lỗi đổi thứ tự.", "err");
+    }
+  };
+
+  const handleToggleCategoryHome = async (cat: StoreCategory) => {
+    try {
+      const res = await fetch("/api/admin/categories", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...cat, showOnHome: !cat.showOnHome }),
+      });
+      if (!res.ok) throw new Error("Không thể cập nhật danh mục.");
+      await fetchDashboard();
+      showToast(
+        !cat.showOnHome
+          ? `Đã đưa "${cat.titleVi}" lên khối Danh mục nổi bật Trang chủ.`
+          : `Đã ẩn "${cat.titleVi}" khỏi khối Danh mục nổi bật Trang chủ.`
+      );
+    } catch (err) {
+      showToast(err instanceof Error ? err.message : "Lỗi cập nhật.", "err");
+    }
   };
 
   const handleSaveSettings = async (e: FormEvent) => {
@@ -461,10 +550,11 @@ export function AdminDashboard() {
   // ============================================================================
   const navItems: { id: AdminTab; label: string; count?: number }[] = [
     { id: "overview", label: "Tổng quan" },
+    { id: "layout", label: "Bố cục Trang chủ" },
     { id: "products", label: "Sản phẩm", count: data?.stats.totalProducts },
     { id: "categories", label: "Danh mục", count: data?.stats.totalCategories },
     { id: "orders", label: "Đơn hàng", count: data?.stats.pendingOrders },
-    { id: "settings", label: "Trang chủ & Cài đặt" },
+    { id: "settings", label: "Cài đặt" },
   ];
 
   return (
@@ -604,10 +694,10 @@ export function AdminDashboard() {
                 </button>
                 <button
                   type="button"
-                  onClick={() => setActiveTab("settings")}
+                  onClick={() => setActiveTab("layout")}
                   className="min-h-[46px] cursor-pointer rounded-xl border border-[#283455] bg-white px-5 text-[14px] font-bold text-[#283455] hover:bg-[#F9F3ED]"
                 >
-                  Đổi tỷ giá &amp; Banner
+                  Sửa Bố cục &amp; Video Trang chủ
                 </button>
               </div>
             </div>
@@ -765,6 +855,18 @@ export function AdminDashboard() {
         )}
 
         {/* ================================================================ */}
+        {/* TAB 1B: HOMEPAGE LAYOUT & HEADER MENU BUILDER                    */}
+        {/* ================================================================ */}
+        {activeTab === "layout" && data && (
+          <HomepageBuilderTab
+            settings={data.settings}
+            products={data.products}
+            onSaveSettingsPatch={handleSaveSettingsPatch}
+            onJumpToCategories={() => setActiveTab("categories")}
+          />
+        )}
+
+        {/* ================================================================ */}
         {/* TAB 2: PRODUCTS                                                  */}
         {/* ================================================================ */}
         {activeTab === "products" && data && (
@@ -841,6 +943,7 @@ export function AdminDashboard() {
                 </caption>
                 <thead>
                   <tr>
+                    <th scope="col">Thứ tự</th>
                     <th scope="col">Sản phẩm</th>
                     <th scope="col">Danh mục</th>
                     <th scope="col">Giá bán</th>
@@ -849,8 +952,40 @@ export function AdminDashboard() {
                   </tr>
                 </thead>
                 <tbody>
-                  {filteredProducts.map((p) => (
+                  {filteredProducts.map((p, idx) => {
+                    const canReorder =
+                      productQuery.trim() === "" && productCategoryFilter === "all";
+                    return (
                     <tr key={p.id}>
+                      <td data-label="Thứ tự">
+                        <div className="flex items-center gap-1">
+                          <span className="w-6 text-[13px] font-bold text-[#5B647A]">
+                            #{idx + 1}
+                          </span>
+                          {canReorder && (
+                            <>
+                              <button
+                                type="button"
+                                disabled={idx === 0}
+                                aria-label={`Đưa ${p.titleVi} lên trên`}
+                                onClick={() => void handleMoveProduct(idx, -1)}
+                                className="inline-flex h-8 w-8 cursor-pointer items-center justify-center rounded-lg border border-[#C9CFD9] bg-white text-[13px] font-bold text-[#283455] hover:bg-[#F9F3ED] disabled:opacity-30"
+                              >
+                                ↑
+                              </button>
+                              <button
+                                type="button"
+                                disabled={idx === filteredProducts.length - 1}
+                                aria-label={`Đưa ${p.titleVi} xuống dưới`}
+                                onClick={() => void handleMoveProduct(idx, 1)}
+                                className="inline-flex h-8 w-8 cursor-pointer items-center justify-center rounded-lg border border-[#C9CFD9] bg-white text-[13px] font-bold text-[#283455] hover:bg-[#F9F3ED] disabled:opacity-30"
+                              >
+                                ↓
+                              </button>
+                            </>
+                          )}
+                        </div>
+                      </td>
                       <th scope="row">
                         <div className="flex items-center gap-3">
                           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -930,10 +1065,11 @@ export function AdminDashboard() {
                         </div>
                       </td>
                     </tr>
-                  ))}
+                    );
+                  })}
                   {filteredProducts.length === 0 && (
                     <tr>
-                      <td colSpan={5} className="py-10 text-center text-[#5B647A]">
+                      <td colSpan={6} className="py-10 text-center text-[#5B647A]">
                         Không tìm thấy sản phẩm phù hợp.
                       </td>
                     </tr>
@@ -980,21 +1116,59 @@ export function AdminDashboard() {
                 <caption className="visually-hidden">Danh sách danh mục sản phẩm</caption>
                 <thead>
                   <tr>
+                    <th scope="col">Thứ tự</th>
                     <th scope="col">Tên danh mục</th>
                     <th scope="col">Đường dẫn</th>
-                    <th scope="col">Màu banner</th>
+                    <th scope="col">Nổi bật trang chủ</th>
                     <th scope="col">Trạng thái</th>
                     <th scope="col">Thao tác</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {data.categories.map((cat) => (
+                  {data.categories.map((cat, idx) => (
                     <tr key={cat.slug}>
+                      <td data-label="Thứ tự">
+                        <div className="flex items-center gap-1">
+                          <span className="w-6 text-[13px] font-bold text-[#5B647A]">
+                            #{idx + 1}
+                          </span>
+                          <button
+                            type="button"
+                            disabled={idx === 0}
+                            aria-label={`Đưa danh mục ${cat.titleVi} lên trên`}
+                            onClick={() => void handleMoveCategory(idx, -1)}
+                            className="inline-flex h-8 w-8 cursor-pointer items-center justify-center rounded-lg border border-[#C9CFD9] bg-white text-[13px] font-bold text-[#283455] hover:bg-[#F9F3ED] disabled:opacity-30"
+                          >
+                            ↑
+                          </button>
+                          <button
+                            type="button"
+                            disabled={idx === data.categories.length - 1}
+                            aria-label={`Đưa danh mục ${cat.titleVi} xuống dưới`}
+                            onClick={() => void handleMoveCategory(idx, 1)}
+                            className="inline-flex h-8 w-8 cursor-pointer items-center justify-center rounded-lg border border-[#C9CFD9] bg-white text-[13px] font-bold text-[#283455] hover:bg-[#F9F3ED] disabled:opacity-30"
+                          >
+                            ↓
+                          </button>
+                        </div>
+                      </td>
                       <th scope="row">
-                        <p className="font-bold text-[#283455]">{cat.titleVi}</p>
-                        <p className="text-[12px] font-normal text-[#5B647A]">
-                          {cat.titleEn}
-                        </p>
+                        <div className="flex items-center gap-2.5">
+                          {cat.image && (
+                            // eslint-disable-next-line @next/next/no-img-element
+                            <img
+                              src={cat.image}
+                              alt=""
+                              className="h-10 w-10 shrink-0 rounded-lg object-cover"
+                            />
+                          )}
+                          <div>
+                            <p className="font-bold text-[#283455]">{cat.titleVi}</p>
+                            <p className="text-[12px] font-normal text-[#5B647A]">
+                              {cat.titleEn}
+                            </p>
+                          </div>
+                        </div>
                       </th>
                       <td data-label="Đường dẫn" className="font-mono text-[13px]">
                         <Link
@@ -1006,25 +1180,19 @@ export function AdminDashboard() {
                           /collections/{cat.slug}
                         </Link>
                       </td>
-                      <td data-label="Màu banner">
-                        <span className="inline-flex items-center gap-2 text-[13px] font-bold">
-                          <span
-                            className="inline-block h-3.5 w-3.5 rounded-full border border-[#C9CFD9]"
-                            style={{
-                              backgroundColor:
-                                cat.bannerTone === "burgundy"
-                                  ? "#740103"
-                                  : cat.bannerTone === "navy"
-                                  ? "#283455"
-                                  : "#F9F3ED",
-                            }}
-                          />
-                          {cat.bannerTone === "burgundy"
-                            ? "Đỏ rượu"
-                            : cat.bannerTone === "navy"
-                            ? "Navy"
-                            : "Kem"}
-                        </span>
+                      <td data-label="Nổi bật trang chủ">
+                        <button
+                          type="button"
+                          aria-pressed={cat.showOnHome}
+                          onClick={() => void handleToggleCategoryHome(cat)}
+                          className={`cursor-pointer rounded-full px-3 py-1 text-[12px] font-bold ${
+                            cat.showOnHome
+                              ? "bg-[#DBEAFE] text-[#1E40AF]"
+                              : "bg-[#F3F4F6] text-[#6E7485]"
+                          }`}
+                        >
+                          {cat.showOnHome ? "Hiện trang chủ" : "Không"}
+                        </button>
                       </td>
                       <td data-label="Trạng thái">
                         <span
@@ -1354,41 +1522,17 @@ export function AdminDashboard() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                <div>
-                  <label htmlFor="st-hero-vi" className="block text-[13.5px] font-bold">
-                    Tiêu đề Hero trang chủ — Tiếng Việt
-                  </label>
-                  <textarea
-                    id="st-hero-vi"
-                    rows={2}
-                    value={settingsDraft.heroHeadingVi.join("\n")}
-                    onChange={(e) =>
-                      setSettingsDraft({
-                        ...settingsDraft,
-                        heroHeadingVi: e.target.value.split("\n"),
-                      })
-                    }
-                    className="admin-input mt-1.5 w-full rounded-xl border border-[#8E96A8] px-3.5 py-2"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="st-hero-en" className="block text-[13.5px] font-bold">
-                    Tiêu đề Hero trang chủ — Tiếng Anh
-                  </label>
-                  <textarea
-                    id="st-hero-en"
-                    rows={2}
-                    value={settingsDraft.heroHeadingEn.join("\n")}
-                    onChange={(e) =>
-                      setSettingsDraft({
-                        ...settingsDraft,
-                        heroHeadingEn: e.target.value.split("\n"),
-                      })
-                    }
-                    className="admin-input mt-1.5 w-full rounded-xl border border-[#8E96A8] px-3.5 py-2"
-                  />
-                </div>
+              <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-[#DDE3EC] bg-[#F9F3ED] p-4 text-[13.5px]">
+                <p className="text-[#3D4866]">
+                  Muốn thay <strong>Video/Ảnh Hero chính</strong>, sắp xếp thứ tự khối hoặc chỉnh <strong>Thanh Menu</strong>?
+                </p>
+                <button
+                  type="button"
+                  onClick={() => setActiveTab("layout")}
+                  className="min-h-[40px] shrink-0 cursor-pointer rounded-xl bg-[#283455] px-4 text-[13px] font-bold text-white"
+                >
+                  Mở Bố cục Trang chủ →
+                </button>
               </div>
 
               {/* Bank Transfer Info */}

@@ -98,10 +98,32 @@ export function Header() {
     };
   }, [accountOpen]);
 
+  const visibleNavItems = useMemo(() => {
+    if (settings.headerNav && settings.headerNav.length > 0) {
+      return settings.headerNav.filter((n) => n.visible);
+    }
+    return BROOKLINEN_DATA.navItems.map((item, idx) => ({
+      id: `nav-${idx + 1}`,
+      sourceIndex: idx,
+      labelVi: UI_COPY.vi.navItems[idx]?.label || item.label,
+      labelEn: UI_COPY.en.navItems[idx]?.label || item.label,
+      href: toLocalHref(item.href),
+      visible: true,
+    }));
+  }, [settings.headerNav]);
+
+  const activeNavConfig =
+    activeMegaIdx !== null ? visibleNavItems[activeMegaIdx] : null;
+  const activeMegaSourceIdx =
+    activeNavConfig && activeNavConfig.sourceIndex !== null
+      ? activeNavConfig.sourceIndex
+      : null;
   const activeNavRaw =
-    activeMegaIdx !== null ? BROOKLINEN_DATA.navItems[activeMegaIdx] : null;
+    activeMegaSourceIdx !== null
+      ? BROOKLINEN_DATA.navItems[activeMegaSourceIdx]
+      : null;
   const activeNavText =
-    activeMegaIdx !== null ? copy.navItems[activeMegaIdx] : null;
+    activeMegaSourceIdx !== null ? copy.navItems[activeMegaSourceIdx] : null;
 
   return (
     <>
@@ -177,15 +199,19 @@ export function Header() {
             aria-label={locale === "vi" ? "Điều hướng chính" : "Primary navigation"}
             className="hidden items-center gap-5 xl:gap-7 lg:flex"
           >
-            {BROOKLINEN_DATA.navItems.map((item, idx) => {
-              const navLabel = copy.navItems[idx]?.label || item.label;
+            {visibleNavItems.map((item, idx) => {
+              const navLabel = locale === "vi" ? item.labelVi : item.labelEn;
               const isActive = activeMegaIdx === idx;
               return (
                 <Link
-                  key={item.label}
+                  key={item.id}
                   href={toLocalHref(item.href)}
-                  onMouseEnter={() => setActiveMegaIdx(idx)}
-                  onFocus={() => setActiveMegaIdx(idx)}
+                  onMouseEnter={() =>
+                    setActiveMegaIdx(item.sourceIndex !== null ? idx : null)
+                  }
+                  onFocus={() =>
+                    setActiveMegaIdx(item.sourceIndex !== null ? idx : null)
+                  }
                   onClick={() => setActiveMegaIdx(null)}
                   className={`relative whitespace-nowrap py-2 leading-none text-[#283455] transition-colors ${
                     locale === "vi"

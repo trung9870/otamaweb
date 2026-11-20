@@ -32,6 +32,25 @@ function getSupabaseConfig() {
   return { url, key, bucket };
 }
 
+function mergeSettingsWithDefaults(
+  raw: Partial<StoreSettings> | undefined,
+  defaults: StoreSettings
+): StoreSettings {
+  if (!raw) return defaults;
+  return {
+    ...defaults,
+    ...raw,
+    homepageSections:
+      Array.isArray(raw.homepageSections) && raw.homepageSections.length > 0
+        ? raw.homepageSections
+        : defaults.homepageSections,
+    headerNav:
+      Array.isArray(raw.headerNav) && raw.headerNav.length > 0
+        ? raw.headerNav
+        : defaults.headerNav,
+  };
+}
+
 async function supabaseRequest<T>(
   restPath: string,
   init: RequestInit = {}
@@ -71,9 +90,7 @@ async function readLocalDb(): Promise<StoreDatabase> {
       categories: Array.isArray(parsed.categories)
         ? parsed.categories
         : defaults.categories,
-      settings: parsed.settings
-        ? { ...defaults.settings, ...parsed.settings }
-        : defaults.settings,
+      settings: mergeSettingsWithDefaults(parsed.settings, defaults.settings),
       orders: Array.isArray(parsed.orders) ? parsed.orders : defaults.orders,
     };
   } catch {
@@ -150,15 +167,24 @@ export async function readStoreDatabase(): Promise<StoreDatabase> {
   return {
     products:
       prodRows.length > 0
-        ? prodRows.map((r) => ({ ...r.data, id: r.id, slug: r.slug, active: r.active, sortOrder: r.sort_order }))
+        ? prodRows.map((r) => ({
+            ...r.data,
+            id: r.id,
+            slug: r.slug,
+            active: r.active,
+            sortOrder: r.sort_order,
+          }))
         : defaults.products,
     categories:
       catRows.length > 0
-        ? catRows.map((r) => ({ ...r.data, slug: r.slug, active: r.active, sortOrder: r.sort_order }))
+        ? catRows.map((r) => ({
+            ...r.data,
+            slug: r.slug,
+            active: r.active,
+            sortOrder: r.sort_order,
+          }))
         : defaults.categories,
-    settings: setRows[0]?.data
-      ? { ...defaults.settings, ...setRows[0].data }
-      : defaults.settings,
+    settings: mergeSettingsWithDefaults(setRows[0]?.data, defaults.settings),
     orders: ordRows.map((r) => ({ ...r.data, id: r.id, status: r.status })),
   };
 }
@@ -213,6 +239,43 @@ export async function deleteProductById(id: string): Promise<boolean> {
   return true;
 }
 
+export async function reorderProducts(orderedIds: string[]): Promise<void> {
+  const orderMap = new Map<string, number>();
+  orderedIds.forEach((id, idx) => orderMap.set(id, idx + 1));
+
+  if (getStorageMode() === "local") {
+    const db = await readLocalDb();
+    let fallbackOrder = orderedIds.length + 1;
+    db.products = db.products
+      .map((p) => ({
+        ...p,
+        sortOrder: orderMap.get(p.id) ?? fallbackOrder++,
+      }))
+      .sort((a, b) => a.sortOrder - b.sortOrder);
+    await writeLocalDb(db);
+    return;
+  }
+
+  const db = await readStoreDatabase();
+  const rows = db.products.map((p) => {
+    const sortOrder = orderMap.get(p.id) ?? p.sortOrder;
+    const updated = { ...p, sortOrder };
+    return {
+      id: updated.id,
+      slug: updated.slug,
+      data: updated,
+      active: updated.active,
+      sort_order: sortOrder,
+      updated_at: updated.updatedAt,
+    };
+  });
+  await supabaseRequest("store_products?on_conflict=id", {
+    method: "POST",
+    headers: { Prefer: "resolution=merge-duplicates,return=minimal" },
+    body: JSON.stringify(rows),
+  });
+}
+
 export async function upsertCategory(category: StoreCategory): Promise<StoreCategory> {
   if (getStorageMode() === "local") {
     const db = await readLocalDb();
@@ -254,6 +317,41 @@ export async function deleteCategoryBySlug(slug: string): Promise<boolean> {
     headers: { Prefer: "return=minimal" },
   });
   return true;
+}
+
+export async function reorderCategories(orderedSlugs: string[]): Promise<void> {
+  const orderMap = new Map<string, number>();
+  orderedSlugs.forEach((slug, idx) => orderMap.set(slug, idx + 1));
+
+  if (getStorageMode() === "local") {
+    const db = await readLocalDb();
+    let fallbackOrder = orderedSlugs.length + 1;
+    db.categories = db.categories
+      .map((c) => ({
+        ...c,
+        sortOrder: orderMap.get(c.slug) ?? fallbackOrder++,
+      }))
+      .sort((a, b) => a.sortOrder - b.sortOrder);
+    await writeLocalDb(db);
+    return;
+  }
+
+  const db = await readStoreDatabase();
+  const rows = db.categories.map((c) => {
+    const sortOrder = orderMap.get(c.slug) ?? c.sortOrder;
+    const updated = { ...c, sortOrder };
+    return {
+      slug: updated.slug,
+      data: updated,
+      active: updated.active,
+      sort_order: sortOrder,
+    };
+  });
+  await supabaseRequest("store_categories?on_conflict=slug", {
+    method: "POST",
+    headers: { Prefer: "resolution=merge-duplicates,return=minimal" },
+    body: JSON.stringify(rows),
+  });
 }
 
 export async function saveSettings(settings: StoreSettings): Promise<StoreSettings> {
@@ -344,37 +442,51 @@ export async function resetLocalDatabase(): Promise<StoreDatabase> {
 }
 
 /* ============================================================================
- * MEDIA UPLOAD (Local data/uploads via /api/media/[filename] ↔ Supabase Storage)
+ * MEDIA UPLOAD (Images + Videos: Local data/uploads ↔ Supabase Storage)
  * ============================================================================ */
 
-const ALLOWED_IMAGE_MIME: Record<string, string> = {
-  "image/jpeg": "jpg",
-  "image/png": "png",
-  "image/webp": "webp",
-  "image/avif": "avif",
-  "image/gif": "gif",
+const ALLOWED_MEDIA_MIME: Record<
+  string,
+  { ext: string; kind: "image" | "video"; maxBytes: number }
+> = {
+  "image/jpeg": { ext: "jpg", kind: "image", maxBytes: 8 * 1024 * 1024 },
+  "image/png": { ext: "png", kind: "image", maxBytes: 8 * 1024 * 1024 },
+  "image/webp": { ext: "webp", kind: "image", maxBytes: 8 * 1024 * 1024 },
+  "image/avif": { ext: "avif", kind: "image", maxBytes: 8 * 1024 * 1024 },
+  "image/gif": { ext: "gif", kind: "image", maxBytes: 8 * 1024 * 1024 },
+  "image/svg+xml": { ext: "svg", kind: "image", maxBytes: 2 * 1024 * 1024 },
+  "video/mp4": { ext: "mp4", kind: "video", maxBytes: 35 * 1024 * 1024 },
+  "video/webm": { ext: "webm", kind: "video", maxBytes: 35 * 1024 * 1024 },
+  "video/quicktime": { ext: "mov", kind: "video", maxBytes: 35 * 1024 * 1024 },
 };
 
-export async function saveUploadedImage(file: File): Promise<{ url: string; filename: string }> {
-  const ext = ALLOWED_IMAGE_MIME[file.type];
-  if (!ext) {
-    throw new Error("Chỉ hỗ trợ định dạng ảnh JPG, PNG, WEBP, AVIF hoặc GIF.");
+export async function saveUploadedMedia(
+  file: File
+): Promise<{ url: string; filename: string; kind: "image" | "video" }> {
+  const spec = ALLOWED_MEDIA_MIME[file.type];
+  if (!spec) {
+    throw new Error(
+      "Chỉ hỗ trợ ảnh (JPG, PNG, WEBP, AVIF, GIF, SVG) hoặc video (MP4, WEBM, MOV)."
+    );
   }
-  const maxBytes = 5 * 1024 * 1024;
-  if (file.size > maxBytes) {
-    throw new Error("Kích thước ảnh tối đa 5MB.");
+  if (file.size > spec.maxBytes) {
+    const limitMb = Math.round(spec.maxBytes / (1024 * 1024));
+    throw new Error(
+      `Dung lượng tệp vượt giới hạn tối đa ${limitMb}MB cho ${spec.kind === "video" ? "video" : "ảnh"}.`
+    );
   }
 
-  const baseName = file.name
-    .replace(/\.[^.]+$/, "")
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "")
-    .slice(0, 40) || "image";
+  const baseName =
+    file.name
+      .replace(/\.[^.]+$/, "")
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-+|-+$/g, "")
+      .slice(0, 40) || spec.kind;
 
-  const filename = `${Date.now()}-${baseName}.${ext}`;
+  const filename = `${Date.now()}-${baseName}.${spec.ext}`;
   const bytes = new Uint8Array(await file.arrayBuffer());
 
   if (getStorageMode() === "local") {
@@ -383,6 +495,7 @@ export async function saveUploadedImage(file: File): Promise<{ url: string; file
     return {
       url: `/api/media/${filename}`,
       filename,
+      kind: spec.kind,
     };
   }
 
@@ -400,14 +513,17 @@ export async function saveUploadedImage(file: File): Promise<{ url: string; file
 
   if (!res.ok) {
     const errText = await res.text().catch(() => res.statusText);
-    throw new Error(`Upload ảnh lên Supabase thất bại (${res.status}): ${errText}`);
+    throw new Error(`Upload tệp lên Supabase thất bại (${res.status}): ${errText}`);
   }
 
   return {
     url: `${url}/storage/v1/object/public/${bucket}/${filename}`,
     filename,
+    kind: spec.kind,
   };
 }
+
+export const saveUploadedImage = saveUploadedMedia;
 
 export function getUploadsDir(): string {
   return UPLOADS_DIR;

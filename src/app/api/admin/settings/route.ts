@@ -19,7 +19,10 @@ export async function PUT(request: Request) {
       ...db.settings,
       ...body,
       storeName: (body.storeName ?? db.settings.storeName).trim() || "Brooklinen",
-      vndRate: Math.max(1000, Math.round(Number(body.vndRate ?? db.settings.vndRate) || 25000)),
+      vndRate: Math.max(
+        1000,
+        Math.round(Number(body.vndRate ?? db.settings.vndRate) || 25000)
+      ),
       freeShippingThresholdUsd: Math.max(
         0,
         Math.round(
@@ -55,6 +58,14 @@ export async function PUT(request: Request) {
       heroSubtitleVi: Array.isArray(body.heroSubtitleVi)
         ? body.heroSubtitleVi.map((s) => s.trim()).filter(Boolean)
         : db.settings.heroSubtitleVi,
+      homepageSections:
+        Array.isArray(body.homepageSections) && body.homepageSections.length > 0
+          ? body.homepageSections
+          : db.settings.homepageSections,
+      headerNav:
+        Array.isArray(body.headerNav) && body.headerNav.length > 0
+          ? body.headerNav
+          : db.settings.headerNav,
     };
 
     const saved = await saveSettings(nextSettings);
