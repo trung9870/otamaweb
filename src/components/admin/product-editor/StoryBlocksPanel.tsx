@@ -81,7 +81,7 @@ function LayoutPicker({
         {LAYOUT_OPTIONS.map((opt) => (
           <label
             key={opt.value}
-            className="flex cursor-pointer flex-col items-center gap-1 rounded-xl border-2 border-[#E5E0DB] bg-white p-1.5 text-center text-[11px] font-bold text-[#3D4866] hover:border-[#9AA3B5] has-[:checked]:border-[#283455] has-[:checked]:bg-[#F9F3ED] has-[:checked]:text-[#283455] has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-[#283455]"
+            className="relative flex cursor-pointer flex-col items-center gap-1 rounded-xl border-2 border-[#E5E0DB] bg-white p-1.5 text-center text-[11px] font-bold text-[#3D4866] select-none hover:border-[#9AA3B5] has-[:checked]:border-[#283455] has-[:checked]:bg-[#F9F3ED] has-[:checked]:text-[#283455] has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-[#283455]"
           >
             <input
               type="radio"

@@ -117,7 +117,7 @@ export function MediaPanel({
           )}
         />
 
-        <label className="flex min-h-[46px] w-full cursor-pointer items-center justify-center rounded-xl border-2 border-dashed border-[#283455]/40 bg-[#FDFAF8] text-[13px] font-bold text-[#283455] hover:bg-[#F3EDE7] has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-[#283455]">
+        <label className="relative flex min-h-[46px] w-full cursor-pointer items-center justify-center rounded-xl border-2 border-dashed border-[#283455]/40 bg-[#FDFAF8] text-[13px] font-bold text-[#283455] select-none hover:bg-[#F3EDE7] has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-[#283455]">
           {uploading ? "Đang tải ảnh lên..." : "+ Tải thêm ảnh từ máy (chọn được nhiều ảnh)"}
           <input
             type="file"
@@ -175,8 +175,12 @@ export function SwatchesPanel({
   draft,
   patch,
   onRegionFocus,
+  onFocusRegion,
   onError,
-}: PanelProps & { onError: (msg: string) => void }) {
+}: PanelProps & {
+  onFocusRegion?: (regionId: string) => void;
+  onError: (msg: string) => void;
+}) {
   const id = useId();
   const [keys, setKeys] = useState<string[]>(() => draft.swatches.map(() => nextSwatchKey()));
   const [uploadingKey, setUploadingKey] = useState<string | null>(null);
@@ -231,6 +235,7 @@ export function SwatchesPanel({
   const uploadFor = async (
     e: ChangeEvent<HTMLInputElement>,
     key: string,
+    index: number,
     field: "mainImage" | "swatchImage"
   ) => {
     const file = e.target.files?.[0];
@@ -239,7 +244,11 @@ export function SwatchesPanel({
     setUploadingKey(`${key}-${field}`);
     try {
       const url = await uploadMedia(file);
-      patchSwatch(key, field === "mainImage" ? { mainImage: url, hoverImage: url } : { swatchImage: url });
+      patchSwatch(
+        key,
+        field === "mainImage" ? { mainImage: url, hoverImage: url } : { swatchImage: url }
+      );
+      onFocusRegion?.(`pd-swatch:${index}`);
     } catch (err) {
       onError(err instanceof Error ? err.message : "Tải ảnh thất bại.");
     } finally {
@@ -321,28 +330,34 @@ export function SwatchesPanel({
                 </div>
 
                 <div className="mt-2 flex flex-wrap items-center gap-2 pl-10">
-                  <div className="h-10 w-10 shrink-0 overflow-hidden rounded-md bg-[#F4F4F6]">
+                  <button
+                    type="button"
+                    title="Bấm để xem màu này trên bản xem trước bên phải"
+                    aria-label={`Xem màu ${it.sw.label} trên bản xem trước`}
+                    onClick={() => onFocusRegion?.(`pd-swatch:${index}`)}
+                    className="h-10 w-10 shrink-0 cursor-pointer overflow-hidden rounded-md border border-[#DCE1EA] bg-[#F4F4F6] hover:border-[#283455]"
+                  >
                     {it.sw.mainImage && (
                       // eslint-disable-next-line @next/next/no-img-element
                       <img src={it.sw.mainImage} alt="" className="h-full w-full object-cover" />
                     )}
-                  </div>
-                  <label className="inline-flex min-h-[32px] cursor-pointer items-center rounded-lg border border-[#283455] bg-white px-2.5 text-[11.5px] font-bold text-[#283455] hover:bg-[#F9F3ED] has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-[#283455]">
+                  </button>
+                  <label className="relative inline-flex min-h-[32px] cursor-pointer items-center rounded-lg border border-[#283455] bg-white px-2.5 text-[11.5px] font-bold text-[#283455] select-none hover:bg-[#F9F3ED] has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-[#283455]">
                     {uploadingKey === `${it.key}-mainImage` ? "Đang tải..." : "Ảnh sản phẩm màu này"}
                     <input
                       type="file"
                       accept="image/*"
                       className="visually-hidden"
-                      onChange={(e) => void uploadFor(e, it.key, "mainImage")}
+                      onChange={(e) => void uploadFor(e, it.key, index, "mainImage")}
                     />
                   </label>
-                  <label className="inline-flex min-h-[32px] cursor-pointer items-center rounded-lg border border-[#C9CFD9] bg-white px-2.5 text-[11.5px] font-bold text-[#5B647A] hover:bg-[#F9F3ED] has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-[#283455]">
+                  <label className="relative inline-flex min-h-[32px] cursor-pointer items-center rounded-lg border border-[#C9CFD9] bg-white px-2.5 text-[11.5px] font-bold text-[#5B647A] select-none hover:bg-[#F9F3ED] has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-[#283455]">
                     {uploadingKey === `${it.key}-swatchImage` ? "Đang tải..." : "Ảnh họa tiết ô màu"}
                     <input
                       type="file"
                       accept="image/*"
                       className="visually-hidden"
-                      onChange={(e) => void uploadFor(e, it.key, "swatchImage")}
+                      onChange={(e) => void uploadFor(e, it.key, index, "swatchImage")}
                     />
                   </label>
                   <label className="ml-auto inline-flex min-h-[32px] cursor-pointer items-center gap-1.5 text-[11.5px] font-bold text-[#283455]">

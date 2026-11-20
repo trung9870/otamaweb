@@ -288,6 +288,7 @@ function ProductDetailInner({ slug }: { slug: string }) {
     settings,
     previewMode,
     previewSelectedId,
+    previewFocus,
   } = useStoreData();
   const qvCopy = UI_COPY[locale].quickViewModal;
   const { addItem, openCart } = useCart();
@@ -325,6 +326,21 @@ function ProductDetailInner({ slug }: { slug: string }) {
     return queenIdx >= 0 ? queenIdx : 0;
   });
   const [qty, setQty] = useState(1);
+
+  const [syncedFocusNonce, setSyncedFocusNonce] = useState(0);
+  if (
+    previewMode &&
+    previewFocus &&
+    previewFocus.nonce !== syncedFocusNonce &&
+    previewFocus.id.startsWith("pd-swatch:")
+  ) {
+    setSyncedFocusNonce(previewFocus.nonce);
+    const idx = Number(previewFocus.id.slice("pd-swatch:".length));
+    if (Number.isFinite(idx) && product && idx >= 0 && idx < product.swatches.length) {
+      setSelectedSwatch(idx);
+      setActivePhotoIdx(0);
+    }
+  }
 
   const gallery = useMemo(() => {
     if (!product) return [];

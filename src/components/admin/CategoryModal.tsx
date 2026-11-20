@@ -325,7 +325,7 @@ export function CategoryModal({
                   className="h-14 w-14 rounded-lg object-cover"
                 />
               )}
-              <label className="inline-flex min-h-[40px] cursor-pointer items-center rounded-xl bg-[#283455] px-4 py-2 text-[13px] font-bold text-white">
+              <label className="relative inline-flex min-h-[40px] cursor-pointer items-center rounded-xl bg-[#283455] px-4 py-2 text-[13px] font-bold text-white select-none">
                 {uploading ? "Đang tải..." : "Tải ảnh danh mục"}
                 <input
                   type="file"

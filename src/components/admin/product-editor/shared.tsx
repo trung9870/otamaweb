@@ -254,7 +254,7 @@ export function ImageSlot({
         )}
       </div>
       <div className="mt-2 flex flex-wrap gap-1.5">
-        <label className="inline-flex min-h-[36px] cursor-pointer items-center rounded-lg bg-[#283455] px-3 text-[12.5px] font-bold text-white hover:bg-[#1D2742] has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-[#283455]">
+        <label className="relative inline-flex min-h-[36px] cursor-pointer items-center rounded-lg bg-[#283455] px-3 text-[12.5px] font-bold text-white select-none hover:bg-[#1D2742] has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-[#283455]">
           {uploading ? "Đang tải..." : value ? "Đổi ảnh" : "Tải ảnh lên"}
           <input
             type="file"

@@ -207,7 +207,7 @@ export function SectionEditorPanel({
     primary = false
   ) => (
     <label
-      className={`inline-flex min-h-[40px] cursor-pointer items-center rounded-xl px-3.5 text-[13px] font-bold ${
+      className={`relative inline-flex min-h-[40px] cursor-pointer items-center rounded-xl px-3.5 text-[13px] font-bold select-none ${
         primary
           ? "bg-[#283455] text-white hover:bg-[#1D2742]"
           : "border border-[#283455] bg-white text-[#283455] hover:bg-[#F9F3ED]"

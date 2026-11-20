@@ -529,7 +529,7 @@ export function VisibilityPanel({
             return (
               <label
                 key={t.tag}
-                className={`inline-flex min-h-[36px] cursor-pointer items-center gap-1.5 rounded-full border px-3 text-[13px] font-bold transition-colors has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-[#283455] ${
+                className={`relative inline-flex min-h-[36px] cursor-pointer items-center gap-1.5 rounded-full border px-3 text-[13px] font-bold select-none transition-colors has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-[#283455] ${
                   checked
                     ? "border-[#283455] bg-[#283455] text-white"
                     : "border-[#C9CFD9] bg-[#FDFAF8] text-[#283455]"

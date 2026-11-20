@@ -23,8 +23,11 @@ function ShellBody({ children }: { children: ReactNode }) {
       window.scrollTo({ top: 0, behavior });
       return;
     }
+    const targetId = previewFocus.id.startsWith("pd-swatch:")
+      ? "pd-gallery"
+      : previewFocus.id;
     const el = document.querySelector(
-      `[data-section-id="${CSS.escape(previewFocus.id)}"]`
+      `[data-section-id="${CSS.escape(targetId)}"]`
     );
     el?.scrollIntoView({ block: "start", behavior });
   }, [previewMode, previewFocus]);

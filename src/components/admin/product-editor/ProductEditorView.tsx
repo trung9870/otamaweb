@@ -351,7 +351,14 @@ export function ProductEditorView({
       case "media":
         return <MediaPanel key={panelKey} {...panelProps} onError={setErrorMsg} />;
       case "swatches":
-        return <SwatchesPanel key={panelKey} {...panelProps} onError={setErrorMsg} />;
+        return (
+          <SwatchesPanel
+            key={panelKey}
+            {...panelProps}
+            onFocusRegion={focusRegion}
+            onError={setErrorMsg}
+          />
+        );
       case "description":
         return <DescriptionPanel key={panelKey} {...panelProps} />;
       case "story":

@@ -457,8 +457,8 @@ dialog::backdrop {
   backdrop-filter: blur(2px);
 }
 
-/* Visually hidden utility keeping nodes in the accessibility tree */
-.visually-hidden:where(:not(:focus-within, :active)) {
+/* Visually hidden utility keeping nodes in the accessibility tree (modern-web-guidance: forms) */
+.visually-hidden {
   position: absolute !important;
   clip-path: inset(50%) !important;
   overflow: hidden !important;
