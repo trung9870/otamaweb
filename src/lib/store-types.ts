@@ -3,7 +3,11 @@ import type {
   CatalogProduct,
   CategoryTag,
   CollectionMeta,
+  ProductDetailBlock,
+  ProductDetailBlockLayout,
 } from "@/components/sites/brooklinen/catalog";
+
+export type { ProductDetailBlock, ProductDetailBlockLayout };
 
 export type StorageMode = "local" | "supabase";
 
@@ -175,6 +179,8 @@ export interface StoreProduct {
   includesVi: string[];
   careEn: string;
   careVi: string;
+  galleryImages?: string[];
+  detailBlocks?: ProductDetailBlock[];
   sections: HomepageSectionKey[];
   active: boolean;
   sortOrder: number;
@@ -326,6 +332,8 @@ export function storeProductToCatalogProduct(
     viIncludes: p.includesVi,
     enCare: p.careEn,
     viCare: p.careVi,
+    galleryImages: p.galleryImages,
+    detailBlocks: p.detailBlocks,
   };
 }
 

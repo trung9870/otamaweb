@@ -286,6 +286,8 @@ export function ProductCarousel({
   const [statusText, setStatusText] = useState("");
   const lastAnnouncedIdx = useRef<number>(-1);
   const userScrolled = useRef(false);
+  const orderSignature = products.map((p) => p.id).join("|");
+  const prevOrderSigRef = useRef(orderSignature);
 
   const syncScrollState = useCallback(() => {
     const track = trackRef.current;
@@ -356,6 +358,24 @@ export function ProductCarousel({
       window.removeEventListener("resize", syncScrollState);
     };
   }, [syncScrollState]);
+
+  // Reset track to slot #1 whenever product order changes (prevents CSS scroll-anchoring hiding item #1)
+  useEffect(() => {
+    if (prevOrderSigRef.current === orderSignature) return;
+    prevOrderSigRef.current = orderSignature;
+    const track = trackRef.current;
+    if (!track) return;
+    userScrolled.current = false;
+    track.style.scrollSnapType = "none";
+    track.style.scrollBehavior = "auto";
+    track.scrollLeft = 0;
+    requestAnimationFrame(() => {
+      track.scrollLeft = 0;
+      track.style.scrollSnapType = "";
+      track.style.scrollBehavior = "";
+      syncScrollState();
+    });
+  }, [orderSignature, syncScrollState]);
 
   const scrollByCard = (dir: -1 | 1) => {
     const track = trackRef.current;

@@ -2,6 +2,10 @@ import { NextResponse } from "next/server";
 import { getAdminSession } from "@/lib/admin-auth";
 import { readStoreDatabase, saveSettings, upsertProduct } from "@/lib/store-db";
 import {
+  sanitizeGalleryImages,
+  sanitizeProductDetailBlocks,
+} from "@/lib/product-detail-defaults";
+import {
   computeDiscountBadge,
   slugifyText,
   type HomepageBlockId,
@@ -84,6 +88,8 @@ export async function POST(request: Request) {
       careVi:
         (body.careVi || "").trim() ||
         "Giặt máy chế độ nước lạnh với đồ cùng màu. Sấy nhẹ ở nhiệt độ thấp.",
+      galleryImages: sanitizeGalleryImages(body.galleryImages),
+      detailBlocks: sanitizeProductDetailBlocks(body.detailBlocks),
       sections: Array.isArray(body.sections) ? body.sections : ["bestOfSale"],
       active: body.active !== false,
       sortOrder: typeof body.sortOrder === "number" ? body.sortOrder : 0,

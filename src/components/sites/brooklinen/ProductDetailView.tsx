@@ -1,13 +1,14 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import {
   getLocalizedCategoryName,
   type CatalogProduct,
+  type ProductDetailBlock,
 } from "./catalog";
 import { parseDollar, useCart } from "./CartContext";
-import { useLanguage } from "./LanguageContext";
+import { useLanguage, type Locale } from "./LanguageContext";
 import { useStoreData } from "./StoreDataContext";
 import {
   translateBadge,
@@ -17,7 +18,13 @@ import {
   translateSize,
   UI_COPY,
 } from "./translations";
-import { SparkleIcon, StarRating } from "./icons";
+import {
+  ChevronLeftIcon,
+  ChevronRightIcon,
+  SparkleIcon,
+  StarRating,
+} from "./icons";
+import { getDefaultProductDetailBlocks } from "@/lib/product-detail-defaults";
 
 const BED_SIZES: { label: string; delta: number }[] = [
   { label: "Twin", delta: 0 },
@@ -51,6 +58,211 @@ function sizeOptionsFor(product: CatalogProduct) {
   return BED_SIZES;
 }
 
+function RichBodyContent({ text }: { text: string }) {
+  const lines = text.split("\n").map((l) => l.trim()).filter(Boolean);
+  const segments: ({ kind: "p"; text: string } | { kind: "ul"; items: string[] })[] = [];
+
+  for (const line of lines) {
+    if (/^[-•*]\s+/.test(line)) {
+      const cleaned = line.replace(/^[-•*]\s+/, "").trim();
+      const prev = segments[segments.length - 1];
+      if (prev && prev.kind === "ul") {
+        prev.items.push(cleaned);
+      } else {
+        segments.push({ kind: "ul", items: [cleaned] });
+      }
+    } else {
+      segments.push({ kind: "p", text: line });
+    }
+  }
+
+  return (
+    <div className="mt-4 space-y-3.5 text-[15.5px] leading-[1.68] text-[#3D4866] lg:text-[16.5px]">
+      {segments.map((seg, i) =>
+        seg.kind === "p" ? (
+          <p key={i}>{seg.text}</p>
+        ) : (
+          <ul key={i} className="space-y-2 pt-1">
+            {seg.items.map((item, j) => (
+              <li key={j} className="flex items-start gap-2.5">
+                <span
+                  aria-hidden="true"
+                  className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#283455]"
+                />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        )
+      )}
+    </div>
+  );
+}
+
+function EditorialStoryBlock({
+  block,
+  locale,
+}: {
+  block: ProductDetailBlock;
+  locale: Locale;
+}) {
+  const eyebrow = (locale === "vi" ? block.eyebrowVi : block.eyebrowEn) || block.eyebrowVi || block.eyebrowEn;
+  const heading = (locale === "vi" ? block.headingVi : block.headingEn) || block.headingVi || block.headingEn;
+  const body = (locale === "vi" ? block.bodyVi : block.bodyEn) || block.bodyVi || block.bodyEn;
+  const caption = (locale === "vi" ? block.captionVi : block.captionEn) || block.captionVi || block.captionEn;
+
+  const hasMedia =
+    block.layout !== "text-only" &&
+    Boolean(block.image || block.secondaryImage);
+  const hasCopy = Boolean(eyebrow || heading || body);
+
+  if (block.layout === "full-banner") {
+    return (
+      <article className="space-y-5">
+        {block.image && (
+          <figure className="overflow-hidden rounded-2xl bg-[#F4F4F6]">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={block.image}
+              alt={heading || caption || ""}
+              width={1320}
+              height={680}
+              loading="lazy"
+              className="max-h-[680px] w-full object-cover"
+            />
+            {caption && (
+              <figcaption className="bg-[#F9F3ED] px-5 py-3 text-center text-[13.5px] text-[#5B647A]">
+                {caption}
+              </figcaption>
+            )}
+          </figure>
+        )}
+        {hasCopy && (
+          <div className="mx-auto max-w-[780px] text-center">
+            {eyebrow && (
+              <p className="text-[12px] font-bold tracking-[0.12em] text-[#5B647A] uppercase">
+                {eyebrow}
+              </p>
+            )}
+            {heading && (
+              <h3 className="bkl-detail-heading mt-2 font-toledo text-[#283455]">
+                {heading}
+              </h3>
+            )}
+            {body && (
+              <div className="text-left sm:text-center">
+                <RichBodyContent text={body} />
+              </div>
+            )}
+          </div>
+        )}
+      </article>
+    );
+  }
+
+  if (block.layout === "two-images") {
+    return (
+      <article className="space-y-6">
+        {hasCopy && (
+          <div className="max-w-[760px]">
+            {eyebrow && (
+              <p className="text-[12px] font-bold tracking-[0.12em] text-[#5B647A] uppercase">
+                {eyebrow}
+              </p>
+            )}
+            {heading && (
+              <h3 className="bkl-detail-heading mt-2 font-toledo text-[#283455]">
+                {heading}
+              </h3>
+            )}
+            {body && <RichBodyContent text={body} />}
+          </div>
+        )}
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:gap-8">
+          {[block.image, block.secondaryImage].filter(Boolean).map((imgUrl, idx) => (
+            <div
+              key={`${imgUrl}-${idx}`}
+              className="aspect-[4/3] overflow-hidden rounded-2xl bg-[#F4F4F6]"
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={imgUrl}
+                alt={heading || ""}
+                width={640}
+                height={480}
+                loading="lazy"
+                className="h-full w-full object-cover"
+              />
+            </div>
+          ))}
+        </div>
+        {caption && (
+          <p className="text-center text-[13.5px] text-[#5B647A]">{caption}</p>
+        )}
+      </article>
+    );
+  }
+
+  // split-left, split-right, or text-only (powered by .bkl-detail-block :has(.bkl-detail-media))
+  const isRightMedia = block.layout === "split-right";
+
+  return (
+    <article
+      data-layout={block.layout}
+      className={`bkl-detail-block ${hasMedia ? "has-media" : ""}`}
+    >
+      {hasMedia && block.image && (
+        <figure
+          className={`bkl-detail-media overflow-hidden rounded-2xl bg-[#F4F4F6] ${
+            isRightMedia ? "lg:order-2" : "lg:order-1"
+          }`}
+        >
+          <div className="aspect-[4/3] w-full overflow-hidden">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={block.image}
+              alt={heading || caption || ""}
+              width={680}
+              height={510}
+              loading="lazy"
+              className="h-full w-full object-cover"
+            />
+          </div>
+          {caption && (
+            <figcaption className="bg-[#F9F3ED] px-4 py-2.5 text-[13px] text-[#5B647A]">
+              {caption}
+            </figcaption>
+          )}
+        </figure>
+      )}
+
+      {hasCopy && (
+        <div
+          className={`${
+            hasMedia
+              ? isRightMedia
+                ? "lg:order-1"
+                : "lg:order-2"
+              : "mx-auto max-w-[820px]"
+          }`}
+        >
+          {eyebrow && (
+            <p className="text-[12px] font-bold tracking-[0.12em] text-[#5B647A] uppercase">
+              {eyebrow}
+            </p>
+          )}
+          {heading && (
+            <h3 className="bkl-detail-heading mt-2 font-toledo text-[#283455]">
+              {heading}
+            </h3>
+          )}
+          {body && <RichBodyContent text={body} />}
+        </div>
+      )}
+    </article>
+  );
+}
+
 export function ProductDetailView({ slug }: { slug: string }) {
   const { locale } = useLanguage();
   const {
@@ -79,6 +291,27 @@ export function ProductDetailView({ slug }: { slug: string }) {
   });
   const [qty, setQty] = useState(1);
 
+  const gallery = useMemo(() => {
+    if (!product) return [];
+    const activeSwatch = product.swatches[selectedSwatch];
+    const mainImg = activeSwatch?.mainImage || product.mainImage;
+    const hoverImg = activeSwatch?.hoverImage || product.hoverImage;
+    const raw = [
+      mainImg,
+      hoverImg,
+      ...(product.galleryImages || []),
+    ].filter((u): u is string => Boolean(u && u.trim()));
+    return Array.from(new Set(raw));
+  }, [product, selectedSwatch]);
+
+  const storyBlocks = useMemo(() => {
+    if (!product) return [];
+    if (product.detailBlocks !== undefined) {
+      return product.detailBlocks;
+    }
+    return getDefaultProductDetailBlocks(product);
+  }, [product]);
+
   if (!product) {
     return (
       <div className="mx-auto max-w-[960px] px-6 py-24 text-center">
@@ -104,9 +337,7 @@ export function ProductDetailView({ slug }: { slug: string }) {
   const activeSize = sizes[selectedSizeIdx] || sizes[0];
   const activeSwatch = product.swatches[selectedSwatch];
   const mainImg = activeSwatch?.mainImage || product.mainImage;
-  const hoverImg = activeSwatch?.hoverImage || product.hoverImage;
-  const gallery = mainImg === hoverImg ? [mainImg] : [mainImg, hoverImg];
-  const currentImg = gallery[activePhotoIdx] || gallery[0];
+  const currentImg = gallery[activePhotoIdx] || gallery[0] || mainImg;
 
   const baseSale = parseDollar(product.salePrice);
   const baseOrig = parseDollar(product.originalPrice);
@@ -158,7 +389,7 @@ export function ProductDetailView({ slug }: { slug: string }) {
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:gap-14">
           {/* Left Gallery */}
           <div className="flex flex-col gap-4">
-            <div className="relative aspect-square w-full overflow-hidden rounded-2xl bg-[#F4F4F6]">
+            <div className="group relative aspect-square w-full overflow-hidden rounded-2xl bg-[#F4F4F6]">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={currentImg}
@@ -182,10 +413,35 @@ export function ProductDetailView({ slug }: { slug: string }) {
                   className="absolute top-4 right-4 h-[72px] w-[72px] object-contain lg:h-[82px] lg:w-[82px]"
                 />
               )}
+
+              {gallery.length > 1 && (
+                <>
+                  <button
+                    type="button"
+                    aria-label={locale === "vi" ? "Ảnh trước" : "Previous photo"}
+                    onClick={() =>
+                      setActivePhotoIdx((prev) => (prev - 1 + gallery.length) % gallery.length)
+                    }
+                    className="absolute top-1/2 left-3 inline-flex h-10 w-10 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-white/90 text-[#283455] shadow-md transition-opacity hover:bg-white lg:opacity-0 lg:group-hover:opacity-100 lg:focus-visible:opacity-100"
+                  >
+                    <ChevronLeftIcon className="h-5 w-5" />
+                  </button>
+                  <button
+                    type="button"
+                    aria-label={locale === "vi" ? "Ảnh tiếp theo" : "Next photo"}
+                    onClick={() =>
+                      setActivePhotoIdx((prev) => (prev + 1) % gallery.length)
+                    }
+                    className="absolute top-1/2 right-3 inline-flex h-10 w-10 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-white/90 text-[#283455] shadow-md transition-opacity hover:bg-white lg:opacity-0 lg:group-hover:opacity-100 lg:focus-visible:opacity-100"
+                  >
+                    <ChevronRightIcon className="h-5 w-5" />
+                  </button>
+                </>
+              )}
             </div>
 
             {gallery.length > 1 && (
-              <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
+              <div className="grid grid-cols-4 gap-3 sm:grid-cols-5">
                 {gallery.map((imgUrl, idx) => (
                   <button
                     key={`${imgUrl}-${idx}`}
@@ -204,8 +460,8 @@ export function ProductDetailView({ slug }: { slug: string }) {
                     <img
                       src={imgUrl}
                       alt=""
-                      width={180}
-                      height={180}
+                      width={160}
+                      height={160}
                       className="h-full w-full object-cover"
                     />
                   </button>
@@ -421,6 +677,39 @@ export function ProductDetailView({ slug }: { slug: string }) {
             </div>
           </div>
         </div>
+
+        {/* =================================================================== */}
+        {/* BELOW-THE-FOLD RICH PRODUCT STORY & DETAIL IMAGERY                  */}
+        {/* =================================================================== */}
+        {storyBlocks.length > 0 && (
+          <section
+            aria-label={
+              locale === "vi"
+                ? "Thông tin & hình ảnh chi tiết sản phẩm"
+                : "Product details and story"
+            }
+            className="mt-16 space-y-14 border-t border-[#E5E0DB] pt-14 lg:mt-20 lg:space-y-20 lg:pt-16"
+          >
+            {storyBlocks.map((blk) => (
+              <EditorialStoryBlock key={blk.id} block={blk} locale={locale} />
+            ))}
+          </section>
+        )}
+
+        {/* Quality Highlights Bar */}
+        <section
+          aria-label={locale === "vi" ? "Cam kết chất lượng" : "Quality Standards"}
+          className="mt-16 grid grid-cols-1 gap-4 rounded-2xl border border-[#ECE7E2] bg-white p-6 sm:grid-cols-3 lg:p-8"
+        >
+          {UI_COPY[locale].valueProps.map((vp) => (
+            <div key={vp.title} className="text-center sm:px-3">
+              <p className="text-[12.5px] font-bold tracking-[0.1em] text-[#283455] uppercase">
+                {vp.title}
+              </p>
+              <p className="mt-2 text-[14px] leading-relaxed text-[#5B647A]">{vp.body}</p>
+            </div>
+          ))}
+        </section>
 
         {/* Customer Reviews Anchor */}
         <section id="reviews" className="mt-16 rounded-2xl bg-[#F9F3ED] p-8 lg:p-12">

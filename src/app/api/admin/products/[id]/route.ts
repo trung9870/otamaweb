@@ -6,6 +6,10 @@ import {
   upsertProduct,
 } from "@/lib/store-db";
 import {
+  sanitizeGalleryImages,
+  sanitizeProductDetailBlocks,
+} from "@/lib/product-detail-defaults";
+import {
   computeDiscountBadge,
   slugifyText,
   type StoreProduct,
@@ -59,6 +63,14 @@ export async function PUT(
       hoverImage:
         (body.hoverImage ?? existing.hoverImage).trim() ||
         (body.mainImage ?? existing.mainImage).trim(),
+      galleryImages:
+        body.galleryImages !== undefined
+          ? sanitizeGalleryImages(body.galleryImages)
+          : existing.galleryImages,
+      detailBlocks:
+        body.detailBlocks !== undefined
+          ? sanitizeProductDetailBlocks(body.detailBlocks)
+          : existing.detailBlocks,
       updatedAt: new Date().toISOString(),
     };
 

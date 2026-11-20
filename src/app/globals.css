@@ -292,6 +292,7 @@ html[lang="vi"] .font-toledo {
   .bkl-carousel-track {
     display: flex;
     overflow-x: auto;
+    overflow-anchor: none;
     scroll-snap-type: x mandatory;
     overscroll-behavior-x: contain;
     touch-action: manipulation;
@@ -485,6 +486,11 @@ dialog::backdrop {
 .admin-dialog--sm {
   width: min(92vw, 460px);
   max-width: min(92vw, 460px);
+}
+
+.admin-dialog--lg {
+  width: min(95vw, 940px);
+  max-width: min(95vw, 940px);
 }
 
 .admin-dialog::backdrop {
@@ -897,4 +903,62 @@ html.otama-preview .otama-preview-selected::before {
     position-area: block-end span-inline-end;
     position-try-fallbacks: flip-block, flip-inline, flip-block flip-inline;
   }
+}
+
+/* ==========================================================================
+   Product Detail Rich Editorial Blocks (modern-web-guidance: content-based-styling, responsive-design)
+   ========================================================================== */
+.bkl-detail-block {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.75rem;
+  align-items: center;
+}
+
+.bkl-detail-block:has(.bkl-detail-media)[data-layout="split-left"],
+.bkl-detail-block:has(.bkl-detail-media)[data-layout="split-right"] {
+  gap: 2rem;
+}
+
+@media (min-width: 1024px) {
+  .bkl-detail-block:has(.bkl-detail-media)[data-layout="split-left"],
+  .bkl-detail-block:has(.bkl-detail-media)[data-layout="split-right"] {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 4rem;
+  }
+}
+
+.bkl-detail-block:not(:has(.bkl-detail-media)) {
+  border-radius: 1.25rem;
+  background-color: #f9f3ed;
+  border: 1px solid #ece7e2;
+  padding: 2rem;
+}
+
+@media (min-width: 1024px) {
+  .bkl-detail-block:not(:has(.bkl-detail-media)) {
+    padding: 3rem 3.5rem;
+  }
+}
+
+@supports not selector(:has(*)) {
+  @media (min-width: 1024px) {
+    .bkl-detail-block.has-media[data-layout="split-left"],
+    .bkl-detail-block.has-media[data-layout="split-right"] {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 4rem;
+    }
+  }
+
+  .bkl-detail-block:not(.has-media) {
+    border-radius: 1.25rem;
+    background-color: #f9f3ed;
+    border: 1px solid #ece7e2;
+    padding: 2rem;
+  }
+}
+
+.bkl-detail-heading {
+  font-size: clamp(1.5rem, 1.15rem + 1.4vw, 2.25rem);
+  line-height: 1.18;
 }

@@ -21,6 +21,28 @@ export type CategoryTag =
   | "throws"
   | "robes";
 
+export type ProductDetailBlockLayout =
+  | "split-left"
+  | "split-right"
+  | "full-banner"
+  | "two-images"
+  | "text-only";
+
+export interface ProductDetailBlock {
+  id: string;
+  layout: ProductDetailBlockLayout;
+  eyebrowVi?: string;
+  eyebrowEn?: string;
+  headingVi?: string;
+  headingEn?: string;
+  bodyVi?: string;
+  bodyEn?: string;
+  image?: string;
+  secondaryImage?: string;
+  captionVi?: string;
+  captionEn?: string;
+}
+
 export interface CatalogProduct extends ProductCardData {
   slug: string;
   tags: CategoryTag[];
@@ -33,6 +55,8 @@ export interface CatalogProduct extends ProductCardData {
   viIncludes: string[];
   enCare: string;
   viCare: string;
+  galleryImages?: string[];
+  detailBlocks?: ProductDetailBlock[];
 }
 
 export function extractProductSlug(rawHref: string): string {

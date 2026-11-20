@@ -7,12 +7,16 @@ import {
   type ChangeEvent,
   type FormEvent,
 } from "react";
+import { SortableList } from "./SortableList";
 import type { CategoryTag } from "@/components/sites/brooklinen/catalog";
 import type { SwatchItem } from "@/components/sites/brooklinen/data";
+import { getDefaultProductDetailBlocks } from "@/lib/product-detail-defaults";
 import {
   computeDiscountBadge,
   slugifyText,
   type HomepageSectionKey,
+  type ProductDetailBlock,
+  type ProductDetailBlockLayout,
   type StoreCategory,
   type StoreProduct,
 } from "@/lib/store-types";
@@ -54,6 +58,28 @@ const SECTION_OPTIONS: { key: HomepageSectionKey; label: string }[] = [
   { key: "collection", label: "Mục Bộ Sưu Tập (Trang chủ)" },
 ];
 
+const DETAIL_LAYOUT_OPTIONS: readonly {
+  value: ProductDetailBlockLayout;
+  label: string;
+}[] = [
+  { value: "split-left", label: "Ảnh bên trái — Chữ bên phải" },
+  { value: "split-right", label: "Chữ bên trái — Ảnh bên phải" },
+  { value: "full-banner", label: "Ảnh lớn tràn ngang (kèm chữ/chú thích bên dưới)" },
+  { value: "two-images", label: "2 Ảnh đặt cạnh nhau" },
+  { value: "text-only", label: "Chỉ bài viết / Thông số (không kèm ảnh)" },
+];
+
+async function uploadSingleMedia(file: File): Promise<string> {
+  const fd = new FormData();
+  fd.append("file", file);
+  const res = await fetch("/api/admin/upload", { method: "POST", body: fd });
+  const data = (await res.json()) as { url?: string; error?: string };
+  if (!res.ok || !data.url) {
+    throw new Error(data.error || "Tải ảnh thất bại.");
+  }
+  return data.url;
+}
+
 export function ProductModal({
   open,
   product,
@@ -76,10 +102,14 @@ export function ProductModal({
   const [promoTone, setPromoTone] = useState<"sale" | "urgent">("sale");
   const [mainImage, setMainImage] = useState("");
   const [hoverImage, setHoverImage] = useState("");
+  const [galleryImages, setGalleryImages] = useState<string[]>([]);
   const [descriptionVi, setDescriptionVi] = useState("");
   const [descriptionEn, setDescriptionEn] = useState("");
+  const [includesViText, setIncludesViText] = useState("");
+  const [includesEnText, setIncludesEnText] = useState("");
   const [careVi, setCareVi] = useState("");
   const [careEn, setCareEn] = useState("");
+  const [detailBlocks, setDetailBlocks] = useState<ProductDetailBlock[]>([]);
   const [tags, setTags] = useState<CategoryTag[]>(["sale", "sheets"]);
   const [sections, setSections] = useState<HomepageSectionKey[]>(["bestOfSale"]);
   const [swatches, setSwatches] = useState<SwatchItem[]>([]);
@@ -108,10 +138,18 @@ export function ProductModal({
         setPromoTone(product.promoTone || "sale");
         setMainImage(product.mainImage || "");
         setHoverImage(product.hoverImage || "");
+        setGalleryImages(product.galleryImages || []);
         setDescriptionVi(product.descriptionVi || "");
         setDescriptionEn(product.descriptionEn || "");
+        setIncludesViText((product.includesVi || []).join("\n"));
+        setIncludesEnText((product.includesEn || []).join("\n"));
         setCareVi(product.careVi || "");
         setCareEn(product.careEn || "");
+        setDetailBlocks(
+          product.detailBlocks !== undefined
+            ? product.detailBlocks
+            : getDefaultProductDetailBlocks(product)
+        );
         setTags(product.tags.length > 0 ? product.tags : ["sale"]);
         setSections(product.sections || []);
         setSwatches(product.swatches || []);
@@ -130,10 +168,29 @@ export function ProductModal({
           "/sites/brooklinen/products/BKL_25-11_Bedding_Classic_TandemStripeInStorm_CS-fa940239.jpg"
         );
         setHoverImage("");
+        setGalleryImages([]);
         setDescriptionVi("");
         setDescriptionEn("");
+        setIncludesViText(
+          "100% chất liệu tuyển chọn đạt chứng nhận OEKO-TEX®\nĐóng gói sang trọng, sẵn sàng làm quà tặng"
+        );
+        setIncludesEnText(
+          "OEKO-TEX® certified premium materials\nThoughtfully packaged and gift-ready"
+        );
         setCareVi("Giặt máy chế độ nước lạnh với đồ cùng màu. Sấy nhẹ ở nhiệt độ thấp.");
         setCareEn("Machine wash cold with like colors. Tumble dry low.");
+        setDetailBlocks([
+          {
+            id: `blk-${Date.now()}`,
+            layout: "split-left",
+            eyebrowVi: "ĐIỂM NỔI BẬT",
+            headingVi: "Chất liệu êm ái, nâng niu giấc ngủ mỗi đêm",
+            bodyVi:
+              "Mô tả chi tiết về chất vải, đường may và trải nghiệm thực tế của sản phẩm.\n- Thoáng khí, mềm mịn tự nhiên\n- Bền màu qua nhiều lần giặt",
+            image:
+              "/sites/brooklinen/categories/BKL_25111_UtilityEducation_Scene2Shot2_071x_8x9_-83ce0562.jpg",
+          },
+        ]);
         setTags(["sale", "sheets"]);
         setSections(["bestOfSale"]);
         setSwatches([]);
@@ -154,36 +211,54 @@ export function ProductModal({
 
   const handleUploadFile = async (
     e: ChangeEvent<HTMLInputElement>,
-    target: "main" | "hover" | { swatchIdx: number }
+    target:
+      | "main"
+      | "hover"
+      | "gallery"
+      | { swatchIdx: number }
+      | { blockId: string; field: "image" | "secondaryImage" }
   ) => {
-    const file = e.target.files?.[0];
+    const files = Array.from(e.target.files || []);
     e.target.value = "";
-    if (!file) return;
+    if (files.length === 0) return;
 
     const fieldId =
-      typeof target === "string" ? target : `swatch-${target.swatchIdx}`;
+      typeof target === "string"
+        ? target
+        : "swatchIdx" in target
+        ? `swatch-${target.swatchIdx}`
+        : `blk-${target.blockId}-${target.field}`;
+
     setUploadingField(fieldId);
     setErrorMsg(null);
     try {
-      const fd = new FormData();
-      fd.append("file", file);
-      const res = await fetch("/api/admin/upload", { method: "POST", body: fd });
-      const data = (await res.json()) as { url?: string; error?: string };
-      if (!res.ok || !data.url) {
-        throw new Error(data.error || "Tải ảnh thất bại.");
-      }
-      if (target === "main") {
-        setMainImage(data.url);
-      } else if (target === "hover") {
-        setHoverImage(data.url);
+      if (target === "gallery") {
+        const urls: string[] = [];
+        for (const f of files) {
+          urls.push(await uploadSingleMedia(f));
+        }
+        setGalleryImages((prev) => [...prev, ...urls]);
       } else {
-        setSwatches((prev) =>
-          prev.map((sw, idx) =>
-            idx === target.swatchIdx
-              ? { ...sw, mainImage: data.url!, swatchImage: data.url! }
-              : sw
-          )
-        );
+        const url = await uploadSingleMedia(files[0]);
+        if (target === "main") {
+          setMainImage(url);
+        } else if (target === "hover") {
+          setHoverImage(url);
+        } else if ("swatchIdx" in target) {
+          setSwatches((prev) =>
+            prev.map((sw, idx) =>
+              idx === target.swatchIdx
+                ? { ...sw, mainImage: url, swatchImage: url }
+                : sw
+            )
+          );
+        } else {
+          setDetailBlocks((prev) =>
+            prev.map((b) =>
+              b.id === target.blockId ? { ...b, [target.field]: url } : b
+            )
+          );
+        }
       }
     } catch (err) {
       setErrorMsg(err instanceof Error ? err.message : "Tải ảnh thất bại.");
@@ -216,6 +291,38 @@ export function ProductModal({
     ]);
   };
 
+  const addDetailBlock = (layout: ProductDetailBlockLayout) => {
+    const nextIdx = detailBlocks.length + 1;
+    setDetailBlocks((prev) => [
+      ...prev,
+      {
+        id: `blk-${Date.now()}-${nextIdx}`,
+        layout,
+        eyebrowVi: layout === "text-only" ? "THÔNG TIN THÊM" : `CHI TIẾT #${nextIdx}`,
+        headingVi:
+          layout === "full-banner"
+            ? "Hình ảnh thực tế sản phẩm"
+            : "Tiêu đề điểm nổi bật mới",
+        bodyVi:
+          layout === "two-images"
+            ? ""
+            : "Nhập mô tả chi tiết cho phần này. Bạn có thể gõ dấu - ở đầu dòng để tạo gạch đầu dòng đẹp mắt.",
+        image: layout === "text-only" ? undefined : mainImage || "",
+        secondaryImage:
+          layout === "two-images" ? hoverImage || mainImage || "" : undefined,
+      },
+    ]);
+  };
+
+  const patchDetailBlock = (
+    blockId: string,
+    patch: Partial<ProductDetailBlock>
+  ) => {
+    setDetailBlocks((prev) =>
+      prev.map((b) => (b.id === blockId ? { ...b, ...patch } : b))
+    );
+  };
+
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     if (saving) return;
@@ -226,6 +333,15 @@ export function ProductModal({
 
     setSaving(true);
     setErrorMsg(null);
+
+    const includesVi = includesViText
+      .split("\n")
+      .map((s) => s.trim())
+      .filter(Boolean);
+    const includesEn = includesEnText
+      .split("\n")
+      .map((s) => s.trim())
+      .filter(Boolean);
 
     const payload = {
       slug: slug.trim() || slugifyText(titleEn || titleVi),
@@ -240,10 +356,14 @@ export function ProductModal({
       promoTone,
       mainImage: mainImage.trim(),
       hoverImage: hoverImage.trim() || mainImage.trim(),
+      galleryImages: galleryImages.map((u) => u.trim()).filter(Boolean),
       descriptionVi: descriptionVi.trim(),
       descriptionEn: descriptionEn.trim() || descriptionVi.trim(),
+      includesVi,
+      includesEn: includesEn.length > 0 ? includesEn : includesVi,
       careVi: careVi.trim(),
       careEn: careEn.trim() || careVi.trim(),
+      detailBlocks,
       tags: tags.length > 0 ? tags : ["sale"],
       sections,
       swatches: swatches.filter((s) => s.label.trim()),
@@ -280,7 +400,7 @@ export function ProductModal({
         if (dialogRef.current) dialogRef.current.returnValue = "";
         onClose();
       }}
-      className="admin-dialog"
+      className="admin-dialog admin-dialog--lg"
     >
       <div className="flex max-h-[90svh] flex-col overflow-hidden rounded-2xl bg-[#FDFAF8] text-[#283455] shadow-2xl">
         {/* Header */}
@@ -290,7 +410,7 @@ export function ProductModal({
               {isEdit ? "Chỉnh sửa sản phẩm" : "Thêm sản phẩm mới"}
             </h2>
             <p className="text-[13px] text-[#5B647A]">
-              Nhập giá bằng VNĐ — hệ thống tự động quy đổi sang USD khi khách chọn tiếng Anh.
+              Chỉnh giá VNĐ, thư viện ảnh và các mục bài viết + hình ảnh chi tiết bên dưới trang sản phẩm.
             </p>
           </div>
           <button
@@ -466,24 +586,24 @@ export function ProductModal({
             </div>
           </div>
 
-          {/* Product Images with direct upload */}
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-            <div className="rounded-xl border border-[#E5E0DB] bg-white p-4">
-              <label htmlFor="pm-main-img" className="block text-[13.5px] font-bold">
-                Ảnh chính sản phẩm
-              </label>
-              <div className="mt-2 flex items-center gap-3">
-                <div className="h-16 w-16 shrink-0 overflow-hidden rounded-lg border border-[#E5E0DB] bg-[#F4F4F6]">
-                  {mainImage && (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img
-                      src={mainImage}
-                      alt="Xem trước ảnh chính"
-                      className="h-full w-full object-cover"
-                    />
-                  )}
-                </div>
-                <div className="flex-1">
+          {/* Product Images + Extra Gallery */}
+          <div className="space-y-4 rounded-xl border border-[#E5E0DB] bg-white p-4">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              <div>
+                <label htmlFor="pm-main-img" className="block text-[13.5px] font-bold">
+                  Ảnh chính sản phẩm
+                </label>
+                <div className="mt-2 flex items-center gap-3">
+                  <div className="h-16 w-16 shrink-0 overflow-hidden rounded-lg border border-[#E5E0DB] bg-[#F4F4F6]">
+                    {mainImage && (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img
+                        src={mainImage}
+                        alt="Xem trước ảnh chính"
+                        className="h-full w-full object-cover"
+                      />
+                    )}
+                  </div>
                   <label className="inline-flex min-h-[40px] cursor-pointer items-center justify-center rounded-xl bg-[#283455] px-3.5 py-2 text-[13px] font-bold text-white hover:bg-[#1D2742]">
                     {uploadingField === "main" ? "Đang tải..." : "Tải ảnh từ máy"}
                     <input
@@ -494,35 +614,33 @@ export function ProductModal({
                     />
                   </label>
                 </div>
+                <input
+                  id="pm-main-img"
+                  name="mainImage"
+                  type="text"
+                  spellCheck={false}
+                  value={mainImage}
+                  onChange={(e) => setMainImage(e.target.value)}
+                  placeholder="/api/media/... hoặc https://..."
+                  className="admin-input mt-2.5 w-full rounded-xl border border-[#8E96A8] px-3 text-[13px]"
+                />
               </div>
-              <input
-                id="pm-main-img"
-                name="mainImage"
-                type="text"
-                spellCheck={false}
-                value={mainImage}
-                onChange={(e) => setMainImage(e.target.value)}
-                placeholder="/api/media/... hoặc https://..."
-                className="admin-input mt-2.5 w-full rounded-xl border border-[#8E96A8] px-3 text-[13px]"
-              />
-            </div>
 
-            <div className="rounded-xl border border-[#E5E0DB] bg-white p-4">
-              <label htmlFor="pm-hover-img" className="block text-[13.5px] font-bold">
-                Ảnh phụ khi rê chuột (tùy chọn)
-              </label>
-              <div className="mt-2 flex items-center gap-3">
-                <div className="h-16 w-16 shrink-0 overflow-hidden rounded-lg border border-[#E5E0DB] bg-[#F4F4F6]">
-                  {(hoverImage || mainImage) && (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img
-                      src={hoverImage || mainImage}
-                      alt="Xem trước ảnh phụ"
-                      className="h-full w-full object-cover"
-                    />
-                  )}
-                </div>
-                <div className="flex-1">
+              <div>
+                <label htmlFor="pm-hover-img" className="block text-[13.5px] font-bold">
+                  Ảnh phụ khi rê chuột (tùy chọn)
+                </label>
+                <div className="mt-2 flex items-center gap-3">
+                  <div className="h-16 w-16 shrink-0 overflow-hidden rounded-lg border border-[#E5E0DB] bg-[#F4F4F6]">
+                    {(hoverImage || mainImage) && (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img
+                        src={hoverImage || mainImage}
+                        alt="Xem trước ảnh phụ"
+                        className="h-full w-full object-cover"
+                      />
+                    )}
+                  </div>
                   <label className="inline-flex min-h-[40px] cursor-pointer items-center justify-center rounded-xl border border-[#283455] px-3.5 py-2 text-[13px] font-bold text-[#283455] hover:bg-[#F9F3ED]">
                     {uploadingField === "hover" ? "Đang tải..." : "Tải ảnh phụ"}
                     <input
@@ -533,17 +651,71 @@ export function ProductModal({
                     />
                   </label>
                 </div>
+                <input
+                  id="pm-hover-img"
+                  name="hoverImage"
+                  type="text"
+                  spellCheck={false}
+                  value={hoverImage}
+                  onChange={(e) => setHoverImage(e.target.value)}
+                  placeholder="Bỏ trống sẽ dùng ảnh chính"
+                  className="admin-input mt-2.5 w-full rounded-xl border border-[#8E96A8] px-3 text-[13px]"
+                />
               </div>
-              <input
-                id="pm-hover-img"
-                name="hoverImage"
-                type="text"
-                spellCheck={false}
-                value={hoverImage}
-                onChange={(e) => setHoverImage(e.target.value)}
-                placeholder="Bỏ trống sẽ dùng ảnh chính"
-                className="admin-input mt-2.5 w-full rounded-xl border border-[#8E96A8] px-3 text-[13px]"
-              />
+            </div>
+
+            {/* Extra Gallery Thumbnails */}
+            <div className="border-t border-[#ECE7E2] pt-3.5">
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <div>
+                  <p className="text-[13.5px] font-bold">
+                    Thư viện ảnh chi tiết thêm ({galleryImages.length})
+                  </p>
+                  <p className="text-[12px] text-[#5B647A]">
+                    Các ảnh chụp góc cận, mặt vải, bao bì... hiện ở dãy ảnh nhỏ đầu trang sản phẩm.
+                  </p>
+                </div>
+                <label className="inline-flex min-h-[38px] cursor-pointer items-center rounded-xl border border-[#283455] bg-[#FDFAF8] px-3.5 text-[12.5px] font-bold text-[#283455] hover:bg-[#F3EDE7]">
+                  {uploadingField === "gallery"
+                    ? "Đang tải ảnh..."
+                    : "+ Tải thêm nhiều ảnh từ máy"}
+                  <input
+                    type="file"
+                    accept="image/*"
+                    multiple
+                    className="visually-hidden"
+                    onChange={(e) => void handleUploadFile(e, "gallery")}
+                  />
+                </label>
+              </div>
+
+              {galleryImages.length > 0 && (
+                <div className="mt-3 flex flex-wrap gap-2.5">
+                  {galleryImages.map((imgUrl, idx) => (
+                    <div
+                      key={`${imgUrl}-${idx}`}
+                      className="group relative h-20 w-20 overflow-hidden rounded-xl border border-[#D4D8E0] bg-[#F4F4F6]"
+                    >
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={imgUrl}
+                        alt={`Ảnh phụ ${idx + 1}`}
+                        className="h-full w-full object-cover"
+                      />
+                      <button
+                        type="button"
+                        aria-label={`Xóa ảnh phụ ${idx + 1}`}
+                        onClick={() =>
+                          setGalleryImages((prev) => prev.filter((_, i) => i !== idx))
+                        }
+                        className="absolute top-1 right-1 inline-flex h-6 w-6 cursor-pointer items-center justify-center rounded-full bg-[#740103] text-[14px] font-bold text-white shadow"
+                      >
+                        &times;
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
 
@@ -724,36 +896,367 @@ export function ProductModal({
             </div>
           </fieldset>
 
-          {/* Descriptions */}
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-            <div>
-              <label htmlFor="pm-desc-vi" className="block text-[13.5px] font-bold">
-                Mô tả sản phẩm (Tiếng Việt)
-              </label>
-              <textarea
-                id="pm-desc-vi"
-                name="descriptionVi"
-                rows={3}
-                value={descriptionVi}
-                onChange={(e) => setDescriptionVi(e.target.value)}
-                className="admin-input mt-1.5 w-full rounded-xl border border-[#8E96A8] px-3.5 py-2.5"
-              />
+          {/* Short summary + What's Included + Care */}
+          <div className="space-y-4 rounded-xl border border-[#E5E0DB] bg-white p-4">
+            <p className="text-[14px] font-bold text-[#283455]">
+              Mô tả ngắn &amp; Thông số cạnh nút Mua hàng
+            </p>
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              <div>
+                <label htmlFor="pm-desc-vi" className="block text-[13px] font-bold">
+                  Mô tả ngắn (Tiếng Việt)
+                </label>
+                <textarea
+                  id="pm-desc-vi"
+                  name="descriptionVi"
+                  rows={3}
+                  value={descriptionVi}
+                  onChange={(e) => setDescriptionVi(e.target.value)}
+                  className="admin-input mt-1.5 w-full rounded-xl border border-[#8E96A8] px-3.5 py-2.5"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="pm-desc-en" className="block text-[13px] font-bold">
+                  Mô tả ngắn (Tiếng Anh — tùy chọn)
+                </label>
+                <textarea
+                  id="pm-desc-en"
+                  name="descriptionEn"
+                  rows={3}
+                  value={descriptionEn}
+                  onChange={(e) => setDescriptionEn(e.target.value)}
+                  className="admin-input mt-1.5 w-full rounded-xl border border-[#8E96A8] px-3.5 py-2.5"
+                />
+              </div>
             </div>
 
-            <div>
-              <label htmlFor="pm-desc-en" className="block text-[13.5px] font-bold">
-                Mô tả sản phẩm (Tiếng Anh)
-              </label>
-              <textarea
-                id="pm-desc-en"
-                name="descriptionEn"
-                rows={3}
-                value={descriptionEn}
-                onChange={(e) => setDescriptionEn(e.target.value)}
-                className="admin-input mt-1.5 w-full rounded-xl border border-[#8E96A8] px-3.5 py-2.5"
-              />
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              <div>
+                <label htmlFor="pm-inc-vi" className="block text-[13px] font-bold">
+                  Bộ sản phẩm bao gồm (mỗi dòng 1 ý)
+                </label>
+                <textarea
+                  id="pm-inc-vi"
+                  rows={3}
+                  value={includesViText}
+                  onChange={(e) => setIncludesViText(e.target.value)}
+                  placeholder="1 Ga chun bọc đệm&#10;2 Vỏ gối nằm..."
+                  className="admin-input mt-1.5 w-full rounded-xl border border-[#8E96A8] px-3.5 py-2 text-[13.5px]"
+                />
+              </div>
+              <div>
+                <label htmlFor="pm-care-vi" className="block text-[13px] font-bold">
+                  Hướng dẫn bảo quản (Tiếng Việt)
+                </label>
+                <textarea
+                  id="pm-care-vi"
+                  rows={3}
+                  value={careVi}
+                  onChange={(e) => setCareVi(e.target.value)}
+                  className="admin-input mt-1.5 w-full rounded-xl border border-[#8E96A8] px-3.5 py-2 text-[13.5px]"
+                />
+              </div>
             </div>
           </div>
+
+          {/* =============================================================== */}
+          {/* RICH BELOW-THE-FOLD EDITORIAL BLOCKS & IMAGES                   */}
+          {/* =============================================================== */}
+          <fieldset className="space-y-4 rounded-2xl border-2 border-[#283455]/20 bg-white p-4 sm:p-5">
+            <legend className="px-1.5 text-[15px] font-bold text-[#283455]">
+              Bài viết &amp; Ảnh mô tả chi tiết bên dưới trang sản phẩm ({detailBlocks.length})
+            </legend>
+            <p className="text-[13px] text-[#5B647A]">
+              Chèn bao nhiêu mục nội dung và ảnh minh họa tùy thích (ảnh chụp cận chất vải, bảng kích thước, hướng dẫn phối phòng...). Kéo <strong>⋮⋮</strong> để đổi thứ tự trên → dưới.
+            </p>
+
+            <SortableList
+              items={detailBlocks}
+              getKey={(b) => b.id}
+              getLabel={(b) => b.headingVi || "Mục mô tả chi tiết"}
+              onReorder={setDetailBlocks}
+              ariaLabel="Thứ tự các mục bài viết chi tiết sản phẩm"
+              className="space-y-3.5"
+              renderItem={(blk, { index, handle, isDragging }) => {
+                const showPrimaryImg = blk.layout !== "text-only";
+                const showSecondaryImg = blk.layout === "two-images";
+
+                return (
+                  <div
+                    className={`rounded-xl border bg-[#FDFAF8] p-3.5 ${
+                      isDragging ? "border-[#2563EB] shadow-xl" : "border-[#DDD6CE]"
+                    }`}
+                  >
+                    <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#ECE7E2] pb-2.5">
+                      <div className="flex items-center gap-2">
+                        {handle}
+                        <span className="rounded-full bg-[#283455] px-2.5 py-0.5 text-[11.5px] font-bold text-white">
+                          Mục #{index + 1}
+                        </span>
+                        <select
+                          aria-label={`Kiểu bố cục mục ${index + 1}`}
+                          value={blk.layout}
+                          onChange={(e) =>
+                            patchDetailBlock(blk.id, {
+                              layout: e.target.value as ProductDetailBlockLayout,
+                            })
+                          }
+                          className="h-9 rounded-lg border border-[#8E96A8] bg-white px-2.5 text-[13px] font-bold text-[#283455]"
+                        >
+                          {DETAIL_LAYOUT_OPTIONS.map((opt) => (
+                            <option key={opt.value} value={opt.value}>
+                              {opt.label}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+
+                      <button
+                        type="button"
+                        onClick={() =>
+                          setDetailBlocks((prev) =>
+                            prev.filter((item) => item.id !== blk.id)
+                          )
+                        }
+                        className="cursor-pointer rounded-lg px-2.5 py-1 text-[12.5px] font-bold text-[#A50E0E] hover:bg-[#FCE8E6]"
+                      >
+                        Xóa mục này
+                      </button>
+                    </div>
+
+                    <div className="mt-3 space-y-3">
+                      {showPrimaryImg && (
+                        <div
+                          className={`grid grid-cols-1 gap-3 ${
+                            showSecondaryImg ? "sm:grid-cols-2" : ""
+                          }`}
+                        >
+                          <div className="rounded-xl border border-[#E5E0DB] bg-white p-3">
+                            <p className="text-[12.5px] font-bold text-[#283455]">
+                              {showSecondaryImg ? "Ảnh bên trái" : "Ảnh minh họa"}
+                            </p>
+                            <div className="mt-2 flex items-center gap-3">
+                              <div className="h-16 w-20 shrink-0 overflow-hidden rounded-lg border border-[#E5E0DB] bg-[#F4F4F6]">
+                                {blk.image && (
+                                  // eslint-disable-next-line @next/next/no-img-element
+                                  <img
+                                    src={blk.image}
+                                    alt=""
+                                    className="h-full w-full object-cover"
+                                  />
+                                )}
+                              </div>
+                              <label className="inline-flex min-h-[38px] cursor-pointer items-center rounded-xl bg-[#283455] px-3 text-[12.5px] font-bold text-white hover:bg-[#1D2742]">
+                                {uploadingField === `blk-${blk.id}-image`
+                                  ? "Đang tải..."
+                                  : "Tải ảnh từ máy"}
+                                <input
+                                  type="file"
+                                  accept="image/*"
+                                  className="visually-hidden"
+                                  onChange={(e) =>
+                                    void handleUploadFile(e, {
+                                      blockId: blk.id,
+                                      field: "image",
+                                    })
+                                  }
+                                />
+                              </label>
+                            </div>
+                            <input
+                              type="text"
+                              aria-label={`Đường dẫn ảnh mục ${index + 1}`}
+                              spellCheck={false}
+                              value={blk.image || ""}
+                              onChange={(e) =>
+                                patchDetailBlock(blk.id, { image: e.target.value })
+                              }
+                              placeholder="/api/media/... hoặc https://..."
+                              className="mt-2 h-9 w-full rounded-lg border border-[#C9CFD9] px-2.5 font-mono text-[12px]"
+                            />
+                          </div>
+
+                          {showSecondaryImg && (
+                            <div className="rounded-xl border border-[#E5E0DB] bg-white p-3">
+                              <p className="text-[12.5px] font-bold text-[#283455]">
+                                Ảnh bên phải
+                              </p>
+                              <div className="mt-2 flex items-center gap-3">
+                                <div className="h-16 w-20 shrink-0 overflow-hidden rounded-lg border border-[#E5E0DB] bg-[#F4F4F6]">
+                                  {blk.secondaryImage && (
+                                    // eslint-disable-next-line @next/next/no-img-element
+                                    <img
+                                      src={blk.secondaryImage}
+                                      alt=""
+                                      className="h-full w-full object-cover"
+                                    />
+                                  )}
+                                </div>
+                                <label className="inline-flex min-h-[38px] cursor-pointer items-center rounded-xl bg-[#283455] px-3 text-[12.5px] font-bold text-white hover:bg-[#1D2742]">
+                                  {uploadingField === `blk-${blk.id}-secondaryImage`
+                                    ? "Đang tải..."
+                                    : "Tải ảnh thứ 2"}
+                                  <input
+                                    type="file"
+                                    accept="image/*"
+                                    className="visually-hidden"
+                                    onChange={(e) =>
+                                      void handleUploadFile(e, {
+                                        blockId: blk.id,
+                                        field: "secondaryImage",
+                                      })
+                                    }
+                                  />
+                                </label>
+                              </div>
+                              <input
+                                type="text"
+                                aria-label={`Đường dẫn ảnh thứ 2 mục ${index + 1}`}
+                                spellCheck={false}
+                                value={blk.secondaryImage || ""}
+                                onChange={(e) =>
+                                  patchDetailBlock(blk.id, {
+                                    secondaryImage: e.target.value,
+                                  })
+                                }
+                                placeholder="/api/media/... hoặc https://..."
+                                className="mt-2 h-9 w-full rounded-lg border border-[#C9CFD9] px-2.5 font-mono text-[12px]"
+                              />
+                            </div>
+                          )}
+                        </div>
+                      )}
+
+                      <div className="grid grid-cols-1 gap-3 sm:grid-cols-[180px_1fr]">
+                        <div>
+                          <label className="block text-[12px] font-bold text-[#5B647A]">
+                            Nhãn nhỏ phía trên
+                          </label>
+                          <input
+                            type="text"
+                            value={blk.eyebrowVi || ""}
+                            onChange={(e) =>
+                              patchDetailBlock(blk.id, { eyebrowVi: e.target.value })
+                            }
+                            placeholder="VD: CHẤT LIỆU"
+                            className="mt-1 h-10 w-full rounded-lg border border-[#8E96A8] bg-white px-3 text-[13px]"
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-[12px] font-bold text-[#283455]">
+                            Tiêu đề mục (bỏ trống nếu chỉ muốn hiện ảnh)
+                          </label>
+                          <input
+                            type="text"
+                            value={blk.headingVi || ""}
+                            onChange={(e) =>
+                              patchDetailBlock(blk.id, { headingVi: e.target.value })
+                            }
+                            placeholder="VD: Càng giặt càng mềm, thoáng mát suốt bốn mùa"
+                            className="mt-1 h-10 w-full rounded-lg border border-[#8E96A8] bg-white px-3 text-[13.5px] font-bold"
+                          />
+                        </div>
+                      </div>
+
+                      <div>
+                        <label className="block text-[12px] font-bold text-[#283455]">
+                          Nội dung chi tiết (gõ dấu <code>- </code> đầu dòng để tạo gạch đầu dòng)
+                        </label>
+                        <textarea
+                          rows={3}
+                          value={blk.bodyVi || ""}
+                          onChange={(e) =>
+                            patchDetailBlock(blk.id, { bodyVi: e.target.value })
+                          }
+                          placeholder="Nhập đoạn văn giới thiệu chất liệu, công dụng, bảng kích thước..."
+                          className="mt-1 w-full rounded-lg border border-[#8E96A8] bg-white px-3 py-2 text-[13.5px]"
+                        />
+                      </div>
+
+                      {showPrimaryImg && (
+                        <div>
+                          <label className="block text-[12px] font-bold text-[#5B647A]">
+                            Chú thích nhỏ dưới ảnh (tùy chọn)
+                          </label>
+                          <input
+                            type="text"
+                            value={blk.captionVi || ""}
+                            onChange={(e) =>
+                              patchDetailBlock(blk.id, { captionVi: e.target.value })
+                            }
+                            placeholder="VD: Ảnh chụp thực tế màu Trắng Kem dưới ánh sáng tự nhiên"
+                            className="mt-1 h-9 w-full rounded-lg border border-[#C9CFD9] bg-white px-3 text-[12.5px]"
+                          />
+                        </div>
+                      )}
+
+                      <details className="rounded-lg border border-[#ECE7E2] bg-white px-3 py-2">
+                        <summary className="cursor-pointer text-[12px] font-bold text-[#5B647A]">
+                          Bản dịch Tiếng Anh cho mục này (tùy chọn — bỏ trống tự lấy Tiếng Việt)
+                        </summary>
+                        <div className="mt-2.5 space-y-2">
+                          <input
+                            type="text"
+                            value={blk.headingEn || ""}
+                            onChange={(e) =>
+                              patchDetailBlock(blk.id, { headingEn: e.target.value })
+                            }
+                            placeholder="English heading..."
+                            className="h-9 w-full rounded-lg border border-[#C9CFD9] px-2.5 text-[13px]"
+                          />
+                          <textarea
+                            rows={2}
+                            value={blk.bodyEn || ""}
+                            onChange={(e) =>
+                              patchDetailBlock(blk.id, { bodyEn: e.target.value })
+                            }
+                            placeholder="English body..."
+                            className="w-full rounded-lg border border-[#C9CFD9] px-2.5 py-1.5 text-[13px]"
+                          />
+                        </div>
+                      </details>
+                    </div>
+                  </div>
+                );
+              }}
+            />
+
+            <div className="flex flex-wrap gap-2 pt-1">
+              <button
+                type="button"
+                onClick={() =>
+                  addDetailBlock(
+                    detailBlocks.length % 2 === 0 ? "split-left" : "split-right"
+                  )
+                }
+                className="min-h-[42px] cursor-pointer rounded-xl bg-[#283455] px-4 text-[13px] font-bold text-white hover:bg-[#1D2742]"
+              >
+                + Thêm mục Ảnh + Nội dung
+              </button>
+              <button
+                type="button"
+                onClick={() => addDetailBlock("full-banner")}
+                className="min-h-[42px] cursor-pointer rounded-xl border border-[#283455] bg-white px-3.5 text-[13px] font-bold text-[#283455] hover:bg-[#F9F3ED]"
+              >
+                + Thêm Ảnh lớn tràn ngang
+              </button>
+              <button
+                type="button"
+                onClick={() => addDetailBlock("two-images")}
+                className="min-h-[42px] cursor-pointer rounded-xl border border-[#283455] bg-white px-3.5 text-[13px] font-bold text-[#283455] hover:bg-[#F9F3ED]"
+              >
+                + Thêm 2 Ảnh song song
+              </button>
+              <button
+                type="button"
+                onClick={() => addDetailBlock("text-only")}
+                className="min-h-[42px] cursor-pointer rounded-xl border border-[#C9CFD9] bg-white px-3.5 text-[13px] font-bold text-[#283455] hover:bg-[#F9F3ED]"
+              >
+                + Thêm đoạn bài viết
+              </button>
+            </div>
+          </fieldset>
 
           {/* Active toggle */}
           <label className="flex cursor-pointer items-center gap-3 rounded-xl border border-[#E5E0DB] bg-white px-4 py-3">

@@ -1058,7 +1058,7 @@ export function AdminDashboard() {
                       <td data-label="Thao tác">
                         <div className="flex flex-wrap items-center justify-end gap-2 sm:justify-start">
                           <Link
-                            href={`/products/${p.slug}`}
+                            href={`/products/${p.slug}?lang=vi`}
                             target="_blank"
                             rel="noreferrer"
                             className="rounded-lg border border-[#D4D8E0] px-2.5 py-1.5 text-[12.5px] font-bold text-[#5B647A] hover:border-[#283455] hover:text-[#283455]"
@@ -1192,7 +1192,7 @@ export function AdminDashboard() {
                       </th>
                       <td data-label="Đường dẫn" className="font-mono text-[13px]">
                         <Link
-                          href={`/collections/${cat.slug}`}
+                          href={`/collections/${cat.slug}?lang=vi`}
                           target="_blank"
                           rel="noreferrer"
                           className="underline hover:text-[#283455]"
