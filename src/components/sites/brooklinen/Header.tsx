@@ -24,7 +24,8 @@ import { SwipeDrawer } from "./SwipeDrawer";
 
 export function Header() {
   const { locale } = useLanguage();
-  const { catalog, settings, formatMoneyString } = useStoreData();
+  const { catalog, settings, formatMoneyString, previewMode, previewSelectedId } =
+    useStoreData();
   const copy = UI_COPY[locale];
   const { totalCount, openCart } = useCart();
 
@@ -173,7 +174,11 @@ export function Header() {
 
       {/* Main Sticky Header */}
       <header
-        className="sticky top-0 z-40 border-b border-[#ECE7E2] bg-[#FDFAF8]"
+        className={`sticky top-0 z-40 border-b border-[#ECE7E2] bg-[#FDFAF8] ${
+          previewMode && previewSelectedId === "header_nav"
+            ? "outline-[3px] outline-solid outline-[#2563eb] -outline-offset-[3px]"
+            : ""
+        }`}
         onMouseLeave={() => setActiveMegaIdx(null)}
       >
         <div className="mx-auto flex h-[65px] max-w-[1440px] items-center justify-between px-5 lg:h-[90px] lg:px-10 xl:px-14">

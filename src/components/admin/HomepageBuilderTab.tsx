@@ -1,8 +1,19 @@
 "use client";
 
-import { useState } from "react";
-import { flushSync } from "react-dom";
-import { HomepageSectionModal } from "./HomepageSectionModal";
+import {
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  useSyncExternalStore,
+} from "react";
+import {
+  LivePreviewFrame,
+  type PreviewDevice,
+  type PreviewLocale,
+} from "./LivePreviewFrame";
+import { SectionEditorPanel } from "./SectionEditorPanel";
+import { SortableList } from "./SortableList";
 import type {
   HeaderNavConfigItem,
   HomepageSectionConfig,
@@ -13,37 +24,40 @@ import type {
 interface HomepageBuilderTabProps {
   settings: StoreSettings;
   products: StoreProduct[];
-  onSaveSettingsPatch: (
-    patch: Partial<StoreSettings>,
-    successMsg: string
-  ) => Promise<void>;
+  onSaveSettingsPatch: (patch: Partial<StoreSettings>, successMsg: string) => Promise<void>;
   onJumpToCategories: () => void;
+  onDirtyChange: (dirty: boolean) => void;
 }
 
-const KIND_BADGE: Record<
-  HomepageSectionConfig["kind"],
-  { label: string; cls: string }
-> = {
-  hero: { label: "Hero Video / Ảnh", cls: "bg-[#283455] text-white" },
-  strip: { label: "Dải băng", cls: "bg-[#740103]/15 text-[#740103]" },
+const HEADER_NAV_ID = "header_nav";
+
+const KIND_BADGE: Record<HomepageSectionConfig["kind"], { label: string; cls: string }> = {
+  hero: { label: "Video / Ảnh", cls: "bg-[#283455] text-white" },
+  strip: { label: "Dải băng", cls: "bg-[#740103]/12 text-[#740103]" },
   carousel: { label: "Sản phẩm", cls: "bg-[#EAF3E4] text-[#417823]" },
-  banner: { label: "Banner ảnh", cls: "bg-[#FEF3C7] text-[#92400E]" },
+  banner: { label: "Banner", cls: "bg-[#FEF3C7] text-[#92400E]" },
   categories: { label: "Danh mục", cls: "bg-[#DBEAFE] text-[#1E40AF]" },
-  static: { label: "Khối nội dung", cls: "bg-[#EFEAE4] text-[#5B647A]" },
+  static: { label: "Nội dung", cls: "bg-[#EFEAE4] text-[#5B647A]" },
 };
 
-function runTransition(update: () => void) {
-  if (
-    typeof document !== "undefined" &&
-    "startViewTransition" in document &&
-    typeof document.startViewTransition === "function"
-  ) {
-    document.startViewTransition(() => {
-      flushSync(update);
-    });
-  } else {
-    update();
+function subscribeDesktop(cb: () => void) {
+  const mq = window.matchMedia("(min-width: 1024px)");
+  mq.addEventListener("change", cb);
+  return () => mq.removeEventListener("change", cb);
+}
+const getDesktop = () => window.matchMedia("(min-width: 1024px)").matches;
+
+function summarize(s: HomepageSectionConfig): string {
+  if (s.kind === "hero") {
+    const mode = (s.mediaType || "video") === "image" ? "Ảnh tĩnh" : "Video nền";
+    const first = (s.titleVi || "").split("\n")[0];
+    return first ? `${mode} · ${first}` : mode;
   }
+  if (s.kind === "carousel") return `${s.productSlugs?.length || 0} sản phẩm · ${s.titleVi || ""}`;
+  if (s.kind === "strip" || s.kind === "banner" || s.kind === "categories") {
+    return (s.titleVi || "").replace(/\n/g, " ");
+  }
+  return "Khối nội dung cố định";
 }
 
 export function HomepageBuilderTab({
@@ -51,412 +65,555 @@ export function HomepageBuilderTab({
   products,
   onSaveSettingsPatch,
   onJumpToCategories,
+  onDirtyChange,
 }: HomepageBuilderTabProps) {
-  const [sections, setSections] = useState<HomepageSectionConfig[]>(
-    settings.homepageSections || []
-  );
-  const [headerNav, setHeaderNav] = useState<HeaderNavConfigItem[]>(
-    settings.headerNav || []
-  );
-  const [editingSection, setEditingSection] =
-    useState<HomepageSectionConfig | null>(null);
-  const [savingNav, setSavingNav] = useState(false);
-  const [reorderStatus, setReorderStatus] = useState("");
+  const savedSections = useMemo(() => settings.homepageSections || [], [settings.homepageSections]);
+  const savedNav = useMemo(() => settings.headerNav || [], [settings.headerNav]);
 
-  // Keep local state aligned if parent settings refresh (e.g., after reset)
-  const [syncedKey, setSyncedKey] = useState(
-    JSON.stringify([settings.homepageSections, settings.headerNav])
-  );
-  const nextKey = JSON.stringify([settings.homepageSections, settings.headerNav]);
-  if (nextKey !== syncedKey) {
-    setSyncedKey(nextKey);
-    setSections(settings.homepageSections || []);
-    setHeaderNav(settings.headerNav || []);
+  const [draftSections, setDraftSections] = useState<HomepageSectionConfig[]>(savedSections);
+  const [draftNav, setDraftNav] = useState<HeaderNavConfigItem[]>(savedNav);
+
+  // Reset the draft whenever the saved layout changes (after publish / data reset)
+  const savedKey = JSON.stringify([savedSections, savedNav]);
+  const [syncedKey, setSyncedKey] = useState(savedKey);
+  if (savedKey !== syncedKey) {
+    setSyncedKey(savedKey);
+    setDraftSections(savedSections);
+    setDraftNav(savedNav);
   }
 
-  const moveSection = async (idx: number, dir: -1 | 1) => {
-    const targetIdx = idx + dir;
-    if (targetIdx < 0 || targetIdx >= sections.length) return;
-    const next = [...sections];
-    const [moved] = next.splice(idx, 1);
-    next.splice(targetIdx, 0, moved);
+  const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [focusRequest, setFocusRequest] = useState<{ id: string; nonce: number } | null>(null);
+  const [device, setDevice] = useState<PreviewDevice>("desktop");
+  const [locale, setLocale] = useState<PreviewLocale>("vi");
+  const [publishing, setPublishing] = useState(false);
+  const [mobilePreviewOpen, setMobilePreviewOpen] = useState(false);
+  const [confirmDiscardOpen, setConfirmDiscardOpen] = useState(false);
 
-    runTransition(() => {
-      setSections(next);
-    });
-    setReorderStatus(
-      `Đã chuyển khối "${moved.labelVi}" tới vị trí số ${targetIdx + 1} trên ${next.length}.`
-    );
+  const isDesktop = useSyncExternalStore(subscribeDesktop, getDesktop, () => true);
 
-    await onSaveSettingsPatch(
-      { homepageSections: next },
-      `Đã đổi vị trí khối "${moved.labelVi}" tới #${targetIdx + 1}.`
-    );
+  const mobilePreviewRef = useRef<HTMLDialogElement>(null);
+  const discardDialogRef = useRef<HTMLDialogElement>(null);
+
+  // ---------------------------------------------------------------- dirty state
+  const changeCount = useMemo(() => {
+    let n = 0;
+    const savedById = new Map(savedSections.map((s) => [s.id, JSON.stringify(s)]));
+    for (const s of draftSections) {
+      if (savedById.get(s.id) !== JSON.stringify(s)) n++;
+    }
+    const orderChanged =
+      draftSections.map((s) => s.id).join("|") !== savedSections.map((s) => s.id).join("|");
+    if (orderChanged) n++;
+    if (JSON.stringify(draftNav) !== JSON.stringify(savedNav)) n++;
+    return n;
+  }, [draftSections, draftNav, savedSections, savedNav]);
+  const dirty = changeCount > 0;
+
+  useEffect(() => {
+    onDirtyChange(dirty);
+  }, [dirty, onDirtyChange]);
+
+  useEffect(() => {
+    if (!dirty) return;
+    const warn = (e: BeforeUnloadEvent) => {
+      e.preventDefault();
+    };
+    window.addEventListener("beforeunload", warn);
+    return () => window.removeEventListener("beforeunload", warn);
+  }, [dirty]);
+
+  // ------------------------------------------------------------ native dialogs
+  useEffect(() => {
+    const d = mobilePreviewRef.current;
+    if (!d) return;
+    if (mobilePreviewOpen && !d.open) d.showModal();
+    if (!mobilePreviewOpen && d.open) d.close();
+  }, [mobilePreviewOpen]);
+
+  useEffect(() => {
+    const d = discardDialogRef.current;
+    if (!d) return;
+    if (confirmDiscardOpen && !d.open) d.showModal();
+    if (!confirmDiscardOpen && d.open) d.close();
+  }, [confirmDiscardOpen]);
+
+  // ------------------------------------------------------------------ actions
+  const draftPatch = useMemo<Partial<StoreSettings>>(
+    () => ({ homepageSections: draftSections, headerNav: draftNav }),
+    [draftSections, draftNav]
+  );
+
+  const selectFromList = (id: string) => {
+    setSelectedId(id);
+    setFocusRequest({ id, nonce: Date.now() });
   };
 
-  const toggleSectionVisible = async (id: HomepageSectionConfig["id"]) => {
-    const next = sections.map((s) =>
-      s.id === id ? { ...s, visible: !s.visible } : s
-    );
-    const changed = next.find((s) => s.id === id);
-    setSections(next);
-    await onSaveSettingsPatch(
-      { homepageSections: next },
-      changed?.visible
-        ? `Đã bật hiển thị khối "${changed.labelVi}".`
-        : `Đã tạm ẩn khối "${changed?.labelVi}".`
-    );
+  const patchSection = (id: string, patch: Partial<HomepageSectionConfig>) => {
+    setDraftSections((prev) => prev.map((s) => (s.id === id ? { ...s, ...patch } : s)));
   };
 
-  const handleSaveSingleSection = async (updated: HomepageSectionConfig) => {
-    const next = sections.map((s) => (s.id === updated.id ? updated : s));
-    setSections(next);
-    await onSaveSettingsPatch(
-      { homepageSections: next },
-      `Đã lưu thay đổi cho khối "${updated.labelVi}".`
-    );
+  const patchNav = (id: string, patch: Partial<HeaderNavConfigItem>) => {
+    setDraftNav((prev) => prev.map((n) => (n.id === id ? { ...n, ...patch } : n)));
   };
 
-  // Header Menu helpers
-  const moveNavItem = (idx: number, dir: -1 | 1) => {
-    const targetIdx = idx + dir;
-    if (targetIdx < 0 || targetIdx >= headerNav.length) return;
-    const next = [...headerNav];
-    const [moved] = next.splice(idx, 1);
-    next.splice(targetIdx, 0, moved);
-    runTransition(() => {
-      setHeaderNav(next);
-    });
-    setReorderStatus(
-      `Đã chuyển mục menu "${moved.labelVi}" sang vị trí số ${targetIdx + 1}.`
-    );
-  };
-
-  const updateNavField = <K extends keyof HeaderNavConfigItem>(
-    idx: number,
-    key: K,
-    value: HeaderNavConfigItem[K]
-  ) => {
-    setHeaderNav((prev) =>
-      prev.map((item, i) => (i === idx ? { ...item, [key]: value } : item))
-    );
-  };
-
-  const addNavItem = () => {
-    setHeaderNav((prev) => [
-      ...prev,
-      {
-        id: `nav-${Date.now()}`,
-        sourceIndex: null,
-        labelVi: "Mục mới",
-        labelEn: "New Link",
-        href: "/collections/best-sellers",
-        visible: true,
-      },
-    ]);
-  };
-
-  const removeNavItem = (id: string) => {
-    setHeaderNav((prev) => prev.filter((item) => item.id !== id));
-  };
-
-  const handleSaveNav = async () => {
-    setSavingNav(true);
+  const handlePublish = async () => {
+    if (!dirty || publishing) return;
+    setPublishing(true);
     try {
       await onSaveSettingsPatch(
-        { headerNav },
-        "Đã lưu cấu hình Thanh Menu đầu trang!"
+        { homepageSections: draftSections, headerNav: draftNav },
+        `Đã lưu & xuất bản ${changeCount} thay đổi ra trang chủ!`
       );
+    } catch {
+      // toast already shown by parent
     } finally {
-      setSavingNav(false);
+      setPublishing(false);
     }
   };
 
-  const summarizeSection = (s: HomepageSectionConfig): string => {
-    if (s.kind === "hero") {
-      const mode = (s.mediaType || "video") === "image" ? "Ảnh tĩnh" : "Video nền";
-      const firstLine = (s.titleVi || "").split("\n")[0] || "";
-      return `${mode}${firstLine ? ` · "${firstLine}"` : ""}`;
-    }
-    if (s.kind === "carousel") {
-      const count = s.productSlugs?.length || 0;
-      return `${count} sản phẩm đã chọn · Tiêu đề: "${s.titleVi || ""}"`;
-    }
-    if (s.kind === "strip" || s.kind === "banner") {
-      return (s.titleVi || "").replace(/\n/g, " ");
-    }
-    if (s.kind === "categories") {
-      return `Tiêu đề: "${s.titleVi || "Mua Sắm Theo Danh Mục"}"`;
-    }
-    return "Có thể bật/tắt hoặc đổi vị trí lên xuống";
+  const discardChanges = () => {
+    setDraftSections(savedSections);
+    setDraftNav(savedNav);
+    setConfirmDiscardOpen(false);
   };
+
+  const selectedSection =
+    selectedId && selectedId !== HEADER_NAV_ID
+      ? draftSections.find((s) => s.id === selectedId) || null
+      : null;
+
+  // ---------------------------------------------------------------- render
+  const segmentBtn = (active: boolean) =>
+    `min-h-[38px] cursor-pointer rounded-lg px-3 text-[13px] font-bold transition-colors ${
+      active ? "bg-white text-[#283455] shadow-sm" : "text-[#5B647A] hover:text-[#283455]"
+    }`;
+
+  const backButton = (
+    <button
+      type="button"
+      onClick={() => setSelectedId(null)}
+      className="inline-flex min-h-[40px] cursor-pointer items-center gap-1.5 rounded-xl px-2 text-[13.5px] font-bold text-[#283455] hover:bg-[#F3EDE7]"
+    >
+      ← Tất cả các khối
+    </button>
+  );
 
   return (
-    <div className="space-y-8">
-      <p role="status" className="visually-hidden">
-        {reorderStatus}
-      </p>
+    <div className="space-y-3">
+      {/* ================= TOOLBAR ================= */}
+      <div className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-[#E5E0DB] bg-white px-4 py-3">
+        <div className="flex min-w-0 items-center gap-3">
+          <h1 className="text-[19px] font-bold">Bố cục Trang chủ</h1>
+          <p
+            role="status"
+            className={`rounded-full px-3 py-1 text-[12.5px] font-bold ${
+              dirty ? "bg-[#FEF3C7] text-[#92400E]" : "bg-[#EAF3E4] text-[#417823]"
+            }`}
+          >
+            {dirty ? `● ${changeCount} thay đổi chưa lưu` : "✓ Đã lưu — đang hiển thị trên web"}
+          </p>
+        </div>
 
-      {/* ================================================================ */}
-      {/* PART 1: HOMEPAGE SECTIONS (ORDER + VISIBILITY + MEDIA/PRODUCTS)  */}
-      {/* ================================================================ */}
-      <section className="space-y-4">
-        <div className="flex flex-wrap items-center justify-between gap-4">
-          <div>
-            <h1 className="text-[26px] font-bold">Bố cục Trang chủ</h1>
-            <p className="text-[14px] text-[#5B647A]">
-              Đổi video/ảnh Hero chính, chọn thứ tự sản phẩm trong từng mục, bật/tắt hoặc bấm <strong>↑ / ↓</strong> để sắp xếp thứ tự các khối từ trên xuống dưới.
-            </p>
+        <div className="flex flex-wrap items-center gap-2">
+          {isDesktop && (
+            <div
+              role="group"
+              aria-label="Thiết bị xem trước"
+              className="flex rounded-xl bg-[#F3EDE7] p-1"
+            >
+              <button
+                type="button"
+                aria-pressed={device === "desktop"}
+                onClick={() => setDevice("desktop")}
+                className={segmentBtn(device === "desktop")}
+              >
+                🖥 Máy tính
+              </button>
+              <button
+                type="button"
+                aria-pressed={device === "mobile"}
+                onClick={() => setDevice("mobile")}
+                className={segmentBtn(device === "mobile")}
+              >
+                📱 Điện thoại
+              </button>
+            </div>
+          )}
+
+          <div role="group" aria-label="Ngôn ngữ xem trước" className="flex rounded-xl bg-[#F3EDE7] p-1">
+            {(["vi", "en"] as const).map((l) => (
+              <button
+                key={l}
+                type="button"
+                aria-pressed={locale === l}
+                onClick={() => setLocale(l)}
+                className={segmentBtn(locale === l)}
+              >
+                {l.toUpperCase()}
+              </button>
+            ))}
           </div>
+
+          {!isDesktop && (
+            <button
+              type="button"
+              onClick={() => setMobilePreviewOpen(true)}
+              className="min-h-[42px] cursor-pointer rounded-xl border border-[#283455] bg-white px-3.5 text-[13.5px] font-bold text-[#283455]"
+            >
+              👁 Xem trước
+            </button>
+          )}
+
           <button
             type="button"
-            onClick={() => {
-              const hero = sections.find((s) => s.id === "hero_primary");
-              if (hero) setEditingSection(hero);
-            }}
-            className="min-h-[46px] cursor-pointer rounded-xl bg-[#283455] px-5 text-[14px] font-bold text-white hover:bg-[#1D2742]"
+            disabled={!dirty || publishing}
+            onClick={() => setConfirmDiscardOpen(true)}
+            className="min-h-[42px] cursor-pointer rounded-xl border border-[#C9CFD9] bg-white px-3.5 text-[13.5px] font-bold text-[#283455] hover:bg-[#F9F3ED] disabled:cursor-not-allowed disabled:opacity-40"
           >
-            Thay Video / Ảnh Hero chính
+            Hủy thay đổi
+          </button>
+          <button
+            type="button"
+            disabled={!dirty || publishing}
+            onClick={() => void handlePublish()}
+            className="min-h-[42px] cursor-pointer rounded-xl bg-[#283455] px-4 text-[13.5px] font-bold text-white hover:bg-[#1D2742] disabled:cursor-not-allowed disabled:opacity-40"
+          >
+            {publishing ? "Đang xuất bản..." : "Lưu & Xuất bản"}
           </button>
         </div>
+      </div>
 
-        <ol className="space-y-2.5">
-          {sections.map((sec, idx) => {
-            const badge = KIND_BADGE[sec.kind];
-            return (
-              <li
-                key={sec.id}
-                className={`admin-sortable-item flex flex-wrap items-center justify-between gap-3 rounded-2xl border p-4 transition-colors ${
-                  sec.visible
-                    ? "border-[#E5E0DB] bg-white"
-                    : "border-dashed border-[#D4D8E0] bg-[#F7F4F0] opacity-75"
-                }`}
+      {/* ================= 2-COLUMN EDITOR ================= */}
+      <div className="grid grid-cols-1 gap-3 lg:h-[calc(100dvh-235px)] lg:min-h-[620px] lg:grid-cols-[minmax(340px,410px)_1fr]">
+        {/* ---------- LEFT: section list / editor ---------- */}
+        <aside
+          aria-label="Bảng điều khiển bố cục"
+          className="min-w-0 rounded-2xl border border-[#E5E0DB] bg-[#FDFAF8] p-3.5 lg:overflow-y-auto"
+        >
+          {/* LIST VIEW */}
+          {selectedId === null && (
+            <div className="space-y-4">
+              <button
+                type="button"
+                onClick={() => selectFromList(HEADER_NAV_ID)}
+                className="flex w-full cursor-pointer items-center justify-between gap-3 rounded-xl border border-[#E5E0DB] bg-white px-3.5 py-3 text-left hover:border-[#283455]"
               >
-                <div className="flex min-w-[240px] flex-1 items-center gap-3.5">
-                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#F9F3ED] text-[13px] font-bold text-[#283455]">
-                    {idx + 1}
+                <span>
+                  <span className="block text-[14px] font-bold">Thanh Menu đầu trang</span>
+                  <span className="block text-[12.5px] text-[#5B647A]">
+                    {draftNav.filter((n) => n.visible).length} mục đang hiện
                   </span>
+                </span>
+                <span aria-hidden="true" className="text-[#5B647A]">
+                  ›
+                </span>
+              </button>
 
-                  {/* Mini thumbnail preview for hero/banner */}
-                  {sec.desktopMedia && (sec.kind === "hero" || sec.kind === "banner") && (
-                    <div className="hidden h-12 w-20 shrink-0 overflow-hidden rounded-lg border border-[#E5E0DB] bg-[#262321] sm:block">
-                      {sec.kind === "hero" && (sec.mediaType || "video") === "video" ? (
-                        sec.desktopPoster ? (
-                          // eslint-disable-next-line @next/next/no-img-element
-                          <img
-                            src={sec.desktopPoster}
-                            alt=""
-                            className="h-full w-full object-cover"
-                          />
-                        ) : (
-                          <div className="flex h-full w-full items-center justify-center text-[11px] font-bold text-white">
-                            VIDEO
-                          </div>
-                        )
-                      ) : (
-                        // eslint-disable-next-line @next/next/no-img-element
-                        <img
-                          src={sec.desktopMedia}
-                          alt=""
-                          className="h-full w-full object-cover"
-                        />
-                      )}
-                    </div>
-                  )}
+              <div>
+                <p className="mb-1 text-[12px] font-bold uppercase tracking-wider text-[#5B647A]">
+                  Các khối trang chủ (từ trên xuống)
+                </p>
+                <p className="mb-2.5 text-[12.5px] text-[#5B647A]">
+                  Cầm ⋮⋮ kéo lên/xuống để đổi vị trí. Bấm vào khối (hoặc bấm trực tiếp trên bản xem trước) để chỉnh nội dung.
+                </p>
 
-                  <div className="min-w-0 flex-1">
-                    <div className="flex flex-wrap items-center gap-2">
-                      <p className="text-[15px] font-bold text-[#283455]">
-                        {sec.labelVi}
-                      </p>
-                      <span
-                        className={`rounded-full px-2.5 py-0.5 text-[11.5px] font-bold ${badge.cls}`}
+                <SortableList
+                  items={draftSections}
+                  getKey={(s) => s.id}
+                  getLabel={(s) => s.labelVi}
+                  onReorder={setDraftSections}
+                  ariaLabel="Thứ tự các khối trên trang chủ"
+                  className="space-y-1.5"
+                  renderItem={(sec, { index, handle, isDragging }) => {
+                    const badge = KIND_BADGE[sec.kind];
+                    return (
+                      <div
+                        className={`flex items-center gap-1.5 rounded-xl border bg-white py-1.5 pr-1.5 pl-1 ${
+                          isDragging
+                            ? "border-[#2563eb] shadow-xl"
+                            : "border-[#E5E0DB] hover:border-[#9AA3B5]"
+                        } ${sec.visible ? "" : "opacity-60"}`}
                       >
-                        {badge.label}
+                        {handle}
+                        <button
+                          type="button"
+                          onClick={() => selectFromList(sec.id)}
+                          className="flex min-w-0 flex-1 cursor-pointer items-center gap-2 py-1 text-left"
+                        >
+                          <span className="w-5 shrink-0 text-center text-[12px] font-bold text-[#8E96A8]">
+                            {index + 1}
+                          </span>
+                          <span className="min-w-0 flex-1">
+                            <span className="flex items-center gap-1.5">
+                              <span className="truncate text-[13.5px] font-bold text-[#283455]">
+                                {sec.labelVi}
+                              </span>
+                            </span>
+                            <span className="mt-0.5 flex items-center gap-1.5">
+                              <span
+                                className={`shrink-0 rounded-full px-2 py-px text-[10.5px] font-bold ${badge.cls}`}
+                              >
+                                {badge.label}
+                              </span>
+                              <span className="truncate text-[12px] text-[#5B647A]">
+                                {summarize(sec)}
+                              </span>
+                            </span>
+                          </span>
+                        </button>
+                        <button
+                          type="button"
+                          aria-pressed={sec.visible}
+                          aria-label={`${sec.visible ? "Đang hiện" : "Đang ẩn"}: ${sec.labelVi}`}
+                          title={sec.visible ? "Đang hiện — bấm để ẩn" : "Đang ẩn — bấm để hiện"}
+                          onClick={() => patchSection(sec.id, { visible: !sec.visible })}
+                          className={`inline-flex h-10 w-10 shrink-0 cursor-pointer items-center justify-center rounded-lg ${
+                            sec.visible
+                              ? "text-[#417823] hover:bg-[#EAF3E4]"
+                              : "text-[#8E96A8] hover:bg-[#F3EDE7]"
+                          }`}
+                        >
+                          {sec.visible ? (
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                              <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z" />
+                              <circle cx="12" cy="12" r="3" />
+                            </svg>
+                          ) : (
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                              <path d="M3 3l18 18" />
+                              <path d="M10.6 5.1A10.8 10.8 0 0 1 12 5c6.5 0 10 7 10 7a17 17 0 0 1-3.2 4.2M6.6 6.6A17.4 17.4 0 0 0 2 12s3.5 7 10 7a10 10 0 0 0 5.4-1.6" />
+                            </svg>
+                          )}
+                        </button>
+                      </div>
+                    );
+                  }}
+                />
+              </div>
+            </div>
+          )}
+
+          {/* HEADER NAV EDITOR */}
+          {selectedId === HEADER_NAV_ID && (
+            <div className="space-y-3">
+              {backButton}
+              <div>
+                <h2 className="text-[17px] font-bold">Thanh Menu đầu trang</h2>
+                <p className="text-[12.5px] text-[#5B647A]">
+                  Kéo ⋮⋮ để đổi thứ tự trái → phải. Thay đổi hiện ngay trên bản xem trước.
+                </p>
+              </div>
+
+              <SortableList
+                items={draftNav}
+                getKey={(n) => n.id}
+                getLabel={(n) => n.labelVi}
+                onReorder={setDraftNav}
+                ariaLabel="Thứ tự các mục trên thanh menu"
+                className="space-y-2"
+                renderItem={(nav, { index, handle, isDragging }) => (
+                  <div
+                    className={`rounded-xl border bg-white p-2.5 ${
+                      isDragging ? "border-[#2563eb] shadow-xl" : "border-[#E5E0DB]"
+                    } ${nav.visible ? "" : "opacity-60"}`}
+                  >
+                    <div className="flex items-center gap-1.5">
+                      {handle}
+                      <span className="w-5 text-center text-[12px] font-bold text-[#8E96A8]">
+                        {index + 1}
                       </span>
+                      <input
+                        type="text"
+                        aria-label={`Tên tiếng Việt mục ${index + 1}`}
+                        value={nav.labelVi}
+                        onChange={(e) => patchNav(nav.id, { labelVi: e.target.value })}
+                        className="h-10 min-w-0 flex-1 rounded-lg border border-[#8E96A8] px-2.5 text-[14px] font-bold"
+                      />
+                      <button
+                        type="button"
+                        aria-pressed={nav.visible}
+                        onClick={() => patchNav(nav.id, { visible: !nav.visible })}
+                        className={`h-10 shrink-0 cursor-pointer rounded-lg px-2.5 text-[12px] font-bold ${
+                          nav.visible ? "bg-[#EAF3E4] text-[#417823]" : "bg-[#EFEAE4] text-[#5B647A]"
+                        }`}
+                      >
+                        {nav.visible ? "Hiện" : "Ẩn"}
+                      </button>
                     </div>
-                    <p className="mt-0.5 truncate text-[13px] text-[#5B647A]">
-                      {summarizeSection(sec)}
-                    </p>
+                    <div className="mt-2 grid grid-cols-2 gap-2 pl-[52px]">
+                      <input
+                        type="text"
+                        aria-label={`Tên tiếng Anh mục ${index + 1}`}
+                        value={nav.labelEn}
+                        onChange={(e) => patchNav(nav.id, { labelEn: e.target.value })}
+                        placeholder="English label"
+                        className="h-9 min-w-0 rounded-lg border border-[#C9CFD9] px-2.5 text-[13px]"
+                      />
+                      <input
+                        type="text"
+                        aria-label={`Đường dẫn mục ${index + 1}`}
+                        spellCheck={false}
+                        value={nav.href}
+                        onChange={(e) => patchNav(nav.id, { href: e.target.value })}
+                        placeholder="/collections/..."
+                        className="h-9 min-w-0 rounded-lg border border-[#C9CFD9] px-2.5 font-mono text-[12px]"
+                      />
+                    </div>
+                    {nav.sourceIndex === null && (
+                      <div className="mt-1.5 text-right">
+                        <button
+                          type="button"
+                          onClick={() => setDraftNav((prev) => prev.filter((n) => n.id !== nav.id))}
+                          className="cursor-pointer rounded-md px-2 py-1 text-[12px] font-bold text-[#A50E0E] hover:bg-[#FCE8E6]"
+                        >
+                          Xóa mục này
+                        </button>
+                      </div>
+                    )}
                   </div>
-                </div>
+                )}
+              />
 
-                {/* Controls */}
-                <div className="flex flex-wrap items-center gap-2">
-                  <button
-                    type="button"
-                    disabled={idx === 0}
-                    aria-label={`Đưa khối ${sec.labelVi} lên trên`}
-                    onClick={() => void moveSection(idx, -1)}
-                    className="inline-flex h-10 w-10 cursor-pointer items-center justify-center rounded-xl border border-[#C9CFD9] bg-white text-[15px] font-bold text-[#283455] hover:bg-[#F9F3ED] disabled:cursor-not-allowed disabled:opacity-35"
-                  >
-                    ↑
-                  </button>
-                  <button
-                    type="button"
-                    disabled={idx === sections.length - 1}
-                    aria-label={`Đưa khối ${sec.labelVi} xuống dưới`}
-                    onClick={() => void moveSection(idx, 1)}
-                    className="inline-flex h-10 w-10 cursor-pointer items-center justify-center rounded-xl border border-[#C9CFD9] bg-white text-[15px] font-bold text-[#283455] hover:bg-[#F9F3ED] disabled:cursor-not-allowed disabled:opacity-35"
-                  >
-                    ↓
-                  </button>
+              <button
+                type="button"
+                onClick={() =>
+                  setDraftNav((prev) => [
+                    ...prev,
+                    {
+                      id: `nav-${Date.now()}`,
+                      sourceIndex: null,
+                      labelVi: "Mục mới",
+                      labelEn: "New Link",
+                      href: "/collections/best-sellers",
+                      visible: true,
+                    },
+                  ])
+                }
+                className="min-h-[42px] w-full cursor-pointer rounded-xl border border-dashed border-[#283455] text-[13.5px] font-bold text-[#283455] hover:bg-[#F9F3ED]"
+              >
+                + Thêm mục menu
+              </button>
+            </div>
+          )}
 
-                  <button
-                    type="button"
-                    aria-pressed={sec.visible}
-                    onClick={() => void toggleSectionVisible(sec.id)}
-                    className={`min-h-[40px] cursor-pointer rounded-xl px-3.5 text-[13px] font-bold ${
-                      sec.visible
-                        ? "bg-[#EAF3E4] text-[#417823]"
-                        : "bg-[#EFEAE4] text-[#5B647A]"
-                    }`}
-                  >
-                    {sec.visible ? "Đang hiện" : "Đang ẩn"}
-                  </button>
+          {/* SECTION EDITOR */}
+          {selectedSection && (
+            <div className="space-y-3">
+              {backButton}
+              <div className="flex flex-wrap items-center gap-2">
+                <h2 className="text-[17px] font-bold">{selectedSection.labelVi}</h2>
+                <span
+                  className={`rounded-full px-2 py-0.5 text-[11px] font-bold ${KIND_BADGE[selectedSection.kind].cls}`}
+                >
+                  {KIND_BADGE[selectedSection.kind].label}
+                </span>
+              </div>
+              <SectionEditorPanel
+                key={selectedSection.id}
+                section={selectedSection}
+                allProducts={products}
+                vndRate={settings.vndRate}
+                onPatch={(patch) => patchSection(selectedSection.id, patch)}
+                onJumpToCategories={onJumpToCategories}
+              />
+            </div>
+          )}
+        </aside>
 
-                  {sec.kind !== "static" && (
-                    <button
-                      type="button"
-                      onClick={() => setEditingSection(sec)}
-                      className="min-h-[40px] cursor-pointer rounded-xl border border-[#283455] bg-white px-4 text-[13px] font-bold text-[#283455] hover:bg-[#283455] hover:text-white"
-                    >
-                      Chỉnh sửa
-                    </button>
-                  )}
-                </div>
-              </li>
-            );
-          })}
-        </ol>
-      </section>
-
-      {/* ================================================================ */}
-      {/* PART 2: HEADER TOP NAVIGATION MENU                               */}
-      {/* ================================================================ */}
-      <section className="rounded-2xl border border-[#E5E0DB] bg-white p-6">
-        <div className="flex flex-wrap items-center justify-between gap-3">
-          <div>
-            <h2 className="text-[20px] font-bold text-[#283455]">
-              Thanh Menu đầu trang (Header)
-            </h2>
-            <p className="text-[13.5px] text-[#5B647A]">
-              Đổi tên, đổi thứ tự trái → phải, ẩn/hiện hoặc thêm mục mới lên thanh menu chính.
+        {/* ---------- RIGHT: live preview (desktop) ---------- */}
+        {isDesktop && (
+          <section
+            aria-label="Xem trước trực tiếp bản nháp"
+            className="flex min-h-0 min-w-0 flex-col rounded-2xl border border-[#E5E0DB] bg-[#EFEAE4] p-3"
+          >
+            <p className="mb-2 text-center text-[12px] font-bold text-[#5B647A]">
+              BẢN XEM TRƯỚC — chỉ bạn nhìn thấy. Khách chỉ thấy thay đổi sau khi bấm &ldquo;Lưu &amp; Xuất bản&rdquo;.
             </p>
+            <div className="min-h-0 flex-1">
+              <LivePreviewFrame
+                locale={locale}
+                device={device}
+                draftPatch={draftPatch}
+                selectedId={selectedId}
+                focusRequest={focusRequest}
+                onSelect={setSelectedId}
+              />
+            </div>
+          </section>
+        )}
+      </div>
+
+      {/* ================= MOBILE FULL-SCREEN PREVIEW ================= */}
+      <dialog
+        ref={mobilePreviewRef}
+        aria-label="Xem trước trang chủ"
+        onClose={() => setMobilePreviewOpen(false)}
+        className="admin-preview-dialog"
+      >
+        {mobilePreviewOpen && (
+          <div className="flex h-full flex-col bg-[#EFEAE4]">
+            <div className="flex items-center justify-between gap-2 border-b border-[#E5E0DB] bg-white px-3 py-2">
+              <p className="text-[13.5px] font-bold text-[#283455]">Xem trước bản nháp</p>
+              <button
+                type="button"
+                autoFocus
+                onClick={() => setMobilePreviewOpen(false)}
+                className="min-h-[40px] cursor-pointer rounded-xl bg-[#283455] px-4 text-[13px] font-bold text-white"
+              >
+                Đóng
+              </button>
+            </div>
+            <div className="min-h-0 flex-1 p-2">
+              <LivePreviewFrame
+                locale={locale}
+                device="mobile"
+                draftPatch={draftPatch}
+                selectedId={selectedId}
+                focusRequest={focusRequest}
+                onSelect={(id) => {
+                  setSelectedId(id);
+                  setMobilePreviewOpen(false);
+                }}
+              />
+            </div>
           </div>
-          <div className="flex flex-wrap gap-2">
+        )}
+      </dialog>
+
+      {/* ================= DISCARD CONFIRMATION ================= */}
+      <dialog
+        ref={discardDialogRef}
+        aria-labelledby="discard-title"
+        onClose={() => setConfirmDiscardOpen(false)}
+        className="admin-dialog admin-dialog--sm"
+      >
+        <div className="rounded-2xl bg-white p-6 text-[#283455] shadow-2xl">
+          <h2 id="discard-title" className="text-[19px] font-bold">
+            Hủy {changeCount} thay đổi chưa lưu?
+          </h2>
+          <p className="mt-2 text-[14px] text-[#5B647A]">
+            Bố cục sẽ quay về đúng như trang chủ đang hiển thị cho khách.
+          </p>
+          <div className="mt-6 flex justify-end gap-3">
             <button
               type="button"
-              onClick={addNavItem}
-              className="min-h-[44px] cursor-pointer rounded-xl border border-[#283455] px-4 text-[13.5px] font-bold text-[#283455] hover:bg-[#F9F3ED]"
+              autoFocus
+              onClick={() => setConfirmDiscardOpen(false)}
+              className="min-h-[44px] cursor-pointer rounded-xl border border-[#C9CFD9] px-4 text-[14px] font-bold"
             >
-              + Thêm mục menu
+              Tiếp tục chỉnh sửa
             </button>
             <button
               type="button"
-              disabled={savingNav}
-              onClick={() => void handleSaveNav()}
-              className="min-h-[44px] cursor-pointer rounded-xl bg-[#283455] px-5 text-[13.5px] font-bold text-white hover:bg-[#1D2742] disabled:opacity-60"
+              onClick={discardChanges}
+              className="min-h-[44px] cursor-pointer rounded-xl bg-[#740103] px-4 text-[14px] font-bold text-white hover:bg-[#5A0102]"
             >
-              {savingNav ? "Đang lưu..." : "Lưu thanh Menu"}
+              Hủy thay đổi
             </button>
           </div>
         </div>
-
-        <ol className="mt-5 space-y-2.5">
-          {headerNav.map((nav, idx) => (
-            <li
-              key={nav.id}
-              className="admin-sortable-item grid grid-cols-1 items-center gap-2.5 rounded-xl border border-[#ECE7E2] bg-[#FDFAF8] p-3 lg:grid-cols-[auto_1fr_1fr_1.2fr_auto]"
-            >
-              <div className="flex items-center gap-1.5">
-                <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#283455] text-[12px] font-bold text-white">
-                  {idx + 1}
-                </span>
-                <button
-                  type="button"
-                  disabled={idx === 0}
-                  aria-label={`Đưa mục ${nav.labelVi} sang trái`}
-                  onClick={() => moveNavItem(idx, -1)}
-                  className="inline-flex h-9 w-9 cursor-pointer items-center justify-center rounded-lg border border-[#C9CFD9] bg-white text-[14px] font-bold disabled:opacity-35"
-                >
-                  ↑
-                </button>
-                <button
-                  type="button"
-                  disabled={idx === headerNav.length - 1}
-                  aria-label={`Đưa mục ${nav.labelVi} sang phải`}
-                  onClick={() => moveNavItem(idx, 1)}
-                  className="inline-flex h-9 w-9 cursor-pointer items-center justify-center rounded-lg border border-[#C9CFD9] bg-white text-[14px] font-bold disabled:opacity-35"
-                >
-                  ↓
-                </button>
-              </div>
-
-              <input
-                type="text"
-                aria-label={`Tên tiếng Việt mục ${idx + 1}`}
-                value={nav.labelVi}
-                onChange={(e) => updateNavField(idx, "labelVi", e.target.value)}
-                placeholder="Tên Tiếng Việt"
-                className="h-11 rounded-xl border border-[#8E96A8] bg-white px-3 text-[14px] font-bold"
-              />
-
-              <input
-                type="text"
-                aria-label={`Tên tiếng Anh mục ${idx + 1}`}
-                value={nav.labelEn}
-                onChange={(e) => updateNavField(idx, "labelEn", e.target.value)}
-                placeholder="English Label"
-                className="h-11 rounded-xl border border-[#8E96A8] bg-white px-3 text-[14px]"
-              />
-
-              <input
-                type="text"
-                aria-label={`Đường dẫn mục ${idx + 1}`}
-                spellCheck={false}
-                value={nav.href}
-                onChange={(e) => updateNavField(idx, "href", e.target.value)}
-                placeholder="/collections/..."
-                className="h-11 rounded-xl border border-[#8E96A8] bg-white px-3 font-mono text-[13px]"
-              />
-
-              <div className="flex items-center justify-end gap-2">
-                <button
-                  type="button"
-                  aria-pressed={nav.visible}
-                  onClick={() => updateNavField(idx, "visible", !nav.visible)}
-                  className={`min-h-[38px] cursor-pointer rounded-lg px-3 text-[12.5px] font-bold ${
-                    nav.visible
-                      ? "bg-[#EAF3E4] text-[#417823]"
-                      : "bg-[#EFEAE4] text-[#5B647A]"
-                  }`}
-                >
-                  {nav.visible ? "Hiện" : "Ẩn"}
-                </button>
-                {nav.sourceIndex === null && (
-                  <button
-                    type="button"
-                    onClick={() => removeNavItem(nav.id)}
-                    className="min-h-[38px] cursor-pointer rounded-lg px-2.5 text-[12.5px] font-bold text-[#A50E0E] hover:bg-[#FCE8E6]"
-                  >
-                    Xóa
-                  </button>
-                )}
-              </div>
-            </li>
-          ))}
-        </ol>
-      </section>
-
-      <HomepageSectionModal
-        section={editingSection}
-        allProducts={products}
-        vndRate={settings.vndRate}
-        onClose={() => setEditingSection(null)}
-        onSave={handleSaveSingleSection}
-        onJumpToCategories={onJumpToCategories}
-      />
+      </dialog>
     </div>
   );
 }

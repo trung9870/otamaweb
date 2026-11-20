@@ -491,6 +491,18 @@ dialog::backdrop {
   backdrop-filter: blur(2px);
 }
 
+/* Full-screen draft preview for small-screen admins */
+.admin-preview-dialog {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  width: 100vw;
+  height: 100dvh;
+  max-width: none;
+  max-height: none;
+  background: #efeae4;
+}
+
 /* Admin accessible form controls (modern-web-guidance: forms, validate-input-after-interaction) */
 .admin-input {
   font: inherit;
@@ -643,6 +655,44 @@ dialog::backdrop {
 /* Smooth reorder transitions respecting prefers-reduced-motion (modern-web-guidance: dynamic-sort) */
 .admin-sortable-item {
   view-transition-name: match-element;
+}
+
+/* Admin visual editor: storefront rendered inside the preview iframe */
+html.otama-preview [data-section-id]:not(.contents) {
+  position: relative;
+  cursor: pointer;
+}
+
+html.otama-preview [data-section-id]:not(.contents):hover::after,
+html.otama-preview .otama-preview-selected::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 35;
+  pointer-events: none;
+  outline: 2px dashed #3b82f6;
+  outline-offset: -2px;
+}
+
+html.otama-preview .otama-preview-selected::after {
+  outline: 3px solid #2563eb !important;
+  outline-offset: -3px !important;
+}
+
+html.otama-preview [data-section-id]:not(.contents):hover::before,
+html.otama-preview .otama-preview-selected::before {
+  content: attr(data-section-label);
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 36;
+  pointer-events: none;
+  padding: 6px 12px;
+  border-radius: 8px;
+  background: #2563eb;
+  color: #ffffff;
+  font: 700 13px/1.2 "Be Vietnam Pro", ui-sans-serif, system-ui, sans-serif;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 @media (prefers-reduced-motion: reduce) {

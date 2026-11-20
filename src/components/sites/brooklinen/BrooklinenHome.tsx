@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import { BROOKLINEN_DATA } from "./data";
 import { CategoryCarousel } from "./CategoryCarousel";
 import { useLanguage } from "./LanguageContext";
@@ -33,10 +34,28 @@ export function BrooklinenHome() {
     collection,
     settings,
     resolveProductsBySlugs,
+    previewMode,
+    previewSelectedId,
+    previewFocus,
   } = useStoreData();
   const copy = UI_COPY[locale];
   const heroPrimaryFallback = BROOKLINEN_DATA.heroPrimary;
   const heroSheetsFallback = BROOKLINEN_DATA.heroSheets;
+
+  // Admin editor: scroll the preview to the section chosen in the sidebar
+  useEffect(() => {
+    if (!previewMode || !previewFocus) return;
+    const behavior: ScrollBehavior = window.matchMedia("(prefers-reduced-motion: reduce)")
+      .matches
+      ? "auto"
+      : "smooth";
+    if (previewFocus.id === "header_nav") {
+      window.scrollTo({ top: 0, behavior });
+      return;
+    }
+    const el = document.querySelector(`[data-section-id="${previewFocus.id}"]`);
+    el?.scrollIntoView({ block: "start", behavior });
+  }, [previewMode, previewFocus]);
 
   const visibleSections = (settings.homepageSections || []).filter((s) => s.visible);
 
@@ -227,5 +246,22 @@ export function BrooklinenHome() {
     }
   };
 
-  return <>{visibleSections.map((block) => renderSection(block))}</>;
+  return (
+    <>
+      {visibleSections.map((block) => {
+        const node = renderSection(block);
+        if (!previewMode || !node) return node;
+        return (
+          <div
+            key={block.id}
+            data-section-id={block.id}
+            data-section-label={block.labelVi}
+            className={previewSelectedId === block.id ? "otama-preview-selected" : undefined}
+          >
+            {node}
+          </div>
+        );
+      })}
+    </>
+  );
 }

@@ -7,6 +7,7 @@ import {
   useEffect,
   useMemo,
   useState,
+  useSyncExternalStore,
   type ReactNode,
 } from "react";
 import {
@@ -51,6 +52,10 @@ interface StoreDataContextValue {
   formatMoney: (usdAmount: number, locale: Locale) => string;
   formatMoneyString: (rawUsd: string, locale: Locale) => string;
   refreshStore: () => Promise<void>;
+  previewMode: boolean;
+  previewSelectedId: string | null;
+  previewFocus: { id: string; nonce: number } | null;
+  selectPreviewSection: (id: string) => void;
 }
 
 const DEFAULT_PRODUCTS = buildDefaultProducts();
@@ -59,12 +64,71 @@ const DEFAULT_SETTINGS = buildDefaultSettings();
 
 const StoreDataContext = createContext<StoreDataContextValue | null>(null);
 
+const subscribeNoop = () => () => {};
+
+function isPreviewUrl(): boolean {
+  try {
+    return (
+      window.parent !== window &&
+      new URLSearchParams(window.location.search).get("preview") === "1"
+    );
+  } catch {
+    return false;
+  }
+}
+
 export function StoreDataProvider({ children }: { children: ReactNode }) {
   const [mode, setMode] = useState<StorageMode>("local");
   const [ready, setReady] = useState(false);
   const [storeProducts, setStoreProducts] = useState<StoreProduct[]>(DEFAULT_PRODUCTS);
   const [categories, setCategories] = useState<StoreCategory[]>(DEFAULT_CATEGORIES);
-  const [settings, setSettings] = useState<StoreSettings>(DEFAULT_SETTINGS);
+  const [baseSettings, setSettings] = useState<StoreSettings>(DEFAULT_SETTINGS);
+
+  // Admin visual-editor preview mode (storefront rendered inside the /admin iframe)
+  const previewMode = useSyncExternalStore(subscribeNoop, isPreviewUrl, () => false);
+  const [previewOverride, setPreviewOverride] = useState<Partial<StoreSettings> | null>(null);
+  const [previewSelectedId, setPreviewSelectedId] = useState<string | null>(null);
+  const [previewFocus, setPreviewFocus] = useState<{ id: string; nonce: number } | null>(null);
+
+  useEffect(() => {
+    if (!previewMode) return;
+    const origin = window.location.origin;
+    document.documentElement.classList.add("otama-preview");
+
+    const onMessage = (e: MessageEvent) => {
+      if (e.origin !== origin || e.source !== window.parent) return;
+      const data = e.data as {
+        type?: string;
+        settings?: Partial<StoreSettings>;
+        selectedId?: string | null;
+        id?: string;
+      };
+      if (data?.type === "otama-preview-update") {
+        if (data.settings) setPreviewOverride(data.settings);
+        setPreviewSelectedId(data.selectedId ?? null);
+      } else if (data?.type === "otama-preview-focus" && data.id) {
+        setPreviewSelectedId(data.id);
+        setPreviewFocus({ id: data.id, nonce: Date.now() });
+      }
+    };
+
+    window.addEventListener("message", onMessage);
+    window.parent.postMessage({ type: "otama-preview-ready" }, origin);
+    return () => {
+      window.removeEventListener("message", onMessage);
+      document.documentElement.classList.remove("otama-preview");
+    };
+  }, [previewMode]);
+
+  const selectPreviewSection = useCallback((id: string) => {
+    setPreviewSelectedId(id);
+    window.parent.postMessage({ type: "otama-preview-select", id }, window.location.origin);
+  }, []);
+
+  const settings = useMemo<StoreSettings>(
+    () => (previewMode && previewOverride ? { ...baseSettings, ...previewOverride } : baseSettings),
+    [previewMode, previewOverride, baseSettings]
+  );
 
   const refreshStore = useCallback(async () => {
     try {
@@ -216,6 +280,10 @@ export function StoreDataProvider({ children }: { children: ReactNode }) {
       formatMoney,
       formatMoneyString,
       refreshStore,
+      previewMode,
+      previewSelectedId,
+      previewFocus,
+      selectPreviewSection,
     }),
     [
       mode,
@@ -235,6 +303,10 @@ export function StoreDataProvider({ children }: { children: ReactNode }) {
       formatMoney,
       formatMoneyString,
       refreshStore,
+      previewMode,
+      previewSelectedId,
+      previewFocus,
+      selectPreviewSection,
     ]
   );
 

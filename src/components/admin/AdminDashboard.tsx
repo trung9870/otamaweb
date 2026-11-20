@@ -50,6 +50,7 @@ export function AdminDashboard() {
   const [data, setData] = useState<AdminDashboardPayload | null>(null);
   const [loadingData, setLoadingData] = useState(false);
   const [activeTab, setActiveTab] = useState<AdminTab>("overview");
+  const [layoutDirty, setLayoutDirty] = useState(false);
   const [toast, setToast] = useState<{ text: string; tone: "ok" | "err" } | null>(null);
 
   // Filters
@@ -220,6 +221,23 @@ export function AdminDashboard() {
         showToast(`Đã xóa danh mục "${cat.titleVi}".`);
       },
     });
+  };
+
+  const requestTab = (tab: AdminTab) => {
+    if (activeTab === "layout" && layoutDirty && tab !== "layout") {
+      setConfirmState({
+        title: "Rời Bố cục khi chưa lưu?",
+        message:
+          'Bạn còn thay đổi bố cục chưa bấm "Lưu & Xuất bản". Nếu rời đi, các thay đổi này sẽ bị mất.',
+        confirmLabel: "Rời đi & bỏ thay đổi",
+        onConfirm: async () => {
+          setLayoutDirty(false);
+          setActiveTab(tab);
+        },
+      });
+      return;
+    }
+    setActiveTab(tab);
   };
 
   const handleSaveSettingsPatch = useCallback(
@@ -611,7 +629,7 @@ export function AdminDashboard() {
                 key={item.id}
                 type="button"
                 aria-current={isActive ? "page" : undefined}
-                onClick={() => setActiveTab(item.id)}
+                onClick={() => requestTab(item.id)}
                 className={`inline-flex min-h-[42px] shrink-0 cursor-pointer items-center gap-2 rounded-xl px-4 text-[14px] font-bold transition-colors ${
                   isActive
                     ? "bg-[#283455] text-white"
@@ -862,7 +880,8 @@ export function AdminDashboard() {
             settings={data.settings}
             products={data.products}
             onSaveSettingsPatch={handleSaveSettingsPatch}
-            onJumpToCategories={() => setActiveTab("categories")}
+            onJumpToCategories={() => requestTab("categories")}
+            onDirtyChange={setLayoutDirty}
           />
         )}
 
