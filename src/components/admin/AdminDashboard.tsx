@@ -879,6 +879,7 @@ export function AdminDashboard() {
           <HomepageBuilderTab
             settings={data.settings}
             products={data.products}
+            categories={data.categories}
             onSaveSettingsPatch={handleSaveSettingsPatch}
             onJumpToCategories={() => requestTab("categories")}
             onDirtyChange={setLayoutDirty}

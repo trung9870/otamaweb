@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
+@import "./extra-fonts.css";
 
 /* Exact Brooklinen self-hosted web fonts downloaded from source */
 @font-face {
@@ -684,14 +685,18 @@ html.otama-preview .otama-preview-selected::before {
   content: attr(data-section-label);
   position: absolute;
   top: 10px;
-  left: 10px;
+  right: 10px;
   z-index: 36;
   pointer-events: none;
+  max-width: calc(100% - 20px);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   padding: 6px 12px;
   border-radius: 8px;
   background: #2563eb;
   color: #ffffff;
-  font: 700 13px/1.2 "Be Vietnam Pro", ui-sans-serif, system-ui, sans-serif;
+  font: 700 12.5px/1.2 "Be Vietnam Pro", ui-sans-serif, system-ui, sans-serif;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
@@ -700,5 +705,196 @@ html.otama-preview .otama-preview-selected::before {
   ::view-transition-old(*),
   ::view-transition-new(*) {
     animation: none;
+  }
+}
+
+/* ==========================================================================
+   Storefront Dynamic Section Styles (Typography, Buttons & Positioned Overlay)
+   ========================================================================== */
+@media (max-width: 1023.98px) {
+  .otama-fs-m {
+    font-size: var(--ot-fs-m) !important;
+    line-height: 1.2 !important;
+  }
+
+  .otama-pos-box {
+    left: var(--ot-pos-m-x, 50%);
+    top: var(--ot-pos-m-y, 50%);
+    transform: translate(calc(-1 * var(--ot-pos-m-x, 50%)), calc(-1 * var(--ot-pos-m-y, 50%)));
+  }
+}
+
+@media (min-width: 1024px) {
+  .otama-fs-d {
+    font-size: var(--ot-fs-d) !important;
+    line-height: 1.16 !important;
+  }
+
+  .otama-pos-box {
+    left: var(--ot-pos-d-x, 50%);
+    top: var(--ot-pos-d-y, 50%);
+    transform: translate(calc(-1 * var(--ot-pos-d-x, 50%)), calc(-1 * var(--ot-pos-d-y, 50%)));
+    max-width: min(calc(100% - 3rem), var(--ot-max-w, 760px));
+  }
+}
+
+.otama-pos-box {
+  position: absolute;
+  width: max-content;
+  max-width: calc(100% - 2rem);
+}
+
+/* Dynamic button colors using oklab color-mix for automatic hover darkening (modern-web-guidance: color) */
+.otama-custom-btn[data-has-bg="true"] {
+  background-color: var(--ot-btn-bg) !important;
+}
+
+.otama-custom-btn[data-has-bg="true"]:hover {
+  background-color: var(--ot-btn-hover-fallback, var(--ot-btn-bg)) !important;
+  background-color: var(--ot-btn-hover-bg, color-mix(in oklab, var(--ot-btn-bg), black 14%)) !important;
+}
+
+.otama-custom-btn[data-variant="outline"] {
+  background-color: var(--ot-btn-bg, transparent) !important;
+  border-width: 2px !important;
+  border-style: solid !important;
+  border-color: var(--ot-btn-border, currentColor) !important;
+}
+
+.otama-custom-btn[data-variant="outline"]:hover {
+  background-color: var(--ot-btn-hover-bg, color-mix(in oklab, var(--ot-btn-fg, currentColor), transparent 86%)) !important;
+}
+
+.otama-custom-btn[data-has-fg="true"] {
+  color: var(--ot-btn-fg) !important;
+}
+
+.otama-custom-btn[data-has-border="true"] {
+  border-width: 2px !important;
+  border-style: solid !important;
+  border-color: var(--ot-btn-border) !important;
+}
+
+/* Dedicated preview drag handle (modern-web-guidance: drag) */
+.otama-drag-handle {
+  cursor: grab;
+  touch-action: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.otama-drag-handle.dragging {
+  cursor: grabbing;
+}
+
+/* Color picker swatch preserving true color in Forced Colors Mode (modern-web-guidance: color) */
+.otama-color-swatch {
+  forced-color-adjust: none;
+}
+
+/* Accessible single-row inspector tabs (modern-web-guidance: tabs) */
+.admin-tablist {
+  display: flex;
+  overflow-x: auto;
+  scrollbar-width: none;
+  scroll-snap-type: inline proximity;
+  border-bottom: 1px solid #e5e0db;
+}
+
+.admin-tablist::-webkit-scrollbar {
+  display: none;
+}
+
+.admin-tablist > button {
+  flex: none;
+  position: relative;
+  scroll-snap-align: start;
+  color: #5b647a;
+}
+
+.admin-tablist > button:hover {
+  color: #283455;
+}
+
+.admin-tablist > button[aria-selected="true"] {
+  color: #283455;
+}
+
+.admin-tablist > button[aria-selected="true"]::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  border-block-end: 3px solid #283455;
+}
+
+[role="tabpanel"][hidden] {
+  pointer-events: none;
+}
+
+/* Brand-consistent native form controls with @supports fallback (modern-web-guidance: brand-consistent-forms) */
+.admin-form-scope {
+  color-scheme: light;
+  accent-color: #283455;
+}
+
+@supports not (accent-color: #283455) {
+  .admin-form-scope input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+  }
+
+  .admin-form-scope input[type="range"]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 8px;
+    background: #dde3ec;
+    border-radius: 4px;
+  }
+
+  .admin-form-scope input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background: #283455;
+    cursor: pointer;
+    margin-top: -4px;
+  }
+
+  .admin-form-scope input[type="range"]::-moz-range-track {
+    width: 100%;
+    height: 8px;
+    background: #dde3ec;
+    border-radius: 4px;
+  }
+
+  .admin-form-scope input[type="range"]::-moz-range-thumb {
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background: #283455;
+    cursor: pointer;
+  }
+}
+
+/* Viewport-aware LinkPicker popover gated behind @supports (modern-web-guidance: viewport-aware-dropdowns) */
+[popover].otama-link-popover {
+  width: min(92vw, 360px);
+  max-height: min(72vh, 420px);
+  padding: 0;
+  border: 1px solid #c9cfd9;
+  border-radius: 14px;
+  background: #ffffff;
+  color: #283455;
+  box-shadow: 0 14px 36px rgba(20, 26, 44, 0.2);
+}
+
+@supports (position-area: block-end) {
+  [popover].otama-link-popover {
+    inset: auto;
+    margin: 4px 0 0 0;
+    position-area: block-end span-inline-end;
+    position-try-fallbacks: flip-block, flip-inline, flip-block flip-inline;
   }
 }

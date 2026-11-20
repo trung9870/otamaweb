@@ -3,8 +3,18 @@
 import Link from "next/link";
 import { useRef, useState } from "react";
 import { toLocalHref } from "./catalog";
+import { PositionedOverlayBox } from "./PositionedOverlayBox";
+import {
+  alignToJustify,
+  buildButtonStyleProps,
+  buildTextStyleProps,
+} from "@/lib/section-style-helpers";
+import type { HomepageSectionStyle } from "@/lib/store-types";
 
 interface VideoHeroProps {
+  sectionId?: string;
+  sectionLabel?: string;
+  sectionStyle?: HomepageSectionStyle;
   variant: "primary" | "sheets";
   mediaType?: "video" | "image";
   desktopVideo: string;
@@ -24,6 +34,9 @@ interface VideoHeroProps {
 }
 
 export function VideoHero({
+  sectionId,
+  sectionLabel,
+  sectionStyle,
   variant,
   mediaType = "video",
   desktopVideo,
@@ -62,6 +75,40 @@ export function VideoHero({
     }
   };
 
+  const hasCustomMaxWidth = sectionStyle?.layout?.maxWidth !== undefined;
+  const scrimOpacity = sectionStyle?.layout?.scrimOpacity;
+
+  const primaryTitleProps = buildTextStyleProps(
+    sectionStyle?.title,
+    "font-toledo text-[34px] leading-[1.15] tracking-[-0.005em] drop-shadow-[0_2px_12px_rgba(0,0,0,0.35)] sm:text-[42px] lg:text-[45px] lg:leading-[52px]"
+  );
+
+  const sheetsTitleProps = buildTextStyleProps(
+    sectionStyle?.title,
+    "text-[32px] font-bold tracking-[0.06em] uppercase drop-shadow-[0_2px_12px_rgba(0,0,0,0.4)] sm:text-[44px] lg:text-[56px]"
+  );
+
+  const primarySubProps = buildTextStyleProps(
+    sectionStyle?.subtitle,
+    `mt-3.5 text-[17px] leading-[1.38] drop-shadow-[0_1px_8px_rgba(0,0,0,0.45)] lg:mt-4 lg:text-[22px] lg:leading-[1.35] ${
+      hasCustomMaxWidth
+        ? "max-w-full"
+        : "max-w-[330px] sm:max-w-[540px] lg:max-w-[700px]"
+    }`
+  );
+
+  const sheetsSubProps = buildTextStyleProps(
+    sectionStyle?.subtitle,
+    `mt-3 text-[17px] leading-[1.38] drop-shadow-[0_1px_8px_rgba(0,0,0,0.45)] lg:mt-4 lg:text-[22px] lg:leading-[1.35] ${
+      hasCustomMaxWidth
+        ? "max-w-full"
+        : "max-w-[330px] sm:max-w-[520px] lg:max-w-[650px]"
+    }`
+  );
+
+  const baseCtaClass =
+    "inline-flex h-[56px] min-w-[172px] items-center justify-center rounded-[20px] bg-[#283455] px-8 text-[14px] font-bold tracking-[-0.01em] text-white shadow-sm transition-colors hover:bg-[#1D2742] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white";
+
   return (
     <section
       aria-label={variant === "primary" ? "Primary Storefront Hero" : "Featured Sheets Campaign"}
@@ -81,7 +128,6 @@ export function VideoHero({
         </picture>
       ) : (
         <>
-          {/* Desktop background video */}
           <video
             key={`desk-${desktopVideo}`}
             ref={desktopVideoRef}
@@ -97,7 +143,6 @@ export function VideoHero({
             className="hidden h-full w-full object-cover lg:block"
           />
 
-          {/* Mobile background video */}
           <video
             key={`mob-${resolvedMobileMedia}`}
             ref={mobileVideoRef}
@@ -115,16 +160,28 @@ export function VideoHero({
         </>
       )}
 
-      {/* Subtle vertical scrim for crisp white typography */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/15 via-black/30 to-black/25"
-      />
+      {/* Backdrop scrim (adjustable 0-70% in Admin, subtle gradient by default) */}
+      {scrimOpacity !== undefined ? (
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0"
+          style={{ backgroundColor: `rgba(0, 0, 0, ${scrimOpacity / 100})` }}
+        />
+      ) : (
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/15 via-black/30 to-black/25"
+        />
+      )}
 
-      {/* Centered content overlay */}
-      <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center text-white">
+      <PositionedOverlayBox
+        sectionId={sectionId}
+        sectionLabel={sectionLabel}
+        layout={sectionStyle?.layout}
+        defaultMaxWidthPx={760}
+      >
         {variant === "primary" && headingLines ? (
-          <h1 className="font-toledo text-[34px] leading-[1.15] tracking-[-0.005em] drop-shadow-[0_2px_12px_rgba(0,0,0,0.35)] sm:text-[42px] lg:text-[45px] lg:leading-[52px]">
+          <h1 className={primaryTitleProps.className} style={primaryTitleProps.style}>
             {headingLines.map((line, i) => (
               <span key={`${line}-${i}`} className="block">
                 {line}
@@ -133,8 +190,12 @@ export function VideoHero({
             ))}
           </h1>
         ) : textHeadline ? (
-          <h2 className="text-[32px] font-bold tracking-[0.06em] uppercase drop-shadow-[0_2px_12px_rgba(0,0,0,0.4)] sm:text-[44px] lg:text-[56px]">
-            {textHeadline}
+          <h2 className={sheetsTitleProps.className} style={sheetsTitleProps.style}>
+            {textHeadline.split("\n").map((line, i) => (
+              <span key={`${line}-${i}`} className="block">
+                {line}
+              </span>
+            ))}
           </h2>
         ) : lockupSvg ? (
           <>
@@ -151,40 +212,50 @@ export function VideoHero({
         ) : null}
 
         {subtitleLines ? (
-          <p className="mt-3.5 max-w-[330px] text-[17px] leading-[1.38] drop-shadow-[0_1px_8px_rgba(0,0,0,0.45)] sm:max-w-[540px] lg:mt-4 lg:max-w-[700px] lg:text-[22px] lg:leading-[1.35]">
+          <p className={primarySubProps.className} style={primarySubProps.style}>
             {subtitleLines.map((line, i) => (
-              <span key={`${line}-${i}`} className="lg:block">
+              <span key={`${line}-${i}`} className={hasCustomMaxWidth ? "" : "lg:block"}>
                 {line}{" "}
               </span>
             ))}
           </p>
         ) : subtitle ? (
-          <p className="mt-3 max-w-[330px] text-[17px] leading-[1.38] drop-shadow-[0_1px_8px_rgba(0,0,0,0.45)] sm:max-w-[520px] lg:mt-4 lg:max-w-[650px] lg:text-[22px] lg:leading-[1.35]">
+          <p className={sheetsSubProps.className} style={sheetsSubProps.style}>
             {subtitle}
           </p>
         ) : null}
 
         <div
-          className={`mt-6 flex items-center justify-center gap-3.5 lg:mt-7 ${
-            ctas.length > 1 ? "flex-col sm:flex-row" : ""
-          }`}
+          className={`mt-6 flex flex-wrap items-center gap-3.5 lg:mt-7 ${alignToJustify(
+            sectionStyle?.layout?.textAlign
+          )} ${ctas.length > 1 ? "flex-col sm:flex-row" : ""}`}
         >
-          {ctas.map((cta, idx) => (
-            <Link
-              key={`${cta.label}-${idx}`}
-              href={toLocalHref(cta.href)}
-              className="inline-flex h-[56px] min-w-[172px] items-center justify-center rounded-[20px] bg-[#283455] px-8 text-[14px] font-bold tracking-[-0.01em] text-white shadow-sm transition-colors hover:bg-[#1D2742] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-            >
-              {cta.label}
-            </Link>
-          ))}
+          {ctas.map((cta, idx) => {
+            const btnCfg =
+              idx === 0
+                ? sectionStyle?.button
+                : sectionStyle?.secondaryButton || sectionStyle?.button;
+            const btnProps = buildButtonStyleProps(btnCfg, baseCtaClass);
+            return (
+              <Link
+                key={`${cta.label}-${idx}`}
+                href={toLocalHref(cta.href)}
+                className={btnProps.className}
+                style={btnProps.style}
+                {...(btnProps.dataAttrs || {})}
+              >
+                {cta.label}
+              </Link>
+            );
+          })}
         </div>
-      </div>
+      </PositionedOverlayBox>
 
       {!isImage &&
         (showPauseButton ? (
           <button
             type="button"
+            data-preview-interactive="true"
             onClick={togglePlayback}
             aria-label={paused ? playLabel : pauseLabel}
             className="absolute right-5 bottom-5 flex h-10 w-10 items-center justify-center rounded-full bg-white text-[#283455] shadow-md transition-transform hover:scale-105 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white lg:right-8 lg:bottom-8"
@@ -203,6 +274,7 @@ export function VideoHero({
         ) : (
           <button
             type="button"
+            data-preview-interactive="true"
             onClick={togglePlayback}
             aria-label={paused ? playLabel : pauseLabel}
             className="sr-only focus:not-sr-only focus:absolute focus:right-4 focus:bottom-4 focus:rounded-full focus:bg-white focus:px-3 focus:py-1.5 focus:text-xs focus:font-bold focus:text-[#283455]"

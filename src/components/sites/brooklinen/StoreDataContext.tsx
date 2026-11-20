@@ -56,6 +56,12 @@ interface StoreDataContextValue {
   previewSelectedId: string | null;
   previewFocus: { id: string; nonce: number } | null;
   selectPreviewSection: (id: string) => void;
+  updatePreviewPosition: (
+    id: string,
+    viewport: "desktop" | "mobile",
+    x: number,
+    y: number
+  ) => void;
 }
 
 const DEFAULT_PRODUCTS = buildDefaultProducts();
@@ -124,6 +130,17 @@ export function StoreDataProvider({ children }: { children: ReactNode }) {
     setPreviewSelectedId(id);
     window.parent.postMessage({ type: "otama-preview-select", id }, window.location.origin);
   }, []);
+
+  const updatePreviewPosition = useCallback(
+    (id: string, viewport: "desktop" | "mobile", x: number, y: number) => {
+      setPreviewSelectedId(id);
+      window.parent.postMessage(
+        { type: "otama-preview-position", id, viewport, x, y },
+        window.location.origin
+      );
+    },
+    []
+  );
 
   const settings = useMemo<StoreSettings>(
     () => (previewMode && previewOverride ? { ...baseSettings, ...previewOverride } : baseSettings),
@@ -284,6 +301,7 @@ export function StoreDataProvider({ children }: { children: ReactNode }) {
       previewSelectedId,
       previewFocus,
       selectPreviewSection,
+      updatePreviewPosition,
     }),
     [
       mode,
@@ -307,6 +325,7 @@ export function StoreDataProvider({ children }: { children: ReactNode }) {
       previewSelectedId,
       previewFocus,
       selectPreviewSection,
+      updatePreviewPosition,
     ]
   );
 

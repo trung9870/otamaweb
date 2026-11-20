@@ -20,6 +20,8 @@ import {
   SparkleIcon,
   StarRating,
 } from "./icons";
+import { buildTextStyleProps } from "@/lib/section-style-helpers";
+import type { HomepageSectionStyle } from "@/lib/store-types";
 
 type CarouselProduct = ProductCardData & { titleVi?: string };
 
@@ -269,9 +271,11 @@ function ProductCard({
 export function ProductCarousel({
   heading,
   products,
+  sectionStyle,
 }: {
   heading: string;
   products: readonly CarouselProduct[];
+  sectionStyle?: HomepageSectionStyle;
 }) {
   const { locale } = useLanguage();
   const trackRef = useRef<HTMLDivElement>(null);
@@ -362,14 +366,23 @@ export function ProductCarousel({
     track.scrollBy({ left: dir * step });
   };
 
+  const isCenteredHeading = sectionStyle?.layout?.textAlign === "center";
+  const headingProps = buildTextStyleProps(
+    sectionStyle?.title,
+    `text-[20px] font-bold tracking-[-0.01em] text-[#283455] lg:text-[24px] ${
+      isCenteredHeading ? "flex-1 text-center" : ""
+    }`
+  );
+
   return (
     <section
       aria-roledescription="carousel"
       aria-label={heading}
       className="w-full bg-[#FDFAF8] py-10 lg:py-12"
     >
-      <div className="mx-auto mb-5 flex max-w-[1440px] items-center justify-between px-5 lg:mb-6 lg:px-16">
-        <h2 className="text-[20px] font-bold tracking-[-0.01em] text-[#283455] lg:text-[24px]">
+      <div className="mx-auto mb-5 flex max-w-[1440px] items-center justify-between gap-4 px-5 lg:mb-6 lg:px-16">
+        {isCenteredHeading && <div aria-hidden="true" className="hidden w-[76px] sm:block" />}
+        <h2 className={headingProps.className} style={headingProps.style}>
           {heading}
         </h2>
 

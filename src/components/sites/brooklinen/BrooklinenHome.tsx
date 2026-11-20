@@ -76,6 +76,9 @@ export function BrooklinenHome() {
         return (
           <VideoHero
             key={block.id}
+            sectionId={block.id}
+            sectionLabel={block.labelVi}
+            sectionStyle={block.style}
             variant="primary"
             mediaType={block.mediaType || "video"}
             desktopVideo={block.desktopMedia || heroPrimaryFallback.desktopVideo}
@@ -95,15 +98,19 @@ export function BrooklinenHome() {
 
       case "hero_sheets": {
         const defaultEnTitle = "BEST. SHEETS. EVER.";
+        const hasCustomTitleStyle = Boolean(
+          block.style?.title && Object.keys(block.style.title).length > 0
+        );
         const useLockupSvg =
           locale === "en" &&
+          !hasCustomTitleStyle &&
           (!block.titleEn || block.titleEn.trim().toUpperCase() === defaultEnTitle);
         const headline =
           locale === "vi"
             ? block.titleVi || copy.heroSheets.textHeadline || undefined
             : useLockupSvg
             ? undefined
-            : block.titleEn;
+            : block.titleEn || defaultEnTitle;
         const subtitle =
           (locale === "vi" ? block.subtitleVi : block.subtitleEn)?.trim() ||
           copy.heroSheets.subtitle;
@@ -131,6 +138,9 @@ export function BrooklinenHome() {
         return (
           <VideoHero
             key={block.id}
+            sectionId={block.id}
+            sectionLabel={block.labelVi}
+            sectionStyle={block.style}
             variant="sheets"
             mediaType={block.mediaType || "video"}
             desktopVideo={block.desktopMedia || heroSheetsFallback.desktopVideo}
@@ -170,6 +180,7 @@ export function BrooklinenHome() {
             ctaLabel={ctaLabel}
             ctaHref={block.ctaHref || "/collections/best-sellers"}
             theme={block.theme || "burgundy-blue-cta"}
+            sectionStyle={block.style}
           />
         );
       }
@@ -197,7 +208,12 @@ export function BrooklinenHome() {
         const heading =
           (locale === "vi" ? block.titleVi : block.titleEn)?.trim() || fallbackHeading;
         return (
-          <ProductCarousel key={block.id} heading={heading} products={products} />
+          <ProductCarousel
+            key={block.id}
+            heading={heading}
+            products={products}
+            sectionStyle={block.style}
+          />
         );
       }
 
@@ -205,6 +221,9 @@ export function BrooklinenHome() {
         return (
           <MiniHeroTote
             key={block.id}
+            sectionId={block.id}
+            sectionLabel={block.labelVi}
+            sectionStyle={block.style}
             lines={splitLines(
               locale === "vi" ? block.titleVi : block.titleEn,
               copy.miniHeroTote.lines
@@ -226,6 +245,7 @@ export function BrooklinenHome() {
             headingOverride={
               (locale === "vi" ? block.titleVi : block.titleEn)?.trim() || undefined
             }
+            sectionStyle={block.style}
           />
         );
 

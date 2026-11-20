@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { getAdminSession } from "@/lib/admin-auth";
 import { readStoreDatabase, saveSettings } from "@/lib/store-db";
+import { sanitizeHomepageSections } from "@/lib/style-validation";
 import type { StoreSettings } from "@/lib/store-types";
 
 export const dynamic = "force-dynamic";
@@ -60,7 +61,7 @@ export async function PUT(request: Request) {
         : db.settings.heroSubtitleVi,
       homepageSections:
         Array.isArray(body.homepageSections) && body.homepageSections.length > 0
-          ? body.homepageSections
+          ? sanitizeHomepageSections(body.homepageSections)
           : db.settings.homepageSections,
       headerNav:
         Array.isArray(body.headerNav) && body.headerNav.length > 0

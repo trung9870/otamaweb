@@ -40,6 +40,72 @@ export type PromoStripTheme =
   | "navy-adaptive-cta"
   | "slate-navy-cta";
 
+export type FontFamilyId =
+  | "default"
+  | "be-vietnam-pro"
+  | "playfair-display"
+  | "montserrat"
+  | "lora"
+  | "nunito"
+  | "oswald"
+  | "merriweather"
+  | "dancing-script"
+  | "brandon"
+  | "toledo";
+
+export type FontWeightOption = 400 | 500 | 700;
+export type ButtonVariantOption = "solid" | "outline";
+export type ButtonRadiusOption = "sharp" | "rounded" | "pill";
+export type TextAlignOption = "left" | "center" | "right";
+export type StripLayoutOption = "row" | "stacked";
+
+export interface PointPercent {
+  x: number;
+  y: number;
+}
+
+export interface TextElementStyle {
+  color?: string;
+  fontFamily?: FontFamilyId;
+  fontSizeDesktop?: number;
+  fontSizeMobile?: number;
+  fontWeight?: FontWeightOption;
+  italic?: boolean;
+  uppercase?: boolean;
+  letterSpacing?: number;
+  textShadow?: boolean;
+}
+
+export interface ButtonElementStyle {
+  variant?: ButtonVariantOption;
+  bgColor?: string;
+  textColor?: string;
+  borderColor?: string;
+  hoverBgColor?: string;
+  borderRadius?: ButtonRadiusOption;
+  fontFamily?: FontFamilyId;
+  fontSizeDesktop?: number;
+  fontSizeMobile?: number;
+}
+
+export interface BlockLayoutStyle {
+  posDesktop?: PointPercent;
+  posMobile?: PointPercent;
+  textAlign?: TextAlignOption;
+  maxWidth?: number;
+  scrimOpacity?: number;
+  stripLayout?: StripLayoutOption;
+  bgColor?: string;
+}
+
+export interface HomepageSectionStyle {
+  title?: TextElementStyle;
+  subtitle?: TextElementStyle;
+  button?: ButtonElementStyle;
+  secondaryButton?: ButtonElementStyle;
+  layout?: BlockLayoutStyle;
+}
+
 export interface HomepageSectionConfig {
   id: HomepageBlockId;
   visible: boolean;
@@ -62,6 +128,7 @@ export interface HomepageSectionConfig {
   mobilePoster?: string;
   theme?: PromoStripTheme;
   productSlugs?: string[];
+  style?: HomepageSectionStyle;
 }
 
 export interface HeaderNavConfigItem {

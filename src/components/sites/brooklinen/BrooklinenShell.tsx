@@ -14,10 +14,15 @@ function ShellBody({ children }: { children: ReactNode }) {
 
   // In the admin visual editor, clicks select a section instead of navigating
   const handlePreviewClick = (e: MouseEvent<HTMLDivElement>) => {
+    const targetEl = e.target as HTMLElement;
+    const sec = targetEl.closest("[data-section-id]");
+    const id = sec?.getAttribute("data-section-id");
+    if (targetEl.closest('[data-preview-interactive="true"]')) {
+      if (id) selectPreviewSection(id);
+      return;
+    }
     e.preventDefault();
     e.stopPropagation();
-    const target = (e.target as HTMLElement).closest("[data-section-id]");
-    const id = target?.getAttribute("data-section-id");
     if (id) selectPreviewSection(id);
   };
 

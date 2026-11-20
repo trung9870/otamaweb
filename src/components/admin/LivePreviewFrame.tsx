@@ -13,6 +13,12 @@ interface LivePreviewFrameProps {
   selectedId: string | null;
   focusRequest: { id: string; nonce: number } | null;
   onSelect: (id: string) => void;
+  onPositionChange?: (
+    id: string,
+    viewport: PreviewDevice,
+    x: number,
+    y: number
+  ) => void;
 }
 
 const DESKTOP_WIDTH = 1440;
@@ -34,6 +40,7 @@ export function LivePreviewFrame({
   selectedId,
   focusRequest,
   onSelect,
+  onPositionChange,
 }: LivePreviewFrameProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const iframeRef = useRef<HTMLIFrameElement>(null);
@@ -41,9 +48,21 @@ export function LivePreviewFrame({
   const src = `/?lang=${locale}&preview=1`;
   const [readySrc, setReadySrc] = useState<string | null>(null);
 
-  const latest = useRef({ draftPatch, selectedId, onSelect, src });
+  const latest = useRef({
+    draftPatch,
+    selectedId,
+    onSelect,
+    onPositionChange,
+    src,
+  });
   useEffect(() => {
-    latest.current = { draftPatch, selectedId, onSelect, src };
+    latest.current = {
+      draftPatch,
+      selectedId,
+      onSelect,
+      onPositionChange,
+      src,
+    };
   });
 
   // Track available panel size for scaling
@@ -58,12 +77,18 @@ export function LivePreviewFrame({
     return () => ro.disconnect();
   }, []);
 
-  // Handshake + selection messages coming back from the preview iframe
+  // Handshake + selection + drag-position messages coming back from the preview iframe
   useEffect(() => {
     const onMessage = (e: MessageEvent) => {
       if (e.origin !== window.location.origin) return;
       if (e.source !== iframeRef.current?.contentWindow) return;
-      const data = e.data as { type?: string; id?: string };
+      const data = e.data as {
+        type?: string;
+        id?: string;
+        viewport?: string;
+        x?: number;
+        y?: number;
+      };
       if (data?.type === "otama-preview-ready") {
         setReadySrc(latest.current.src);
         postTo(iframeRef.current, {
@@ -73,6 +98,20 @@ export function LivePreviewFrame({
         });
       } else if (data?.type === "otama-preview-select" && data.id) {
         latest.current.onSelect(data.id);
+      } else if (
+        data?.type === "otama-preview-position" &&
+        data.id &&
+        (data.viewport === "desktop" || data.viewport === "mobile") &&
+        typeof data.x === "number" &&
+        typeof data.y === "number"
+      ) {
+        latest.current.onSelect(data.id);
+        latest.current.onPositionChange?.(
+          data.id,
+          data.viewport,
+          data.x,
+          data.y
+        );
       }
     };
     window.addEventListener("message", onMessage);

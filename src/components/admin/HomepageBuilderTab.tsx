@@ -1,12 +1,14 @@
 "use client";
 
 import {
+  useCallback,
   useEffect,
   useMemo,
   useRef,
   useState,
   useSyncExternalStore,
 } from "react";
+import { LinkPicker } from "./LinkPicker";
 import {
   LivePreviewFrame,
   type PreviewDevice,
@@ -17,6 +19,7 @@ import { SortableList } from "./SortableList";
 import type {
   HeaderNavConfigItem,
   HomepageSectionConfig,
+  StoreCategory,
   StoreProduct,
   StoreSettings,
 } from "@/lib/store-types";
@@ -24,6 +27,7 @@ import type {
 interface HomepageBuilderTabProps {
   settings: StoreSettings;
   products: StoreProduct[];
+  categories: StoreCategory[];
   onSaveSettingsPatch: (patch: Partial<StoreSettings>, successMsg: string) => Promise<void>;
   onJumpToCategories: () => void;
   onDirtyChange: (dirty: boolean) => void;
@@ -63,6 +67,7 @@ function summarize(s: HomepageSectionConfig): string {
 export function HomepageBuilderTab({
   settings,
   products,
+  categories,
   onSaveSettingsPatch,
   onJumpToCategories,
   onDirtyChange,
@@ -152,6 +157,29 @@ export function HomepageBuilderTab({
   const patchSection = (id: string, patch: Partial<HomepageSectionConfig>) => {
     setDraftSections((prev) => prev.map((s) => (s.id === id ? { ...s, ...patch } : s)));
   };
+
+  const handlePreviewPositionChange = useCallback(
+    (id: string, viewport: PreviewDevice, x: number, y: number) => {
+      setDraftSections((prev) =>
+        prev.map((s) => {
+          if (s.id !== id) return s;
+          const prevLayout = s.style?.layout || {};
+          const nextLayout =
+            viewport === "desktop"
+              ? { ...prevLayout, posDesktop: { x, y } }
+              : { ...prevLayout, posMobile: { x, y } };
+          return {
+            ...s,
+            style: {
+              ...(s.style || {}),
+              layout: nextLayout,
+            },
+          };
+        })
+      );
+    },
+    []
+  );
 
   const patchNav = (id: string, patch: Partial<HeaderNavConfigItem>) => {
     setDraftNav((prev) => prev.map((n) => (n.id === id ? { ...n, ...patch } : n)));
@@ -285,7 +313,7 @@ export function HomepageBuilderTab({
       </div>
 
       {/* ================= 2-COLUMN EDITOR ================= */}
-      <div className="grid grid-cols-1 gap-3 lg:h-[calc(100dvh-235px)] lg:min-h-[620px] lg:grid-cols-[minmax(340px,410px)_1fr]">
+      <div className="grid grid-cols-1 gap-3 lg:h-[calc(100dvh-235px)] lg:min-h-[620px] lg:grid-cols-[minmax(340px,420px)_1fr]">
         {/* ---------- LEFT: section list / editor ---------- */}
         <aside
           aria-label="Bảng điều khiển bố cục"
@@ -315,7 +343,7 @@ export function HomepageBuilderTab({
                   Các khối trang chủ (từ trên xuống)
                 </p>
                 <p className="mb-2.5 text-[12.5px] text-[#5B647A]">
-                  Cầm ⋮⋮ kéo lên/xuống để đổi vị trí. Bấm vào khối (hoặc bấm trực tiếp trên bản xem trước) để chỉnh nội dung.
+                  Cầm ⋮⋮ kéo lên/xuống để đổi thứ tự. Bấm vào khối (hoặc bấm trực tiếp trên bản xem trước) để chỉnh chữ, màu sắc, font, nút &amp; vị trí.
                 </p>
 
                 <SortableList
@@ -327,6 +355,9 @@ export function HomepageBuilderTab({
                   className="space-y-1.5"
                   renderItem={(sec, { index, handle, isDragging }) => {
                     const badge = KIND_BADGE[sec.kind];
+                    const hasCustomStyle = Boolean(
+                      sec.style && Object.keys(sec.style).length > 0
+                    );
                     return (
                       <div
                         className={`flex items-center gap-1.5 rounded-xl border bg-white py-1.5 pr-1.5 pl-1 ${
@@ -356,6 +387,11 @@ export function HomepageBuilderTab({
                               >
                                 {badge.label}
                               </span>
+                              {hasCustomStyle && (
+                                <span className="shrink-0 rounded-full bg-[#EFF6FF] px-1.5 py-px text-[10px] font-bold text-[#1D4ED8]">
+                                  Đã tùy biến
+                                </span>
+                              )}
                               <span className="truncate text-[12px] text-[#5B647A]">
                                 {summarize(sec)}
                               </span>
@@ -401,7 +437,7 @@ export function HomepageBuilderTab({
               <div>
                 <h2 className="text-[17px] font-bold">Thanh Menu đầu trang</h2>
                 <p className="text-[12.5px] text-[#5B647A]">
-                  Kéo ⋮⋮ để đổi thứ tự trái → phải. Thay đổi hiện ngay trên bản xem trước.
+                  Kéo ⋮⋮ để đổi thứ tự trái → phải, chọn danh mục/trang cho từng mục menu.
                 </p>
               </div>
 
@@ -441,23 +477,23 @@ export function HomepageBuilderTab({
                         {nav.visible ? "Hiện" : "Ẩn"}
                       </button>
                     </div>
-                    <div className="mt-2 grid grid-cols-2 gap-2 pl-[52px]">
+                    <div className="mt-2 space-y-2 pl-[52px]">
                       <input
                         type="text"
                         aria-label={`Tên tiếng Anh mục ${index + 1}`}
                         value={nav.labelEn}
                         onChange={(e) => patchNav(nav.id, { labelEn: e.target.value })}
-                        placeholder="English label"
-                        className="h-9 min-w-0 rounded-lg border border-[#C9CFD9] px-2.5 text-[13px]"
+                        placeholder="Tên tiếng Anh (English label)"
+                        className="h-9 w-full rounded-lg border border-[#C9CFD9] px-2.5 text-[13px]"
                       />
-                      <input
-                        type="text"
-                        aria-label={`Đường dẫn mục ${index + 1}`}
-                        spellCheck={false}
+                      <LinkPicker
+                        id={`nav-href-${nav.id}`}
+                        label={`Đường dẫn mục ${index + 1}`}
                         value={nav.href}
-                        onChange={(e) => patchNav(nav.id, { href: e.target.value })}
-                        placeholder="/collections/..."
-                        className="h-9 min-w-0 rounded-lg border border-[#C9CFD9] px-2.5 font-mono text-[12px]"
+                        onChange={(href) => patchNav(nav.id, { href })}
+                        categories={categories}
+                        products={products}
+                        compact
                       />
                     </div>
                     {nav.sourceIndex === null && (
@@ -513,7 +549,10 @@ export function HomepageBuilderTab({
                 key={selectedSection.id}
                 section={selectedSection}
                 allProducts={products}
+                allCategories={categories}
                 vndRate={settings.vndRate}
+                device={device}
+                onDeviceSwitch={setDevice}
                 onPatch={(patch) => patchSection(selectedSection.id, patch)}
                 onJumpToCategories={onJumpToCategories}
               />
@@ -528,7 +567,7 @@ export function HomepageBuilderTab({
             className="flex min-h-0 min-w-0 flex-col rounded-2xl border border-[#E5E0DB] bg-[#EFEAE4] p-3"
           >
             <p className="mb-2 text-center text-[12px] font-bold text-[#5B647A]">
-              BẢN XEM TRƯỚC — chỉ bạn nhìn thấy. Khách chỉ thấy thay đổi sau khi bấm &ldquo;Lưu &amp; Xuất bản&rdquo;.
+              BẢN XEM TRƯỚC — bấm vào khối để chỉnh hoặc kéo &ldquo;✥ Kéo đổi vị trí chữ&rdquo;. Khách chỉ thấy sau khi bấm &ldquo;Lưu &amp; Xuất bản&rdquo;.
             </p>
             <div className="min-h-0 flex-1">
               <LivePreviewFrame
@@ -538,6 +577,7 @@ export function HomepageBuilderTab({
                 selectedId={selectedId}
                 focusRequest={focusRequest}
                 onSelect={setSelectedId}
+                onPositionChange={handlePreviewPositionChange}
               />
             </div>
           </section>
@@ -575,6 +615,7 @@ export function HomepageBuilderTab({
                   setSelectedId(id);
                   setMobilePreviewOpen(false);
                 }}
+                onPositionChange={handlePreviewPositionChange}
               />
             </div>
           </div>

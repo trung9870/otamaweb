@@ -53,25 +53,32 @@ export function extractProductSlug(rawHref: string): string {
 
 /**
  * Rewrites any brooklinen.com URL into a local Next.js App Router path
- * so visitors never leave the local storefront.
+ * so visitors never leave the local storefront, while preserving custom
+ * external URLs (Shopee, Zalo, Facebook, etc.) configured in Admin.
  */
 export function toLocalHref(rawHref: string): string {
   if (!rawHref) return "/";
-  if (rawHref.startsWith("#")) return rawHref;
+  const trimmed = rawHref.trim();
+  if (!trimmed) return "/";
+  if (trimmed.startsWith("#") || /^(mailto:|tel:)/i.test(trimmed)) return trimmed;
 
-  // Keep true external social networks external
-  if (
-    /^https?:\/\/(www\.)?(facebook\.com|x\.com|twitter\.com|pinterest\.com|instagram\.com)/i.test(
-      rawHref
-    )
-  ) {
-    return rawHref;
+  if (/^https?:\/\//i.test(trimmed)) {
+    try {
+      const u = new URL(trimmed);
+      if (!/^(www\.)?brooklinen\.com$/i.test(u.hostname)) {
+        return trimmed;
+      }
+      const pathname = u.pathname.replace(/\/+$/, "") || "/";
+      if (pathname === "/") return "/";
+      if (pathname === "/cart") return "/checkout";
+      return pathname;
+    } catch {
+      return "/";
+    }
   }
 
   try {
-    const u = rawHref.startsWith("http")
-      ? new URL(rawHref)
-      : new URL(rawHref, "https://www.brooklinen.com");
+    const u = new URL(trimmed, "https://www.brooklinen.com");
     const pathname = u.pathname.replace(/\/+$/, "") || "/";
     if (pathname === "/") return "/";
     if (pathname === "/cart") return "/checkout";
