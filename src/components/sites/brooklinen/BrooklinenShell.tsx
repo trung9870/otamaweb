@@ -1,7 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import type { MouseEvent, ReactNode } from "react";
+import { useEffect, type MouseEvent, type ReactNode } from "react";
 import { CartProvider } from "./CartContext";
 import { Header } from "./Header";
 import { LanguageProvider } from "./LanguageContext";
@@ -10,7 +10,24 @@ import { StoreDataProvider, useStoreData } from "./StoreDataContext";
 import { BrooklinenFooter } from "./TrustAndFooter";
 
 function ShellBody({ children }: { children: ReactNode }) {
-  const { previewMode, selectPreviewSection } = useStoreData();
+  const { previewMode, previewFocus, selectPreviewSection } = useStoreData();
+
+  // Admin visual editors: scroll the preview to the region chosen in the sidebar
+  useEffect(() => {
+    if (!previewMode || !previewFocus) return;
+    const behavior: ScrollBehavior = window.matchMedia("(prefers-reduced-motion: reduce)")
+      .matches
+      ? "auto"
+      : "smooth";
+    if (previewFocus.id === "header_nav" || previewFocus.id === "pd-top") {
+      window.scrollTo({ top: 0, behavior });
+      return;
+    }
+    const el = document.querySelector(
+      `[data-section-id="${CSS.escape(previewFocus.id)}"]`
+    );
+    el?.scrollIntoView({ block: "start", behavior });
+  }, [previewMode, previewFocus]);
 
   // In the admin visual editor, clicks select a section instead of navigating
   const handlePreviewClick = (e: MouseEvent<HTMLDivElement>) => {

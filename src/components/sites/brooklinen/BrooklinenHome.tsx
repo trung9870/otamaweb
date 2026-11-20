@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect } from "react";
 import { BROOKLINEN_DATA } from "./data";
 import { CategoryCarousel } from "./CategoryCarousel";
 import { useLanguage } from "./LanguageContext";
@@ -36,26 +35,10 @@ export function BrooklinenHome() {
     resolveProductsBySlugs,
     previewMode,
     previewSelectedId,
-    previewFocus,
   } = useStoreData();
   const copy = UI_COPY[locale];
   const heroPrimaryFallback = BROOKLINEN_DATA.heroPrimary;
   const heroSheetsFallback = BROOKLINEN_DATA.heroSheets;
-
-  // Admin editor: scroll the preview to the section chosen in the sidebar
-  useEffect(() => {
-    if (!previewMode || !previewFocus) return;
-    const behavior: ScrollBehavior = window.matchMedia("(prefers-reduced-motion: reduce)")
-      .matches
-      ? "auto"
-      : "smooth";
-    if (previewFocus.id === "header_nav") {
-      window.scrollTo({ top: 0, behavior });
-      return;
-    }
-    const el = document.querySelector(`[data-section-id="${previewFocus.id}"]`);
-    el?.scrollIntoView({ block: "start", behavior });
-  }, [previewMode, previewFocus]);
 
   const visibleSections = (settings.homepageSections || []).filter((s) => s.visible);
 

@@ -3,6 +3,7 @@ import { getAdminSession } from "@/lib/admin-auth";
 import {
   deleteProductById,
   readStoreDatabase,
+  saveSettings,
   upsertProduct,
 } from "@/lib/store-db";
 import {
@@ -12,8 +13,16 @@ import {
 import {
   computeDiscountBadge,
   slugifyText,
+  type HomepageBlockId,
+  type HomepageSectionKey,
   type StoreProduct,
 } from "@/lib/store-types";
+
+const SECTION_KEY_TO_BLOCK_ID: Record<HomepageSectionKey, HomepageBlockId> = {
+  bestOfSale: "carousel_best_of_sale",
+  giftGuide: "carousel_gift_guide",
+  collection: "carousel_collection",
+};
 
 export const dynamic = "force-dynamic";
 
@@ -75,6 +84,53 @@ export async function PUT(
     };
 
     const saved = await upsertProduct(updated);
+
+    // Sync homepage carousel productSlugs if slug changed or sections checkboxes changed
+    const sectionsModified =
+      Array.isArray(body.sections) &&
+      JSON.stringify([...body.sections].sort()) !==
+        JSON.stringify([...existing.sections].sort());
+
+    if (
+      db.settings.homepageSections?.length &&
+      (sectionsModified || saved.slug !== existing.slug)
+    ) {
+      const targetBlockIds = new Set(
+        saved.sections.map((sec) => SECTION_KEY_TO_BLOCK_ID[sec])
+      );
+      let settingsChanged = false;
+      const updatedSections = db.settings.homepageSections.map((block) => {
+        if (!block.productSlugs) return block;
+        const isCarousel =
+          block.id === "carousel_best_of_sale" ||
+          block.id === "carousel_gift_guide" ||
+          block.id === "carousel_collection";
+        if (!isCarousel) return block;
+
+        const mapped = block.productSlugs.map((s) =>
+          s === existing.slug ? saved.slug : s
+        );
+        let nextSlugs = mapped;
+        if (sectionsModified) {
+          const hasSlug = mapped.includes(saved.slug);
+          const shouldHave = targetBlockIds.has(block.id);
+          if (shouldHave && !hasSlug) {
+            nextSlugs = [saved.slug, ...mapped];
+          } else if (!shouldHave && hasSlug) {
+            nextSlugs = mapped.filter((s) => s !== saved.slug);
+          }
+        }
+        if (JSON.stringify(nextSlugs) !== JSON.stringify(block.productSlugs)) {
+          settingsChanged = true;
+          return { ...block, productSlugs: nextSlugs };
+        }
+        return block;
+      });
+      if (settingsChanged) {
+        await saveSettings({ ...db.settings, homepageSections: updatedSections });
+      }
+    }
+
     return NextResponse.json({ product: saved });
   } catch (err) {
     const message = err instanceof Error ? err.message : "Không thể cập nhật sản phẩm.";

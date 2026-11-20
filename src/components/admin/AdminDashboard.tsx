@@ -12,7 +12,7 @@ import {
 import { CategoryModal } from "./CategoryModal";
 import { HomepageBuilderTab } from "./HomepageBuilderTab";
 import { ORDER_STATUS_META, OrderDetailModal } from "./OrderDetailModal";
-import { ProductModal } from "./ProductModal";
+import { ProductEditorView } from "./product-editor/ProductEditorView";
 import type {
   AdminDashboardPayload,
   StoreCategory,
@@ -58,8 +58,10 @@ export function AdminDashboard() {
   const [productCategoryFilter, setProductCategoryFilter] = useState("all");
   const [orderStatusFilter, setOrderStatusFilter] = useState<"all" | StoreOrderStatus>("all");
 
-  // Modals
-  const [productModalOpen, setProductModalOpen] = useState(false);
+  // Editors & Modals
+  const [productEditorOpen, setProductEditorOpen] = useState(false);
+  const [productEditorSession, setProductEditorSession] = useState(0);
+  const [productDirty, setProductDirty] = useState(false);
   const [editingProduct, setEditingProduct] = useState<StoreProduct | null>(null);
   const [categoryModalOpen, setCategoryModalOpen] = useState(false);
   const [editingCategory, setEditingCategory] = useState<StoreCategory | null>(null);
@@ -223,6 +225,20 @@ export function AdminDashboard() {
     });
   };
 
+  const openProductEditor = (prod: StoreProduct | null) => {
+    setEditingProduct(prod);
+    setProductEditorSession((n) => n + 1);
+    setProductDirty(false);
+    setProductEditorOpen(true);
+    setActiveTab("products");
+  };
+
+  const closeProductEditor = () => {
+    setProductEditorOpen(false);
+    setEditingProduct(null);
+    setProductDirty(false);
+  };
+
   const requestTab = (tab: AdminTab) => {
     if (activeTab === "layout" && layoutDirty && tab !== "layout") {
       setConfirmState({
@@ -236,6 +252,22 @@ export function AdminDashboard() {
         },
       });
       return;
+    }
+    if (activeTab === "products" && productEditorOpen) {
+      if (productDirty) {
+        setConfirmState({
+          title: "Rời trình sửa sản phẩm khi chưa lưu?",
+          message:
+            "Bạn còn thay đổi sản phẩm chưa lưu. Nếu rời đi, các thay đổi chưa lưu sẽ bị mất.",
+          confirmLabel: "Rời đi & bỏ thay đổi",
+          onConfirm: async () => {
+            closeProductEditor();
+            setActiveTab(tab);
+          },
+        });
+        return;
+      }
+      closeProductEditor();
     }
     setActiveTab(tab);
   };
@@ -702,10 +734,7 @@ export function AdminDashboard() {
               <div className="flex flex-wrap gap-2.5">
                 <button
                   type="button"
-                  onClick={() => {
-                    setEditingProduct(null);
-                    setProductModalOpen(true);
-                  }}
+                  onClick={() => openProductEditor(null)}
                   className="min-h-[46px] cursor-pointer rounded-xl bg-[#283455] px-5 text-[14px] font-bold text-white hover:bg-[#1D2742]"
                 >
                   + Thêm sản phẩm mới
@@ -887,9 +916,29 @@ export function AdminDashboard() {
         )}
 
         {/* ================================================================ */}
-        {/* TAB 2: PRODUCTS                                                  */}
+        {/* TAB 2: PRODUCTS (LIST OR 2-COLUMN VISUAL EDITOR)                 */}
         {/* ================================================================ */}
-        {activeTab === "products" && data && (
+        {activeTab === "products" && data && productEditorOpen && (
+          <ProductEditorView
+            key={productEditorSession}
+            product={editingProduct}
+            categories={data.categories}
+            vndRate={vndRate}
+            onDirtyChange={setProductDirty}
+            onClose={closeProductEditor}
+            onSaved={async (saved, isNew) => {
+              await fetchDashboard();
+              setEditingProduct(saved);
+              showToast(
+                isNew
+                  ? `Đã tạo sản phẩm mới "${saved.titleVi}".`
+                  : `Đã cập nhật sản phẩm "${saved.titleVi}".`
+              );
+            }}
+          />
+        )}
+
+        {activeTab === "products" && data && !productEditorOpen && (
           <div className="space-y-5">
             <div className="flex flex-wrap items-center justify-between gap-4">
               <div>
@@ -902,10 +951,7 @@ export function AdminDashboard() {
               </div>
               <button
                 type="button"
-                onClick={() => {
-                  setEditingProduct(null);
-                  setProductModalOpen(true);
-                }}
+                onClick={() => openProductEditor(null)}
                 className="min-h-[48px] cursor-pointer rounded-xl bg-[#283455] px-5 text-[14px] font-bold text-white hover:bg-[#1D2742]"
               >
                 + Thêm sản phẩm mới
@@ -1067,10 +1113,7 @@ export function AdminDashboard() {
                           </Link>
                           <button
                             type="button"
-                            onClick={() => {
-                              setEditingProduct(p);
-                              setProductModalOpen(true);
-                            }}
+                            onClick={() => openProductEditor(p)}
                             className="cursor-pointer rounded-lg border border-[#283455] px-3 py-1.5 text-[12.5px] font-bold text-[#283455] hover:bg-[#283455] hover:text-white"
                           >
                             Sửa
@@ -1691,23 +1734,6 @@ export function AdminDashboard() {
           </div>
         )}
       </main>
-
-      {/* Product Create/Edit Modal (<dialog>) */}
-      <ProductModal
-        open={productModalOpen}
-        product={editingProduct}
-        categories={data?.categories || []}
-        vndRate={vndRate}
-        onClose={() => setProductModalOpen(false)}
-        onSaved={(saved, isNew) => {
-          void fetchDashboard();
-          showToast(
-            isNew
-              ? `Đã tạo sản phẩm mới "${saved.titleVi}".`
-              : `Đã cập nhật sản phẩm "${saved.titleVi}".`
-          );
-        }}
-      />
 
       {/* Category Create/Edit Modal (<dialog>) */}
       <CategoryModal

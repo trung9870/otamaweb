@@ -668,6 +668,7 @@ dialog::backdrop {
 html.otama-preview [data-section-id]:not(.contents) {
   position: relative;
   cursor: pointer;
+  scroll-margin-top: 96px;
 }
 
 html.otama-preview [data-section-id]:not(.contents):hover::after,
@@ -704,6 +705,14 @@ html.otama-preview .otama-preview-selected::before {
   color: #ffffff;
   font: 700 12.5px/1.2 "Be Vietnam Pro", ui-sans-serif, system-ui, sans-serif;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+html.otama-preview [data-section-id^="pd-"]:not([data-section-id="pd-gallery"]):hover::before,
+html.otama-preview [data-section-id^="pd-"]:not([data-section-id="pd-gallery"]).otama-preview-selected::before {
+  top: -13px;
+  right: 6px;
+  padding: 3px 9px;
+  font-size: 11px;
 }
 
 @media (prefers-reduced-motion: reduce) {

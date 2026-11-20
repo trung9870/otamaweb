@@ -264,6 +264,21 @@ function EditorialStoryBlock({
 }
 
 export function ProductDetailView({ slug }: { slug: string }) {
+  const { getProductBySlug } = useStoreData();
+  const product = getProductBySlug(slug);
+  // Re-mount when the product appears (preview draft arrives) or its default colour
+  // changes, so the initial swatch / size selection always follows the data.
+  const remountKey = `${slug}-${product ? product.id : "none"}-${product?.defaultSwatchIndex ?? 0}`;
+  return <ProductDetailInner key={remountKey} slug={slug} />;
+}
+
+type RegionAttrs = {
+  "data-section-id"?: string;
+  "data-section-label"?: string;
+  className?: string;
+};
+
+function ProductDetailInner({ slug }: { slug: string }) {
   const { locale } = useLanguage();
   const {
     getProductBySlug,
@@ -271,11 +286,27 @@ export function ProductDetailView({ slug }: { slug: string }) {
     formatMoney,
     formatMoneyString,
     settings,
+    previewMode,
+    previewSelectedId,
   } = useStoreData();
   const qvCopy = UI_COPY[locale].quickViewModal;
   const { addItem, openCart } = useCart();
 
   const product = getProductBySlug(slug);
+
+  /** Click-to-select region attributes, only emitted inside the admin preview. */
+  const region = (id: string, label: string, extraClass = ""): RegionAttrs => {
+    if (!previewMode) return extraClass ? { className: extraClass } : {};
+    const cls = [extraClass, previewSelectedId === id ? "otama-preview-selected" : ""]
+      .filter(Boolean)
+      .join(" ");
+    return {
+      "data-section-id": id,
+      "data-section-label": label,
+      ...(cls ? { className: cls } : {}),
+    };
+  };
+  const interactive = previewMode ? { "data-preview-interactive": "true" } : {};
 
   const [selectedSwatch, setSelectedSwatch] = useState(
     product && product.defaultSwatchIndex < product.swatches.length
@@ -286,6 +317,10 @@ export function ProductDetailView({ slug }: { slug: string }) {
   const [selectedSizeIdx, setSelectedSizeIdx] = useState(() => {
     if (!product) return 0;
     const opts = sizeOptionsFor(product);
+    if (previewMode) {
+      const baseIdx = opts.findIndex((o) => o.delta === 0);
+      return baseIdx >= 0 ? baseIdx : 0;
+    }
     const queenIdx = opts.findIndex((o) => o.label === "Queen" || o.label === "$100");
     return queenIdx >= 0 ? queenIdx : 0;
   });
@@ -372,7 +407,11 @@ export function ProductDetailView({ slug }: { slug: string }) {
         {/* Breadcrumb */}
         <nav
           aria-label="Breadcrumb"
-          className="mb-6 flex flex-wrap items-center gap-2 text-[13px] text-[#5B647A]"
+          {...region(
+            "pd-title",
+            "Thông tin cơ bản",
+            "mb-6 flex flex-wrap items-center gap-2 text-[13px] text-[#5B647A]"
+          )}
         >
           <Link href="/" className="hover:underline">
             {locale === "vi" ? "Trang chủ" : "Home"}
@@ -388,7 +427,7 @@ export function ProductDetailView({ slug }: { slug: string }) {
         {/* Main 2-Column Product Layout */}
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:gap-14">
           {/* Left Gallery */}
-          <div className="flex flex-col gap-4">
+          <div {...region("pd-gallery", "Ảnh sản phẩm", "flex flex-col gap-4")}>
             <div className="group relative aspect-square w-full overflow-hidden rounded-2xl bg-[#F4F4F6]">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
@@ -418,6 +457,7 @@ export function ProductDetailView({ slug }: { slug: string }) {
                 <>
                   <button
                     type="button"
+                    {...interactive}
                     aria-label={locale === "vi" ? "Ảnh trước" : "Previous photo"}
                     onClick={() =>
                       setActivePhotoIdx((prev) => (prev - 1 + gallery.length) % gallery.length)
@@ -428,6 +468,7 @@ export function ProductDetailView({ slug }: { slug: string }) {
                   </button>
                   <button
                     type="button"
+                    {...interactive}
                     aria-label={locale === "vi" ? "Ảnh tiếp theo" : "Next photo"}
                     onClick={() =>
                       setActivePhotoIdx((prev) => (prev + 1) % gallery.length)
@@ -446,6 +487,7 @@ export function ProductDetailView({ slug }: { slug: string }) {
                   <button
                     key={`${imgUrl}-${idx}`}
                     type="button"
+                    {...interactive}
                     onClick={() => setActivePhotoIdx(idx)}
                     aria-label={
                       locale === "vi" ? `Xem ảnh ${idx + 1}` : `View photo ${idx + 1}`
@@ -474,16 +516,26 @@ export function ProductDetailView({ slug }: { slug: string }) {
           <div className="flex flex-col">
             {product.promoEyebrow && (
               <p
-                className={`flex items-center gap-1.5 text-[13px] font-bold tracking-[0.08em] uppercase ${
-                  product.promoTone === "urgent" ? "text-[#AA3F00]" : "text-[#417823]"
-                }`}
+                {...region(
+                  "pd-pricing",
+                  "Giá & Nhãn khuyến mãi",
+                  `flex items-center gap-1.5 text-[13px] font-bold tracking-[0.08em] uppercase ${
+                    product.promoTone === "urgent" ? "text-[#AA3F00]" : "text-[#417823]"
+                  }`
+                )}
               >
                 <SparkleIcon className="h-3.5 w-3.5" />
                 <span>{translateBadge(product.promoEyebrow, locale)}</span>
               </p>
             )}
 
-            <h1 className="mt-2 font-toledo text-[32px] leading-[1.15] text-[#283455] lg:text-[40px]">
+            <h1
+              {...region(
+                "pd-title",
+                "Thông tin cơ bản",
+                "mt-2 font-toledo text-[32px] leading-[1.15] text-[#283455] lg:text-[40px]"
+              )}
+            >
               {displayTitle}
             </h1>
 
@@ -499,7 +551,13 @@ export function ProductDetailView({ slug }: { slug: string }) {
               </div>
             )}
 
-            <div className="mt-4 flex items-center gap-2.5 text-[22px]">
+            <div
+              {...region(
+                "pd-pricing",
+                "Giá & Nhãn khuyến mãi",
+                "mt-4 flex items-center gap-2.5 text-[22px]"
+              )}
+            >
               {finalOrig > finalSale && (
                 <span className="text-[#7E8596] line-through">
                   {formatMoney(finalOrig, locale)}
@@ -515,13 +573,19 @@ export function ProductDetailView({ slug }: { slug: string }) {
               )}
             </div>
 
-            <p className="mt-4 text-[15.5px] leading-[1.6] text-[#3D4866]">
+            <p
+              {...region(
+                "pd-description",
+                "Mô tả & Thông số",
+                "mt-4 text-[15.5px] leading-[1.6] text-[#3D4866]"
+              )}
+            >
               {locale === "vi" ? product.viDescription : product.enDescription}
             </p>
 
             {/* Color Swatches */}
             {product.swatches.length > 0 && (
-              <div className="mt-6">
+              <div {...region("pd-swatches", "Màu sắc", "mt-6")}>
                 <p className="text-[14px] font-bold text-[#283455]">
                   {qvCopy.colorLabel}{" "}
                   <span className="font-normal">
@@ -536,6 +600,7 @@ export function ProductDetailView({ slug }: { slug: string }) {
                       <button
                         key={`${sw.label}-${idx}`}
                         type="button"
+                        {...interactive}
                         aria-label={cLabel}
                         title={cLabel}
                         onClick={() => {
@@ -578,6 +643,7 @@ export function ProductDetailView({ slug }: { slug: string }) {
                   <button
                     key={sz.label}
                     type="button"
+                    {...interactive}
                     onClick={() => setSelectedSizeIdx(idx)}
                     className={`cursor-pointer rounded-full border px-4 py-2 text-[13.5px] font-bold transition-colors ${
                       selectedSizeIdx === idx
@@ -638,9 +704,15 @@ export function ProductDetailView({ slug }: { slug: string }) {
             </div>
 
             {/* Native Accordion Details */}
-            <div className="mt-6 divide-y divide-[#E5E0DB] border-y border-[#E5E0DB]">
+            <div
+              {...region(
+                "pd-description",
+                "Mô tả & Thông số",
+                "mt-6 divide-y divide-[#E5E0DB] border-y border-[#E5E0DB]"
+              )}
+            >
               <details open className="group py-4">
-                <summary className="flex cursor-pointer list-none items-center justify-between text-[15px] font-bold text-[#283455]">
+                <summary {...interactive} className="flex cursor-pointer list-none items-center justify-between text-[15px] font-bold text-[#283455]">
                   <span>{locale === "vi" ? "Bộ sản phẩm bao gồm" : "What's Included"}</span>
                   <span className="text-lg transition-transform group-open:rotate-45">+</span>
                 </summary>
@@ -652,7 +724,7 @@ export function ProductDetailView({ slug }: { slug: string }) {
               </details>
 
               <details className="group py-4">
-                <summary className="flex cursor-pointer list-none items-center justify-between text-[15px] font-bold text-[#283455]">
+                <summary {...interactive} className="flex cursor-pointer list-none items-center justify-between text-[15px] font-bold text-[#283455]">
                   <span>{locale === "vi" ? "Hướng dẫn bảo quản" : "Care Instructions"}</span>
                   <span className="text-lg transition-transform group-open:rotate-45">+</span>
                 </summary>
@@ -662,7 +734,7 @@ export function ProductDetailView({ slug }: { slug: string }) {
               </details>
 
               <details className="group py-4">
-                <summary className="flex cursor-pointer list-none items-center justify-between text-[15px] font-bold text-[#283455]">
+                <summary {...interactive} className="flex cursor-pointer list-none items-center justify-between text-[15px] font-bold text-[#283455]">
                   <span>
                     {locale === "vi" ? "Giao hàng & Đổi trả 365 ngày" : "Shipping & 365-Day Returns"}
                   </span>
@@ -690,8 +762,13 @@ export function ProductDetailView({ slug }: { slug: string }) {
             }
             className="mt-16 space-y-14 border-t border-[#E5E0DB] pt-14 lg:mt-20 lg:space-y-20 lg:pt-16"
           >
-            {storyBlocks.map((blk) => (
-              <EditorialStoryBlock key={blk.id} block={blk} locale={locale} />
+            {storyBlocks.map((blk, idx) => (
+              <div
+                key={blk.id}
+                {...region(`story:${blk.id}`, `Bài viết chi tiết · Mục ${idx + 1}`)}
+              >
+                <EditorialStoryBlock block={blk} locale={locale} />
+              </div>
             ))}
           </section>
         )}

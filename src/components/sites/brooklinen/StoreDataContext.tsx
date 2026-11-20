@@ -68,6 +68,9 @@ const DEFAULT_PRODUCTS = buildDefaultProducts();
 const DEFAULT_CATEGORIES = buildDefaultCategories();
 const DEFAULT_SETTINGS = buildDefaultSettings();
 
+/** Fixed slug the admin product editor previews its unsaved draft under. */
+export const PREVIEW_PRODUCT_SLUG = "__preview__";
+
 const StoreDataContext = createContext<StoreDataContextValue | null>(null);
 
 const subscribeNoop = () => () => {};
@@ -93,6 +96,7 @@ export function StoreDataProvider({ children }: { children: ReactNode }) {
   // Admin visual-editor preview mode (storefront rendered inside the /admin iframe)
   const previewMode = useSyncExternalStore(subscribeNoop, isPreviewUrl, () => false);
   const [previewOverride, setPreviewOverride] = useState<Partial<StoreSettings> | null>(null);
+  const [previewProductDraft, setPreviewProductDraft] = useState<StoreProduct | null>(null);
   const [previewSelectedId, setPreviewSelectedId] = useState<string | null>(null);
   const [previewFocus, setPreviewFocus] = useState<{ id: string; nonce: number } | null>(null);
 
@@ -106,11 +110,13 @@ export function StoreDataProvider({ children }: { children: ReactNode }) {
       const data = e.data as {
         type?: string;
         settings?: Partial<StoreSettings>;
+        productDraft?: StoreProduct | null;
         selectedId?: string | null;
         id?: string;
       };
       if (data?.type === "otama-preview-update") {
         if (data.settings) setPreviewOverride(data.settings);
+        if (data.productDraft !== undefined) setPreviewProductDraft(data.productDraft);
         setPreviewSelectedId(data.selectedId ?? null);
       } else if (data?.type === "otama-preview-focus" && data.id) {
         setPreviewSelectedId(data.id);
@@ -181,6 +187,15 @@ export function StoreDataProvider({ children }: { children: ReactNode }) {
       .map((p) => storeProductToCatalogProduct(p, categoryMap));
   }, [storeProducts, categoryMap]);
 
+  // Admin product editor: the unsaved draft is exposed at /products/__preview__
+  const previewDraftCatalog = useMemo(() => {
+    if (!previewMode || !previewProductDraft) return null;
+    return storeProductToCatalogProduct(
+      { ...previewProductDraft, slug: previewProductDraft.slug || PREVIEW_PRODUCT_SLUG },
+      categoryMap
+    );
+  }, [previewMode, previewProductDraft, categoryMap]);
+
   const bestOfSale = useMemo(() => {
     const list = storeProducts
       .filter((p) => p.active && p.sections.includes("bestOfSale"))
@@ -203,8 +218,11 @@ export function StoreDataProvider({ children }: { children: ReactNode }) {
   }, [storeProducts, categoryMap, catalog]);
 
   const getProductBySlug = useCallback(
-    (slug: string) => catalog.find((p) => p.slug === slug),
-    [catalog]
+    (slug: string) => {
+      if (previewDraftCatalog && slug === PREVIEW_PRODUCT_SLUG) return previewDraftCatalog;
+      return catalog.find((p) => p.slug === slug);
+    },
+    [catalog, previewDraftCatalog]
   );
 
   const getCollectionMeta = useCallback(
