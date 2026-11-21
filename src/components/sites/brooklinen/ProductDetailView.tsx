@@ -3,10 +3,16 @@
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import {
+  BedStudioConfigurator,
+  EURO_PILLOWS_ADDON_USD,
+  WAFFLE_THROW_ADDON_USD,
+} from "./BedStudioConfigurator";
+import {
   getLocalizedCategoryName,
   type CatalogProduct,
   type ProductDetailBlock,
 } from "./catalog";
+import { SwatchMorphImage } from "./SwatchMorphImage";
 import { parseDollar, useCart } from "./CartContext";
 import { useLanguage, type Locale } from "./LanguageContext";
 import { useStoreData } from "./StoreDataContext";
@@ -326,6 +332,12 @@ function ProductDetailInner({ slug }: { slug: string }) {
     return queenIdx >= 0 ? queenIdx : 0;
   });
   const [qty, setQty] = useState(1);
+  const supportsBedStudio = product?.slug === "classic-core-sheet-set";
+  const supportsSwatchMorph = product?.slug === "classic-core-sheet-set";
+  const [studioMode, setStudioMode] = useState(false);
+  const [hoverSwatch, setHoverSwatch] = useState<number | null>(null);
+  const [includeEuroPillows, setIncludeEuroPillows] = useState(false);
+  const [includeWaffleThrow, setIncludeWaffleThrow] = useState(false);
 
   const [syncedFocusNonce, setSyncedFocusNonce] = useState(0);
   if (
@@ -392,21 +404,37 @@ function ProductDetailInner({ slug }: { slug: string }) {
 
   const baseSale = parseDollar(product.salePrice);
   const baseOrig = parseDollar(product.originalPrice);
-  const finalSale = Math.max(10, baseSale + activeSize.delta);
-  const finalOrig = baseOrig > 0 ? Math.max(finalSale, baseOrig + activeSize.delta) : 0;
+  const addonUsd =
+    (supportsBedStudio && includeEuroPillows ? EURO_PILLOWS_ADDON_USD : 0) +
+    (supportsBedStudio && includeWaffleThrow ? WAFFLE_THROW_ADDON_USD : 0);
+  const finalSale = Math.max(10, baseSale + activeSize.delta + addonUsd);
+  const finalOrig =
+    baseOrig > 0 ? Math.max(finalSale, baseOrig + activeSize.delta + addonUsd) : 0;
   const displayTitle = translateProductTitle(product.title, locale, product.titleVi);
   const activeColorRaw = activeSwatch?.label || "Default";
   const categoryName = getLocalizedCategoryName(product, locale);
   const related = getRelatedProducts(product.slug, 4);
 
+  const addonLabels: string[] = [];
+  if (supportsBedStudio && includeEuroPillows) {
+    addonLabels.push(locale === "vi" ? "2 Gối Euro" : "2 Euro Pillows");
+  }
+  if (supportsBedStudio && includeWaffleThrow) {
+    addonLabels.push(locale === "vi" ? "Chăn Waffle" : "Waffle Blanket");
+  }
+  const cartSizeLabel =
+    addonLabels.length > 0
+      ? `${activeSize.label} + ${addonLabels.join(" + ")}`
+      : activeSize.label;
+
   const handleAddToBag = () => {
     addItem(
       {
-        key: `${product.slug}::${activeColorRaw}::${activeSize.label}`,
+        key: `${product.slug}::${activeColorRaw}::${cartSizeLabel}`,
         slug: product.slug,
         title: product.title,
         color: activeColorRaw,
-        size: activeSize.label,
+        size: cartSizeLabel,
         price: finalSale,
         originalPrice: finalOrig || finalSale,
         image: mainImg,
@@ -442,8 +470,69 @@ function ProductDetailInner({ slug }: { slug: string }) {
 
         {/* Main 2-Column Product Layout */}
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:gap-14">
-          {/* Left Gallery */}
+          {/* Left Gallery / 2.5D Interactive Configurator */}
           <div {...region("pd-gallery", "Ảnh sản phẩm", "flex flex-col gap-4")}>
+            {supportsBedStudio && (
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <div
+                  role="group"
+                  aria-label={locale === "vi" ? "Chế độ xem sản phẩm" : "Product view mode"}
+                  className="inline-flex rounded-full bg-[#EFEAE4] p-1"
+                >
+                  <button
+                    type="button"
+                    {...interactive}
+                    aria-pressed={!studioMode}
+                    onClick={() => setStudioMode(false)}
+                    className={`min-h-[34px] cursor-pointer rounded-full px-3.5 text-[12.5px] font-bold transition-colors ${
+                      !studioMode
+                        ? "bg-[#283455] text-white shadow-xs"
+                        : "text-[#5B647A] hover:text-[#283455]"
+                    }`}
+                  >
+                    {locale === "vi" ? "Ảnh sản phẩm" : "Product Photos"}
+                  </button>
+                  <button
+                    type="button"
+                    {...interactive}
+                    aria-pressed={studioMode}
+                    onClick={() => setStudioMode(true)}
+                    className={`min-h-[34px] cursor-pointer rounded-full px-3.5 text-[12.5px] font-bold transition-colors ${
+                      studioMode
+                        ? "bg-[#283455] text-white shadow-xs"
+                        : "text-[#5B647A] hover:text-[#283455]"
+                    }`}
+                  >
+                    ✨ {locale === "vi" ? "Phòng ngủ 2.5D" : "2.5D Bedroom"}
+                  </button>
+                </div>
+                <p className="text-[12px] text-[#5B647A]">
+                  {studioMode
+                    ? locale === "vi"
+                      ? "Đổi cỡ, màu, kéo chăn hoặc bật đèn ngủ ngay trên hình"
+                      : "Resize, swap colors, drag duvet or toggle bedside lamps"
+                    : locale === "vi"
+                    ? "Rê chuột hoặc bấm vào ô màu để xem vải đổi màu"
+                    : "Hover or tap a colour to watch the fabric re-dye"}
+                </p>
+              </div>
+            )}
+
+            {supportsBedStudio && studioMode ? (
+              <BedStudioConfigurator
+                locale={locale}
+                selectedSizeIdx={selectedSizeIdx}
+                onSelectSizeIdx={setSelectedSizeIdx}
+                swatchLabel={activeColorRaw}
+                swatchColor={activeSwatch?.color}
+                includeEuroPillows={includeEuroPillows}
+                onToggleEuroPillows={setIncludeEuroPillows}
+                includeWaffleThrow={includeWaffleThrow}
+                onToggleWaffleThrow={setIncludeWaffleThrow}
+                formatMoney={formatMoney}
+              />
+            ) : (
+              <>
             <div className="group relative aspect-square w-full overflow-hidden rounded-2xl bg-[#F4F4F6]">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
@@ -453,6 +542,14 @@ function ProductDetailInner({ slug }: { slug: string }) {
                 height={720}
                 className="h-full w-full object-cover"
               />
+              {supportsSwatchMorph && activePhotoIdx === 0 && product.swatches.length > 1 && (
+                <SwatchMorphImage
+                  swatches={product.swatches}
+                  selectedIdx={selectedSwatch}
+                  previewIdx={hoverSwatch}
+                  locale={locale}
+                />
+              )}
               {product.topBadge && (
                 <span className="absolute top-4 left-4 rounded-full bg-white px-3.5 py-1.5 text-[11.5px] font-bold tracking-[0.06em] uppercase text-[#283455] shadow-xs">
                   {translateBadge(product.topBadge, locale)}
@@ -525,6 +622,8 @@ function ProductDetailInner({ slug }: { slug: string }) {
                   </button>
                 ))}
               </div>
+            )}
+              </>
             )}
           </div>
 
@@ -605,10 +704,18 @@ function ProductDetailInner({ slug }: { slug: string }) {
                 <p className="text-[14px] font-bold text-[#283455]">
                   {qvCopy.colorLabel}{" "}
                   <span className="font-normal">
-                    {translateColor(activeColorRaw, locale)}
+                    {translateColor(
+                      hoverSwatch !== null && product.swatches[hoverSwatch]
+                        ? product.swatches[hoverSwatch].label
+                        : activeColorRaw,
+                      locale
+                    )}
                   </span>
                 </p>
-                <div className="mt-2.5 flex flex-wrap gap-2">
+                <div
+                  className="mt-2.5 flex flex-wrap gap-2"
+                  onPointerLeave={() => setHoverSwatch(null)}
+                >
                   {product.swatches.map((sw, idx) => {
                     const isSelected = idx === selectedSwatch;
                     const cLabel = translateColor(sw.label, locale);
@@ -619,8 +726,12 @@ function ProductDetailInner({ slug }: { slug: string }) {
                         {...interactive}
                         aria-label={cLabel}
                         title={cLabel}
+                        onPointerEnter={(e) => {
+                          if (supportsSwatchMorph && e.pointerType === "mouse") setHoverSwatch(idx);
+                        }}
                         onClick={() => {
                           setSelectedSwatch(idx);
+                          setHoverSwatch(null);
                           setActivePhotoIdx(0);
                         }}
                         className={`h-8 w-8 cursor-pointer overflow-hidden rounded-[6px] border transition-all ${

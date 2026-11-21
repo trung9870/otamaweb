@@ -971,3 +971,65 @@ html.otama-preview [data-section-id^="pd-"]:not([data-section-id="pd-gallery"]).
   font-size: clamp(1.5rem, 1.15rem + 1.4vw, 2.25rem);
   line-height: 1.18;
 }
+
+/* ==========================================================================
+   2.5D Interactive Bed Studio Configurator
+   (modern-web-guidance: motion, physics-based-easing, drag)
+   ========================================================================== */
+.bkl-spring-pill {
+  --bkl-spring-ease: linear(
+    0, 0.014 0.8%, 0.058 1.8%, 0.238 4%, 0.92 12%, 1.12 16.5%,
+    1.152 19.5%, 1.078 26%, 0.985 35%, 0.975 40%, 1.006 54%,
+    1.002 72%, 1
+  );
+  transition: transform 0.55s ease-out, opacity 0.25s ease-out;
+  transition-timing-function: var(--bkl-spring-ease), ease-out;
+}
+
+@supports not (animation-timing-function: linear(0, 1)) {
+  .bkl-spring-pill {
+    transition-duration: 0.35s, 0.25s;
+    transition-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1), ease-out;
+  }
+}
+
+.bkl-delta-pop {
+  --bkl-pop-spring: linear(
+    0, 0.05 2%, 0.34 7%, 1.08 18%, 1.18 24%, 1.04 36%, 0.97 48%, 1.01 66%, 1
+  );
+  @media (prefers-reduced-motion: no-preference) {
+    animation: bkl-delta-in 0.55s ease-out both;
+    animation-timing-function: var(--bkl-pop-spring);
+  }
+}
+
+@keyframes bkl-delta-in {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 8px) scale(0.86);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0) scale(1);
+  }
+}
+
+.bkl-duvet-handle {
+  cursor: grab;
+  touch-action: none;
+  -webkit-user-select: none;
+  user-select: none;
+  transition: transform 0.22s ease-out, box-shadow 0.22s ease-out, background-color 0.2s ease;
+}
+
+.bkl-duvet-handle.dragging {
+  cursor: grabbing;
+  transform: translate(-50%, -50%) scale(1.06);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bkl-spring-pill,
+  .bkl-duvet-handle {
+    transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  }
+}
